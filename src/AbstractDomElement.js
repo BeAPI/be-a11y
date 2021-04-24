@@ -25,10 +25,7 @@ class AbstractDomElement {
     }
 
     this._element = element
-    this._settings = {
-      ...this.constructor.defaults,
-      ...options
-    }
+    this._settings = Object.assign(this.constructor.defaults, options)
     this._element.beapi[nameSpace] = this
     this._isNewInstance = true
   }
@@ -43,7 +40,7 @@ class AbstractDomElement {
   }
 
   static init(element, options) {
-    foreach(element, el => {
+    foreach(element, (el) => {
       new this(el, options)
     })
 
@@ -61,7 +58,7 @@ class AbstractDomElement {
   }
 
   static destroy(element) {
-    this.foreach(element, el => {
+    this.foreach(element, (el) => {
       if (el.beapi && el.beapi[this.nameSpace]) {
         el.beapi[this.nameSpace].destroy()
       }
@@ -71,7 +68,7 @@ class AbstractDomElement {
   }
 
   static foreach(element, callback) {
-    foreach(element, el => {
+    foreach(element, (el) => {
       if (el.beapi && el.beapi[this.nameSpace]) {
         callback(el)
       }
@@ -111,7 +108,9 @@ function foreach(element, callback) {
   let i
 
   for (i = 0; i < el.length; i++) {
-    if (callback(el[i]) === false) break
+    if (callback(el[i]) === false) {
+      break
+    }
   }
 }
 
