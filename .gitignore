@@ -1,0 +1,5 @@
+## Build
+dist/
+
+## Use yarn instead
+package-lock.json
