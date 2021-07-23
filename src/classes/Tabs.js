@@ -23,6 +23,7 @@ class Tabs extends AbstractDomElement {
 
   /**
    * Initialization
+   * @returns {void}
    * @author Milan Ricoul
    */
   init() {
@@ -32,6 +33,7 @@ class Tabs extends AbstractDomElement {
 
   /**
    * Destroy method
+   * @returns {void}
    * @author Milan Ricoul
    */
   destroy() {
@@ -41,6 +43,7 @@ class Tabs extends AbstractDomElement {
 
   /**
    * Unselect all tab buttons
+   * @returns {void}
    * @author Milan Ricoul
    */
   unselectAllButtons() {
@@ -49,6 +52,7 @@ class Tabs extends AbstractDomElement {
 
   /**
    * Execute a function for every tab buttons
+   * @returns {void}
    * @param {Function} func callback
    * @author Milan Ricoul
    */
@@ -63,6 +67,7 @@ class Tabs extends AbstractDomElement {
   /**
    * Open tab panel
    * @param {HTMLElement} button clicked button
+   * @returns {void}
    * @author Milan Ricoul
    */
   open(button) {
@@ -78,6 +83,7 @@ class Tabs extends AbstractDomElement {
   /**
    * Open tab panel
    * @param {HTMLElement} button clicked button
+   * @returns {void}
    * @author Milan Ricoul
    */
   close(button) {
@@ -89,6 +95,7 @@ class Tabs extends AbstractDomElement {
 
   /**
    * Focus the previous tab. If not previous tag, focus the last tab.
+   * @returns {void}
    * @author Milan Ricoul
    */
   focusPreviousTab() {
@@ -103,6 +110,7 @@ class Tabs extends AbstractDomElement {
 
   /**
    * Focus the next tab. If not next tab, focus the fist tab.
+   * @returns {void}
    * @author Milan Ricoul
    */
   focusNextTab() {
@@ -118,6 +126,7 @@ class Tabs extends AbstractDomElement {
   /**
    * Handle tab button click
    * @param {MouseEvent} e Mouse click event
+   * @returns {void}
    * @author Milan Ricoul
    */
   handleButtonClick(e) {
@@ -132,6 +141,7 @@ class Tabs extends AbstractDomElement {
   /**
    * Handle keyboard keydown
    * @param {KeyboardEvent} e Keyboard keydown event
+   * @returns {void}
    * @author Milan Ricoul
    */
   handleKeydown(e) {
