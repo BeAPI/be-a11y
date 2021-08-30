@@ -8,6 +8,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
+    "watch": "node_modules/.bin/webpack --mode=development --watch",
     "build": "node_modules/.bin/webpack --mode=production"
   },
   "dependencies": {
