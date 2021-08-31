@@ -18,6 +18,9 @@ $ yarn build
 
 ## Changelog
 
+### 1.0.1
+- Add documentation for components
+
 ### 1.0.0
 - Init repo
 - Add webpack, eslint, babel
