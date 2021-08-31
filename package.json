@@ -22,8 +22,14 @@
     "webpack-cli": "^4.6.0"
   },
   "devDependencies": {
+    "autoprefixer": "^10.3.3",
+    "css-loader": "^6.2.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "prettier": "^2.2.1"
+    "postcss": "^8.3.6",
+    "postcss-loader": "^6.1.1",
+    "prettier": "^2.2.1",
+    "style-loader": "^3.2.1",
+    "tailwindcss": "^2.2.9"
   }
 }
