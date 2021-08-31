@@ -35,13 +35,13 @@ class Modal extends AbstractDomElement {
     el.id = this.id
 
     // Set aria-labelledby attribute
-    if (s.labelSelector) {
+    if (s.labelSelector && el.querySelector(s.labelSelector)) {
       el.setAttribute('aria-labelledby', `${this.id}-label`)
       el.querySelector(s.labelSelector).id = `${this.id}-label`
     }
 
     // Set aria-describedby attribute
-    if (s.descriptionSelector) {
+    if (s.descriptionSelector && el.querySelector(s.descriptionSelector)) {
       el.setAttribute('aria-describedby', `${this.id}-description`)
       el.querySelector(s.descriptionSelector).id = `${this.id}-description`
     }
