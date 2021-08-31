@@ -1,3 +1,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    /* Colors */
+    --light-color: #fff;
+    --primary-grey-color: #ddd;
+
+    /* Borders */
+    --primary-border: 1px solid var(--primary-grey-color);
+}
+
+@layer base {
+    h1 {
+        @apply text-2xl mb-5;
+    }
+
+    h2 {
+        @apply text-xl mb-2;
+    }
+
+    p {
+        @apply mb-2;
+    }
+
+    .wrapper {
+        @apply max-w-4xl m-auto pt-5 pb-5;
+    }
+
+    .wrapper > h1 {
+        @apply text-center;
+    }
+}

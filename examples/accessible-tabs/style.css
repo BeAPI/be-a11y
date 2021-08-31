@@ -1,0 +1,23 @@
+.tabs__tablist {
+    display: flex;
+    border-bottom: var(--primary-border);
+}
+
+.tabs__tab {
+    padding: 5px 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+}
+
+.tabs__tab[aria-selected="true"] {
+    margin-bottom: -1px;
+    border-color: var(--primary-grey-color) var(--primary-grey-color) var(--light-color) var(--primary-grey-color);
+}
+
+.tabs__panel {
+    padding: 5px 10px;
+    border-right: var(--primary-border);
+    border-bottom: var(--primary-border);
+    border-left: var(--primary-border);
+}
