@@ -9,6 +9,9 @@
 <body>
     <div class="wrapper">
         <h1>Accessible Tabs</h1>
+
+        <h2>Manual</h2>
+
         <div class="tabs">
             <div class="tabs__tablist" role="tablist" aria-label="Parer un ananas">
                 <button class="tabs__tab" role="tab" aria-selected="true" aria-controls="tab-panel-1" id="tab-1">Tab 1</button>
@@ -17,16 +20,42 @@
             </div>
 
             <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-1" aria-labelledby="tab-1">
-                <h2>Tab panel 1</h2>
+                <h3>Tab panel 1</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi accusamus recusandae quo sint vel, delectus corporis error at explicabo ad facere doloribus amet, officiis vitae laudantium quia exercitationem, libero modi.</p>
             </div>
             <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-2" aria-labelledby="tab-2" hidden>
-                <h2>Tab panel 2</h2>
+                <h3>Tab panel 2</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit repellendus dolor mollitia saepe excepturi voluptates sequi sit, neque iure tempora accusantium, tempore magni. Nihil commodi temporibus alias quia perferendis laudantium!</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit repellendus dolor mollitia saepe excepturi voluptates sequi sit, neque iure tempora accusantium, tempore magni. Nihil commodi temporibus alias quia perferendis laudantium!</p>
             </div>
             <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-3" aria-labelledby="tab-3" hidden>
-                <h2>Tab panel 3</h2>
+                <h3>Tab panel 3</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, sequi sunt alias ullam excepturi possimus repellendus tenetur dicta laborum quidem, animi nam ex aliquid! Velit ut et quaerat veritatis magnam.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, sequi sunt alias ullam excepturi possimus repellendus tenetur dicta laborum quidem, animi nam ex aliquid! Velit ut et quaerat veritatis magnam.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, sequi sunt alias ullam excepturi possimus repellendus tenetur dicta laborum quidem, animi nam ex aliquid! Velit ut et quaerat veritatis magnam.</p>
+            </div>
+        </div>
+        
+        <h2>Automatic</h2>
+
+        <div class="tabs--auto">
+            <div class="tabs__tablist" role="tablist" aria-label="Parer un ananas">
+                <button class="tabs__tab" role="tab" aria-selected="true" aria-controls="tab-panel-4" id="tab-4">Tab 1</button>
+                <button class="tabs__tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-panel-5" id="tab-5">Tab 2</button>
+                <button class="tabs__tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-panel-6" id="tab-6">Tab 3</button>
+            </div>
+
+            <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-4" aria-labelledby="tab-4">
+                <h3>Tab panel 1</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi accusamus recusandae quo sint vel, delectus corporis error at explicabo ad facere doloribus amet, officiis vitae laudantium quia exercitationem, libero modi.</p>
+            </div>
+            <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-5" aria-labelledby="tab-5" hidden>
+                <h3>Tab panel 2</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit repellendus dolor mollitia saepe excepturi voluptates sequi sit, neque iure tempora accusantium, tempore magni. Nihil commodi temporibus alias quia perferendis laudantium!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit repellendus dolor mollitia saepe excepturi voluptates sequi sit, neque iure tempora accusantium, tempore magni. Nihil commodi temporibus alias quia perferendis laudantium!</p>
+            </div>
+            <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-6" aria-labelledby="tab-6" hidden>
+                <h3>Tab panel 3</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, sequi sunt alias ullam excepturi possimus repellendus tenetur dicta laborum quidem, animi nam ex aliquid! Velit ut et quaerat veritatis magnam.</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, sequi sunt alias ullam excepturi possimus repellendus tenetur dicta laborum quidem, animi nam ex aliquid! Velit ut et quaerat veritatis magnam.</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, sequi sunt alias ullam excepturi possimus repellendus tenetur dicta laborum quidem, animi nam ex aliquid! Velit ut et quaerat veritatis magnam.</p>

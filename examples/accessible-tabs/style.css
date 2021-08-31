@@ -1,3 +1,7 @@
+.tabs {
+    margin-bottom: 20px;
+}
+
 .tabs__tablist {
     display: flex;
     border-bottom: var(--primary-border);
