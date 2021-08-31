@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Accessible Toggle</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Accessible Toggle</h1>
+
+        <h2>Simple toggle button</h2>
+
+        <button type="button" class="button" aria-controls="toggle-1">Reveal text</button>
+
+        <div id="toggle-1" aria-hidden="true">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deserunt veniam perferendis recusandae sunt quasi, dolor laboriosam quibusdam saepe numquam officia, incidunt fugiat amet velit quas doloribus earum nostrum ut?</p>
+        </div>
+
+        <h2>Toggle button with jQuery like slide animation</h2>
+
+        <button type="button" class="button" aria-controls="toggle-2">Reveal text</button>
+
+        <div id="toggle-2" aria-hidden="true">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deserunt veniam perferendis recusandae sunt quasi, dolor laboriosam quibusdam saepe numquam officia, incidunt fugiat amet velit quas doloribus earum nostrum ut?</p>
+        </div>
+
+        <h2>Toggle button with an alert box</h2>
+
+        <button type="button" class="button" aria-controls="toggle-3">Reveal text</button>
+
+        <div id="toggle-3" aria-hidden="true">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deserunt veniam perferendis recusandae sunt quasi, dolor laboriosam quibusdam saepe numquam officia, incidunt fugiat amet velit quas doloribus earum nostrum ut?</p>
+        </div>
+
+        <h2>Toggle button but only for &lt; 1024px devices</h2>
+
+        <button type="button" class="button" aria-controls="toggle-4">Reveal text</button>
+
+        <div id="toggle-4" aria-hidden="true">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deserunt veniam perferendis recusandae sunt quasi, dolor laboriosam quibusdam saepe numquam officia, incidunt fugiat amet velit quas doloribus earum nostrum ut?</p>
+        </div>
+
+        <h2>Toggle button but it's already opened</h2>
+
+        <button type="button" class="button" aria-controls="toggle-5">Reveal text</button>
+
+        <div id="toggle-5" aria-hidden="true">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deserunt veniam perferendis recusandae sunt quasi, dolor laboriosam quibusdam saepe numquam officia, incidunt fugiat amet velit quas doloribus earum nostrum ut?</p>
+        </div>
+    </div>
+    <script src="../../dist/app.bundle.js" defer></script>
+</body>
+</html>
