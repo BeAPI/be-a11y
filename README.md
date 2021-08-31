@@ -19,6 +19,7 @@ $ yarn build
 ## Changelog
 
 ### 1.0.1
+- Fix AbstractDomElement class
 - Add documentation for components
 
 ### 1.0.0
