@@ -1,6 +1,7 @@
 const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
+const StyleLintPlugin = require('stylelint-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -37,5 +38,6 @@ module.exports = {
       context: path.resolve(__dirname, 'src/'),
       files: '**/*.js',
     }),
+    new StyleLintPlugin(),
   ],
 }
