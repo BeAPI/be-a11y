@@ -1,8 +1,7 @@
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import AbstractDomElement from '../AbstractDomElement'
 import DOMAnimations from '../utils/DOMAnimations'
-import uniqid from '../utils/uniqid'
 import throttle from '../utils/throttle'
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 
 /**
  * Toggle Class
@@ -62,7 +61,7 @@ class Toggle extends AbstractDomElement {
     }
 
     if (!el.getAttribute('aria-controls')) {
-      const id = `toggle-${uniqid()}`
+      const id = this.defineId()
       el.setAttribute('aria-controls', id)
       this.target.id = id
     }
@@ -80,6 +79,21 @@ class Toggle extends AbstractDomElement {
     }
 
     return true
+  }
+
+  /**
+   * Set id to the modal dialog
+   * @returns {String}
+   * @author Milan Ricoul
+   */
+  defineId() {
+    let i = 1
+
+    while (document.getElementById(`toggle-${i}`)) {
+      i++
+    }
+
+    return `toggle-${i}`
   }
 
   /**
