@@ -1,0 +1,117 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Accessible Accordion</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Accessible Accordion</h1>
+
+        <h2>Sample accordion</h2>
+
+        <div class="accordion">
+          <h3>
+            <button aria-expanded="true" class="accordion__trigger">
+              <span class="accordion__title">
+                Personal Information
+              </span>
+            </button>
+          </h3>
+          <div class="accordion__panel" role="region">
+            <fieldset>
+              <p>
+                <label for="cufc1">Name<span aria-hidden="true">*</span>:</label>
+                <input type="text" value="" name="Name" id="cufc1" class="required" aria-required="true">
+              </p>
+              <p>
+                <label for="cufc2">Email<span aria-hidden="true">*</span>:</label>
+                <input type="text" value="" name="Email" id="cufc2" aria-required="true">
+              </p>
+              <p>
+                <label for="cufc3">Phone:</label>
+                <input type="text" value="" name="Phone" id="cufc3">
+              </p>
+              <p>
+                <label for="cufc4">Extension:</label>
+                <input type="text" value="" name="Ext" id="cufc4">
+              </p>
+              <p>
+                <label for="cufc5">Country:</label>
+                <input type="text" value="" name="Country" id="cufc5">
+              </p>
+              <p>
+                <label for="cufc6">City/Province:</label>
+                <input type="text" value="" name="City_Province" id="cufc6">
+              </p>
+            </fieldset>
+          </div>
+          <h3>
+            <button aria-expanded="false" class="accordion__trigger">
+              <span class="accordion__title">
+                Billing Address
+              </span>
+            </button>
+          </h3>
+          <div class="accordion__panel" role="region" style="display: none;">
+            <fieldset>
+              <p>
+                <label for="b-add1">Address 1:</label>
+                <input type="text" name="b-add1" id="b-add1">
+              </p>
+              <p>
+                <label for="b-add2">Address 2:</label>
+                <input type="text" name="b-add2" id="b-add2">
+              </p>
+              <p>
+                <label for="b-city">City:</label>
+                <input type="text" name="b-city" id="b-city">
+              </p>
+              <p>
+                <label for="b-state">State:</label>
+                <input type="text" name="b-state" id="b-state">
+              </p>
+              <p>
+                <label for="b-zip">Zip Code:</label>
+                <input type="text" name="b-zip" id="b-zip">
+              </p>
+            </fieldset>
+          </div>
+          <h3>
+            <button aria-expanded="false" class="accordion__trigger">
+              <span class="accordion__title">
+                Shipping Address
+              </span>
+            </button>
+          </h3>
+          <div class="accordion__panel" role="region" style="display: none;">
+            <fieldset>
+              <p>
+                <label for="m-add1">Address 1:</label>
+                <input type="text" name="m-add1" id="m-add1">
+              </p>
+              <p>
+                <label for="m-add2">Address 2:</label>
+                <input type="text" name="m-add2" id="m-add2">
+              </p>
+              <p>
+                <label for="m-city">City:</label>
+                <input type="text" name="m-city" id="m-city">
+              </p>
+              <p>
+                <label for="m-state">State:</label>
+                <input type="text" name="m-state" id="m-state">
+              </p>
+              <p>
+                <label for="m-zip">Zip Code:</label>
+                <input type="text" name="m-zip" id="m-zip">
+              </p>
+            </fieldset>
+          </div>
+        </div>
+    </div>
+    <script src="../../dist/app.bundle.js"></script>
+</body>
+</html>
