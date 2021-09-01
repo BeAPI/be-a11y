@@ -28,6 +28,10 @@
         @apply mb-2;
     }
 
+    ol {
+        @apply list-decimal pl-4;
+    }
+
     .wrapper {
         @apply max-w-4xl m-auto pt-5 pb-5;
     }
