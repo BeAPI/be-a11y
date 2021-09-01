@@ -114,7 +114,7 @@ class Tabs extends AbstractDomElement {
   }
 
   /**
-   * Focus the next tab. If not next tab, focus the fist tab.
+   * Focus the next tab. If not next tab, focus the first tab.
    * @returns {void}
    * @author Milan Ricoul
    */
@@ -126,6 +126,30 @@ class Tabs extends AbstractDomElement {
 
       this._settings.auto ? this.open(nextButton) : nextButton.focus()
     }
+  }
+
+  /**
+   * Focus the first tab.
+   * @returns {void}
+   * @author Milan Ricoul
+   */
+  focusFirstTab() {
+    const firstTab = this._element.querySelectorAll(this._settings.tabListSelector)[0]
+
+    this._settings.auto ? this.open(firstTab) : firstTab.focus()
+  }
+
+  /**
+   * Focus the last tab.
+   * @returns {void}
+   * @author Milan Ricoul
+   */
+  focusLastTab() {
+    const tabs = this._element.querySelectorAll(this._settings.tabListSelector)
+    const tabsCount = tabs.length
+    const lastTab = tabs[tabsCount - 1]
+
+    this._settings.auto ? this.open(lastTab) : lastTab.focus()
   }
 
   /**
@@ -178,6 +202,12 @@ class Tabs extends AbstractDomElement {
         break
       case 'ArrowRight':
         this.focusNextTab()
+        break
+      case 'Home':
+        this.focusFirstTab()
+        break
+      case 'End':
+        this.focusLastTab()
         break
     }
   }
