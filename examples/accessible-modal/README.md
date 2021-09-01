@@ -50,9 +50,9 @@ Modal.init('.my-modal', {
 
 ## Options
 
-| name                  | type            | required | default  | description                                                             |
-|-----------------------|-----------------|----------|----------|-------------------------------------------------------------------------|
-| `prefixId`            | string          | yes      | `dialog` | The prefix id of the component.                                         |
-| `labelSelector`       | boolean\|string | no       | `false`  | The selector of the modal label (for the attribute `aria-labelledby`).  |
-| `descriptionSelector` | boolean\|string | no       | `false`  | The selector of the modal label (for the attribute `aria-describedby`). |
-| `closeButtonSelector` | boolean\|string | no       | `false`  | The selector of the modal's close button.                               |
+| name                  | type            | default  | description                                                             |
+|-----------------------|-----------------|----------|-------------------------------------------------------------------------|
+| `prefixId`            | string          | `dialog` | The prefix id of the component.                                         |
+| `labelSelector`       | boolean\|string | `false`  | The selector of the modal label (for the attribute `aria-labelledby`).  |
+| `descriptionSelector` | boolean\|string | `false`  | The selector of the modal label (for the attribute `aria-describedby`). |
+| `closeButtonSelector` | boolean\|string | `false`  | The selector of the modal's close button.                               |
