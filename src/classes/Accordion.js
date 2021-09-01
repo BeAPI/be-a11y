@@ -115,7 +115,10 @@ class Accordion extends AbstractDomElement {
       this.close(panel)
     } else {
       if (!allowMultiple) {
-        this.applyToSelectors(el.querySelectorAll(panelSelector), (panel) => this.close(panel))
+        this.applyToSelectors(el.querySelectorAll(panelSelector), (panel) => {
+          document.getElementById(panel.getAttribute('aria-labelledby')).setAttribute('aria-expanded', 'false')
+          this.close(panel)
+        })
       }
 
       trigger.setAttribute('aria-expanded', 'true')
