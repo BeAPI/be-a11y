@@ -14,7 +14,7 @@ Copy the following markup on your HTML file :
 </div>
 ```
 
-Next, in jour JS file, import Tabs class and initialize it :
+Next, in jour JS file, import Toggle class and initialize it :
 ```js
 import Toggle from '/path/to/Toggle.js';
 
@@ -41,14 +41,14 @@ Toggle.init('.menu-trigger', {
 
 ## Options
 
-| name                       | type            | required | default | description                                                                                                                             |
-|----------------------------|-----------------|----------|---------|-----------------------------------------------------------------------------------------------------------------------------------------|
-| `bodyScrollLock`           | boolean         | no       | `false` | If true, the body scroll is locked when the content is revealed.                                                                        |
-| `bodyScrollLockMediaQuery` | boolean\|object | no       | `false` | Lock the body scroll when the content is revealed based on the window match media.                                                      |
-| `closeOnBlur`              | boolean         | no       | `false` | When you unfocus the toggle button, the content is hidden.                                                                              |
-| `closeOnEscPress`          | boolean         | no       | `false` | When you press Escape button, the content is hidden.                                                                                    |
-| `hasAnimation`             | boolean         | no       | `false` | If true, the content has a slideDown / slideUp animation.                                                                               |
-| `isOpened`                 | boolean         | no       | `false` | If true, the content is revealed by default.                                                                                            |
-| `mediaQuery`               | string          | no       | `null`  | Apply toggle button to a window match media.                                                                                            |
-| `onClick`                  | function        | no       | `null`  | Callback function when you click on the toggle button.                                                                                  |
-| `target`                   | string          | no       | `null`  | Specify the content target with a selector. If null, the target is based on the `aria-controls` attribute value from the toggle button. |
+| name                       | type            | default | description                                                                                                                             |
+|----------------------------|-----------------|---------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| `bodyScrollLock`           | boolean         | `false` | If true, the body scroll is locked when the content is revealed.                                                                        |
+| `bodyScrollLockMediaQuery` | boolean\|object | `false` | Lock the body scroll when the content is revealed based on the window match media.                                                      |
+| `closeOnBlur`              | boolean         | `false` | When you unfocus the toggle button, the content is hidden.                                                                              |
+| `closeOnEscPress`          | boolean         | `false` | When you press Escape button, the content is hidden.                                                                                    |
+| `hasAnimation`             | boolean         | `false` | If true, the content has a slideDown / slideUp animation.                                                                               |
+| `isOpened`                 | boolean         | `false` | If true, the content is revealed by default.                                                                                            |
+| `mediaQuery`               | string          | `null`  | Apply toggle button to a window match media.                                                                                            |
+| `onClick`                  | function        | `null`  | Callback function when you click on the toggle button.                                                                                  |
+| `target`                   | string          | `null`  | Specify the content target with a selector. If null, the target is based on the `aria-controls` attribute value from the toggle button. |
