@@ -78,7 +78,7 @@ class Accordion extends AbstractDomElement {
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
     )[0]
 
-    if (this._settings.hasAnimation) {
+    if (this._settings.hasAnimation && window.getComputedStyle(panel).display === 'none') {
       DOMAnimations.slideDown(panel, 500, () => {
         if (firstFocusableElement) {
           firstFocusableElement.focus()
@@ -110,11 +110,16 @@ class Accordion extends AbstractDomElement {
    */
   handleButtonClick(e) {
     const el = this._element
+    const s = this._settings
     const { allowMultiple, forceExpand, panelSelector } = this._settings
     const trigger = e.currentTarget
     const panel = document.getElementById(trigger.getAttribute('aria-controls'))
 
-    if (trigger.getAttribute('aria-expanded') === 'true' && !forceExpand) {
+    if (
+      trigger.getAttribute('aria-expanded') === 'true' &&
+      (!forceExpand ||
+        (forceExpand && allowMultiple && el.querySelectorAll(`${s.triggerSelector}[aria-expanded="true"]`).length > 1))
+    ) {
       trigger.setAttribute('aria-expanded', 'false')
       this.close(panel)
     } else {
@@ -224,7 +229,10 @@ Accordion.defaults = {
 }
 
 Accordion.preset = {
-  '.accordion': { hasAnimation: true },
+  '#accordion-demo-1': {},
+  '#accordion-demo-2': { hasAnimation: true },
+  '#accordion-demo-3': { allowMultiple: true },
+  '#accordion-demo-4': { forceExpand: false },
 }
 
 export default Accordion
