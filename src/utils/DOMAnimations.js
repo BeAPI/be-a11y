@@ -1,4 +1,3 @@
-/* eslint-disable */
 class DOMAnimations {
   /**
    * Hide an element with a jQuery slide effect
@@ -7,7 +6,7 @@ class DOMAnimations {
    * @param {Function} callback
    * @returns {Promise<boolean>}
    */
-  static slideUp(element, duration = 500, callback = false) {
+  static slideUp(element, duration = 500, callback = () => false) {
     return new Promise((resolve) => {
       element.style.height = `${element.offsetHeight}px`
       element.style.transitionProperty = `height, margin, padding`
@@ -31,7 +30,9 @@ class DOMAnimations {
         element.style.removeProperty('transition-property')
         resolve(false)
 
-        if (callback) callback()
+        if (callback) {
+          callback()
+        }
       }, duration)
     })
   }
@@ -43,11 +44,13 @@ class DOMAnimations {
    * @param {Function} callback
    * @returns {Promise<boolean>}
    */
-  static slideDown(element, duration = 500, callback = false) {
+  static slideDown(element, duration = 500, callback = () => false) {
     return new Promise(() => {
       element.style.removeProperty('display')
       let display = window.getComputedStyle(element).display
-      if (display === 'none') display = 'block'
+      if (display === 'none') {
+        display = 'block'
+      }
       element.style.display = display
       let height = element.offsetHeight
       element.style.overflow = 'hidden'
@@ -70,7 +73,9 @@ class DOMAnimations {
         element.style.removeProperty('transition-duration')
         element.style.removeProperty('transition-property')
 
-        if (callback) callback()
+        if (callback) {
+          callback()
+        }
       }, duration)
     })
   }
@@ -82,7 +87,7 @@ class DOMAnimations {
    * @param {Function} callback
    * @returns {Promise<boolean>}
    */
-  static slideToggle(element, duration = 500, callback = false) {
+  static slideToggle(element, duration = 500, callback = () => false) {
     if (window.getComputedStyle(element).display === 'none') {
       return this.slideDown(element, duration, callback)
     }
