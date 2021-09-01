@@ -228,11 +228,4 @@ Accordion.defaults = {
   triggerSelector: '.accordion__trigger',
 }
 
-Accordion.preset = {
-  '#accordion-demo-1': {},
-  '#accordion-demo-2': { hasAnimation: true },
-  '#accordion-demo-3': { allowMultiple: true },
-  '#accordion-demo-4': { forceExpand: false },
-}
-
 export default Accordion
