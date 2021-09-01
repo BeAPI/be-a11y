@@ -74,13 +74,21 @@ class Accordion extends AbstractDomElement {
    * @author Milan Ricoul
    */
   open(panel) {
+    const firstFocusableElement = panel.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    )[0]
+
     if (this._settings.hasAnimation) {
       DOMAnimations.slideDown(panel, 500, () => {
-        panel.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')[0].focus()
+        if (firstFocusableElement) {
+          firstFocusableElement.focus()
+        }
       })
     } else {
       panel.style.display = 'block'
-      panel.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')[0].focus()
+      if (firstFocusableElement) {
+        firstFocusableElement.focus()
+      }
     }
   }
 
@@ -91,11 +99,7 @@ class Accordion extends AbstractDomElement {
    * @author Milan Ricoul
    */
   close(panel) {
-    if (this._settings.hasAnimation) {
-      DOMAnimations.slideUp(panel)
-    } else {
-      panel.style.display = 'none'
-    }
+    this._settings.hasAnimation ? DOMAnimations.slideUp(panel) : (panel.style.display = 'none')
   }
 
   /**
@@ -116,8 +120,10 @@ class Accordion extends AbstractDomElement {
     } else {
       if (!allowMultiple) {
         this.applyToSelectors(el.querySelectorAll(panelSelector), (panel) => {
-          document.getElementById(panel.getAttribute('aria-labelledby')).setAttribute('aria-expanded', 'false')
-          this.close(panel)
+          if (panel.id !== trigger.getAttribute('aria-controls')) {
+            document.getElementById(panel.getAttribute('aria-labelledby')).setAttribute('aria-expanded', 'false')
+            this.close(panel)
+          }
         })
       }
 
