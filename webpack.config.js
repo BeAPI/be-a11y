@@ -1,10 +1,11 @@
 const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
+const StyleLintPlugin = require('stylelint-webpack-plugin')
 
 module.exports = {
   entry: {
-    app: './index.js',
+    app: './src/index.js',
   },
   module: {
     rules: [
@@ -17,6 +18,11 @@ module.exports = {
             babelrc: true,
           },
         },
+      },
+      {
+        test: /\.css$/i,
+        include: path.resolve(__dirname, 'src'),
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
     ],
   },
@@ -32,5 +38,6 @@ module.exports = {
       context: path.resolve(__dirname, 'src/'),
       files: '**/*.js',
     }),
+    new StyleLintPlugin(),
   ],
 }

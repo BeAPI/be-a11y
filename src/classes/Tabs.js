@@ -13,7 +13,10 @@ class Tabs extends AbstractDomElement {
       return instance
     }
 
+    this.focus = false
+    this.handleButtonBlur = this.handleButtonBlur.bind(this)
     this.handleButtonClick = this.handleButtonClick.bind(this)
+    this.handleButtonFocus = this.handleButtonFocus.bind(this)
     this.handleKeydown = this.handleKeydown.bind(this)
     this.focusPreviousTab = this.focusPreviousTab.bind(this)
     this.focusNextTab = this.focusNextTab.bind(this)
@@ -28,6 +31,8 @@ class Tabs extends AbstractDomElement {
    */
   init() {
     this.applyToButtons((button) => button.addEventListener('click', this.handleButtonClick))
+    this.applyToButtons((button) => button.addEventListener('focus', this.handleButtonFocus))
+    this.applyToButtons((button) => button.addEventListener('blur', this.handleButtonBlur))
     document.addEventListener('keydown', this.handleKeydown)
   }
 
@@ -139,12 +144,34 @@ class Tabs extends AbstractDomElement {
   }
 
   /**
+   * Handle tab button focus
+   * @returns {void}
+   * @author Milan Ricoul
+   */
+  handleButtonFocus() {
+    this.focus = true
+  }
+
+  /**
+   * Handle tab button blur
+   * @returns {void}
+   * @author Milan Ricoul
+   */
+  handleButtonBlur() {
+    this.focus = false
+  }
+
+  /**
    * Handle keyboard keydown
    * @param {KeyboardEvent} e Keyboard keydown event
    * @returns {void}
    * @author Milan Ricoul
    */
   handleKeydown(e) {
+    if (!this.focus) {
+      return
+    }
+
     switch (e.code) {
       case 'ArrowLeft':
         this.focusPreviousTab()
@@ -163,7 +190,8 @@ Tabs.defaults = {
 }
 
 Tabs.preset = {
-  '.tabs': {
+  '.tabs': {},
+  '.tabs--auto': {
     auto: true,
   },
 }
