@@ -4,7 +4,7 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 ![Node.js CI](https://github.com/BeAPI/beapi-frontend-framework/workflows/Node.js%20CI/badge.svg?branch=master)
 
-This repository contains a collection of useful accessible componet such as tabulations, accordion, sliders...
+This repository contains a collection of useful accessible components such as tabs, accordion, modal dialog...
 
 ## Installation
 
