@@ -16,6 +16,8 @@ describe('Tabs', () => {
     )
 
     expect(thirdTabButton).toBe('true')
+
+    await page.close()
   })
   
   test('Click on a tab, expect hidden attribute of the panel to be null.', async () => {
@@ -30,6 +32,8 @@ describe('Tabs', () => {
     )
 
     expect(thirdTabPanel).toBe(null)
+
+    await page.close()
   })
 
   test('Focus second tab, expect the third tab is focused after pressing ArrowRight key.', async () => {
@@ -42,6 +46,8 @@ describe('Tabs', () => {
     const thirdTab = await page.$(`button#tab-3`)
 
     expect(await page.evaluate(elem => window.document.activeElement === elem, thirdTab)).toEqual(true)
+
+    await page.close()
   })
 
   test('Focus second tab, expect the first tab is focused after pressing ArrowLeft key.', async () => {
@@ -54,6 +60,8 @@ describe('Tabs', () => {
     const firstTab = await page.$(`button#tab-1`)
 
     expect(await page.evaluate(elem => window.document.activeElement === elem, firstTab)).toEqual(true)
+
+    await page.close()
   })
 
   test('Focus first tab, expect the last tab is focused after pressing ArrowLeft key.', async () => {
@@ -66,6 +74,8 @@ describe('Tabs', () => {
     const thirdTab = await page.$(`button#tab-4`)
 
     expect(await page.evaluate(elem => window.document.activeElement === elem, thirdTab)).toEqual(true)
+
+    await page.close()
   })
 
   test('Focus last tab, expect the first tab is focused after pressing ArrowRight key.', async () => {
@@ -78,6 +88,8 @@ describe('Tabs', () => {
     const firstTab = await page.$(`button#tab-1`)
 
     expect(await page.evaluate(elem => window.document.activeElement === elem, firstTab)).toEqual(true)
+
+    await page.close()
   })
 
   test('Focus the third tab, expect the first tab is focused after pressing Home key.', async () => {
@@ -90,6 +102,8 @@ describe('Tabs', () => {
     const firstTab = await page.$(`button#tab-1`)
 
     expect(await page.evaluate(elem => window.document.activeElement === elem, firstTab)).toEqual(true)
+
+    await page.close()
   })
 
   test('Focus the second tab, expect the last tab is focused after pressing End key.', async () => {
@@ -102,6 +116,8 @@ describe('Tabs', () => {
     const lastTab = await page.$(`button#tab-4`)
 
     expect(await page.evaluate(elem => window.document.activeElement === elem, lastTab)).toEqual(true)
+
+    await page.close()
   })
 
   test('Focus a deletable tab, expect the focused tab is removed after pressing Delete key.', async () => {
@@ -113,5 +129,7 @@ describe('Tabs', () => {
     await page.keyboard.press('Delete')
 
     expect(await page.$('#tab-panel-3') === null).toEqual(true)
+
+    await page.close()
   })
 })
