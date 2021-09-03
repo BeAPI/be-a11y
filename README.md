@@ -21,10 +21,10 @@ $ yarn build
 ```
 
 ## Components
-  - [Accordion](examples/accessible-accordion/)
-  - [Modal](examples/accessible-modal/)
-  - [Tabs](examples/accessible-tabs/)
-  - [Toggle](examples/accessible-toggle/)
+- [Accordion](examples/accessible-accordion/)
+- [Modal](examples/accessible-modal/)
+- [Tabs](examples/accessible-tabs/)
+- [Toggle](examples/accessible-toggle/)
 
 ## Tests
 
@@ -36,16 +36,16 @@ $ yarn test
 ## Changelog
 
 ### 1.0.2
-  - Add Accordion class
-  - Add Toggle class
-  - Add UI tests
-  - Add styles with Tailwind
+- Add Accordion class
+- Add Toggle class
+- Add UI tests
+- Add styles with Tailwind
 
 ### 1.0.1
-  - Fix AbstractDomElement class
-  - Add documentation for components
+- Fix AbstractDomElement class
+- Add documentation for components
 
 ### 1.0.0
-  - Init repo
-  - Add webpack, eslint, babel
-  - Add Tabs component
+- Init repo
+- Add webpack, eslint, babel
+- Add Tabs component
