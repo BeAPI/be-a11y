@@ -1,10 +1,11 @@
 import puppeteer from 'puppeteer'
 
+let browser
 const app = `file://${process.cwd()}/examples/accessible-tabs/index.html`
 
 describe('Tabs', () => {
   test('Click on a tab, expect aria-selected attribute to be "true".', async () => {
-    const browser = await puppeteer.launch()
+    browser = await puppeteer.launch()
     const page = await browser.newPage()
   
     await page.goto(app)
@@ -18,7 +19,7 @@ describe('Tabs', () => {
   })
   
   test('Click on a tab, expect hidden attribute of the panel to be null.', async () => {
-    const browser = await puppeteer.launch()
+    browser = await puppeteer.launch()
     const page = await browser.newPage()
   
     await page.goto(app)
@@ -32,85 +33,85 @@ describe('Tabs', () => {
   })
 
   test('Focus second tab, expect the third tab is focused after pressing ArrowRight key.', async () => {
-    const browser = await puppeteer.launch()
+    browser = await puppeteer.launch()
     const page = await browser.newPage()
   
     await page.goto(app)
     await page.focus('button#tab-2')
     await page.keyboard.press('ArrowRight')
-    const thirdTab = await page.$(`button#tab-3`);
+    const thirdTab = await page.$(`button#tab-3`)
 
-    expect(await page.evaluate(elem => window.document.activeElement === elem, thirdTab)).toEqual(true);
+    expect(await page.evaluate(elem => window.document.activeElement === elem, thirdTab)).toEqual(true)
   })
 
   test('Focus second tab, expect the first tab is focused after pressing ArrowLeft key.', async () => {
-    const browser = await puppeteer.launch()
+    browser = await puppeteer.launch()
     const page = await browser.newPage()
   
     await page.goto(app)
     await page.focus('button#tab-2')
     await page.keyboard.press('ArrowLeft')
-    const firstTab = await page.$(`button#tab-1`);
+    const firstTab = await page.$(`button#tab-1`)
 
-    expect(await page.evaluate(elem => window.document.activeElement === elem, firstTab)).toEqual(true);
+    expect(await page.evaluate(elem => window.document.activeElement === elem, firstTab)).toEqual(true)
   })
 
   test('Focus first tab, expect the last tab is focused after pressing ArrowLeft key.', async () => {
-    const browser = await puppeteer.launch()
+    browser = await puppeteer.launch()
     const page = await browser.newPage()
   
     await page.goto(app)
     await page.focus('button#tab-1')
     await page.keyboard.press('ArrowLeft')
-    const thirdTab = await page.$(`button#tab-4`);
+    const thirdTab = await page.$(`button#tab-4`)
 
-    expect(await page.evaluate(elem => window.document.activeElement === elem, thirdTab)).toEqual(true);
+    expect(await page.evaluate(elem => window.document.activeElement === elem, thirdTab)).toEqual(true)
   })
 
   test('Focus last tab, expect the first tab is focused after pressing ArrowRight key.', async () => {
-    const browser = await puppeteer.launch()
+    browser = await puppeteer.launch()
     const page = await browser.newPage()
   
     await page.goto(app)
     await page.focus('button#tab-4')
     await page.keyboard.press('ArrowRight')
-    const firstTab = await page.$(`button#tab-1`);
+    const firstTab = await page.$(`button#tab-1`)
 
-    expect(await page.evaluate(elem => window.document.activeElement === elem, firstTab)).toEqual(true);
+    expect(await page.evaluate(elem => window.document.activeElement === elem, firstTab)).toEqual(true)
   })
 
   test('Focus the third tab, expect the first tab is focused after pressing Home key.', async () => {
-    const browser = await puppeteer.launch()
+    browser = await puppeteer.launch()
     const page = await browser.newPage()
   
     await page.goto(app)
     await page.focus('button#tab-3')
     await page.keyboard.press('Home')
-    const firstTab = await page.$(`button#tab-1`);
+    const firstTab = await page.$(`button#tab-1`)
 
-    expect(await page.evaluate(elem => window.document.activeElement === elem, firstTab)).toEqual(true);
+    expect(await page.evaluate(elem => window.document.activeElement === elem, firstTab)).toEqual(true)
   })
 
   test('Focus the second tab, expect the last tab is focused after pressing End key.', async () => {
-    const browser = await puppeteer.launch()
+    browser = await puppeteer.launch()
     const page = await browser.newPage()
   
     await page.goto(app)
     await page.focus('button#tab-2')
     await page.keyboard.press('End')
-    const lastTab = await page.$(`button#tab-4`);
+    const lastTab = await page.$(`button#tab-4`)
 
-    expect(await page.evaluate(elem => window.document.activeElement === elem, lastTab)).toEqual(true);
+    expect(await page.evaluate(elem => window.document.activeElement === elem, lastTab)).toEqual(true)
   })
 
   test('Focus a deletable tab, expect the focused tab is removed after pressing Delete key.', async () => {
-    const browser = await puppeteer.launch()
+    browser = await puppeteer.launch()
     const page = await browser.newPage()
   
     await page.goto(app)
     await page.focus('button#tab-3[data-deletable]')
     await page.keyboard.press('Delete')
 
-    expect(await page.$('#tab-panel-3') === null).toEqual(true);
+    expect(await page.$('#tab-panel-3') === null).toEqual(true)
   })
-});
+})
