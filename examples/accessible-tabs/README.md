@@ -37,16 +37,16 @@ Tabs.initFromPreset();
 
 If you want to change the classes of the component, you can also initialize it :
 ```html
-<div class="tabulation">
-    <div class="tabulation-list" role="tablist" aria-label="Parer un ananas">
-        <button class="tabulation-tab" role="tab" aria-selected="true" aria-controls="tab-panel-1" id="tab-1">Tab 1</button>
-        <button class="tabulation-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-panel-2" id="tab-2">Tab 2</button>
+<div class="my-tab">
+    <div class="my-tab-list" role="tablist" aria-label="Parer un ananas">
+        <button class="my-tab-tab" role="tab" aria-selected="true" aria-controls="tab-panel-1" id="tab-1">Tab 1</button>
+        <button class="my-tab-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-panel-2" id="tab-2">Tab 2</button>
     </div>
 
-    <div class="tabulation-panel" tabindex="0" role="tabpanel" id="tab-panel-1" aria-labelledby="tab-1">
+    <div class="my-tab-panel" tabindex="0" role="tabpanel" id="tab-panel-1" aria-labelledby="tab-1">
         <!-- Your content here -->
     </div>
-    <div class="tabulation-panel" tabindex="0" role="tabpanel" id="tab-panel-2" aria-labelledby="tab-2" hidden>
+    <div class="my-tab-panel" tabindex="0" role="tabpanel" id="tab-panel-2" aria-labelledby="tab-2" hidden>
         <!-- Your content here -->
     </div>
 </div>
@@ -55,7 +55,7 @@ If you want to change the classes of the component, you can also initialize it :
 ```js
 import Tabs from '/path/to/Tabs.js';
 
-Tabs.init('.tabulation', {
+Tabs.init('.my-tab', {
     auto: true,
 });
 ```
