@@ -15,7 +15,7 @@ $ yarn
 
 ## Build
 
-In `examples` directoy you can find sample of components. First of all you have to build the JS with the following command.
+In `examples` directory you can find sample of components. First of all you have to build the JS with the following command.
 ```bash
 $ yarn build
 ```
