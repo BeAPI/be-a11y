@@ -1,3 +1,7 @@
 [aria-hidden="true"] {
-  display: none;
+    display: none;
+}
+
+.button {
+    margin-bottom: 20px;
 }
