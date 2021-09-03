@@ -12,6 +12,7 @@
     border-width: 1px;
     border-style: solid;
     border-color: transparent;
+    box-shadow: none;
 }
 
 .tabs__tab[aria-selected="true"] {

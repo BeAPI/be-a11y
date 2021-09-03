@@ -6,6 +6,7 @@
     /* Colors */
     --light-color: #fff;
     --primary-grey-color: #ddd;
+    --modal-bg-color: rgba(0, 0, 0, .5);
 
     /* Borders */
     --primary-border: 1px solid var(--primary-grey-color);
@@ -17,7 +18,7 @@
     }
 
     h2 {
-        @apply text-2xl mb-2;
+        @apply text-2xl mb-5;
     }
 
     h3 {
@@ -26,6 +27,29 @@
 
     p {
         @apply mb-2;
+    }
+
+    ol {
+        @apply list-decimal pl-4;
+    }
+
+    button {
+        @apply bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow;
+    }
+
+    input {
+        @apply px-4 py-3 leading-5 border rounded-md;
+    }
+
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+        border: 0;
     }
 
     .wrapper {

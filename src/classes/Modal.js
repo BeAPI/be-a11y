@@ -108,8 +108,38 @@ class Modal extends AbstractDomElement {
    * @author Milan Ricoul
    */
   handleKeydown(e) {
-    if (e.code === 'Escape' && this.isOpened) {
-      this.close()
+    switch (e.code) {
+      case 'Tab':
+        this.checkNextFocusableElement(e)
+        break
+      case 'Escape':
+        if (this.isOpened) {
+          this.close()
+        }
+    }
+  }
+
+  /**
+   * Check if the next focusable element in dialog exists, else focus the first focusable element in dialog
+   * @param {KeyboardEvent} e keyboard event handler
+   * @returns {Void}
+   * @author Milan Ricoul
+   */
+  checkNextFocusableElement(e) {
+    const el = this._element
+    const focusableElements = el.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    )
+    const currentIndexOfActiveElement = Array.prototype.indexOf.call(focusableElements, document.activeElement)
+
+    if (currentIndexOfActiveElement === 0 && e.shiftKey) {
+      e.preventDefault()
+      focusableElements[focusableElements.length - 1].focus()
+    }
+
+    if (currentIndexOfActiveElement === focusableElements.length - 1 && !e.shiftKey) {
+      e.preventDefault()
+      focusableElements[0].focus()
     }
   }
 
