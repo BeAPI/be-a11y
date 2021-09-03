@@ -20,6 +20,7 @@ $ yarn build
 
 ### 1.0.2
 - Add Accordion class
+- Add Toggle class
 
 ### 1.0.1
 - Fix AbstractDomElement class

@@ -16,7 +16,7 @@ Copy the following markup on your HTML file :
 </div>
 ```
 
-Next, in jour JS file, import Tabs class and initialize it :
+Next, in jour JS file, import Modal class and initialize it :
 ```js
 import Modal from '/path/to/Modal.js';
 

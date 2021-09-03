@@ -1,6 +1,7 @@
 import Accordion from './classes/Accordion'
 import Modal from './classes/Modal'
 import Tabs from './classes/Tabs'
+import Toggle from './classes/Toggle'
 import './css/style.css'
 
 Accordion.preset = {
@@ -13,3 +14,4 @@ Accordion.preset = {
 Accordion.initFromPreset()
 Modal.initFromPreset()
 Tabs.initFromPreset()
+Toggle.initFromPreset()
