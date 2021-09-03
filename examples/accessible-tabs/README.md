@@ -62,8 +62,8 @@ Tabs.init('.tabulation', {
 
 ## Options
 
-| name               | type    | required | default                | description                                                                |
-|--------------------|---------|----------|------------------------|----------------------------------------------------------------------------|
-| `auto`             | boolean | no       | `true`                 | Determines if you have to press Enter button on a tab to reveal the panel. |
-| `tabListSelector`  | string  | yes      | `button[role="tab"]`   | The selector of the tab list.                                              |
-| `tabPanelSelector` | string  | yes      | `div[role="tabpanel"]` | The selector of the panel(s).                                              |
+| name               | type    | default                | description                                                                |
+|--------------------|---------|------------------------|----------------------------------------------------------------------------|
+| `auto`             | boolean | `true`                 | Determines if you have to press Enter button on a tab to reveal the panel. |
+| `tabListSelector`  | string  | `button[role="tab"]`   | The selector of the tab list.                                              |
+| `tabPanelSelector` | string  | `div[role="tabpanel"]` | The selector of the panel(s).                                              |
