@@ -19,6 +19,7 @@ $ yarn build
 ## Changelog
 
 ### 1.0.2
+- Add Accordion class
 - Add Toggle class
 
 ### 1.0.1
