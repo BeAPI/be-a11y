@@ -169,7 +169,7 @@ class Tabs extends AbstractDomElement {
       const panel = document.getElementById(activeElement.getAttribute('aria-controls'))
       panel.parentNode.removeChild(panel)
       activeElement.parentNode.removeChild(activeElement)
-      this._settings.auto ? this.open(firstTab) : firstTab.focus()
+      this.open(firstTab)
     }
   }
 
