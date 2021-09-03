@@ -14,6 +14,9 @@ class Accordion extends AbstractDomElement {
       return instance
     }
 
+    this.focus = false
+    this.handleButtonBlur = this.handleButtonBlur.bind(this)
+    this.handleButtonFocus = this.handleButtonFocus.bind(this)
     this.handleButtonClick = this.handleButtonClick.bind(this)
     this.handleKeydown = this.handleKeydown.bind(this)
     this.init()
@@ -39,7 +42,6 @@ class Accordion extends AbstractDomElement {
 
       trigger.id = `${s.prefixId}-${i}`
       trigger.setAttribute('aria-controls', `${s.prefixId}-panel-${i}`)
-      trigger.setAttribute('data-index', i - 1)
     })
 
     // Set id and ARIA attributes to the panel
@@ -53,6 +55,8 @@ class Accordion extends AbstractDomElement {
     })
 
     this.applyToSelectors(triggers, (trigger) => trigger.addEventListener('click', this.handleButtonClick))
+    this.applyToSelectors(triggers, (trigger) => trigger.addEventListener('focus', this.handleButtonFocus))
+    this.applyToSelectors(triggers, (trigger) => trigger.addEventListener('blur', this.handleButtonBlur))
     document.addEventListener('keydown', this.handleKeydown)
   }
 
@@ -103,6 +107,24 @@ class Accordion extends AbstractDomElement {
   }
 
   /**
+   * Handle tab button focus
+   * @returns {void}
+   * @author Milan Ricoul
+   */
+  handleButtonFocus() {
+    this.focus = true
+  }
+
+  /**
+   * Handle tab button blur
+   * @returns {void}
+   * @author Milan Ricoul
+   */
+  handleButtonBlur() {
+    this.focus = false
+  }
+
+  /**
    * Handle trigger button click
    * @param {MouseEvent} e click event handler
    * @returns {void}
@@ -144,17 +166,25 @@ class Accordion extends AbstractDomElement {
    * @author Milan Ricoul
    */
   handleKeydown(e) {
+    if (!this.focus) {
+      return
+    }
+
     switch (e.code) {
       case 'ArrowUp':
+        e.preventDefault()
         this.focusPreviousTab()
         break
       case 'ArrowDown':
+        e.preventDefault()
         this.focusNextTab()
         break
       case 'Home':
+        e.preventDefault()
         this.focusFirstTab()
         break
       case 'End':
+        e.preventDefault()
         this.focusLastTab()
         break
     }
@@ -172,9 +202,9 @@ class Accordion extends AbstractDomElement {
     const triggersCount = triggers.length
 
     if (activeElement.classList.contains(s.triggerSelector.substring(1))) {
-      const index = window.parseInt(activeElement.getAttribute('data-index'))
+      const currentIndexOfActiveElement = Array.prototype.indexOf.call(triggers, activeElement)
 
-      triggers[index - 1 < 0 ? triggersCount - 1 : index - 1].focus()
+      triggers[currentIndexOfActiveElement === 0 ? triggersCount - 1 : currentIndexOfActiveElement - 1].focus()
     }
   }
 
@@ -190,9 +220,9 @@ class Accordion extends AbstractDomElement {
     const triggersCount = triggers.length
 
     if (activeElement.classList.contains(s.triggerSelector.substring(1))) {
-      const index = window.parseInt(activeElement.getAttribute('data-index'))
+      const currentIndexOfActiveElement = Array.prototype.indexOf.call(triggers, activeElement)
 
-      triggers[index + 1 >= triggersCount ? 0 : index + 1].focus()
+      triggers[currentIndexOfActiveElement === triggersCount - 1 ? 0 : currentIndexOfActiveElement + 1].focus()
     }
   }
 
