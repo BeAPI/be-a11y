@@ -1,5 +1,4 @@
 import puppeteer from 'puppeteer'
-import { async } from 'regenerator-runtime';
 
 let browser
 const app = `file://${process.cwd()}/examples/accessible-modal/index.html`
