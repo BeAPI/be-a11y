@@ -16,11 +16,20 @@ In `examples` directoy you can find sample of components. First of all you have 
 $ yarn build
 ```
 
+## Tests
+
+You can run UI tests with the following command.
+```bash
+$ yarn test
+```
+
 ## Changelog
 
 ### 1.0.2
 - Add Accordion class
 - Add Toggle class
+- Add UI tests
+- Add styles with Tailwind
 
 ### 1.0.1
 - Fix AbstractDomElement class
