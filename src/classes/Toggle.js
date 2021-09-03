@@ -294,22 +294,4 @@ Toggle.defaults = {
   target: null,
 }
 
-Toggle.preset = {
-  'button[aria-controls="toggle-1"]': {},
-  'button[aria-controls="toggle-2"]': {
-    hasAnimation: true,
-  },
-  'button[aria-controls="toggle-3"]': {
-    onClick: function () {
-      window.alert('You have successfully clicked on the button.')
-    },
-  },
-  'button[aria-controls="toggle-4"]': {
-    mediaQuery: window.matchMedia('(max-width: 1024px)'),
-  },
-  'button[aria-controls="toggle-5"]': {
-    isOpened: true,
-  },
-}
-
 export default Toggle

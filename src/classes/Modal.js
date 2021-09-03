@@ -168,11 +168,4 @@ Modal.defaults = {
   closeButtonSelector: false,
 }
 
-Modal.preset = {
-  '.modal': {
-    labelSelector: '.modal__title',
-    closeButtonSelector: '.modal__close',
-  },
-}
-
 export default Modal
