@@ -1,7 +1,5 @@
 import puppeteer from 'puppeteer'
 
-jest.useRealTimers()
-
 let browser
 const app = `file://${process.cwd()}/examples/accessible-toggle/index.html`
 
