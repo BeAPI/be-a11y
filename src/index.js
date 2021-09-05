@@ -1,9 +1,11 @@
 import Accordion from './classes/Accordion'
+import FastAccess from './classes/FastAccess'
 import Modal from './classes/Modal'
 import Tabs from './classes/Tabs'
 import Toggle from './classes/Toggle'
 import './css/style.css'
 
+// Accordion
 Accordion.preset = {
   '#accordion-demo-1': {},
   '#accordion-demo-2': { hasAnimation: true },
@@ -13,6 +15,14 @@ Accordion.preset = {
 
 Accordion.initFromPreset()
 
+// FastAccess
+FastAccess.preset = {
+  '.fast-access': {},
+}
+
+FastAccess.initFromPreset()
+
+// Modal
 Modal.preset = {
   '.modal': {
     labelSelector: '.modal__title',
@@ -22,6 +32,7 @@ Modal.preset = {
 
 Modal.initFromPreset()
 
+// Tabs
 Tabs.preset = {
   '#tab-demo-1': {},
   '#tab-demo-2': {
@@ -31,6 +42,7 @@ Tabs.preset = {
 
 Tabs.initFromPreset()
 
+// Toggle
 Toggle.preset = {
   'button[aria-controls="toggle-1"]': {},
   'button[aria-controls="toggle-2"]': {

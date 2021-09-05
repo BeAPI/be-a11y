@@ -1,0 +1,45 @@
+section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+section:nth-child(4n+1) {
+    background-color: #25CCF7;
+}
+
+section:nth-child(4n+2) {
+    background-color: #9AECDB;
+}
+
+section:nth-child(4n+3) {
+    background-color: #58B19F;
+}
+
+section:nth-child(4n) {
+    background-color: #55E6C1;
+}
+
+section h2 {
+    font-size: 5rem;
+    line-height: 2;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.fast-access {
+    display: flex;
+    padding: .5rem 1rem;
+    transition: transform .3s ease-in-out;
+    background-color: #3B3B98;
+    color: var(--light-color);
+}
+
+.fast-access[aria-hidden="true"] {
+    transform: translate3d(0, -100%, 0);
+}
+
+.fast-access li {
+    margin-right: 1rem;
+}

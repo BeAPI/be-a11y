@@ -62,9 +62,9 @@ class Accordion extends AbstractDomElement {
 
   /**
    * Execute a function for every elements in node list
-   * @returns {void}
    * @param {NodeList} selectors node list
    * @param {Function} func callback
+   * @returns {void}
    * @author Milan Ricoul
    */
   applyToSelectors(selectors, func) {
