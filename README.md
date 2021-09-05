@@ -35,6 +35,9 @@ $ yarn test
 
 ## Changelog
 
+### 1.0.3
+*   Add FastAccess class
+
 ### 1.0.2
 *   Add Accordion class
 *   Add Toggle class
