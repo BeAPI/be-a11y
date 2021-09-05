@@ -59,3 +59,7 @@ import FastAccess from '/path/to/FastAccess.js';
 
 FastAccess.init('.navigation', {});
 ```
+
+## Options
+
+There is no options for this component.
