@@ -6,11 +6,11 @@ section {
 }
 
 section:nth-child(4n+1) {
-    background-color: #25CCF7;
+    background-color: #9AECDB;
 }
 
 section:nth-child(4n+2) {
-    background-color: #9AECDB;
+    background-color: #d4fff6;
 }
 
 section:nth-child(4n+3) {
