@@ -37,6 +37,7 @@ $ yarn test
 
 ### 1.0.3
 *   Add FastAccess class
+*   Add description to components in docs
 
 ### 1.0.2
 *   Add Accordion class
