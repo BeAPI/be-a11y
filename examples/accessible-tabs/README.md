@@ -2,7 +2,8 @@
 
 Component of tabs that reveal content when you click it.
 
-[See accessible specificies.](https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-1/tabs.html)
+* [See accessible specificies](https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-1/tabs.html)
+* [Demo](https://codepen.io/beapi/full/eYRBpQj)
 
 ## Get started
 

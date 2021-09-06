@@ -2,7 +2,8 @@
 
 In user interface design for computer applications, a modal window is a graphical control element subordinate to an application's main window.
 
-[See accessible specificies.](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html)
+* [See accessible specificies](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html)
+* [Demo](https://codepen.io/beapi/full/mdwOVBm)
 
 ## Get started
 

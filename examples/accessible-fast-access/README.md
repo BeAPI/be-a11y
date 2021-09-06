@@ -2,6 +2,8 @@
 
 The Fast Access component is a quick access navigation that appears when the user selects a link or button in that navigation. This allows the user to access content or feature quickly.
 
+* [Demo](https://codepen.io/beapi/full/VwWmeXm)
+
 ## Get started
 
 Copy the following markup on your HTML file :
