@@ -1,6 +1,6 @@
 # Accessible Toggle
 
-The Toggle component is a button that triggers ARIA changes on a specified item when you click it.
+The Toggle component is a button that triggers changes on a specified item when you click it.
 
 ## Get started
 

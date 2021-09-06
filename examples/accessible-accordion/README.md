@@ -1,5 +1,9 @@
 # Accessible Accordion
 
+Component of accordion that reveal content when you click it.
+
+[See accessible specificies.](https://www.w3.org/TR/wai-aria-practices-1.1/examples/accordion/accordion.html)
+
 ## Get started
 
 Copy the following markup on your HTML file :

@@ -1,5 +1,9 @@
 # Accessible Tabs
 
+Component of tabs that reveal content when you click it.
+
+[See accessible specificies.](https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-1/tabs.html)
+
 ## Get started
 
 Copy the following markup on your HTML file :
