@@ -13,6 +13,8 @@
     border-style: solid;
     border-color: transparent;
     box-shadow: none;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 .tabs__tab[aria-selected="true"] {

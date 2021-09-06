@@ -242,12 +242,5 @@ Tabs.defaults = {
   tabPanelSelector: 'div[role="tabpanel"]',
 }
 
-Tabs.preset = {
-  '.tabs': {},
-  '.tabs--auto': {
-    auto: true,
-  },
-}
-
 // loop on each preset
 export default Tabs
