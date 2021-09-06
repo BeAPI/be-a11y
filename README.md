@@ -22,6 +22,7 @@ $ yarn build
 
 ## Components
 *   [Accordion](examples/accessible-accordion/)
+*   [Fast Access](examples/accessible-fast-access/)
 *   [Modal](examples/accessible-modal/)
 *   [Tabs](examples/accessible-tabs/)
 *   [Toggle](examples/accessible-toggle/)
