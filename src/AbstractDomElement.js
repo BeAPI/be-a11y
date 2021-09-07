@@ -1,5 +1,8 @@
 import extend from './utils/extend'
 
+/**
+ * AbstractDomElement class
+ */
 class AbstractDomElement {
   constructor(element, options) {
     let oldInstance
@@ -32,15 +35,29 @@ class AbstractDomElement {
     this._isNewInstance = true
   }
 
+  /**
+   * Check if it's a new instance
+   * @returns {Boolean}
+   */
   isNewInstance() {
     return this._isNewInstance
   }
 
+  /**
+   * Destroy the instance
+   * @returns {Object}
+   */
   destroy() {
     this._element.beapi[this.constructor.nameSpace] = undefined
     return this
   }
 
+  /**
+   * Initialize new instance
+   * @param {String} element query selector
+   * @param {Object} options object of settings
+   * @returns {Object}
+   */
   static init(element, options) {
     foreach(element, (el) => {
       new this(el, options)
@@ -49,16 +66,31 @@ class AbstractDomElement {
     return this
   }
 
+  /**
+   * Check if element has instance
+   * @param {String} element query selector
+   * @returns {Boolean}
+   */
   static hasInstance(element) {
     const el = getDomElement(element)
     return el && el.beapi && !!el.beapi[this.nameSpace]
   }
 
+  /**
+   * Get the instance of element
+   * @param {String} element query selector
+   * @returns {Object}
+   */
   static getInstance(element) {
     const el = getDomElement(element)
     return el && el.beapi ? el.beapi[this.nameSpace] : undefined
   }
 
+  /**
+   * Browse all elements from query selector string and destroy instances
+   * @param {String} element query selector
+   * @returns {Object}
+   */
   static destroy(element) {
     this.foreach(element, (el) => {
       if (el.beapi && el.beapi[this.nameSpace]) {
@@ -69,6 +101,12 @@ class AbstractDomElement {
     return this
   }
 
+  /**
+   * Browse all elements from query selector string
+   * @param {String} element query selector
+   * @param {Function} callback callback function
+   * @returns {Object}
+   */
   static foreach(element, callback) {
     foreach(element, (el) => {
       if (el.beapi && el.beapi[this.nameSpace]) {
@@ -79,6 +117,10 @@ class AbstractDomElement {
     return this
   }
 
+  /**
+   * Initialize new instances from class presets
+   * @returns {Object}
+   */
   static initFromPreset() {
     const preset = this.preset
     let selector
@@ -90,6 +132,10 @@ class AbstractDomElement {
     return this
   }
 
+  /**
+   * Destroy instances defined in class presets
+   * @returns {Object}
+   */
   static destroyFromPreset() {
     const preset = this.preset
     let selector
@@ -124,7 +170,4 @@ function getDomElement(element) {
   return getDomElements(element)[0]
 }
 
-// ----
-// export
-// ----
 export default AbstractDomElement
