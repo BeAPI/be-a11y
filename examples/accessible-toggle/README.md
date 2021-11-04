@@ -2,7 +2,7 @@
 
 The Toggle component is a button that triggers changes on a specified item when you click it.
 
-* [Demo](https://codepen.io/beapi/full/eYRBpQj)
+* [Demo](https://codepen.io/beapi/full/BaZQjWm)
 
 ## Get started
 
