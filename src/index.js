@@ -1,5 +1,4 @@
 import Accordion from './classes/Accordion'
-import FastAccess from './classes/FastAccess'
 import Modal from './classes/Modal'
 import Tabs from './classes/Tabs'
 import Toggle from './classes/Toggle'
@@ -14,13 +13,6 @@ Accordion.preset = {
 }
 
 Accordion.initFromPreset()
-
-// FastAccess
-FastAccess.preset = {
-  '.fast-access': {},
-}
-
-FastAccess.initFromPreset()
 
 // Modal
 Modal.preset = {
