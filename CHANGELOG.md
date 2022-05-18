@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.4
+*   Finally, remove FastAccess class
+
 ## 1.0.3
 *   Add FastAccess class
 *   Add description to components in docs
