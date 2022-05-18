@@ -5,6 +5,7 @@
 :root {
     /* Colors */
     --light-color: #fff;
+    --focus-color: #bde4ff;
     --primary-grey-color: #ddd;
     --modal-bg-color: rgba(0, 0, 0, .5);
 
