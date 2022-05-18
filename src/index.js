@@ -1,4 +1,5 @@
 import Accordion from './classes/Accordion'
+import Dropdown from './classes/Dropdown'
 import Modal from './classes/Modal'
 import Tabs from './classes/Tabs'
 import Toggle from './classes/Toggle'
@@ -13,6 +14,13 @@ Accordion.preset = {
 }
 
 Accordion.initFromPreset()
+
+// Dropdown
+Dropdown.preset = {
+  '#dropdown': {},
+}
+
+Dropdown.initFromPreset()
 
 // Modal
 Modal.preset = {

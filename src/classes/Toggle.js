@@ -39,25 +39,25 @@ class Toggle extends AbstractDomElement {
    */
   init() {
     const el = this._element
-    const s = this._settings
+    const { closeOnBlur, closeOnEscPress, isOpened, onClick } = this._settings
 
     this.initialized = true
 
     if (this.target) {
       el.addEventListener('click', this.handleClick)
       el.addEventListener('keydown', this.handleClick)
-    } else if (!this.target && s.onClick) {
-      el.addEventListener('click', s.onClick)
-      el.addEventListener('keydown', s.onClick)
+    } else if (!this.target && onClick) {
+      el.addEventListener('click', onClick)
+      el.addEventListener('keydown', onClick)
 
       return false
     } else {
       return false
     }
 
-    if (s.onClick) {
-      el.addEventListener('click', s.onClick)
-      el.addEventListener('keydown', s.onClick)
+    if (onClick) {
+      el.addEventListener('click', onClick)
+      el.addEventListener('keydown', onClick)
     }
 
     if (!el.getAttribute('aria-controls')) {
@@ -66,15 +66,19 @@ class Toggle extends AbstractDomElement {
       this.target.id = id
     }
 
-    if (s.closeOnBlur) {
+    if (closeOnBlur) {
       el.addEventListener('blur', this.handleBlur)
     }
 
-    if (s.closeOnEscPress) {
-      closeOnEscPress(el)
+    if (closeOnEscPress) {
+      _closeOnEscPress(el)
     }
 
-    if (s.isOpened) {
+    if (!this.target.hasAttribute('aria-hidden')) {
+      this.target.setAttribute('aria-hidden', isOpened ? 'false' : 'true')
+    }
+
+    if (isOpened) {
       this.open()
     }
 
@@ -124,6 +128,8 @@ class Toggle extends AbstractDomElement {
    * @author Milan Ricoul
    */
   handleClick(e) {
+    const { isOpened } = this._settings
+
     if (e.type === 'keydown' && e.code !== 'Enter' && e.code !== 'Space') {
       return false
     }
@@ -134,10 +140,8 @@ class Toggle extends AbstractDomElement {
       this.target.getAttribute('aria-hidden') !== 'true' ? this.close() : this.open()
 
       return
-    }
-
-    if (this.target.getAttribute('aria-expanded')) {
-      this.target.getAttribute('aria-expanded') !== 'false' ? this.close() : this.open()
+    } else {
+      this.target.setAttribute('aria-hidden', isOpened ? 'true' : 'false')
     }
   }
 
@@ -151,7 +155,6 @@ class Toggle extends AbstractDomElement {
     const s = this._settings
 
     this.target.setAttribute('aria-hidden', 'false')
-    this.target.setAttribute('aria-expanded', 'true')
     el.setAttribute('aria-expanded', 'true')
 
     if (s.hasAnimation) {
@@ -173,7 +176,6 @@ class Toggle extends AbstractDomElement {
     const s = this._settings
 
     this.target.setAttribute('aria-hidden', 'true')
-    this.target.setAttribute('aria-expanded', 'false')
     el.setAttribute('aria-expanded', 'false')
 
     if (this._settings.hasAnimation) {
@@ -212,7 +214,6 @@ class Toggle extends AbstractDomElement {
   handleBlur() {
     window.setTimeout(() => {
       this.target.setAttribute('aria-hidden', 'true')
-      this.target.setAttribute('aria-expanded', 'false')
       this._element.setAttribute('aria-expanded', 'false')
     }, 200)
   }
@@ -258,6 +259,14 @@ function onResize() {
     this.destroy()
   } else if (s.mediaQuery && !this.initialized && s.mediaQuery.matches) {
     this.init()
+  } else if (
+    s.mediaQuery &&
+    !this.initialized &&
+    !s.mediaQuery.matches &&
+    this.target.style.display === 'none' &&
+    this.target.hasAttribute('style')
+  ) {
+    this.target.removeAttribute('style')
   }
 }
 
@@ -265,7 +274,7 @@ function onResize() {
  * Close all targets on Esc keydown
  * @param {HTMLElement} el element from preset
  */
-function closeOnEscPress(el) {
+function _closeOnEscPress(el) {
   window.addEventListener('keydown', (e) => {
     if (e.defaultPrevented) {
       return
