@@ -278,13 +278,10 @@ function defineId() {
 
 Dropdown.defaults = {
   buttonSelector: 'button',
-  defaultValueAttr: 'data-placeholder',
   labelSelector: '.dropdown__label',
   listSelector: 'ul',
   matchMedia: null,
   prefixId: 'dropdown',
-  prefixClassName: 'dropdown',
-  transitionDuration: 500,
 }
 
 export default Dropdown
