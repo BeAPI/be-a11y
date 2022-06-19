@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.6
+*   Add Styelint 14
+
 ## 1.0.5
 *   Add Dropdown class
 *   Add Dropdown UI tests
