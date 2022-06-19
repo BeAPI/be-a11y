@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.5
+*   Add Dropdown class
+*   Add Dropdown UI tests
+
 ## 1.0.4
 *   Finally, remove FastAccess class
 
