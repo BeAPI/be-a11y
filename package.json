@@ -1,6 +1,6 @@
 {
   "name": "accessible-components",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "Collection of usefull accessible components",
   "main": "index.js",
   "repository": "git@github.com:BeAPI/be-a11y.git",
@@ -46,6 +46,11 @@
   "jest": {
     "verbose": true,
     "preset": "jest-puppeteer",
-    "setupFilesAfterEnv": ["./config/setupTests.js"]
+    "setupFilesAfterEnv": [
+      "./config/setupTests.js"
+    ]
+  },
+  "volta": {
+    "node": "16.15.1"
   }
 }

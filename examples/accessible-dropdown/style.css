@@ -37,6 +37,10 @@
     background-color: var(--focus-color);
 }
 
+.dropdown li:not([aria-selected="true"]):hover {
+    background-color: var(--primary-grey-color);
+}
+
 .dropdown button:not([aria-expanded="true"]) + ul {
     display: none;
 }
