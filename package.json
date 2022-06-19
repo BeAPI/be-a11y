@@ -46,6 +46,11 @@
   "jest": {
     "verbose": true,
     "preset": "jest-puppeteer",
-    "setupFilesAfterEnv": ["./config/setupTests.js"]
+    "setupFilesAfterEnv": [
+      "./config/setupTests.js"
+    ]
+  },
+  "volta": {
+    "node": "16.15.1"
   }
 }
