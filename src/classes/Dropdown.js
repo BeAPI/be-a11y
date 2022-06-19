@@ -22,6 +22,7 @@ class Dropdown extends AbstractDomElement {
     this._onResize = onResize.bind(this)
     this.handleKeydown = this.handleKeydown.bind(this)
     this.handleButtonClick = this.handleButtonClick.bind(this)
+    this.handleListItemClick = this.handleListItemClick.bind(this)
     this.detectClickOutsideElement = this.detectClickOutsideElement.bind(this)
     this._resize = new ThrottledEvent(window, 'resize')
     this._resize.add('resize', this._onResize)
@@ -56,6 +57,7 @@ class Dropdown extends AbstractDomElement {
 
     this.listItems.forEach(($listItem, index) => {
       $listItem.id = `${this._defineId()}-item-${index + 1}`
+      $listItem.addEventListener('click', this.handleListItemClick)
     })
 
     this.updateFocusedListItem(this.listItems[0])
@@ -94,6 +96,15 @@ class Dropdown extends AbstractDomElement {
    */
   handleButtonClick() {
     this.opened ? this.close() : this.open()
+  }
+
+  /**
+   * Handle list items click
+   * @param {MouseEvent} e mouse event handler
+   */
+  handleListItemClick(e) {
+    this.updateFocusedListItem(e.target)
+    this.close()
   }
 
   /**
