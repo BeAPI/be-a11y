@@ -1,5 +1,5 @@
-import AbstractDomElement from '../AbstractDomElement'
-import DOMAnimations from '../utils/DOMAnimations'
+import AbstractDomElement from '../AbstractDomElement.js'
+import DOMAnimations from '../utils/DOMAnimations.js'
 
 /**
  * Accordion class
