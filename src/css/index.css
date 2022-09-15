@@ -41,23 +41,24 @@
     input {
         @apply px-4 py-3 leading-5 border rounded-md;
     }
+}
 
-    .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        border: 0;
-    }
 
-    .wrapper {
-        @apply max-w-4xl m-auto pt-5 pb-5;
-    }
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
 
-    .wrapper > h1 {
-        @apply text-center;
-    }
+.wrapper {
+    @apply max-w-4xl m-auto pt-5 pb-5;
+}
+
+.wrapper > h1 {
+    @apply text-center;
 }
