@@ -3,7 +3,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
     <title>Accessible Toggle</title>
 </head>
 <body>
@@ -50,6 +49,31 @@
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deserunt veniam perferendis recusandae sunt quasi, dolor laboriosam quibusdam saepe numquam officia, incidunt fugiat amet velit quas doloribus earum nostrum ut?</p>
         </div>
     </div>
-    <script src="../../dist/app.bundle.js" defer></script>
+
+    <script type="module">
+      import { Toggle } from '../../src/be-a11y.js'
+      import '../../src/css/index.css'
+      import './style.css'
+
+      Toggle.preset = {
+        'button[aria-controls="toggle-1"]': {},
+        'button[aria-controls="toggle-2"]': {
+          hasAnimation: true,
+        },
+        'button[aria-controls="toggle-3"]': {
+          onClick: function () {
+            window.alert('You have successfully clicked on the button.')
+          },
+        },
+        'button[aria-controls="toggle-4"]': {
+          mediaQuery: window.matchMedia('(max-width: 1024px)'),
+        },
+        'button[aria-controls="toggle-5"]': {
+          isOpened: true,
+        },
+      }
+
+      Toggle.initFromPreset()
+    </script>
 </body>
 </html>

@@ -1,27 +1,39 @@
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <title>Accessible Dropdown</title>
-</head>
-<body>
-    <div class="wrapper">
-        <h1>Accessible Dropdown</h1>
-        
-        <div id="dropdown" class="dropdown">
-            <span class="dropdown__label">Choose an element</span>
-            <button aria-haspopup="listbox">Book</button>
-            <ul tabindex="-1" role="listbox">
-                <li role="option">Book</li>
-                <li role="option">Movies</li>
-                <li role="option">Music</li>
-                <li role="option">Video games</li>
-                <li role="option">Paint</li>
-            </ul>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./style.css">
+        <title>Accessible Dropdown</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <h1>Accessible Dropdown</h1>
+            
+            <div id="dropdown" class="dropdown">
+                <span class="dropdown__label">Choose an element</span>
+                <button aria-haspopup="listbox">Book</button>
+                <ul tabindex="-1" role="listbox">
+                    <li role="option">Book</li>
+                    <li role="option">Movies</li>
+                    <li role="option">Music</li>
+                    <li role="option">Video games</li>
+                    <li role="option">Paint</li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <script src="../../dist/app.bundle.js"></script>
-</body>
+
+        <script type="module">
+            import { Dropdown } from '../../src/be-a11y.js'
+            import '../../src/css/index.css'
+            import './style.css'
+            
+            Dropdown.preset = {
+                '#dropdown': {},
+            }
+
+            Dropdown.initFromPreset()
+        </script>
+    </body>
 </html>
