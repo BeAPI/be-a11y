@@ -1,11 +1,5 @@
 # Changelog
 
-## 1.1.0
-*   Replace Webpack with [ViteJS](https://vitejs.dev/)
-*   Hot Module Replacement
-*   Packages update
-*   HTML pages fix
-
 ## 1.0.6
 *   Add Styelint 14
 
