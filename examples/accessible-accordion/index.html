@@ -10,6 +10,10 @@
     <div class="wrapper">
         <h1>Accessible Accordion</h1>
         
+        <p class="back">
+            <a href="../../index.html">Back to components list</a>
+        </p>
+        
         <h2>Sample accordion</h2>
         
         <div id="accordion-demo-1" class="accordion">
@@ -418,7 +422,7 @@
             </div>
         </div>
     </div>
-
+    
     <script type="module">
         import { Accordion } from '../../src/be-a11y.js'
         import '../../src/css/index.css'
@@ -430,7 +434,7 @@
             '#accordion-demo-3': { allowMultiple: true },
             '#accordion-demo-4': { forceExpand: false },
         }
-
+        
         Accordion.initFromPreset()
     </script>
 </body>

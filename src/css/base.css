@@ -34,6 +34,10 @@
         @apply mb-2;
     }
 
+    a {
+        @apply underline hover:no-underline focus:no-underline focus:bg-gray-100;
+    }
+
     ol {
         @apply list-decimal pl-4;
     }
