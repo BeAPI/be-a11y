@@ -20,6 +20,11 @@ In `examples` directory you can find sample of components. First of all you have
 $ yarn build
 ```
 
+Then, you can launch a local server.
+```bash
+$ yarn preview
+```
+
 ## Components
 *   [Accordion](examples/accessible-accordion/)
 *   [Fast Access](examples/accessible-fast-access/)
