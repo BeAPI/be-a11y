@@ -15,6 +15,8 @@
             <a href="../../index.html">Back to components list</a>
         </p>
         
+        <h2>Demo</h2>
+        
         <div id="dropdown" class="dropdown">
             <span class="dropdown__label">Choose an element</span>
             <button aria-haspopup="listbox">Book</button>
@@ -26,18 +28,27 @@
                 <li role="option">Paint</li>
             </ul>
         </div>
-    </div>
-    
-    <script type="module">
-        import { Dropdown } from '../../src/be-a11y.js'
-        import '../../src/css/index.css'
-        import './style.css'
         
-        Dropdown.preset = {
-            '#dropdown': {},
-        }
+        <h2>Code</h2>
         
-        Dropdown.initFromPreset()
-    </script>
-</body>
-</html>
+        <p class="codepen" data-height="600" data-theme-id="light" data-default-tab="html,result" data-slug-hash="VwQbYqN" data-user="beapi" style="height: 600px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+            <span>See the Pen <a href="https://codepen.io/beapi/pen/VwQbYqN">
+                Accessible Collapsible Dropdown Listbox</a> by Be API (<a href="https://codepen.io/beapi">@beapi</a>)
+                on <a href="https://codepen.io">CodePen</a>.</span>
+            </p>
+            <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+        </div>
+        
+        <script type="module">
+            import { Dropdown } from '../../src/be-a11y.js'
+            import '../../src/css/index.css'
+            import './style.css'
+            
+            Dropdown.preset = {
+                '#dropdown': {},
+            }
+            
+            Dropdown.initFromPreset()
+        </script>
+    </body>
+    </html>

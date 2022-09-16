@@ -14,6 +14,8 @@
             <a href="../../index.html">Back to components list</a>
         </p>
         
+        <h2>Demo</h2>
+        
         <button type="button" aria-controls="dialog-1" data-modal="dialog-1">Add Delivery Address</button>
         
         <div class="modal" tabindex="-1" role="dialog" aria-modal="true" style="display: none;">
@@ -60,21 +62,30 @@
                 </button>
             </div>
         </div>
-    </div>
-    
-    <script type="module">
-        import { Modal } from '../../src/be-a11y.js'
-        import '../../src/css/index.css'
-        import './style.css'
         
-        Modal.preset = {
-            '.modal': {
-                labelSelector: '.modal__title',
-                closeButtonSelector: '.modal__close',
-            },
-        }
+        <h2>Code</h2>
         
-        Modal.initFromPreset()
-    </script>
-</body>
-</html>
+        <p class="codepen" data-height="600" data-theme-id="light" data-default-tab="html,result" data-slug-hash="mdwOVBm" data-user="beapi" style="height: 600px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+            <span>See the Pen <a href="https://codepen.io/beapi/pen/mdwOVBm">
+                Accessible Modal</a> by Be API (<a href="https://codepen.io/beapi">@beapi</a>)
+                on <a href="https://codepen.io">CodePen</a>.</span>
+            </p>
+            <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+        </div>
+        
+        <script type="module">
+            import { Modal } from '../../src/be-a11y.js'
+            import '../../src/css/index.css'
+            import './style.css'
+            
+            Modal.preset = {
+                '.modal': {
+                    labelSelector: '.modal__title',
+                    closeButtonSelector: '.modal__close',
+                },
+            }
+            
+            Modal.initFromPreset()
+        </script>
+    </body>
+    </html>

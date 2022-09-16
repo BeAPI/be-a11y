@@ -14,7 +14,9 @@
             <a href="../../index.html">Back to components list</a>
         </p>
         
-        <h2>Manual</h2>
+        <h2>Demo</h2>
+
+        <h3>Manual</h3>
         
         <div id="tab-demo-1" class="tabs">
             <div class="tabs__tablist" role="tablist" aria-label="Trim a pineapple">
@@ -47,7 +49,7 @@
             </div>
         </div>
         
-        <h2>Automatic</h2>
+        <h3>Automatic</h3>
         
         <div id="tab-demo-2" class="tabs tabs--auto">
             <div class="tabs__tablist" role="tablist" aria-label="Trim a pineapple">
@@ -79,21 +81,30 @@
                 <p>Lay the pineapple flat and slice it. Remove the core from the slices. Reconstitute the pineapple by stacking the slices on top of each other. Then style the pineapple with its plume of sheets. Squeeze a lime and sprinkle the pineapple with the lemon juice to prevent the flesh from oxidizing.</p>
             </div>
         </div>
-    </div>
-    
-    <script type="module">
-        import { Tabs } from '../../src/be-a11y.js'
-        import '../../src/css/index.css'
-        import './style.css'
         
-        Tabs.preset = {
-            '#tab-demo-1': {},
-            '#tab-demo-2': {
-                auto: true,
-            },
-        }
+        <h2>Code</h2>
         
-        Tabs.initFromPreset()
-    </script>
-</body>
-</html>
+        <p class="codepen" data-height="600" data-theme-id="light" data-default-tab="html,result" data-slug-hash="eYRBpQj" data-user="beapi" style="height: 600px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+            <span>See the Pen <a href="https://codepen.io/beapi/pen/eYRBpQj">
+                Accessible Tabs</a> by Be API (<a href="https://codepen.io/beapi">@beapi</a>)
+                on <a href="https://codepen.io">CodePen</a>.</span>
+            </p>
+            <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+        </div>
+        
+        <script type="module">
+            import { Tabs } from '../../src/be-a11y.js'
+            import '../../src/css/index.css'
+            import './style.css'
+            
+            Tabs.preset = {
+                '#tab-demo-1': {},
+                '#tab-demo-2': {
+                    auto: true,
+                },
+            }
+            
+            Tabs.initFromPreset()
+        </script>
+    </body>
+    </html>

@@ -14,16 +14,18 @@
             <a href="../../index.html">Back to components list</a>
         </p>
         
-        <h2>Sample accordion</h2>
+        <h2>Demo</h2>
+        
+        <h3>Sample accordion</h3>
         
         <div id="accordion-demo-1" class="accordion">
-            <h3>
+            <h4>
                 <button aria-expanded="true" class="accordion__trigger">
                     <span class="accordion__title">
                         Personal Information
                     </span>
                 </button>
-            </h3>
+            </h4>
             <div class="accordion__panel" role="region">
                 <fieldset>
                     <p>
@@ -52,13 +54,13 @@
                     </p>
                 </fieldset>
             </div>
-            <h3>
+            <h4>
                 <button aria-expanded="false" class="accordion__trigger">
                     <span class="accordion__title">
                         Billing Address
                     </span>
                 </button>
-            </h3>
+            </h4>
             <div class="accordion__panel" role="region" style="display: none;">
                 <fieldset>
                     <p>
@@ -83,13 +85,13 @@
                     </p>
                 </fieldset>
             </div>
-            <h3>
+            <h4>
                 <button aria-expanded="false" class="accordion__trigger">
                     <span class="accordion__title">
                         Shipping Address
                     </span>
                 </button>
-            </h3>
+            </h4>
             <div class="accordion__panel" role="region" style="display: none;">
                 <fieldset>
                     <p>
@@ -116,16 +118,16 @@
             </div>
         </div>
         
-        <h2>Accordion with open and close animation</h2>
+        <h3>Accordion with open and close animation</h3>
         
         <div id="accordion-demo-2" class="accordion">
-            <h3>
+            <h4>
                 <button aria-expanded="true" class="accordion__trigger">
                     <span class="accordion__title">
                         Personal Information
                     </span>
                 </button>
-            </h3>
+            </h4>
             <div class="accordion__panel" role="region">
                 <fieldset>
                     <p>
@@ -154,13 +156,13 @@
                     </p>
                 </fieldset>
             </div>
-            <h3>
+            <h4>
                 <button aria-expanded="false" class="accordion__trigger">
                     <span class="accordion__title">
                         Billing Address
                     </span>
                 </button>
-            </h3>
+            </h4>
             <div class="accordion__panel" role="region" style="display: none;">
                 <fieldset>
                     <p>
@@ -185,13 +187,13 @@
                     </p>
                 </fieldset>
             </div>
-            <h3>
+            <h4>
                 <button aria-expanded="false" class="accordion__trigger">
                     <span class="accordion__title">
                         Shipping Address
                     </span>
                 </button>
-            </h3>
+            </h4>
             <div class="accordion__panel" role="region" style="display: none;">
                 <fieldset>
                     <p>
@@ -218,16 +220,16 @@
             </div>
         </div>
         
-        <h2>Accordion with multiple opened panels</h2>
+        <h3>Accordion with multiple opened panels</h3>
         
         <div id="accordion-demo-3" class="accordion">
-            <h3>
+            <h4>
                 <button aria-expanded="true" class="accordion__trigger">
                     <span class="accordion__title">
                         Personal Information
                     </span>
                 </button>
-            </h3>
+            </h4>
             <div class="accordion__panel" role="region">
                 <fieldset>
                     <p>
@@ -256,13 +258,13 @@
                     </p>
                 </fieldset>
             </div>
-            <h3>
+            <h4>
                 <button aria-expanded="false" class="accordion__trigger">
                     <span class="accordion__title">
                         Billing Address
                     </span>
                 </button>
-            </h3>
+            </h4>
             <div class="accordion__panel" role="region" style="display: none;">
                 <fieldset>
                     <p>
@@ -287,13 +289,13 @@
                     </p>
                 </fieldset>
             </div>
-            <h3>
+            <h4>
                 <button aria-expanded="false" class="accordion__trigger">
                     <span class="accordion__title">
                         Shipping Address
                     </span>
                 </button>
-            </h3>
+            </h4>
             <div class="accordion__panel" role="region" style="display: none;">
                 <fieldset>
                     <p>
@@ -320,16 +322,16 @@
             </div>
         </div>
         
-        <h2>Accordion with all closable panels</h2>
+        <h3>Accordion with all closable panels</h3>
         
         <div id="accordion-demo-4" class="accordion">
-            <h3>
+            <h4>
                 <button aria-expanded="true" class="accordion__trigger">
                     <span class="accordion__title">
                         Personal Information
                     </span>
                 </button>
-            </h3>
+            </h4>
             <div class="accordion__panel" role="region">
                 <fieldset>
                     <p>
@@ -358,13 +360,13 @@
                     </p>
                 </fieldset>
             </div>
-            <h3>
+            <h4>
                 <button aria-expanded="false" class="accordion__trigger">
                     <span class="accordion__title">
                         Billing Address
                     </span>
                 </button>
-            </h3>
+            </h4>
             <div class="accordion__panel" role="region" style="display: none;">
                 <fieldset>
                     <p>
@@ -389,13 +391,13 @@
                     </p>
                 </fieldset>
             </div>
-            <h3>
+            <h4>
                 <button aria-expanded="false" class="accordion__trigger">
                     <span class="accordion__title">
                         Shipping Address
                     </span>
                 </button>
-            </h3>
+            </h4>
             <div class="accordion__panel" role="region" style="display: none;">
                 <fieldset>
                     <p>
@@ -421,21 +423,30 @@
                 </fieldset>
             </div>
         </div>
-    </div>
-    
-    <script type="module">
-        import { Accordion } from '../../src/be-a11y.js'
-        import '../../src/css/index.css'
-        import './style.css'
         
-        Accordion.preset = {
-            '#accordion-demo-1': {},
-            '#accordion-demo-2': { hasAnimation: true },
-            '#accordion-demo-3': { allowMultiple: true },
-            '#accordion-demo-4': { forceExpand: false },
-        }
+        <h2>Code</h2>
         
-        Accordion.initFromPreset()
-    </script>
-</body>
-</html>
+        <p class="codepen" data-height="600" data-theme-id="light" data-default-tab="html,result" data-slug-hash="eYRBJJb" data-user="beapi" style="height: 600px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+            <span>See the Pen <a href="https://codepen.io/beapi/pen/eYRBJJb">
+                Accessible Accordion</a> by Be API (<a href="https://codepen.io/beapi">@beapi</a>)
+                on <a href="https://codepen.io">CodePen</a>.</span>
+            </p>
+            <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+        </div>
+        
+        <script type="module">
+            import { Accordion } from '../../src/be-a11y.js'
+            import '../../src/css/index.css'
+            import './style.css'
+            
+            Accordion.preset = {
+                '#accordion-demo-1': {},
+                '#accordion-demo-2': { hasAnimation: true },
+                '#accordion-demo-3': { allowMultiple: true },
+                '#accordion-demo-4': { forceExpand: false },
+            }
+            
+            Accordion.initFromPreset()
+        </script>
+    </body>
+    </html>

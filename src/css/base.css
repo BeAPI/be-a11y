@@ -23,11 +23,11 @@
     }
 
     h2 {
-        @apply text-2xl mb-5;
+        @apply text-2xl mb-5 mt-5 font-bold border-b-2;
     }
 
     h3 {
-        @apply text-xl mb-2;
+        @apply text-xl mb-4 font-medium;
     }
 
     p {

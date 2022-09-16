@@ -1,0 +1,5 @@
+.cp_embed_wrapper {
+    width: 100vw;
+    margin-left: 50%;
+    transform: translate3d(-50%, 0, 0);
+}
