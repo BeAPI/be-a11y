@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    /* Colors */
+    --light-color: #fff;
+    --focus-color: #bde4ff;
+    --primary-grey-color: #ddd;
+    --modal-bg-color: rgba(0, 0, 0, .5);
+
+    /* Borders */
+    --primary-border: 1px solid var(--primary-grey-color);
+}
+
+* {
+    font-family: Poppins, Arial, sans-serif;
+}
+
+@layer base {
+    h1 {
+        @apply text-3xl mb-5 font-bold;
+    }
+
+    h2 {
+        @apply text-2xl mb-5;
+    }
+
+    h3 {
+        @apply text-xl mb-2;
+    }
+
+    p {
+        @apply mb-2;
+    }
+
+    ol {
+        @apply list-decimal pl-4;
+    }
+
+    button {
+        @apply bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow;
+    }
+
+    input {
+        @apply px-4 py-3 leading-5 border rounded-md;
+    }
+}
