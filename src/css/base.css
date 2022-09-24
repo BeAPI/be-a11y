@@ -13,21 +13,29 @@
     --primary-border: 1px solid var(--primary-grey-color);
 }
 
+* {
+    font-family: Poppins, Arial, sans-serif;
+}
+
 @layer base {
     h1 {
-        @apply text-3xl mb-5;
+        @apply text-3xl mb-5 font-bold;
     }
 
     h2 {
-        @apply text-2xl mb-5;
+        @apply text-2xl mb-5 mt-5 font-bold border-b-2;
     }
 
     h3 {
-        @apply text-xl mb-2;
+        @apply text-xl mb-4 font-medium;
     }
 
     p {
         @apply mb-2;
+    }
+
+    a {
+        @apply underline hover:no-underline focus:no-underline focus:bg-gray-100;
     }
 
     ol {
@@ -40,24 +48,5 @@
 
     input {
         @apply px-4 py-3 leading-5 border rounded-md;
-    }
-
-    .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        border: 0;
-    }
-
-    .wrapper {
-        @apply max-w-4xl m-auto pt-5 pb-5;
-    }
-
-    .wrapper > h1 {
-        @apply text-center;
     }
 }

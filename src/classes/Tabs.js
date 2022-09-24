@@ -1,4 +1,4 @@
-import AbstractDomElement from '../AbstractDomElement'
+import AbstractDomElement from '../AbstractDomElement.js'
 
 /**
  * Tabs Class

@@ -1,7 +1,7 @@
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-import AbstractDomElement from '../AbstractDomElement'
-import DOMAnimations from '../utils/DOMAnimations'
-import throttle from '../utils/throttle'
+import AbstractDomElement from '../AbstractDomElement.js'
+import DOMAnimations from '../utils/DOMAnimations.js'
+import throttle from '../utils/throttle.js'
 
 /**
  * Toggle Class
