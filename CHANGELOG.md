@@ -5,6 +5,7 @@
 *   Hot Module Replacement
 *   Packages update
 *   HTML pages fix
+*   Add NPM package
 
 ## 1.0.6
 *   Add Styelint 14
