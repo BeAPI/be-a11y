@@ -1,4 +1,4 @@
-import AbstractDomElement from '../AbstractDomElement.js'
+import AbstractDomElement from './AbstractDomElement.js'
 import DOMAnimations from '../utils/DOMAnimations.js'
 
 /**

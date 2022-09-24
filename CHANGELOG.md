@@ -1,39 +1,12 @@
 # Changelog
 
-## 1.1.0
-*   Replace Webpack with [ViteJS](https://vitejs.dev/)
-*   Hot Module Replacement
-*   Packages update
-*   HTML pages fix
-*   Add NPM package
+All notable changes to this project will be documented in this file.
 
-## 1.0.6
-*   Add Styelint 14
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## 1.0.5
-*   Add Dropdown class
-*   Add Dropdown UI tests
+## [Unreleased]
 
-## 1.0.4
-*   Finally, remove FastAccess class
+### Added
 
-## 1.0.3
-*   Add FastAccess class
-*   Add description to components in docs
-*   Add new UI tests
-*   Fix Accordion class
-
-## 1.0.2
-*   Add Accordion class
-*   Add Toggle class
-*   Add UI tests
-*   Add styles with Tailwind
-
-## 1.0.1
-*   Fix AbstractDomElement class
-*   Add documentation for components
-
-## 1.0.0
-*   Init repo
-*   Add webpack, eslint, babel
-*   Add Tabs component
+- Changelog
