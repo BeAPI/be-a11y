@@ -1,5 +1,5 @@
 {
-  "name": "be-a11y",
+  "name": "@beapi/be-a11y",
   "version": "1.1.0",
   "description": "Collection of usefull accessible components",
   "main": "index.js",
@@ -7,6 +7,7 @@
   "author": "Be API",
   "license": "MIT",
   "private": false,
+  "keywords": ["accessible","a11Y","accessibility", "w3c", "componets", "modal", "tab", "accordion", "es6"],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
