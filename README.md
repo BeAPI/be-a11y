@@ -27,7 +27,7 @@ $ yarn preview
 
 ## Components
 *   [Accordion](examples/accessible-accordion/)
-*   [Fast Access](examples/accessible-fast-access/)
+*   [Dropdown](examples/accessible-dropdown/)
 *   [Modal](examples/accessible-modal/)
 *   [Tabs](examples/accessible-tabs/)
 *   [Toggle](examples/accessible-toggle/)
