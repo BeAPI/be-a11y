@@ -6,6 +6,7 @@
 
 This repository contains a collection of useful accessible components such as tabs, accordion, modal dialog...
 
+## Installation
 
 Install dependencies
 ```bash
