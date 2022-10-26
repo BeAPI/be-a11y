@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## 1.2.2 - 2022-10-26
+- Remove unused dep
+
+## 1.2.1 - 2022-10-26
+- Fix package
+
+## 1.2.0 - 2022-10-26
+- Add Vite config for lib package
+- add callback `onOpen()` and `onClose()` for Modal
+- fix bugs for Modal
 ## 1.1.4 - 2022-10-26
 - Dependencies security updates
 ## 1.1.3 - 2022-09-29
