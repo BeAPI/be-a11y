@@ -41,10 +41,15 @@ class Modal extends AbstractDomElement {
   init() {
     const el = this._element
     const s = this._settings
-    this.id = this.defineId()
 
     // Set id
-    el.id = this.id
+    if (el.id) {
+      this.id = el.id
+    } else {
+      this.id = this.defineId()
+
+      el.id = this.id
+    }
 
     // Set aria-labelledby attribute
     if (s.labelSelector && el.querySelector(s.labelSelector)) {
