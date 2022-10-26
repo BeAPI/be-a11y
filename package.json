@@ -1,6 +1,6 @@
 {
   "name": "@beapi/be-a11y",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Collection of usefull accessible components",
   "repository": {
     "type": "git",
@@ -38,7 +38,6 @@
     "test": "jest --detectOpenHandles --forceExit --runInBand"
   },
   "dependencies": {
-    "@beapi/be-a11y": "^1.2.0",
     "body-scroll-lock": "^4.0.0-beta.0"
   },
   "devDependencies": {
