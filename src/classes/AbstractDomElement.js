@@ -1,4 +1,4 @@
-import extend from './utils/extend.js'
+import extend from '../utils/extend.js'
 
 class AbstractDomElement {
   constructor(element, options) {
