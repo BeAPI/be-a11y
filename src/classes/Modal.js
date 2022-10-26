@@ -13,11 +13,23 @@ class Modal extends AbstractDomElement {
       return instance
     }
 
+    const { onClose, onOpen } = this._settings
+
     this.isOpened = false
     this.triggerButton = null
     this.close = this.close.bind(this)
     this.open = this.open.bind(this)
+    this.handleButtonClick = this.handleButtonClick.bind(this)
     this.handleKeydown = this.handleKeydown.bind(this)
+
+    if (onOpen) {
+      this._onOpen = onOpen.bind(this)
+    }
+
+    if (onClose) {
+      this._onClose = onClose.bind(this)
+    }
+
     this.init()
   }
 
@@ -54,7 +66,7 @@ class Modal extends AbstractDomElement {
     }
 
     document.querySelectorAll(`button[data-modal="${this.id}"]`).forEach((btn) => {
-      btn.addEventListener('click', this.open)
+      btn.addEventListener('click', this.handleButtonClick)
     })
 
     window.addEventListener('keydown', this.handleKeydown)
@@ -77,17 +89,31 @@ class Modal extends AbstractDomElement {
   }
 
   /**
-   * Open modal
+   * Handle button click
    * @param {MouseEvent} e click event handler
    * @returns {Void}
    * @author Milan Ricoul
    */
-  open(e) {
+  handleButtonClick(e) {
+    this.triggerButton = e.currentTarget
+
+    this.open()
+  }
+
+  /**
+   * Open modal
+   * @returns {Void}
+   * @author Milan Ricoul
+   */
+  open() {
     const el = this._element
     el.style.display = 'block'
-    this.triggerButton = e.target
     el.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')[0].focus()
     this.isOpened = true
+
+    if (this._onOpen) {
+      this._onOpen()
+    }
   }
 
   /**
@@ -97,8 +123,15 @@ class Modal extends AbstractDomElement {
    */
   close() {
     this._element.style.display = 'none'
-    this.triggerButton.focus()
     this.isOpened = false
+
+    if (this.triggerButton) {
+      this.triggerButton.focus()
+    }
+
+    if (this._onClose) {
+      this._onClose()
+    }
   }
 
   /**
@@ -166,6 +199,8 @@ Modal.defaults = {
   labelSelector: false,
   descriptionSelector: false,
   closeButtonSelector: false,
+  onOpen: null,
+  onClose: null,
 }
 
 export default Modal
