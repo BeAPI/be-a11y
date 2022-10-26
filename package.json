@@ -2,11 +2,23 @@
   "name": "@beapi/be-a11y",
   "version": "1.1.3",
   "description": "Collection of usefull accessible components",
-  "main": "index.js",
-  "repository": "git@github.com:BeAPI/be-a11y.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BeAPI/be-a11y"
+  },
   "author": "Be API",
   "license": "MIT",
   "private": false,
+  "type": "module",
+  "files": ["dist"],
+  "main": "./dist/be-a11y.umd.js",
+  "module": "./dist/be-a11y.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/be-a11y.mjs",
+      "require": "./dist/be-a11y.umd.js"
+    }
+  },
   "keywords": [
     "accessible",
     "a11Y",
@@ -33,19 +45,16 @@
     "@wordpress/stylelint-config": "^20.0.2",
     "autoprefixer": "^10.3.3",
     "babel-jest": "^27.1.0",
-    "css-loader": "^6.2.0",
-    "eslint": "^7.25.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.0",
+    "eslint": "8.26.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "postcss": "^8.4.18",
     "jest": "^27.1.0",
     "jest-puppeteer": "^5.0.4",
-    "postcss": "^8.4.14",
-    "puppeteer": "^17.1.3",
     "stylelint": "^14.9.1",
     "stylelint-config-recess-order": "^3.0.0",
-    "stylelint-webpack-plugin": "^3.0.1",
     "tailwindcss": "^3.1.8",
-    "vite": "^3.1.1"
+    "vite": "^3.1.8"
   },
   "jest": {
     "verbose": true,
