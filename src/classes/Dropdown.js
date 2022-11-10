@@ -193,7 +193,7 @@ class Dropdown extends AbstractDomElement {
     this.focusedElement = listItem
     this.focusedElement.setAttribute('aria-selected', 'true')
     this.list.setAttribute('aria-activedescendant', this.focusedElement.id)
-    this.button.innerText = this.focusedElement.innerText
+    this.button.innerHTML = this.focusedElement.innerHTML
 
     if (this.list.scrollHeight > this.list.clientHeight) {
       const scrollBottom = this.list.clientHeight + this.list.scrollTop
