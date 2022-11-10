@@ -103,7 +103,7 @@ class Dropdown extends AbstractDomElement {
    * @param {MouseEvent} e mouse event handler
    */
   handleListItemClick(e) {
-    this.updateFocusedListItem(e.target)
+    this.updateFocusedListItem(e.currentTarget)
     this.close()
   }
 
@@ -144,7 +144,7 @@ class Dropdown extends AbstractDomElement {
    * @author Milan Ricoul
    */
   detectClickOutsideElement(e) {
-    if (this.opened && !this._element.contains(e.target)) {
+    if (this.opened && !this._element.contains(e.currentTarget)) {
       this.close(this.id)
     }
   }
