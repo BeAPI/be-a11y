@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## 1.2.3 - 2022-11-10
+- Fix innerHTML for dropdown
+
 ## 1.2.2 - 2022-10-26
 - Remove unused dep
 
