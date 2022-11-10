@@ -144,7 +144,7 @@ class Dropdown extends AbstractDomElement {
    * @author Milan Ricoul
    */
   detectClickOutsideElement(e) {
-    if (this.opened && !this._element.contains(e.currentTarget)) {
+    if (this.opened && !this._element.contains(e.target)) {
       this.close(this.id)
     }
   }
