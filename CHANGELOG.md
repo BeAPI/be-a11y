@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## 1.2.5 - 2022-11-10
+- Fix dropdown detectClickOutsideElement method
+
 ## 1.2.4 - 2022-11-10
 - Change e.target to e.currentTarget for dropdown
 
