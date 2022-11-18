@@ -45,10 +45,8 @@ class Toggle extends AbstractDomElement {
 
     if (this.target) {
       el.addEventListener('click', this.handleClick)
-      el.addEventListener('keydown', this.handleClick)
     } else if (!this.target && onClick) {
       el.addEventListener('click', onClick)
-      el.addEventListener('keydown', onClick)
 
       return false
     } else {
@@ -56,8 +54,7 @@ class Toggle extends AbstractDomElement {
     }
 
     if (onClick) {
-      el.addEventListener('click', onClick)
-      el.addEventListener('keydown', onClick)
+      el.addEventListener('click', onClick.bind(this))
     }
 
     if (!el.getAttribute('aria-controls')) {
@@ -113,26 +110,20 @@ class Toggle extends AbstractDomElement {
 
     if (this._settings.onClick) {
       el.removeEventListener('click', this._settings.onClick)
-      el.removeEventListener('keydown', this._settings.onClick)
     } else {
       el.removeEventListener('click', this.handleClick)
-      el.removeEventListener('keydown', this.handleClick)
       el.removeEventListener('blur', this.handleBlur)
     }
   }
 
   /**
    * Handle button MouseEvent
-   * @param {(MouseEvent|KeyboardEvent)} e event handler
+   * @param {MouseEvent} e event handler
    * @returns {void}
    * @author Milan Ricoul
    */
   handleClick(e) {
     const { isOpened } = this._settings
-
-    if (e.type === 'keydown' && e.code !== 'Enter' && e.code !== 'Space') {
-      return false
-    }
 
     e.preventDefault()
 
