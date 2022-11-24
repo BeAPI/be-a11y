@@ -58,6 +58,7 @@ If you want to change the classes of the component, you can also initialize it :
 import Dropdown from '/path/to/Dropdown.js';
 
 Dropdown.init('.listbox', {
+    automaticSelection: true,
     buttonSelector: '.listbox__button',
     labelSelector: '.listbox__label',
     listSelector: '.listbox__list',
@@ -67,10 +68,11 @@ Dropdown.init('.listbox', {
 
 ## Options
 
-| name             | type                      | default            | description                              |
-|------------------|---------------------------|--------------------|------------------------------------------|
-| `buttonSelector` | string                    | `button`           | Button selector.                         |
-| `labelSelector`  | string                    | `.dropdown__label` | Label selector.                          |
-| `listSelector`   | string                    | `ul`               | Listbox selector.                        |
-| `matchMedia`     | null or matchMedia object | `null`             | Set dropdown for a specific media query. |
-| `prefixId`       | string                    | `dropdown`         | Define the prefix id of the component.   |
+| name                 | type                      | default            | description                                     |
+|----------------------|---------------------------|--------------------|-------------------------------------------------|
+| `automaticSelection` | boolean                   | `false`            | if `true`, first item is automatically selected |
+| `buttonSelector`     | string                    | `button`           | Button selector.                                |
+| `labelSelector`      | string                    | `.dropdown__label` | Label selector.                                 |
+| `listSelector`       | string                    | `ul`               | Listbox selector.                               |
+| `matchMedia`         | null or matchMedia object | `null`             | Set dropdown for a specific media query.        |
+| `prefixId`           | string                    | `dropdown`         | Define the prefix id of the component.          |
