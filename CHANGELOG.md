@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## 1.2.7 - 2022-11-24
+- Add automaticSelection option for Dropdown
+
 ## 1.2.6 - 2022-11-18
 - Remove keydown events for Toggle
 
