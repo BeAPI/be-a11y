@@ -16,10 +16,26 @@
         </p>
         
         <h2>Demo</h2>
+
+        <h3>Automatic first item selected</h3>
         
-        <div id="dropdown" class="dropdown">
+        <div id="dropdown-1" class="dropdown">
             <span class="dropdown__label">Choose an element</span>
-            <button aria-haspopup="listbox">Book</button>
+            <button aria-haspopup="listbox">Choose an element</button>
+            <ul tabindex="-1" role="listbox">
+                <li role="option">Book</li>
+                <li role="option">Movies</li>
+                <li role="option">Music</li>
+                <li role="option">Video games</li>
+                <li role="option">Paint</li>
+            </ul>
+        </div>
+
+        <h3>Non automatic selection</h3>
+
+        <div id="dropdown-2" class="dropdown">
+            <span class="dropdown__label">Choose an element</span>
+            <button aria-haspopup="listbox">Choose an element</button>
             <ul tabindex="-1" role="listbox">
                 <li role="option">Book</li>
                 <li role="option">Movies</li>
@@ -45,7 +61,10 @@
             import './style.css'
             
             Dropdown.preset = {
-                '#dropdown': {},
+                '#dropdown-1': {},
+                '#dropdown-2': {
+                    automaticSelection: true,
+                },
             }
             
             Dropdown.initFromPreset()
