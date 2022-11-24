@@ -62,6 +62,9 @@ Dropdown.init('.listbox', {
     buttonSelector: '.listbox__button',
     labelSelector: '.listbox__label',
     listSelector: '.listbox__list',
+    onClose: function() {
+        console.log('closed')
+    },
     prefixId: 'listbox',
 });
 ```
@@ -75,4 +78,8 @@ Dropdown.init('.listbox', {
 | `labelSelector`      | string                    | `.dropdown__label` | Label selector.                                 |
 | `listSelector`       | string                    | `ul`               | Listbox selector.                               |
 | `matchMedia`         | null or matchMedia object | `null`             | Set dropdown for a specific media query.        |
+| `onChange`           | null or function          | `null`             | Event on dropdown change.                       |
+| `onClose`            | null or function          | `null`             | Event on dropdown close.                        |
+| `onListItemClick`    | null or function          | `null`             | Event on dropdown list item click.              |
+| `onOpen`             | null or function          | `null`             | Event on dropdown open.                         |
 | `prefixId`           | string                    | `dropdown`         | Define the prefix id of the component.          |
