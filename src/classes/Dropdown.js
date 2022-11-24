@@ -105,6 +105,12 @@ class Dropdown extends AbstractDomElement {
    * @param {MouseEvent} e mouse event handler
    */
   handleListItemClick(e) {
+    const { onListItemClick } = this._settings
+
+    if (onListItemClick) {
+      onListItemClick.bind(this)()
+    }
+
     this.updateFocusedListItem(e.currentTarget)
     this.close()
   }
@@ -118,6 +124,8 @@ class Dropdown extends AbstractDomElement {
     this.opened = true
 
     const el = this._element
+    const { onOpen } = this._settings
+
     this.button.setAttribute('aria-expanded', 'true')
 
     if (el.querySelectorAll('li[aria-selected="true"]').length === 1) {
@@ -125,6 +133,10 @@ class Dropdown extends AbstractDomElement {
     } else {
       this.focusedElement = el.querySelector('li:first-child')
       this.focusedElement.setAttribute('aria-selected', 'true')
+    }
+
+    if (onOpen) {
+      onOpen.bind(this)()
     }
   }
 
@@ -136,7 +148,13 @@ class Dropdown extends AbstractDomElement {
   close() {
     this.opened = false
 
+    const { onClose } = this._settings
+
     this.button.removeAttribute('aria-expanded')
+
+    if (onClose) {
+      onClose.bind(this)()
+    }
   }
 
   /**
@@ -188,6 +206,8 @@ class Dropdown extends AbstractDomElement {
    * @param {HTMLElement} listItem new list item
    */
   updateFocusedListItem(listItem) {
+    const { onChange } = this._settings
+
     if (this.focusedElement) {
       this.focusedElement.removeAttribute('aria-selected')
     }
@@ -200,11 +220,16 @@ class Dropdown extends AbstractDomElement {
     if (this.list.scrollHeight > this.list.clientHeight) {
       const scrollBottom = this.list.clientHeight + this.list.scrollTop
       const elementBottom = this.focusedElement.offsetTop + this.focusedElement.offsetHeight
+
       if (elementBottom > scrollBottom) {
         this.list.scrollTop = elementBottom - this.list.clientHeight
       } else if (this.focusedElement.offsetTop < this.list.scrollTop) {
         this.list.scrollTop = this.focusedElement.offsetTop
       }
+    }
+
+    if (onChange) {
+      onChange.bind(this)()
     }
   }
 
@@ -295,6 +320,10 @@ Dropdown.defaults = {
   labelSelector: '.dropdown__label',
   listSelector: 'ul',
   matchMedia: null,
+  onChange: null,
+  onClose: null,
+  onListItemClick: null,
+  onOpen: null,
   prefixId: 'dropdown',
 }
 
