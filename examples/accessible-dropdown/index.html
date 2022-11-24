@@ -44,6 +44,20 @@
                 <li role="option">Paint</li>
             </ul>
         </div>
+
+        <h3>With events</h3>
+
+        <div id="dropdown-3" class="dropdown">
+            <span class="dropdown__label">Choose an element</span>
+            <button aria-haspopup="listbox">Choose an element</button>
+            <ul tabindex="-1" role="listbox">
+                <li role="option">Book</li>
+                <li role="option">Movies</li>
+                <li role="option">Music</li>
+                <li role="option">Video games</li>
+                <li role="option">Paint</li>
+            </ul>
+        </div>
         
         <h2>Code</h2>
         
@@ -64,6 +78,20 @@
                 '#dropdown-1': {},
                 '#dropdown-2': {
                     automaticSelection: true,
+                },
+                '#dropdown-3': {
+                    onChange: function() {
+                        alert('changed')
+                    },
+                    onClose: function() {
+                        alert('closed')
+                    },
+                    onListItemClick: function() {
+                        alert('List item click')
+                    },
+                    onOpen: function() {
+                        alert('opened')
+                    },
                 },
             }
             
