@@ -42,7 +42,7 @@ class Dropdown extends AbstractDomElement {
     this.active = true
 
     const el = this._element
-    const { buttonSelector, labelSelector, listSelector } = this._settings
+    const { automaticSelection, buttonSelector, labelSelector, listSelector } = this._settings
     const buttonId = `${this._defineId()}-button`
     const labelId = `${this._defineId()}-label`
     this.button = el.querySelector(buttonSelector)
@@ -60,7 +60,9 @@ class Dropdown extends AbstractDomElement {
       $listItem.addEventListener('click', this.handleListItemClick)
     })
 
-    this.updateFocusedListItem(this.listItems[0])
+    if (automaticSelection) {
+      this.updateFocusedListItem(this.listItems[0])
+    }
 
     this.button.addEventListener('click', this.handleButtonClick)
     document.addEventListener('click', this.detectClickOutsideElement)
@@ -288,6 +290,7 @@ function defineId() {
 }
 
 Dropdown.defaults = {
+  automaticSelection: false,
   buttonSelector: 'button',
   labelSelector: '.dropdown__label',
   listSelector: 'ul',
