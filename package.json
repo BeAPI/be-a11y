@@ -35,7 +35,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "jest --detectOpenHandles --forceExit --runInBand"
+    "test": "playwright test"
   },
   "dependencies": {
     "body-scroll-lock": "^4.0.0-beta.0"
@@ -43,27 +43,19 @@
   "devDependencies": {
     "@babel/core": "^7.19.1",
     "@babel/preset-env": "^7.19.1",
+    "@playwright/test": "^1.27.1",
     "@wordpress/stylelint-config": "^20.0.2",
     "autoprefixer": "^10.4.12",
     "babel-jest": "^27.1.0",
-    "eslint": "8.26.0",
+    "eslint": "^8.28.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.2.1",
-    "jest": "^27.1.0",
-    "jest-puppeteer": "^5.0.4",
     "postcss": "^8.4.18",
     "prettier": "^2.8.0",
     "stylelint": "^14.9.1",
     "stylelint-config-recess-order": "^3.0.0",
     "tailwindcss": "^3.2.1",
     "vite": "^3.1.8"
-  },
-  "jest": {
-    "verbose": true,
-    "preset": "jest-puppeteer",
-    "setupFilesAfterEnv": [
-      "./config/setupTests.js"
-    ]
   },
   "volta": {
     "node": "16.15.1"
