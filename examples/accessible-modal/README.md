@@ -5,8 +5,21 @@ In user interface design for computer applications, a modal window is a graphica
 * [See accessible specificies](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html)
 * [Demo](https://codepen.io/beapi/full/mdwOVBm)
 
-## Get started
+## Getting started
 
+### Install the package
+
+We can install the package from NPM or Yarn.
+```bash
+yarn add @beapi/be-a11y
+```
+
+Then import the component in your JavaScript.
+```js
+import { Modal } from '@beapi/be-a11y';
+```
+
+### Add Modal HTML Layout
 Copy the following markup on your HTML file :
 
 ```html
@@ -21,39 +34,38 @@ Copy the following markup on your HTML file :
 </div>
 ```
 
-Next, in jour JS file, import Modal class and initialize it :
+### Initialize the component
+Finally, we need to initialize this component in JavaScript.
+
 ```js
-import Modal from '/path/to/Modal.js';
+import { Modal } from '@beapi/be-a11y';
+
+Modal.init('.modal', {
+  // Options here
+});
+```
+
+If you have multiple modal with different HTML markup, you can set a preset and initialize all at once.
+
+```js
+import { Modal } from '@beapi/be-a11y';
+
+Modal.preset = {
+  '#modal-1': {
+    closeButtonSelector: '.close-btn',
+  },
+  '#modal-2': {
+    closeButtonSelector: '.modal-close-button',
+  },
+};
 
 Modal.initFromPreset();
 ```
 
-If you want to change the classes of the component, you can also initialize it :
-```html
-<button type="button" aria-controls="dialog-1" data-modal="dialog-1">Open modal dialog</button>
+> **Warning**
+> There is no embedded style. It's up to you to style the component as you see fit.
 
-<div class="my-modal" tabindex="-1" role="dialog" aria-modal="true" style="display: none;">
-    <div class="my-modal-inner">
-        <h2 id="modal-title">My awesome modal</h2>
-        <p id="modal-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse sunt explicabo vero sed nemo eveniet ullam error, commodi recusandae iste repudiandae culpa harum quisquam ipsa facere in quis. Eaque, labore.</p>
-
-        <button type="button" class="my-modal-close">Close</button>
-    </div>
-</div>
-```
-
-```js
-import Modal from '/path/to/Modal.js';
-
-Modal.init('.my-modal', {
-    prefixId: 'modal',
-    labelSelector: '#modal-title',
-    descriptionSelector: '#modal-description',
-    closeButtonSelector: '.my-modal-close',
-});
-```
-
-## Options
+### Options
 
 | name                  | type            | default  | description                                                             |
 |-----------------------|-----------------|----------|-------------------------------------------------------------------------|
