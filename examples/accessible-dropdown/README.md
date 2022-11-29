@@ -5,8 +5,21 @@ Build an accessible dropdown arround your markup.
 * [See accessible specificies](https://www.w3.org/TR/wai-aria-practices-1.1/examples/listbox/listbox-collapsible.html)
 * [Demo](https://codepen.io/beapi/full/VwQbYqN)
 
-## Get started
+## Getting started
 
+### Install the package
+
+We can install the package from NPM or Yarn.
+```bash
+yarn add @beapi/be-a11y
+```
+
+Then import the component in your JavaScript.
+```js
+import { Dropdown } from '@beapi/be-a11y';
+```
+
+### Add Dropdown HTML Layout
 Copy the following markup on your HTML file :
 
 ```html
@@ -23,53 +36,38 @@ Copy the following markup on your HTML file :
 </div>
 ```
 
-In `Dropdown.js` file, add the following preset :
+### Initialize the component
+Finally, we need to initialize this component in JavaScript.
+
 ```js
-Dropdown.preset = {
-  '.dropdown': {
-      // options here
-  },
-}
+import { Dropdown } from '@beapi/be-a11y';
+
+Dropdown.init('.dropdown', {
+  // Options here
+});
 ```
 
-Next, in jour JS file, import Dropdown class and initialize it :
+If you have multiple dropdown with different HTML markup, you can set a preset and initialize all at once.
+
 ```js
-import Dropdown from '/path/to/Dropdown.js';
+import { Dropdown } from '@beapi/be-a11y';
+
+Dropdown.preset = {
+  '#dropdown-1': {
+    automaticSelection: true,
+  },
+  '#dropdown-2': {
+    matchMedia: window.matchMedia('(min-width: 1024px)'),
+  },
+};
 
 Dropdown.initFromPreset();
 ```
 
-If you want to change the classes of the component, you can also initialize it :
-```html
-<div class="listbox">
-    <span class="listbox__label">Choose an element</span>
-    <button class="listbox__button" aria-haspopup="listbox">Book</button>
-    <ul class="listbox__list" tabindex="-1" role="listbox">
-        <li role="option">Book</li>
-        <li role="option">Movies</li>
-        <li role="option">Music</li>
-        <li role="option">Video games</li>
-        <li role="option">Paint</li>
-    </ul>
-</div>
-```
+> **Warning**
+> There is no embedded style. It's up to you to style the component as you see fit.
 
-```js
-import Dropdown from '/path/to/Dropdown.js';
-
-Dropdown.init('.listbox', {
-    automaticSelection: true,
-    buttonSelector: '.listbox__button',
-    labelSelector: '.listbox__label',
-    listSelector: '.listbox__list',
-    onClose: function() {
-        console.log('closed')
-    },
-    prefixId: 'listbox',
-});
-```
-
-## Options
+### Options
 
 | name                 | type                      | default            | description                                     |
 |----------------------|---------------------------|--------------------|-------------------------------------------------|
