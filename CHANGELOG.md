@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## 1.2.10 - 2022-11-29
+- Update all README
+
 ## 1.2.9 - 2022-11-29
 - Fix End To End tests
 
@@ -84,5 +87,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Init repo
 - Add webpack, eslint, babel
 - Add Tabs component
-### Added
-- Changelog
