@@ -5,8 +5,21 @@ Component of accordion that reveal content when you click it.
 * [See accessible specificies](https://www.w3.org/TR/wai-aria-practices-1.1/examples/accordion/accordion.html)
 * [Demo](https://codepen.io/beapi/full/eYRBJJb)
 
-## Get started
+## Getting started
 
+### Install the package
+
+We can install the package from NPM or Yarn.
+```bash
+yarn add @beapi/be-a11y
+```
+
+Then import the component in your JavaScript.
+```js
+import { Accordion } from '@beapi/be-a11y';
+```
+
+### Add Accordion HTML Layout
 Copy the following markup on your HTML file :
 
 ```html
@@ -45,68 +58,39 @@ Copy the following markup on your HTML file :
 </div>
 ```
 
-In `Accordion.js` file, add the following preset :
+### Initialize the component
+Finally, we need to initialize this component in JavaScript.
+
 ```js
-Accordion.preset = {
-  '.accordion': {},
-}
+import { Accordion } from '@beapi/be-a11y';
+
+Accordion.init('.accordion', {
+  // Options here
+});
 ```
 
-Next, in jour JS file, import Accordion class and initialize it :
+If you have multiple accordions with different HTML markup, you can set a preset and initialize all at once.
+
 ```js
-import Accordion from '/path/to/Accordion.js';
+import { Accordion } from '@beapi/be-a11y';
+
+Accordion.preset = {
+  '#accordion-1': {
+    allowMultiple: true,
+  },
+  '#accordion-2': {
+    forceExpand: false,
+    hasAnimation: true,
+  },
+};
 
 Accordion.initFromPreset();
 ```
 
-If you want to change the classes of the component, you can also initialize it :
-```html
-<div class="accor">
-  <h3>
-    <button aria-expanded="true" class="accor-trigger">
-      <span class="accor-title">
-        Tab title
-      </span>
-    </button>
-  </h3>
-  <div class="accor-panel" role="region">
-    <!-- Your content here -->
-  </div>
-  <h3>
-    <button aria-expanded="false" class="accor-trigger">
-      <span class="accor-title">
-        Tab title
-      </span>
-    </button>
-  </h3>
-  <div class="accor-panel" role="region" style="display: none;">
-    <!-- Your content here -->
-  </div>
-  <h3>
-    <button aria-expanded="false" class="accor-trigger">
-      <span class="accor-title">
-        Tab title
-      </span>
-    </button>
-  </h3>
-  <div class="accor-panel" role="region" style="display: none;">
-    <!-- Your content here -->
-  </div>
-  <!-- ... -->
-</div>
-```
+> **Warning**
+> There is no embedded style. It's up to you to style the component as you see fit.
 
-```js
-import Accordion from '/path/to/Accordion.js';
-
-Accordion.init('.accor', {
-  panelSelector: '.accor-panel',
-  prefixId: 'Accordion',
-  triggerSelector: '.accor-trigger',
-});
-```
-
-## Options
+### Options
 
 | name              | type    | default               | description                                             |
 |-------------------|---------|-----------------------|---------------------------------------------------------|

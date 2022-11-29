@@ -5,8 +5,21 @@ Component of tabs that reveal content when you click it.
 * [See accessible specificies](https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-1/tabs.html)
 * [Demo](https://codepen.io/beapi/full/eYRBpQj)
 
-## Get started
+## Getting started
 
+### Install the package
+
+We can install the package from NPM or Yarn.
+```bash
+yarn add @beapi/be-a11y
+```
+
+Then import the component in your JavaScript.
+```js
+import { Tabs } from '@beapi/be-a11y';
+```
+
+### Add Tabs HTML Layout
 Copy the following markup on your HTML file :
 
 ```html
@@ -31,44 +44,41 @@ Copy the following markup on your HTML file :
 </div>
 ```
 
-If you want to add new tabs, dupplicate the button and panel markup without forgot to increment the id and aria attributes.
+### Initialize the component
+Finally, we need to initialize this component in JavaScript.
 
-Next, in jour JS file, import Tabs class and initialize it :
 ```js
-import Tabs from '/path/to/Tabs.js';
+import { Tabs } from '@beapi/be-a11y';
+
+Tabs.init('.tabs', {
+  // Options here
+});
+```
+
+If you have multiple tabs with different HTML markup, you can set a preset and initialize all at once.
+
+```js
+import { Tabs } from '@beapi/be-a11y';
+
+Tabs.preset = {
+  '#tabs-1': {
+    auto: false,
+  },
+  '#tabs-2': {
+    auto: true,
+  },
+};
 
 Tabs.initFromPreset();
 ```
 
-If you want to change the classes of the component, you can also initialize it :
-```html
-<div class="my-tab">
-    <div class="my-tab-list" role="tablist" aria-label="Parer un ananas">
-        <button class="my-tab-tab" role="tab" aria-selected="true" aria-controls="tab-panel-1" id="tab-1">Tab 1</button>
-        <button class="my-tab-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-panel-2" id="tab-2">Tab 2</button>
-    </div>
+> **Warning**
+> There is no embedded style. It's up to you to style the component as you see fit.
 
-    <div class="my-tab-panel" tabindex="0" role="tabpanel" id="tab-panel-1" aria-labelledby="tab-1">
-        <!-- Your content here -->
-    </div>
-    <div class="my-tab-panel" tabindex="0" role="tabpanel" id="tab-panel-2" aria-labelledby="tab-2" hidden>
-        <!-- Your content here -->
-    </div>
-</div>
-```
-
-```js
-import Tabs from '/path/to/Tabs.js';
-
-Tabs.init('.my-tab', {
-    auto: true,
-});
-```
-
-## Options
+### Options
 
 | name               | type    | default                | description                                                                |
 |--------------------|---------|------------------------|----------------------------------------------------------------------------|
 | `auto`             | boolean | `true`                 | Determines if you have to press Enter button on a tab to reveal the panel. |
 | `tabListSelector`  | string  | `button[role="tab"]`   | The selector of the tab list.                                              |
-| `tabPanelSelector` | string  | `div[role="tabpanel"]` | The selector of the panel(s).                                              |
+| `tabPanelSelector` | string  | `div[role="tabpanel"]` | The selector of the panel(s).                                              |                  |
