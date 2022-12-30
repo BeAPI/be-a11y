@@ -29,29 +29,37 @@ class Accordion extends AbstractDomElement {
    */
   init() {
     const el = this._element
-    const s = this._settings
-    const triggers = el.querySelectorAll(s.triggerSelector)
-    const panels = el.querySelectorAll(s.panelSelector)
+    const { closedDefault, panelSelector, prefixId, triggerSelector } = this._settings
+    const triggers = el.querySelectorAll(triggerSelector)
+    const panels = el.querySelectorAll(panelSelector)
+
+    if (closedDefault) {
+      this._settings.forceExpand = false
+    }
 
     // Set id and ARIA attributes to the trigger
     this.applyToSelectors(triggers, (trigger, index) => {
       let i = index + 1
-      while (document.getElementById(`${s.prefixId}-${i}`)) {
+      while (document.getElementById(`${prefixId}-${i}`)) {
         i++
       }
 
-      trigger.id = `${s.prefixId}-${i}`
-      trigger.setAttribute('aria-controls', `${s.prefixId}-panel-${i}`)
+      trigger.id = `${prefixId}-${i}`
+      trigger.setAttribute('aria-controls', `${prefixId}-panel-${i}`)
     })
 
     // Set id and ARIA attributes to the panel
     this.applyToSelectors(panels, (panel, index) => {
       let i = index + 1
-      while (document.getElementById(`${s.prefixId}-panel-${i}`)) {
+      while (document.getElementById(`${prefixId}-panel-${i}`)) {
         i++
       }
-      panel.id = `${s.prefixId}-panel-${i}`
-      panel.setAttribute('aria-labelledby', `${s.prefixId}-${i}`)
+      panel.id = `${prefixId}-panel-${i}`
+      panel.setAttribute('aria-labelledby', `${prefixId}-${i}`)
+
+      if (closedDefault) {
+        this.close(panel)
+      }
     })
 
     this.applyToSelectors(triggers, (trigger) => trigger.addEventListener('click', this.handleButtonClick))
@@ -251,6 +259,7 @@ class Accordion extends AbstractDomElement {
 
 Accordion.defaults = {
   allowMultiple: false,
+  closedDefault: false,
   forceExpand: true,
   hasAnimation: false,
   panelSelector: '.accordion__panel',
