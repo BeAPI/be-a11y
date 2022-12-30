@@ -18,7 +18,6 @@ class Dropdown extends AbstractDomElement {
     this.opened = false
     this.active = false
     this.focusedElement = null
-    this.elementInner = this._element.innerHTML
     this._onResize = onResize.bind(this)
     this.handleKeydown = this.handleKeydown.bind(this)
     this.handleButtonClick = this.handleButtonClick.bind(this)
@@ -28,25 +27,49 @@ class Dropdown extends AbstractDomElement {
     this._resize.add('resize', this._onResize)
     this._defineId = defineId.bind(this)
 
-    if ((matchMedia && matchMedia.matches) || !matchMedia) {
+    if (Boolean(matchMedia && matchMedia.matches) || !matchMedia) {
       this.init()
+    } else {
+      this.destroy()
     }
   }
 
   /**
    * Initialization
-   * @returns {Object}
    * @author Milan Ricoul
+   * @returns {Object}
    */
   init() {
     this.active = true
 
     const el = this._element
-    const { automaticSelection, buttonSelector, labelSelector, listSelector } = this._settings
+    const { automaticSelection, buttonSelector, labelSelector, listClassName, listSelector } = this._settings
     const buttonId = `${this._defineId()}-button`
     const labelId = `${this._defineId()}-label`
-    this.button = el.querySelector(buttonSelector)
-    this.label = el.querySelector(labelSelector)
+
+    // Button selector
+    if (el.querySelector(buttonSelector)) {
+      this.button = el.querySelector(buttonSelector)
+    } else {
+      this.button = document.createElement('button')
+      this.button.type = 'button'
+      this.button.setAttribute('aria-haspopup', 'listbox')
+      this.button.innerHTML = this.focusedElement.innerHTML
+
+      el.prepend(this.button)
+    }
+
+    // Label selector
+    if (el.querySelector(labelSelector)) {
+      this.label = el.querySelector(labelSelector)
+    } else {
+      this.label = document.createElement('span')
+      this.label.classList.add(labelSelector.replace('.', ''))
+      this.label.innerHTML = this.focusedElement.innerHTML
+
+      el.prepend(this.label)
+    }
+
     this.list = el.querySelector(listSelector)
     this.listItems = el.querySelectorAll('li')
 
@@ -54,10 +77,17 @@ class Dropdown extends AbstractDomElement {
     this.label.id = labelId
     this.button.setAttribute('aria-labelledby', `${labelId} ${buttonId}`)
     this.list.setAttribute('aria-labelledby', `${labelId}`)
+    this.list.setAttribute('tabindex', '-1')
+    this.list.setAttribute('role', 'listbox')
 
-    this.listItems.forEach(($listItem, index) => {
-      $listItem.id = `${this._defineId()}-item-${index + 1}`
-      $listItem.addEventListener('click', this.handleListItemClick)
+    if (listClassName) {
+      this.list.classList.add(listClassName)
+    }
+
+    this.listItems.forEach((listItem, index) => {
+      listItem.setAttribute('role', 'option')
+      listItem.id = `${this._defineId()}-item-${index + 1}`
+      listItem.addEventListener('click', this.handleListItemClick)
     })
 
     if (automaticSelection) {
@@ -73,15 +103,50 @@ class Dropdown extends AbstractDomElement {
 
   /**
    * Destroy
-   * @returns {Object}
    * @author Milan Ricoul
+   * @returns {Object}
    */
   destroy() {
+    const { buttonSelector, labelSelector, listClassName, listSelector } = this._settings
+
+    if (!this.active) {
+      const el = this._element
+      this.button = el.querySelector(buttonSelector)
+      this.label = el.querySelector(labelSelector)
+      this.list = el.querySelector(listSelector)
+      this.listItems = el.querySelectorAll('li')
+
+      this.updateFocusedListItem(this.listItems[0])
+
+      this.button.remove()
+      this.label.remove()
+      this.list.classList.remove(listClassName)
+      this.list.removeAttribute('tabindex')
+      this.list.removeAttribute('role')
+      this.listItems.forEach((listItem) => {
+        listItem.removeAttribute('role')
+      })
+
+      return this
+    }
+
     this.active = false
+
+    this.button.remove()
+    this.label.remove()
+    this.list.classList.remove(this._settings.listClassName)
+    this.list.removeAttribute('tabindex')
+    this.list.removeAttribute('role')
+    this.listItems.forEach((listItem) => {
+      listItem.removeAttribute('role')
+    })
+
+    return this
   }
 
   /**
    * Check if media query matches
+   * @author Milan Ricoul
    */
   refresh() {
     const { matchMedia } = this._settings
@@ -95,6 +160,7 @@ class Dropdown extends AbstractDomElement {
 
   /**
    * Handle button click on dropdown button
+   * @author Milan Ricoul
    */
   handleButtonClick() {
     this.opened ? this.close() : this.open()
@@ -102,6 +168,7 @@ class Dropdown extends AbstractDomElement {
 
   /**
    * Handle list items click
+   * @author Milan Ricoul
    * @param {MouseEvent} e mouse event handler
    */
   handleListItemClick(e) {
@@ -117,8 +184,8 @@ class Dropdown extends AbstractDomElement {
 
   /**
    * Open dropdown
-   * @returns {Void}
    * @author Milan Ricoul
+   * @returns {Void}
    */
   open() {
     this.opened = true
@@ -142,8 +209,8 @@ class Dropdown extends AbstractDomElement {
 
   /**
    * Close dropdown
-   * @returns {Void}
    * @author Milan Ricoul
+   * @returns {Void}
    */
   close() {
     this.opened = false
@@ -159,9 +226,9 @@ class Dropdown extends AbstractDomElement {
 
   /**
    * Close dropdown if click outside the dropdown
+   * @author Milan Ricoul
    * @param {MouseEvent} e mouse event handler
    * @returns {void}
-   * @author Milan Ricoul
    */
   detectClickOutsideElement(e) {
     if (this.opened && !this._element.contains(e.target)) {
@@ -171,6 +238,7 @@ class Dropdown extends AbstractDomElement {
 
   /**
    * Focus previous list item
+   * @author Milan Ricoul
    */
   focusPreviousElement() {
     if (this.focusedElement && this.focusedElement.previousElementSibling) {
@@ -180,6 +248,7 @@ class Dropdown extends AbstractDomElement {
 
   /**
    * Focus next list item
+   * @author Milan Ricoul
    */
   focusNextElement() {
     if (this.focusedElement && this.focusedElement.nextElementSibling) {
@@ -189,6 +258,7 @@ class Dropdown extends AbstractDomElement {
 
   /**
    * Focus first list item
+   * @author Milan Ricoul
    */
   focusFirstElement() {
     this.updateFocusedListItem(this.listItems[0])
@@ -196,6 +266,7 @@ class Dropdown extends AbstractDomElement {
 
   /**
    * Focus last list item
+   * @author Milan Ricoul
    */
   focusLastElement() {
     this.updateFocusedListItem(this.listItems[this.listItems.length - 1])
@@ -203,6 +274,7 @@ class Dropdown extends AbstractDomElement {
 
   /**
    * Update dropdown value
+   * @author Milan Ricoul
    * @param {HTMLElement} listItem new list item
    */
   updateFocusedListItem(listItem) {
@@ -235,9 +307,9 @@ class Dropdown extends AbstractDomElement {
 
   /**
    * Handle keyboard keydown
+   * @author Milan Ricoul
    * @param {KeyboardEvent} e Keyboard keydown event
    * @returns {void}
-   * @author Milan Ricoul
    */
   handleKeydown(e) {
     const activeElement = document.activeElement
@@ -293,6 +365,7 @@ class Dropdown extends AbstractDomElement {
 
 /**
  * On screen resize
+ * @author Milan Ricoul
  */
 function onResize() {
   this.refresh()
@@ -300,8 +373,8 @@ function onResize() {
 
 /**
  * Set id to the modal dialog
- * @returns {String}
  * @author Milan Ricoul
+ * @returns {string}
  */
 function defineId() {
   const { prefixId } = this._settings
@@ -318,6 +391,7 @@ Dropdown.defaults = {
   automaticSelection: false,
   buttonSelector: 'button',
   labelSelector: '.dropdown__label',
+  listClassName: 'dropdown__list',
   listSelector: 'ul',
   matchMedia: null,
   onChange: null,
