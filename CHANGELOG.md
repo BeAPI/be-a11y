@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## 1.2.11 - 2022-12-30
+- Add param `closedDefault` for Accordion component
+- Auto add accessibles attributes for Dropdown component
+
 ## 1.2.10 - 2022-11-29
 - Update all README
 

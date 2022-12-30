@@ -16,7 +16,7 @@
     background-image: url("data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9JzMwMHB4JyB3aWR0aD0nMzAwcHgnICBmaWxsPSIjMDAwMDAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTAwIDEwMCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PGc+PHBhdGggZD0iTTkzLjcsNjcuOEw1My45LDI1LjFjLTIuMS0yLjItNS44LTIuMi03LjgsMEw2LjYsNjcuNWMtMiwyLjItMi4zLDUuNywwLDcuOGMyLjIsMiw1LjUsMS43LDcuNS0wLjVsMzQuNC0zNi45ICAgYzAuOC0wLjgsMi0wLjgsMi44LDBsMzQuNSwzN2MxLjgsMiw1LDIuNCw3LjIsMC43Qzk1LjMsNzMuOCw5NS43LDY5LjksOTMuNyw2Ny44eiI+PC9wYXRoPjwvZz48L3N2Zz4="); /* stylelint-disable-line function-url-quotes */
 }
 
-.dropdown ul {
+.dropdown__list {
     position: absolute;
     top: 100%;
     right: 0;
@@ -41,6 +41,6 @@
     background-color: var(--primary-grey-color);
 }
 
-.dropdown button:not([aria-expanded="true"]) + ul {
+.dropdown button:not([aria-expanded="true"]) + .dropdown__list {
     display: none;
 }
