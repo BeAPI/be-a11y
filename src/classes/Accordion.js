@@ -81,11 +81,15 @@ class Accordion extends AbstractDomElement {
 
   /**
    * Open the panel
+   * @author Milan Ricoul
    * @param {HTMLElement} panel panel selector
    * @returns {void}
-   * @author Milan Ricoul
    */
   open(panel) {
+    if (!panel) {
+      return
+    }
+
     const firstFocusableElement = panel.querySelectorAll(
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
     )[0]
@@ -102,6 +106,8 @@ class Accordion extends AbstractDomElement {
         firstFocusableElement.focus()
       }
     }
+
+    return
   }
 
   /**
@@ -141,7 +147,7 @@ class Accordion extends AbstractDomElement {
   handleButtonClick(e) {
     const el = this._element
     const s = this._settings
-    const { allowMultiple, forceExpand, panelSelector } = this._settings
+    const { allowMultiple, forceExpand, onClose, onOpen, panelSelector } = this._settings
     const trigger = e.currentTarget
     const panel = document.getElementById(trigger.getAttribute('aria-controls'))
 
@@ -152,19 +158,44 @@ class Accordion extends AbstractDomElement {
     ) {
       trigger.setAttribute('aria-expanded', 'false')
       this.close(panel)
+
+      if (onClose) {
+        onClose.bind(this)(panel)
+      }
     } else {
       if (!allowMultiple) {
         this.applyToSelectors(el.querySelectorAll(panelSelector), (panel) => {
           if (panel.id !== trigger.getAttribute('aria-controls')) {
             document.getElementById(panel.getAttribute('aria-labelledby')).setAttribute('aria-expanded', 'false')
-            this.close(panel)
+
+            if (!this.isClosed(panel)) {
+              this.close(panel)
+
+              if (onClose) {
+                onClose.bind(this)(panel)
+              }
+            }
           }
         })
       }
 
       trigger.setAttribute('aria-expanded', 'true')
       this.open(panel)
+
+      if (onOpen) {
+        onOpen.bind(this)(panel)
+      }
     }
+  }
+
+  /**
+   * Check if panel is closed
+   * @author Milan Ricoul
+   * @param {HTMLElement} panel accordion panel
+   * @returns {Boolean}
+   */
+  isClosed(panel) {
+    return window.getComputedStyle(panel).display === 'none'
   }
 
   /**
@@ -262,6 +293,8 @@ Accordion.defaults = {
   closedDefault: false,
   forceExpand: true,
   hasAnimation: false,
+  onOpen: null,
+  onClose: null,
   panelSelector: '.accordion__panel',
   prefixId: 'accordion',
   triggerSelector: '.accordion__trigger',
