@@ -92,12 +92,14 @@ Accordion.initFromPreset();
 
 ### Options
 
-| name              | type    | default               | description                                             |
-|-------------------|---------|-----------------------|---------------------------------------------------------|
-| `allowMultiple`   | boolean | `false`               | Allow accordion to open panels at the same time.        |
-| `closedDefault`   | boolean | `false`               | If true, all panels are closed by default.              |
-| `forceExpand`     | boolean | `true`                | If true, the accordion has at least one panel opened.   |
-| `hasAnimation`    | boolean | `false`               | If true, the panel has a slideDown / slideUp animation. |
-| `panelSelector`   | string  | `.accordion__panel`   | The selector of the panels.                             |
-| `prefixId`        | string  | `accordion`           | The prefix id of the component.                         |
-| `triggerSelector` | string  | `.accordion__trigger` | The selector of the trigger buttons.                    |
+| name              | type     | default               | description                                             |
+|-------------------|----------|-----------------------|---------------------------------------------------------|
+| `allowMultiple`   | boolean  | `false`               | Allow accordion to open panels at the same time.        |
+| `closedDefault`   | boolean  | `false`               | If true, all panels are closed by default.              |
+| `forceExpand`     | boolean  | `true`                | If true, the accordion has at least one panel opened.   |
+| `hasAnimation`    | boolean  | `false`               | If true, the panel has a slideDown / slideUp animation. |
+| `onClose`         | function | `null`                | Opened panel callback.                                  |
+| `onOpen`          | function | `null`                | Closed panel callback.                                  |
+| `panelSelector`   | string   | `.accordion__panel`   | The selector of the panels.                             |
+| `prefixId`        | string   | `accordion`           | The prefix id of the component.                         |
+| `triggerSelector` | string   | `.accordion__trigger` | The selector of the trigger buttons.                    |

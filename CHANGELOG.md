@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## 1.2.12 - 2022-12-30
+- Add param `onClose` and `onOpen` callbacks for Accordion component
+
 ## 1.2.11 - 2022-12-30
 - Add param `closedDefault` for Accordion component
 - Auto add accessibles attributes for Dropdown component
