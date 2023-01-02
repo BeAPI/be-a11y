@@ -35,22 +35,31 @@ class Accordion extends AbstractDomElement {
     const panels = el.querySelectorAll(panelSelector)
     const id = uniqid()
 
-    el.id = `${prefixId}-${id}`
+    el.dataset.id = id
 
     if (closedDefault) {
       this._settings.forceExpand = false
     }
 
     // Set id and ARIA attributes to the trigger
-    this.applyToSelectors(triggers, (trigger) => {
-      trigger.id = `${prefixId}-${id}`
-      trigger.setAttribute('aria-controls', `${prefixId}-panel-${id}`)
+    this.applyToSelectors(triggers, (trigger, index) => {
+      let i = index + 1
+      while (document.getElementById(`${prefixId}-${id}-${i}`)) {
+        i++
+      }
+
+      trigger.id = `${prefixId}-${id}-${i}`
+      trigger.setAttribute('aria-controls', `${prefixId}-${id}-panel-${i}`)
     })
 
     // Set id and ARIA attributes to the panel
-    this.applyToSelectors(panels, (panel) => {
-      panel.id = `${prefixId}-panel-${id}`
-      panel.setAttribute('aria-labelledby', `${prefixId}-${id}`)
+    this.applyToSelectors(panels, (panel, index) => {
+      let i = index + 1
+      while (document.getElementById(`${prefixId}-${id}-panel-${i}`)) {
+        i++
+      }
+      panel.id = `${prefixId}-${id}-panel-${i}`
+      panel.setAttribute('aria-labelledby', `${prefixId}-${id}-${i}`)
 
       if (closedDefault) {
         this.close(panel)
