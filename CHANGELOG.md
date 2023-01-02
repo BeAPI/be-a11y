@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## 1.2.13 - 2023-01-02
+- Add [uniqid](https://www.npmjs.com/package/uniqid)
+- Add uniqid for Accordion and Toggle components
+- Remove all aria attributes for dropdown component on destroy
+
 ## 1.2.12 - 2022-12-30
 - Add param `onClose` and `onOpen` callbacks for Accordion component
 
