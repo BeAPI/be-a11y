@@ -123,8 +123,10 @@ class Dropdown extends AbstractDomElement {
       this.list.classList.remove(listClassName)
       this.list.removeAttribute('tabindex')
       this.list.removeAttribute('role')
+      this.list.removeAttribute('aria-activedescendant')
       this.listItems.forEach((listItem) => {
         listItem.removeAttribute('role')
+        listItem.removeAttribute('aria-selected')
       })
 
       return this
