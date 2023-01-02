@@ -74,4 +74,5 @@ Toggle.initFromPreset();
 | `isOpened`                 | boolean         | `false` | If true, the content is revealed by default.                                                                                            |
 | `mediaQuery`               | string          | `null`  | Apply toggle button to a window match media.                                                                                            |
 | `onClick`                  | function        | `null`  | Callback function when you click on the toggle button.                                                                                  |
+| `prefixId`                  | string        | `toggle`  | Define the prefix id of the component.                                                                                  |
 | `target`                   | string          | `null`  | Specify the content target with a selector. If null, the target is based on the `aria-controls` attribute value from the toggle button. |
