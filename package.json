@@ -38,7 +38,8 @@
     "test": "playwright test"
   },
   "dependencies": {
-    "body-scroll-lock": "^4.0.0-beta.0"
+    "body-scroll-lock": "^4.0.0-beta.0",
+    "uniqid": "^5.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.19.1",
