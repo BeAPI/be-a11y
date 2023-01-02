@@ -1,3 +1,4 @@
+import uniqid from 'uniqid'
 import AbstractDomElement from './AbstractDomElement.js'
 import DOMAnimations from '../utils/DOMAnimations.js'
 
@@ -32,30 +33,24 @@ class Accordion extends AbstractDomElement {
     const { closedDefault, panelSelector, prefixId, triggerSelector } = this._settings
     const triggers = el.querySelectorAll(triggerSelector)
     const panels = el.querySelectorAll(panelSelector)
+    const id = uniqid()
+
+    el.id = `${prefixId}-${id}`
 
     if (closedDefault) {
       this._settings.forceExpand = false
     }
 
     // Set id and ARIA attributes to the trigger
-    this.applyToSelectors(triggers, (trigger, index) => {
-      let i = index + 1
-      while (document.getElementById(`${prefixId}-${i}`)) {
-        i++
-      }
-
-      trigger.id = `${prefixId}-${i}`
-      trigger.setAttribute('aria-controls', `${prefixId}-panel-${i}`)
+    this.applyToSelectors(triggers, (trigger) => {
+      trigger.id = `${prefixId}-${id}`
+      trigger.setAttribute('aria-controls', `${prefixId}-panel-${id}`)
     })
 
     // Set id and ARIA attributes to the panel
-    this.applyToSelectors(panels, (panel, index) => {
-      let i = index + 1
-      while (document.getElementById(`${prefixId}-panel-${i}`)) {
-        i++
-      }
-      panel.id = `${prefixId}-panel-${i}`
-      panel.setAttribute('aria-labelledby', `${prefixId}-${i}`)
+    this.applyToSelectors(panels, (panel) => {
+      panel.id = `${prefixId}-panel-${id}`
+      panel.setAttribute('aria-labelledby', `${prefixId}-${id}`)
 
       if (closedDefault) {
         this.close(panel)
