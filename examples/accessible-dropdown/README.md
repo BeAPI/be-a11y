@@ -71,7 +71,7 @@ Dropdown.initFromPreset();
 
 | name                 | type                      | default            | description                                     |
 |----------------------|---------------------------|--------------------|-------------------------------------------------|
-| `automaticSelection` | boolean                   | `false`            | if `true`, first item is automatically selected |
+| `automaticSelection` | boolean \|\| string       | `false`            | if `true`, first item is automatically selected, if `string`, check if element exists and it will be selected. |
 | `buttonSelector`     | string                    | `button`           | Button selector.                                |
 | `labelSelector`      | string                    | `.dropdown__label` | Label selector.                                 |
 | `listSelector`       | string                    | `ul`               | Listbox selector.                               |
