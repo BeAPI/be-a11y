@@ -91,7 +91,15 @@ class Dropdown extends AbstractDomElement {
     })
 
     if (automaticSelection) {
-      this.updateFocusedListItem(this.listItems[0])
+      // if automaticSelection === true, select first item
+      if (typeof automaticSelection === 'boolean') {
+        this.updateFocusedListItem(this.listItems[0])
+      }
+
+      // if automaticSelection === string, check if element exists and select it
+      if (typeof automaticSelection === 'string' && el.querySelector(automaticSelection)) {
+        this.updateFocusedListItem(el.querySelector(automaticSelection))
+      }
     }
 
     this.button.addEventListener('click', this.handleButtonClick)
