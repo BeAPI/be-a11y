@@ -17,7 +17,7 @@
         
         <h2>Demo</h2>
 
-        <h3>Automatic first item selected</h3>
+        <h3>Non automatic selection</h3>
         
         <div id="dropdown-1" class="dropdown">
             <span class="dropdown__label">Choose an element</span>
@@ -31,7 +31,7 @@
             </ul>
         </div>
 
-        <h3>Non automatic selection</h3>
+        <h3>Automatic first item selected</h3>
 
         <div id="dropdown-2" class="dropdown">
             <span class="dropdown__label">Choose an element</span>
@@ -45,9 +45,23 @@
             </ul>
         </div>
 
-        <h3>With events</h3>
+        <h3>Automatic specific item selected</h3>
 
         <div id="dropdown-3" class="dropdown">
+            <span class="dropdown__label">Choose an element</span>
+            <button aria-haspopup="listbox">Choose an element</button>
+            <ul tabindex="-1" role="listbox">
+                <li role="option">Book</li>
+                <li role="option">Movies</li>
+                <li role="option" class="current">Music</li>
+                <li role="option">Video games</li>
+                <li role="option">Paint</li>
+            </ul>
+        </div>
+
+        <h3>With events</h3>
+
+        <div id="dropdown-4" class="dropdown">
             <span class="dropdown__label">Choose an element</span>
             <button aria-haspopup="listbox">Choose an element</button>
             <ul tabindex="-1" role="listbox">
@@ -61,7 +75,7 @@
 
         <h3>Dropdown only for &lt; 1024px devices</h3>
 
-        <div id="dropdown-4" class="dropdown">
+        <div id="dropdown-5" class="dropdown">
             <span class="dropdown__label">Choose an element</span>
             <button aria-haspopup="listbox">Choose an element</button>
             <ul tabindex="-1" role="listbox">
@@ -94,6 +108,9 @@
                     automaticSelection: true,
                 },
                 '#dropdown-3': {
+                    automaticSelection: '.current',
+                },
+                '#dropdown-4': {
                     onChange: function() {
                         alert('changed')
                     },
@@ -107,7 +124,7 @@
                         alert('opened')
                     },
                 },
-                '#dropdown-4': {
+                '#dropdown-5': {
                     matchMedia: window.matchMedia('(max-width: 1024px)')
                 }
             }
