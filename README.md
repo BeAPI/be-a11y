@@ -10,7 +10,7 @@ This repository contains a collection of useful accessible components such as ta
 Start by installing the package.
 
 ```bash
-yarn add @beapi/be-a11y # or npm install @beapi/be-a11y --save
+$ yarn add @beapi/be-a11y # or npm install @beapi/be-a11y --save
 ```
 Then, import in your JavaScript file the component you need.
 
@@ -31,15 +31,23 @@ For more details about components, check the documentations:
 
 ## Want to contribute?
 
-Project works with [Vite ⚡](https://vitejs.dev/) and [Playwright 🎭](https://playwright.dev/).
+Project works with [Vite ⚡](https://vitejs.dev/), [Storybook 📚](https://storybook.js.org/) and [Playwright 🎭](https://playwright.dev/).
 
 ### Development
 
 ```bash
-yarn # Install dependencies
+$ yarn # Install dependencies
 
-yarn dev # Start development server
+$ yarn dev # Start development server
 ```
+
+You can also access to project's storybook with the following command.
+
+```bash
+$ yarn storybook
+```
+
+Next, go to http://localhost:6007/.
 
 ### Build
 
