@@ -1,7 +1,7 @@
-import Accordion from './src/classes/Accordion.js'
-import Dropdown from './src/classes/Dropdown.js'
-import Modal from './src/classes/Modal.js'
-import Tabs from './src/classes/Tabs.js'
-import Toggle from './src/classes/Toggle.js'
+import Accordion from './src/components/accordion/Accordion.js'
+import Dropdown from './src/components/dropdown/Dropdown.js'
+import Modal from './src/components/modal/Modal.js'
+import Tabs from './src/components/tabs/Tabs.js'
+import Toggle from './src/components/toggle/Toggle.js'
 
 export { Accordion, Dropdown, Modal, Tabs, Toggle }

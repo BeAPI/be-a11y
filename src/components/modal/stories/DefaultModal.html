@@ -1,0 +1,46 @@
+<button type="button" aria-controls="dialog-1" data-modal="dialog-1">Add Delivery Address</button>
+        
+<div class="modal" tabindex="-1" role="dialog" aria-modal="true" style="display: none;">
+    <div class="modal__inner">
+        <h2 class="modal__title">Add Delivery Address</h2>
+        
+        <div>
+            <div class="mb-4">
+                <label for="street">
+                    <span>Street:</span>
+                    <input id="street" type="text">
+                </label>
+            </div>
+            <div class="mb-4">
+                <label for="city">
+                    <span>City:</span>
+                    <input id="city" type="text">
+                </label>
+            </div>
+            <div class="mb-4">
+                <label for="state">
+                    <span>State:</span>
+                    <input id="state" type="text">
+                </label>
+            </div>
+            <div class="mb-4">
+                <label for="zip">
+                    <span>Zip:</span>
+                    <input id="zip" type="text">
+                </label>
+            </div>
+            
+            <div>
+                <label for="special_instructions">
+                    <span>Special instructions:</span>
+                </label>
+                <input id="special_instructions" type="text" aria-describedby="special_instructions_desc" class="mb-2">
+                <div id="special_instructions_desc">For example, gate code or other information to help the driver find you</div>
+            </div>
+        </div>
+        
+        <button id="dialog-1-close" type="button" class="modal__close">
+            <span class="sr-only">Close</span>
+        </button>
+    </div>
+</div>

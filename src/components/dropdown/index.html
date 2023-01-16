@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Accessible Dropdown</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Accessible Dropdown</h1>
+        
+        <p class="back">
+            <a href="../../index.html">Back to components list</a>
+        </p>
+        
+        <h2>Demo</h2>
+
+        <h3>Non automatic selection</h3>
+        
+        <div id="dropdown-1" class="dropdown">
+            <span class="dropdown__label">Choose an element</span>
+            <button aria-haspopup="listbox">Choose an element</button>
+            <ul tabindex="-1" role="listbox">
+                <li role="option">Book</li>
+                <li role="option">Movies</li>
+                <li role="option">Music</li>
+                <li role="option">Video games</li>
+                <li role="option">Paint</li>
+            </ul>
+        </div>
+
+        <h3>Automatic first item selected</h3>
+
+        <div id="dropdown-2" class="dropdown">
+            <span class="dropdown__label">Choose an element</span>
+            <button aria-haspopup="listbox">Choose an element</button>
+            <ul tabindex="-1" role="listbox">
+                <li role="option">Book</li>
+                <li role="option">Movies</li>
+                <li role="option">Music</li>
+                <li role="option">Video games</li>
+                <li role="option">Paint</li>
+            </ul>
+        </div>
+
+        <h3>Automatic specific item selected</h3>
+
+        <div id="dropdown-3" class="dropdown">
+            <span class="dropdown__label">Choose an element</span>
+            <button aria-haspopup="listbox">Choose an element</button>
+            <ul tabindex="-1" role="listbox">
+                <li role="option">Book</li>
+                <li role="option">Movies</li>
+                <li role="option" class="current">Music</li>
+                <li role="option">Video games</li>
+                <li role="option">Paint</li>
+            </ul>
+        </div>
+
+        <h3>With events</h3>
+
+        <div id="dropdown-4" class="dropdown">
+            <span class="dropdown__label">Choose an element</span>
+            <button aria-haspopup="listbox">Choose an element</button>
+            <ul tabindex="-1" role="listbox">
+                <li role="option">Book</li>
+                <li role="option">Movies</li>
+                <li role="option">Music</li>
+                <li role="option">Video games</li>
+                <li role="option">Paint</li>
+            </ul>
+        </div>
+
+        <h3>Dropdown only for &lt; 1024px devices</h3>
+
+        <div id="dropdown-5" class="dropdown">
+            <span class="dropdown__label">Choose an element</span>
+            <button aria-haspopup="listbox">Choose an element</button>
+            <ul tabindex="-1" role="listbox">
+                <li role="option">Book</li>
+                <li role="option">Movies</li>
+                <li role="option">Music</li>
+                <li role="option">Video games</li>
+                <li role="option">Paint</li>
+            </ul>
+        </div>
+        
+        <h2>Code</h2>
+        
+        <p class="codepen" data-height="600" data-theme-id="light" data-default-tab="html,result" data-slug-hash="VwQbYqN" data-user="beapi" style="height: 600px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+            <span>See the Pen <a href="https://codepen.io/beapi/pen/VwQbYqN">
+                Accessible Collapsible Dropdown Listbox</a> by Be API (<a href="https://codepen.io/beapi">@beapi</a>)
+                on <a href="https://codepen.io">CodePen</a>.</span>
+            </p>
+            <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+        </div>
+        
+        <script type="module">
+            import Dropdown from './Dropdown.js'
+            import '../../css/index.css'
+            import './style.css'
+            
+            Dropdown.preset = {
+                '#dropdown-1': {},
+                '#dropdown-2': {
+                    automaticSelection: true,
+                },
+                '#dropdown-3': {
+                    automaticSelection: '.current',
+                },
+                '#dropdown-4': {
+                    onChange: function() {
+                        alert('changed')
+                    },
+                    onClose: function() {
+                        alert('closed')
+                    },
+                    onListItemClick: function() {
+                        alert('List item click')
+                    },
+                    onOpen: function() {
+                        alert('opened')
+                    },
+                },
+                '#dropdown-5': {
+                    matchMedia: window.matchMedia('(max-width: 1024px)')
+                }
+            }
+            
+            Dropdown.initFromPreset()
+        </script>
+    </body>
+    </html>

@@ -35,7 +35,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "playwright test"
+    "test": "playwright test",
+    "storybook": "start-storybook -p 6007",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "body-scroll-lock": "^4.0.0-beta.0",
@@ -45,9 +47,17 @@
     "@babel/core": "^7.19.1",
     "@babel/preset-env": "^7.19.1",
     "@playwright/test": "^1.27.1",
+    "@storybook/addon-actions": "^6.5.15",
+    "@storybook/addon-essentials": "^6.5.15",
+    "@storybook/addon-interactions": "^6.5.15",
+    "@storybook/addon-links": "^6.5.15",
+    "@storybook/builder-vite": "^0.2.6",
+    "@storybook/html": "^6.5.15",
+    "@storybook/testing-library": "^0.0.13",
     "@wordpress/stylelint-config": "^20.0.2",
     "autoprefixer": "^10.4.12",
     "babel-jest": "^27.1.0",
+    "babel-loader": "^8.3.0",
     "eslint": "^8.28.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.2.1",
