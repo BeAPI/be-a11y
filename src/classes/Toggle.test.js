@@ -43,7 +43,7 @@ test.describe('Toggle', () => {
     expect(display).toBe('block')
   })
 
-  test('Click on a toggle button of a visible content, expect the content is hidde5.', async ({page}) => {
+  test('Click on a toggle button of a visible content, expect the content is hidden.', async ({page}) => {
     await page.click('button[aria-controls="toggle-5"]')
     let display = await page.$eval(
       '#toggle-5',
