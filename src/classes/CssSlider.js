@@ -117,7 +117,7 @@ class CssSlider extends AbstractDomElement {
       el.appendChild(this._counter)
     }
 
-    // set swip behavior events
+    // set swipe behavior events
     if (s.touch) {
       el.addEventListener('touchstart', this._onTouchStart)
 
@@ -134,29 +134,58 @@ class CssSlider extends AbstractDomElement {
     this.goto(s.current)
   }
 
+  /**
+   * getElement
+   * @returns domElement -> The element on which the slider was initialized
+   */
   getElement() {
     return this._element
   }
 
+  /**
+   * getItemLength
+   * @returns number -> Number of items in slider
+   */
   getItemLength() {
     return this._item.length
   }
 
+  /**
+   * getCurrentIndex
+   * @returns number -> Current index of the slider
+   */
   getCurrentIndex() {
     return this._current
   }
 
+  /**
+   * prev
+   * @param boolean announceItem -> update the live region if true
+   * @returns object this
+   */
   prev(announceItem) {
-    this.goto(this._current - 1, -1, announceItem)
+    this.goto(this._current - 1, announceItem, -1)
     return this
   }
 
+  /**
+   * next
+   * @param boolean announceItem -> update the live region if true
+   * @returns object this
+   */
   next(announceItem) {
-    this.goto(this._current + 1, 1, announceItem)
+    this.goto(this._current + 1, announceItem, 1)
     return this
   }
 
-  goto(index, dir, announceItem) {
+  /**
+   * goto
+   * @param number index -> position to reach
+   * @param boolean announceItem -> update the live region if true
+   * @param dir 1|-1 optional 
+   * @returns object this
+   */
+  goto(index, announceItem, dir) {
     const s = this._settings
     const l = this._item.length
     const half = Math.ceil(l / 2)
@@ -241,13 +270,12 @@ class CssSlider extends AbstractDomElement {
     return this
   }
 
+  /**
+   * refresh
+   * @returns object this
+   */
   refresh() {
-    var scrollTop = window.pageYOffset
-
     this._items.style.height = getMaxHeight(this._item) + 'px'
-
-    window.scrollTo(0, scrollTop)
-
     return this
   }
 }
