@@ -1,0 +1,122 @@
+body > div {
+    overflow: hidden;
+}
+
+/* ----
+ * css slider
+ * ---- */
+.css-slider {
+    position: relative;
+    z-index: 0;
+}
+
+.css-slider__items {
+    transition: height .25s;
+}
+
+.css-slider__item {
+    position: absolute;
+    left: 50%;
+    width: 200px;
+    height: 300px;
+    margin-left: -100px;
+    overflow: hidden;
+    user-select: none;
+    border-radius: 10px;
+    transition-timing-function: cubic-bezier(.19, 1, .22, 1);
+    transition-duration: 1s;
+    transition-property: opacity, transform;
+}
+
+img {
+    width: 400px;
+    max-width: none;
+    height: 100%;
+    margin-left: -100px;
+    transition: transform 1s cubic-bezier(.19, 1, .22, 1);
+}
+
+/* ----
+ * define position for each item
+ * ---- */
+.css-slider__item[data-pos="-2"] {
+    opacity: 0;
+    transform: translateX(-220%);
+}
+
+.css-slider__item[data-pos="-2"] img {
+    transform: translateX(100px);
+}
+
+.css-slider__item[data-pos="-1"] {
+    transform: translateX(-110%);
+}
+
+.css-slider__item[data-pos="-1"] img {
+    transform: translateX(50px);
+}
+
+.css-slider__item[data-pos="1"] {
+    transform: translateX(110%);
+}
+
+.css-slider__item[data-pos="1"] img {
+    transform: translateX(-50px);
+}
+
+.css-slider__item[data-pos="2"] {
+    opacity: 0;
+    transform: translateX(220%);
+}
+
+.css-slider__item[data-pos="2"] img {
+    transform: translateX(-100px);
+}
+
+/* ----
+ * nav
+ * ---- */
+.css-slider__nav {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.css-slider__nav button {
+    min-width: 120px;
+}
+
+.css-slider__nav button[disabled] {
+    color: #ccc;
+    background: #fff;
+}
+
+.css-slider__dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.css-slider__dots li {
+    margin: 0 5px;
+}
+
+.css-slider__dots button {
+    width: 50px;
+    height: 30px;
+    padding: 0;
+}
+
+.css-slider__active {
+    background:rgb(243, 244, 246);
+}
+
+/* ----
+ * counter
+ * ---- */
+.css-slider__counter {
+    position: absolute;
+    top: calc(61vw - 50px);
+    right: 10px;
+    padding: 0 10px;
+    border-radius: 4px;
+}

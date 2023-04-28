@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Accessible CssSlider</title>
+</head>
+<body>
+    <div>
+        <div class="wrapper">
+            <h1>Accessible Css Slider</h1>
+            
+            <p class="back">
+                <a href="../../index.html">Back to components list</a>
+            </p>
+            
+            <h2>Demo</h2>
+
+            <h3>Basic carrousel</h3>
+            
+            <div class="css-slider" aria-label="Carroussel d'image">
+                <ul class="css-slider__items">
+                    <li class="css-slider__item" aria-label="Item 1 sur 5">
+                        <img src="https://picsum.photos/400/300?random=1" />
+                    </li>
+                    <li class="css-slider__item" aria-label="Item 2 sur 5">
+                        <img src="https://picsum.photos/400/300?random=2" />
+                    </li>
+                    <li class="css-slider__item" aria-label="Item 3 sur 5">
+                        <img src="https://picsum.photos/400/300?random=3" />
+                    </li>
+                    <li class="css-slider__item" aria-label="Item 4 sur 5">
+                        <img src="https://picsum.photos/400/300?random=4" />
+                    </li>
+                    <li class="css-slider__item" aria-label="Item 5 sur 5">
+                        <img src="https://picsum.photos/400/300?random=5" />
+                    </li>
+                </ul>
+                <div class="css-slider__nav">
+                    <button class="css-slider__prev">Previous</button>
+                    <button class="css-slider__next">Next</button>
+                </div>
+                <div class="css-slider__live-region sr-only"><!-- current item will be announced here based on item aria-label --></div>
+            </div>
+        </div>
+        
+        <!--
+        <h2>Code</h2>
+
+        <p class="codepen" data-height="600" data-theme-id="light" data-default-tab="html,result" data-slug-hash="VwQbYqN" data-user="beapi" style="height: 600px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+            <span>See the Pen <a href="https://codepen.io/beapi/pen/VwQbYqN">
+                Accessible Collapsible Dropdown Listbox</a> by Be API (<a href="https://codepen.io/beapi">@beapi</a>)
+                on <a href="https://codepen.io">CodePen</a>.</span>
+            </p>
+            <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+        </div>
+        -->
+        
+        <script type="module">
+            import { CssSlider } from '../../index.js'
+            import '../../src/css/index.css'
+            import './style.css'
+            
+            CssSlider.init('.css-slider', {
+                maxPrevPos: -2,
+                maxNextPos: 2,
+                dots: true
+            });
+        </script>
+    </body>
+    </html>
