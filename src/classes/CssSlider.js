@@ -14,7 +14,6 @@ class CssSlider extends AbstractDomElement {
       return instance
     }
 
-    const that = this
     const s = this._settings
     const el = this._element
 
@@ -82,30 +81,30 @@ class CssSlider extends AbstractDomElement {
 
     // if custom links are already in DOM, add event
     if (this._customLinks) {
-      each(this._customLinks.getElementsByTagName('button'), function (button) {
-        button.addEventListener('click', that._onClickDot)
+      each(this._customLinks.getElementsByTagName('button'), (button) => {
+        button.addEventListener('click', this._onClickDot)
       })
     }
 
     // if user can click on item to change slide
     if (s.clickableItem) {
-      each(this._item, function (item, i) {
+      each(this._item, (item, i) => {
         item.setAttribute('data-index', i)
-        item.addEventListener('click', that._onClickItem)
+        item.addEventListener('click', this._onClickItem)
       })
     }
 
     // if items container must update his height accordingly to current item
     if (s.adaptiveHeight) {
-      each(this._item, function (item) {
-        item.addEventListener('transitionend', that._onTransitionEnd)
+      each(this._item, (item) => {
+        item.addEventListener('transitionend', this._onTransitionEnd)
       })
 
       this._resize = new ThrottledEvent(window, 'resize')
       this._resize.add('resize', this._onResize)
 
-      imagesLoaded(el.getElementsByTagName('img'), null, function () {
-        that.refresh()
+      imagesLoaded(el.getElementsByTagName('img'), null, () => {
+        this.refresh()
       })
     }
 
@@ -189,7 +188,6 @@ class CssSlider extends AbstractDomElement {
     const s = this._settings
     const l = this._item.length
     const half = Math.ceil(l / 2)
-    var i
 
     index = (index + l) % l
 
@@ -198,17 +196,17 @@ class CssSlider extends AbstractDomElement {
     }
 
     if (s.infinite) {
-      for (i = 1; i <= half; i++) {
+      for (let i = 1; i <= half; i++) {
         setPosition.call(this, (index - i + l) % l, -i)
       }
 
-      for (i = 1; i <= half; i++) {
+      for (let i = 1; i <= half; i++) {
         setPosition.call(this, (index + i) % l, i)
       }
 
       setPosition.call(this, index, 0)
     } else {
-      for (i = 0; i < l; i++) {
+      for (let i = 0; i < l; i++) {
         setPosition.call(this, i, i - index)
       }
 
@@ -285,17 +283,20 @@ class CssSlider extends AbstractDomElement {
 // ----
 function setPosition(index, pos) {
   const s = this._settings
+
   pos = Math.max(Math.min(pos, s.maxNextPos), s.maxPrevPos)
+
   this._item[index].setAttribute(s.posAttr, pos)
   this._item[index].setAttribute('aria-hidden', pos !== 0)
   this._item[index].setAttribute('tabindex', pos !== 0 ? -1 : 0)
+
   s.onSetPosition.call(this, index, pos)
 }
 
 function setActive(container, index) {
   const activeClass = this._settings.activeClass
-  var buttons = container.getElementsByTagName('button')
-  var active = container.getElementsByClassName(activeClass)[0]
+  const buttons = container.getElementsByTagName('button')
+  const active = container.getElementsByClassName(activeClass)[0]
 
   if (active) {
     active.classList.remove(activeClass)
@@ -374,13 +375,10 @@ function onRequestNext() {
 // ----
 function createDotList(nbDot, dotsListClass, onClick) {
   const ul = document.createElement('ul')
-  var button
-  var li
-  var i
 
-  for (i = 1; i <= nbDot; i++) {
-    li = document.createElement('li')
-    button = document.createElement('button')
+  for (let i = 1; i <= nbDot; i++) {
+    const li = document.createElement('li')
+    const button = document.createElement('button')
 
     button.setAttribute('type', 'button')
     button.innerHTML = i
