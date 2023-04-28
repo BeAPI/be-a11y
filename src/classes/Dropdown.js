@@ -1,5 +1,5 @@
 import AbstractDomElement from './AbstractDomElement.js'
-import { ThrottledEvent } from '../utils/OneLoop.js'
+import { ThrottledEvent } from 'oneloop.js'
 
 /**
  * Dropdown Class

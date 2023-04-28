@@ -182,7 +182,7 @@ class CssSlider extends AbstractDomElement {
    * goto
    * @param number index -> position to reach
    * @param boolean announceItem -> update the live region if true
-   * @param dir 1|-1 optional 
+   * @param dir 1|-1 optional
    * @returns object this
    */
   goto(index, announceItem, dir) {
