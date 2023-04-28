@@ -14,14 +14,14 @@ import MediaQueryDropdown from './MediaQueryDropdown.html?raw'
 storiesOf('1. Components/Dropdown', module)
   .add('Default', () => {
     useEffect(() => {
-      Dropdown.init('#dropdown-1')
+      Dropdown.init('#dropdown')
     }, [])
 
     return DefaultDropdown
   })
   .add('Automatic Selection', () => {
     useEffect(() => {
-      Dropdown.init('#dropdown-2', {
+      Dropdown.init('#dropdown', {
         automaticSelection: true,
       })
     }, [])
@@ -30,7 +30,7 @@ storiesOf('1. Components/Dropdown', module)
   })
   .add('Specific item selection', () => {
     useEffect(() => {
-      Dropdown.init('#dropdown-3', {
+      Dropdown.init('#dropdown', {
         automaticSelection: '.current',
       })
     }, [])
@@ -39,7 +39,7 @@ storiesOf('1. Components/Dropdown', module)
   })
   .add('With callbacks', () => {
     useEffect(() => {
-      Dropdown.init('#dropdown-4', {
+      Dropdown.init('#dropdown', {
         onChange: function () {
           alert('changed')
         },
@@ -59,7 +59,7 @@ storiesOf('1. Components/Dropdown', module)
   })
   .add('With matchMedia', () => {
     useEffect(() => {
-      Dropdown.init('#dropdown-5', {
+      Dropdown.init('#dropdown', {
         matchMedia: window.matchMedia('(max-width: 1024px)'),
       })
     }, [])

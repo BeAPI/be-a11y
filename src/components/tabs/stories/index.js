@@ -11,14 +11,14 @@ import AutomaticDefault from './AutomaticDefault.html?raw'
 storiesOf('1. Components/Tabs', module)
   .add('Default', () => {
     useEffect(() => {
-      Tabs.init('#tab-demo-1')
+      Tabs.init('#tab-demo')
     }, [])
 
     return DefaultTabs
   })
   .add('Automatic', () => {
     useEffect(() => {
-      Tabs.init('#tab-demo-2', {
+      Tabs.init('#tab-demo', {
         auto: true,
       })
     }, [])

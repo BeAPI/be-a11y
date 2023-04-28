@@ -15,42 +15,42 @@ import CallbackAccordion from './CallbackAccordion.html?raw'
 storiesOf('1. Components/Accordion', module)
   .add('Default', () => {
     useEffect(() => {
-      Accordion.init('#accordion-demo-1')
+      Accordion.init('#accordion-demo')
     }, [])
 
     return DefaultAccordion
   })
   .add('Animation enabled', () => {
     useEffect(() => {
-      Accordion.init('#accordion-demo-2', { hasAnimation: true })
+      Accordion.init('#accordion-demo', { hasAnimation: true })
     }, [])
 
     return AnimatedAccordion
   })
   .add('Multiple openable panels', () => {
     useEffect(() => {
-      Accordion.init('#accordion-demo-3', { allowMultiple: true })
+      Accordion.init('#accordion-demo', { allowMultiple: true })
     }, [])
 
     return AllowMultipleAccordion
   })
   .add('All panels closable', () => {
     useEffect(() => {
-      Accordion.init('#accordion-demo-4', { forceExpand: false })
+      Accordion.init('#accordion-demo', { forceExpand: false })
     }, [])
 
     return AllClosableAccordion
   })
-  .add('Accordion closed by default', () => {
+  .add('Closed panels by default', () => {
     useEffect(() => {
-      Accordion.init('#accordion-demo-5', { closedDefault: true })
+      Accordion.init('#accordion-demo', { closedDefault: true })
     }, [])
 
     return ClosedAccordion
   })
   .add('With callbacks', () => {
     useEffect(() => {
-      Accordion.init('#accordion-demo-6', {
+      Accordion.init('#accordion-demo', {
         forceExpand: false,
         onClose: function (panel) {
           alert(`${panel.id} closed`)
