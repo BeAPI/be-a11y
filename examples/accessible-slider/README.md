@@ -1,6 +1,6 @@
-# Accessible CssSlider
+# Accessible Slider
 
-Build an accessible  arround your markup.
+Build an accessible slider arround your markup.
 
 * [See accessible specificies](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/)
 * [Demo](https://codepen.io/beapi/pen/GRYEzJo)
@@ -10,16 +10,19 @@ Build an accessible  arround your markup.
 ### Install the package
 
 We can install the package from NPM or Yarn.
+
 ```bash
 yarn add @beapi/be-a11y
 ```
 
 Then import the component in your JavaScript.
+
 ```js
-import { CssSlider } from '@beapi/be-a11y';
+import { Slider } from '@beapi/be-a11y';
 ```
 
 ### Add Dropdown HTML Layout
+
 Copy the following markup on your HTML file :
 
 ```html
@@ -44,22 +47,23 @@ Copy the following markup on your HTML file :
 ```
 
 ### Initialize the component
+
 Finally, we need to initialize this component in JavaScript.
 
 ```js
-import { CssSlider } from '@beapi/be-a11y';
+import { Slider } from '@beapi/be-a11y';
 
-CssSlider.init('.dropdown', {
+Slider.init('.css-slider', {
   // Options here
 });
 ```
 
-If you have multiple css slider with different options, you can set a preset and initialize all at once.
+If you have multiple sliders with different options, you can set a preset and initialize all at once.
 
 ```js
-import { CssSlider } from '@beapi/be-a11y';
+import { Slider } from '@beapi/be-a11y';
 
-CssSlider.preset = {
+Slider.preset = {
   '.css-slider--images': {
     infinite: true,
   },
@@ -68,7 +72,7 @@ CssSlider.preset = {
   },
 };
 
-CssSlider.initFromPreset();
+Slider.initFromPreset();
 ```
 
 > **Warning**
@@ -103,5 +107,3 @@ CssSlider.initFromPreset();
 | `onSetPosition`      | function                  | `function(index, pos) {}`       | Callback on set item position                           |
 | `onGoto`             | function                  | `function(index, dir) {}`       | Callback on go to index                                 |
 | `onClickItem`        | function                  | `function(evt, item, index) {}` | Callback on click item                                  |
-
-
