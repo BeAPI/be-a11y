@@ -2,7 +2,7 @@ import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import uniqid from 'uniqid'
 import AbstractDomElement from './AbstractDomElement.js'
 import DOMAnimations from '../utils/DOMAnimations.js'
-import throttle from '../utils/throttle.js'
+import { ThrottledEvent } from 'oneloop.js'
 
 /**
  * Toggle Class
@@ -29,7 +29,7 @@ class Toggle extends AbstractDomElement {
 
     this.initialized = false
 
-    window.addEventListener('resize', throttle(this._onResizeHandler, 300))
+    new ThrottledEvent(window, 'resize').add('resize', this._onResizeHandler)
     this._onResizeHandler()
   }
 
