@@ -134,7 +134,8 @@ class Slider extends AbstractDomElement {
   }
 
   /**
-   * getElement
+   * Get element
+   *
    * @returns domElement -> The element on which the slider was initialized
    */
   getElement() {
@@ -142,7 +143,8 @@ class Slider extends AbstractDomElement {
   }
 
   /**
-   * getItemLength
+   * Get item count
+   *
    * @returns number -> Number of items in slider
    */
   getItemLength() {
@@ -150,7 +152,8 @@ class Slider extends AbstractDomElement {
   }
 
   /**
-   * getCurrentIndex
+   * Get current index
+   *
    * @returns number -> Current index of the slider
    */
   getCurrentIndex() {
@@ -158,9 +161,11 @@ class Slider extends AbstractDomElement {
   }
 
   /**
-   * prev
-   * @param boolean announceItem -> update the live region if true
-   * @returns object this
+   * Go to previous
+   *
+   * @param {boolean} announceItem update the live region if true
+   *
+   * @returns {object}
    */
   prev(announceItem) {
     this.goto(this._current - 1, announceItem, -1)
@@ -168,9 +173,11 @@ class Slider extends AbstractDomElement {
   }
 
   /**
-   * next
-   * @param boolean announceItem -> update the live region if true
-   * @returns object this
+   * Go to next
+   *
+   * @param {boolean} announceItem update the live region if true
+   *
+   * @returns {object}
    */
   next(announceItem) {
     this.goto(this._current + 1, announceItem, 1)
@@ -178,11 +185,13 @@ class Slider extends AbstractDomElement {
   }
 
   /**
-   * goto
-   * @param number index -> position to reach
-   * @param boolean announceItem -> update the live region if true
-   * @param dir 1|-1 optional
-   * @returns object this
+   * Go to
+   *
+   * @param {number} index -> position to reach
+   * @param {boolean} announceItem -> update the live region if true
+   * @param {number} dir 1|-1 optional
+   *
+   * @returns {object}
    */
   goto(index, announceItem, dir) {
     const s = this._settings
@@ -269,11 +278,13 @@ class Slider extends AbstractDomElement {
   }
 
   /**
-   * refresh
-   * @returns object this
+   * Refresh
+   *
+   * @returns {object}
    */
   refresh() {
-    this._items.style.height = getMaxHeight(this._item) + 'px'
+    this._items.style.height = `${getMaxHeight(this._item)}px`
+
     return this
   }
 }
@@ -281,6 +292,13 @@ class Slider extends AbstractDomElement {
 // ----
 // private
 // ----
+
+/**
+ * Set position of slides
+ *
+ * @param {number} index index of slide
+ * @param {number} pos position of slide
+ */
 function setPosition(index, pos) {
   const s = this._settings
 
@@ -293,6 +311,11 @@ function setPosition(index, pos) {
   s.onSetPosition.call(this, index, pos)
 }
 
+/**
+ * Set dot active
+ * @param {HTMLElement} container dots unordered list
+ * @param {number} index index of current slide
+ */
 function setActive(container, index) {
   const activeClass = this._settings.activeClass
   const buttons = container.getElementsByTagName('button')
@@ -310,11 +333,21 @@ function setActive(container, index) {
 // ----
 // events
 // ----
+
+/**
+ * Click dot callback
+ *
+ * @param {MouseEvent} e mouse event
+ */
 function onClickDot(e) {
-  var index = parseInt(e.currentTarget.value)
-  this.goto(index)
+  this.goto(e.currentTarget.value)
 }
 
+/**
+ * Click item callback
+ *
+ * @param {MouseEvent} e mouse event
+ */
 function onClickItem(e) {
   const item = e.currentTarget
   const index = parseInt(item.dataset.index)
@@ -323,6 +356,11 @@ function onClickItem(e) {
   this.goto(index)
 }
 
+/**
+ * Transition end callback
+ *
+ * @param {TransitionEvent} e transition event
+ */
 function onTransitionEnd(e) {
   const isItem = e.target === e.currentTarget
   const isMainItem = parseInt(e.currentTarget.getAttribute(this._settings.posAttr)) === 0
@@ -333,37 +371,62 @@ function onTransitionEnd(e) {
   }
 }
 
+/**
+ * Transition start callback
+ */
 function onTouchStart() {
   this._element.removeEventListener('mousedown', this._onPointerDown)
   this._element.removeEventListener('mousemove', this._onPointerMove)
   this._element.removeEventListener('mouseup', this._onPointerUp)
 }
 
+/**
+ * On pointer down callback
+ *
+ * @param {MouseEvent} e pointer down event
+ */
 function onPointerDown(e) {
+  console.log(e)
   e = normalizeEvent(e)
 
   this._pointerPositions.start = e.clientX
   this._pointerPositions.move = e.clientX
 }
 
+/**
+ * On pointer move callback
+ *
+ * @param {MouseEvent} e pointer move event
+ */
 function onPointerMove(e) {
   e = normalizeEvent(e)
 
   this._pointerPositions.move = e.clientX
 }
 
+/**
+ * On pointer up callback
+ *
+ * @param {MouseEvent} e pointer up event
+ */
 function onPointerUp() {
   if (Math.abs(this._pointerPositions.start - this._pointerPositions.move) > 50) {
     this[this._pointerPositions.start > this._pointerPositions.move ? 'next' : 'prev']()
   }
 }
 
+/**
+ * Request previous slide
+ */
 function onRequestPrev() {
   if (this._settings.infinte || this._isPrevEnabled) {
     this.prev(true)
   }
 }
 
+/**
+ * Request next slide
+ */
 function onRequestNext() {
   if (this._settings.infinte || this._isNextEnabled) {
     this.next(true)
@@ -373,7 +436,18 @@ function onRequestNext() {
 // ----
 // utils
 // ----
+
+/**
+ * Create slider unordered list navigation
+ *
+ * @param {Number} nbDot number of dots
+ * @param {HTMLElement} dotsListClass wrapper list element
+ * @param {Function} onClick click callback
+ *
+ * @returns {HTMLElement}
+ */
 function createDotList(nbDot, dotsListClass, onClick) {
+  console.log({ nbDot, dotsListClass, onClick })
   const ul = document.createElement('ul')
 
   for (let i = 1; i <= nbDot; i++) {
@@ -394,6 +468,13 @@ function createDotList(nbDot, dotsListClass, onClick) {
   return ul
 }
 
+/**
+ * Normalize event
+ *
+ * @param {MouseEvent} e mouse event
+ *
+ * @returns {MouseEvent}
+ */
 function normalizeEvent(e) {
   return e.touches ? e.touches[0] : e
 }
