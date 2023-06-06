@@ -14,7 +14,7 @@ test.describe('Tabs', () => {
 
     expect(thirdTabButton).toBe('true')
   })
-  
+
   test('Click on a tab, expect hidden attribute of the panel to be null.', async ({page}) => {
     await page.click('button#tab-3')
     let thirdTabPanel = await page.$eval(
