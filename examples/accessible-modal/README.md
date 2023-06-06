@@ -41,7 +41,7 @@ Finally, we need to initialize this component in JavaScript.
 import { Modal } from '@beapi/be-a11y';
 
 Modal.init('.modal', {
-  // Options here
+  closeButtonSelector: '.modal__close'
 });
 ```
 
