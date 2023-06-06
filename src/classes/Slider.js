@@ -40,10 +40,13 @@ class Slider extends AbstractDomElement {
     this._onPointerDown = onPointerDown.bind(this)
     this._onPointerMove = onPointerMove.bind(this)
     this._onPointerUp = onPointerUp.bind(this)
+    this._onKeyDown = onKeydown.bind(this)
     this._onResize = this.refresh.bind(this)
     this._onClickDot = onClickDot.bind(this)
     this._onRequestPrev = onRequestPrev.bind(this)
     this._onRequestNext = onRequestNext.bind(this)
+    this._onRequestFirst = onRequestFirst.bind(this)
+    this._onRequestLast = onRequestLast.bind(this)
 
     // hide nav if only on item
     if (this._item.length <= 1) {
@@ -115,6 +118,9 @@ class Slider extends AbstractDomElement {
 
       el.appendChild(this._counter)
     }
+
+    // set keyboard events
+    el.addEventListener('keydown', this._onKeyDown)
 
     // set swipe behavior events
     if (s.touch) {
@@ -386,7 +392,6 @@ function onTouchStart() {
  * @param {MouseEvent} e pointer down event
  */
 function onPointerDown(e) {
-  console.log(e)
   e = normalizeEvent(e)
 
   this._pointerPositions.start = e.clientX
@@ -433,6 +438,55 @@ function onRequestNext() {
   }
 }
 
+/**
+ * Request first slide
+ */
+function onRequestFirst() {
+  if (this._settings.infinte || this._isPrevEnabled) {
+    this.goto(0)
+  }
+}
+
+/**
+ * Request last slide
+ */
+function onRequestLast() {
+  if (this._settings.infinte || this._isNextEnabled) {
+    this.goto(this.getItemLength() - 1)
+  }
+}
+
+/**
+ * Handle keyboard keydown
+ *
+ * @param {KeyboardEvent} e Keyboard keydown event
+ *
+ * @returns {void}
+ */
+function onKeydown(e) {
+  if (this._element !== document.activeElement) {
+    return
+  }
+
+  switch (e.code) {
+    case 'ArrowLeft':
+      e.preventDefault()
+      this._onRequestPrev()
+      break
+    case 'ArrowRight':
+      e.preventDefault()
+      this._onRequestNext()
+      break
+    case 'Home':
+      e.preventDefault()
+      this._onRequestFirst()
+      break
+    case 'End':
+      e.preventDefault()
+      this._onRequestLast()
+  }
+}
+
 // ----
 // utils
 // ----
@@ -447,7 +501,6 @@ function onRequestNext() {
  * @returns {HTMLElement}
  */
 function createDotList(nbDot, dotsListClass, onClick) {
-  console.log({ nbDot, dotsListClass, onClick })
   const ul = document.createElement('ul')
 
   for (let i = 1; i <= nbDot; i++) {
