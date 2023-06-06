@@ -56,7 +56,7 @@ class Slider extends AbstractDomElement {
     // add aria attributes
     el.setAttribute('aria-roledescription', 'carrousel')
 
-    each(this._item, (item, i, l) => {
+    each(this._item, (item) => {
       item.setAttribute('role', 'group')
       item.setAttribute('aria-roledescription', 'slide')
     })
