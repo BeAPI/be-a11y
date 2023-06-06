@@ -1,11 +1,11 @@
 import AbstractDomElement from './AbstractDomElement'
-import getMaxHeight from '../utils/getMaxHeight'
-import noop from '../utils/noop'
-import each from '../utils/each'
-import imagesLoaded from '../utils/imagesLoaded'
 import { ThrottledEvent } from 'oneloop.js'
+import each from '../utils/each'
+import getMaxHeight from '../utils/getMaxHeight'
+import imagesLoaded from '../utils/imagesLoaded'
+import noop from '../utils/noop'
 
-class CssSlider extends AbstractDomElement {
+class Slider extends AbstractDomElement {
   constructor(element, options) {
     const instance = super(element, options)
 
@@ -397,10 +397,11 @@ function createDotList(nbDot, dotsListClass, onClick) {
 function normalizeEvent(e) {
   return e.touches ? e.touches[0] : e
 }
+
 // ----
 // defaults
 // ----
-CssSlider.defaults = {
+Slider.defaults = {
   posAttr: 'data-pos',
   dirAttr: 'data-dir',
   currentAttr: 'data-current',
@@ -431,14 +432,9 @@ CssSlider.defaults = {
 // ----
 // preset
 // ----
-CssSlider.preset = {}
-
-// ----
-// init
-// ----
-// CssSlider.initFromPreset()
+Slider.preset = {}
 
 // ----
 // export
 // ----
-export default CssSlider
+export default Slider
