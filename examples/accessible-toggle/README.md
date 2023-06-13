@@ -9,16 +9,19 @@ The Toggle component is a button that triggers changes on a specified item when 
 ### Install the package
 
 We can install the package from NPM or Yarn.
+
 ```bash
 yarn add @beapi/be-a11y
 ```
 
 Then import the component in your JavaScript.
+
 ```js
 import { Toggle } from '@beapi/be-a11y';
 ```
 
 ### Add Toggle HTML Layout
+
 Copy the following markup on your HTML file :
 
 ```html
@@ -30,6 +33,7 @@ Copy the following markup on your HTML file :
 ```
 
 ### Initialize the component
+
 Finally, we need to initialize this component in JavaScript.
 
 ```js

@@ -20,29 +20,29 @@
 
             <h3>Basic carrousel</h3>
 
-            <div class="css-slider" aria-label="Carrousel d'image" tabindex="0">
-                <ul class="css-slider__items">
-                    <li class="css-slider__item" aria-label="Item 1 of 5">
+            <div class="slider" aria-label="Carrousel d'image" tabindex="0">
+                <ul class="slider__items">
+                    <li class="slider__item" aria-label="Item 1 of 5">
                         <img src="https://picsum.photos/400/300?random=1" />
                     </li>
-                    <li class="css-slider__item" aria-label="Item 2 of 5">
+                    <li class="slider__item" aria-label="Item 2 of 5">
                         <img src="https://picsum.photos/400/300?random=2" />
                     </li>
-                    <li class="css-slider__item" aria-label="Item 3 of 5">
+                    <li class="slider__item" aria-label="Item 3 of 5">
                         <img src="https://picsum.photos/400/300?random=3" />
                     </li>
-                    <li class="css-slider__item" aria-label="Item 4 of 5">
+                    <li class="slider__item" aria-label="Item 4 of 5">
                         <img src="https://picsum.photos/400/300?random=4" />
                     </li>
-                    <li class="css-slider__item" aria-label="Item 5 of 5">
+                    <li class="slider__item" aria-label="Item 5 of 5">
                         <img src="https://picsum.photos/400/300?random=5" />
                     </li>
                 </ul>
-                <div class="css-slider__nav">
-                    <button class="css-slider__prev">Previous</button>
-                    <button class="css-slider__next">Next</button>
+                <div class="slider__nav">
+                    <button class="slider__prev">Previous</button>
+                    <button class="slider__next">Next</button>
                 </div>
-                <div class="css-slider__live-region sr-only"><!-- current item will be announced here based on item aria-label --></div>
+                <div class="slider__live-region sr-only"><!-- current item will be announced here based on item aria-label --></div>
             </div>
         </div>
 
@@ -61,7 +61,7 @@
         import '../../src/css/index.css'
         import './style.css'
 
-        Slider.init('.css-slider', {
+        Slider.init('.slider', {
             maxPrevPos: -2,
             maxNextPos: 2,
             dots: true
