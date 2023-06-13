@@ -45,8 +45,6 @@ class Slider extends AbstractDomElement {
     this._onClickDot = onClickDot.bind(this)
     this._onRequestPrev = onRequestPrev.bind(this)
     this._onRequestNext = onRequestNext.bind(this)
-    this._onRequestFirst = onRequestFirst.bind(this)
-    this._onRequestLast = onRequestLast.bind(this)
 
     // hide nav if only on item
     if (this._item.length <= 1) {
@@ -263,11 +261,11 @@ class Slider extends AbstractDomElement {
     }
 
     if (this._counter) {
-      this._counter.innerHTML = index + 1 + ' / ' + l
+      this._counter.textContent = index + 1 + ' / ' + l
     }
 
     if (announceItem && this._liveRegion) {
-      this._liveRegion.innerHTML = this._item[index].getAttribute('aria-label')
+      this._liveRegion.textContent = this._item[index].getAttribute('aria-label')
     }
 
     if (this._lastDir !== dir) {
@@ -439,24 +437,6 @@ function onRequestNext() {
 }
 
 /**
- * Request first slide
- */
-function onRequestFirst() {
-  if (this._settings.infinte || this._isPrevEnabled) {
-    this.goto(0)
-  }
-}
-
-/**
- * Request last slide
- */
-function onRequestLast() {
-  if (this._settings.infinte || this._isNextEnabled) {
-    this.goto(this.getItemLength() - 1)
-  }
-}
-
-/**
  * Handle keyboard keydown
  *
  * @param {KeyboardEvent} e Keyboard keydown event
@@ -479,11 +459,11 @@ function onKeydown(e) {
       break
     case 'Home':
       e.preventDefault()
-      this._onRequestFirst()
+      this.goto(0)
       break
     case 'End':
       e.preventDefault()
-      this._onRequestLast()
+      this.goto(this.getItemLength() - 1)
   }
 }
 
@@ -508,7 +488,7 @@ function createDotList(nbDot, dotsListClass, onClick) {
     const button = document.createElement('button')
 
     button.setAttribute('type', 'button')
-    button.innerHTML = i
+    button.textContent = i
     button.value = i - 1
     button.addEventListener('click', onClick)
 
@@ -539,16 +519,16 @@ Slider.defaults = {
   posAttr: 'data-pos',
   dirAttr: 'data-dir',
   currentAttr: 'data-current',
-  dotsListClass: 'css-slider__dots',
-  activeClass: 'css-slider__active',
-  hiddenNavClass: 'css-slider--hide-nav',
-  counterClass: 'css-slider__counter',
-  items: '.css-slider__items',
-  item: '.css-slider__item',
-  prev: '.css-slider__prev',
-  next: '.css-slider__next',
-  customLinks: '.css-slider__custom-links',
-  liveRegion: '.css-slider__live-region',
+  dotsListClass: 'slider__dots',
+  activeClass: 'slider__active',
+  hiddenNavClass: 'slider--hide-nav',
+  counterClass: 'slider__counter',
+  items: '.slider__items',
+  item: '.slider__item',
+  prev: '.slider__prev',
+  next: '.slider__next',
+  customLinks: '.slider__custom-links',
+  liveRegion: '.slider__live-region',
   current: 0,
   adaptiveHeight: true,
   infinite: false,
@@ -566,7 +546,13 @@ Slider.defaults = {
 // ----
 // preset
 // ----
-Slider.preset = {}
+Slider.preset = {
+  '.slider': {
+    maxPrevPos: -2,
+    maxNextPos: 2,
+    infinite: true,
+  },
+}
 
 // ----
 // export
