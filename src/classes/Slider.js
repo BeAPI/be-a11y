@@ -544,17 +544,6 @@ Slider.defaults = {
 }
 
 // ----
-// preset
-// ----
-Slider.preset = {
-  '.slider': {
-    maxPrevPos: -2,
-    maxNextPos: 2,
-    infinite: true,
-  },
-}
-
-// ----
 // export
 // ----
 export default Slider
