@@ -6,10 +6,10 @@ test.describe('Slider', () => {
   })
 
   test('Click on next button, expect "data-dir" attribute is set to 1.', async ({page}) => {
-    await page.click('.css-slider__next')
+    await page.click('.slider__next')
 
     const slider = await page.$eval(
-      '.css-slider',
+      '.slider',
       s => s.getAttribute('data-dir')
     )
 
@@ -17,11 +17,11 @@ test.describe('Slider', () => {
   })
 
   test('Click on previous button, expect "data-dir" attribute is set to -1.', async ({page}) => {
-    await page.click('.css-slider__next')
-    await page.click('.css-slider__prev')
+    await page.click('.slider__next')
+    await page.click('.slider__prev')
 
     const slider = await page.$eval(
-      '.css-slider',
+      '.slider',
       s => s.getAttribute('data-dir')
     )
 
@@ -30,10 +30,10 @@ test.describe('Slider', () => {
 
   test('Click on last item button, then click on previous button, expect "data-dir" attribute is set to -1.', async ({page}) => {
     await page.click('button[value="4"]')
-    await page.click('.css-slider__prev')
+    await page.click('.slider__prev')
 
     const slider = await page.$eval(
-      '.css-slider',
+      '.slider',
       s => s.getAttribute('data-dir')
     )
 

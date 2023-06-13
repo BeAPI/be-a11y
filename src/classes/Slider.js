@@ -344,7 +344,7 @@ function setActive(container, index) {
  * @param {MouseEvent} e mouse event
  */
 function onClickDot(e) {
-  this.goto(e.currentTarget.value)
+  this.goto(parseInt(e.currentTarget.value))
 }
 
 /**
