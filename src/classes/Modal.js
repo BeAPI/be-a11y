@@ -1,7 +1,9 @@
 import AbstractDomElement from './AbstractDomElement.js'
+import { ThrottledEvent } from 'oneloop.js'
 
 /**
  * Modal Class
+ *
  * @author Milan Ricoul
  */
 class Modal extends AbstractDomElement {
@@ -17,6 +19,7 @@ class Modal extends AbstractDomElement {
 
     this.isOpened = false
     this.triggerButton = null
+    this._onResizeHandler = onResize.bind(this)
     this.close = this.close.bind(this)
     this.open = this.open.bind(this)
     this.handleButtonClick = this.handleButtonClick.bind(this)
@@ -30,12 +33,17 @@ class Modal extends AbstractDomElement {
       this._onClose = onClose.bind(this)
     }
 
-    this.init()
+    this.initialized = false
+
+    new ThrottledEvent(window, 'resize').add('resize', this._onResizeHandler)
+    this._onResizeHandler()
   }
 
   /**
    * Initialization
+   *
    * @returns {void}
+   *
    * @author Milan Ricoul
    */
   init() {
@@ -64,13 +72,18 @@ class Modal extends AbstractDomElement {
     }
 
     // Set aria-controls attribute to close button
-    if (s.closeButtonSelector) {
+    if (s.closeButtonSelector && el.querySelector(s.closeButtonSelector)) {
       const closeButton = el.querySelector(s.closeButtonSelector)
       closeButton.setAttribute('aria-controls', this.id)
       closeButton.addEventListener('click', this.close)
     }
 
-    document.querySelectorAll(`button[data-modal="${this.id}"]`).forEach((btn) => {
+    // if setting triggerButton is defined and exists, set aria-controls attribute to this button
+    if (s.triggerSelector && document.querySelector(s.triggerSelector)) {
+      document.querySelector(s.triggerSelector).setAttribute('aria-controls', this.id)
+    }
+
+    document.querySelectorAll(`button[aria-controls="${this.id}"]:not(#${this.id}-close)`).forEach((btn) => {
       btn.addEventListener('click', this.handleButtonClick)
     })
 
@@ -79,7 +92,9 @@ class Modal extends AbstractDomElement {
 
   /**
    * Set id to the modal dialog
+   *
    * @returns {String}
+   *
    * @author Milan Ricoul
    */
   defineId() {
@@ -95,8 +110,11 @@ class Modal extends AbstractDomElement {
 
   /**
    * Handle button click
+   *
    * @param {MouseEvent} e click event handler
+   *
    * @returns {Void}
+   *
    * @author Milan Ricoul
    */
   handleButtonClick(e) {
@@ -107,7 +125,9 @@ class Modal extends AbstractDomElement {
 
   /**
    * Open modal
+   *
    * @returns {Void}
+   *
    * @author Milan Ricoul
    */
   open() {
@@ -123,7 +143,9 @@ class Modal extends AbstractDomElement {
 
   /**
    * Close modal
+   *
    * @returns {Void}
+   *
    * @author Milan Ricoul
    */
   close() {
@@ -141,8 +163,11 @@ class Modal extends AbstractDomElement {
 
   /**
    * Handle keydown event
+   *
    * @param {KeyboardEvent} e keydown event handler
+   *
    * @returns {Void}
+   *
    * @author Milan Ricoul
    */
   handleKeydown(e) {
@@ -159,8 +184,11 @@ class Modal extends AbstractDomElement {
 
   /**
    * Check if the next focusable element in dialog exists, else focus the first focusable element in dialog
+   *
    * @param {KeyboardEvent} e keyboard event handler
+   *
    * @returns {Void}
+   *
    * @author Milan Ricoul
    */
   checkNextFocusableElement(e) {
@@ -183,6 +211,7 @@ class Modal extends AbstractDomElement {
 
   /**
    * Destroy method
+   *
    * @author Milan Ricoul
    */
   destroy() {
@@ -199,13 +228,38 @@ class Modal extends AbstractDomElement {
   }
 }
 
+/**
+ * Events
+ *
+ * @returns {void}
+ *
+ * @author Milan Ricoul
+ */
+function onResize() {
+  const s = this._settings
+
+  if (!s.mediaQuery && !this.initialized) {
+    this.init()
+  }
+
+  if (s.mediaQuery && this.initialized && !s.mediaQuery.matches) {
+    this.destroy()
+  } else if (!this.initialized && s.mediaQuery && s.mediaQuery.matches) {
+    this.init()
+  } else if (!this.initialized && s.mediaQuery && !s.mediaQuery.matches && this._element.hasAttribute('style')) {
+    this._element.removeAttribute('style')
+  }
+}
+
 Modal.defaults = {
   prefixId: 'dialog',
   labelSelector: false,
   descriptionSelector: false,
-  closeButtonSelector: false,
+  closeButtonSelector: '.modal__close',
+  mediaQuery: null,
   onOpen: null,
   onClose: null,
+  triggerSelector: false,
 }
 
 export default Modal
