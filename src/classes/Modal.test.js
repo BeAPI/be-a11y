@@ -60,9 +60,9 @@ test.describe('Modal', () => {
       width: 1025,
       height: 100,
     })
-    await page.click('button[aria-controls="demo-2"]')
+    await page.click('.modal-btn--demo-2')
     let display = await page.$eval(
-      '#demo-2',
+      '.modal--mobile',
       dialog => window.getComputedStyle(dialog).display
     )
 
