@@ -1,5 +1,6 @@
 import AbstractDomElement from './AbstractDomElement.js'
 import { ThrottledEvent } from 'oneloop.js'
+import uniqid from 'uniqid'
 
 /**
  * Modal Class
@@ -54,7 +55,7 @@ class Modal extends AbstractDomElement {
     if (el.id) {
       this.id = el.id
     } else {
-      this.id = this.defineId()
+      this.id = `modal-${uniqid()}`
 
       el.id = this.id
     }
@@ -74,13 +75,16 @@ class Modal extends AbstractDomElement {
     // Set aria-controls attribute to close button
     if (s.closeButtonSelector && el.querySelector(s.closeButtonSelector)) {
       const closeButton = el.querySelector(s.closeButtonSelector)
+      closeButton.id = `${this.id}-close`
       closeButton.setAttribute('aria-controls', this.id)
       closeButton.addEventListener('click', this.close)
     }
 
     // if setting triggerButton is defined and exists, set aria-controls attribute to this button
-    if (s.triggerSelector && document.querySelector(s.triggerSelector)) {
-      document.querySelector(s.triggerSelector).setAttribute('aria-controls', this.id)
+    if (s.triggerSelector && document.querySelectorAll(s.triggerSelector).length) {
+      document.querySelectorAll(s.triggerSelector).forEach((btn) => {
+        btn.setAttribute('aria-controls', this.id)
+      })
     }
 
     document.querySelectorAll(`button[aria-controls="${this.id}"]:not(#${this.id}-close)`).forEach((btn) => {
@@ -88,24 +92,6 @@ class Modal extends AbstractDomElement {
     })
 
     window.addEventListener('keydown', this.handleKeydown)
-  }
-
-  /**
-   * Set id to the modal dialog
-   *
-   * @returns {String}
-   *
-   * @author Milan Ricoul
-   */
-  defineId() {
-    const s = this._settings
-    let i = 1
-
-    while (document.getElementById(`${s.prefixId}-${i}`)) {
-      i++
-    }
-
-    return `${s.prefixId}-${i}`
   }
 
   /**
@@ -252,10 +238,9 @@ function onResize() {
 }
 
 Modal.defaults = {
-  prefixId: 'dialog',
-  labelSelector: false,
-  descriptionSelector: false,
   closeButtonSelector: '.modal__close',
+  descriptionSelector: false,
+  labelSelector: false,
   mediaQuery: null,
   onOpen: null,
   onClose: null,
