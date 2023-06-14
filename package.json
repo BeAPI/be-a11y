@@ -45,7 +45,7 @@
   "devDependencies": {
     "@babel/core": "^7.19.1",
     "@babel/preset-env": "^7.19.1",
-    "@playwright/test": "^1.27.1",
+    "@playwright/test": "^1.35.0",
     "@wordpress/stylelint-config": "^20.0.2",
     "autoprefixer": "^10.4.12",
     "babel-jest": "^27.1.0",
