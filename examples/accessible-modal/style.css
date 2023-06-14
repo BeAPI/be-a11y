@@ -35,3 +35,23 @@
     background-position: 50% 50%;
     background-size: 100%;
 }
+
+.modal-btn {
+    margin-bottom: 40px;
+}
+
+@media screen and (min-width: 1024px) {
+    .modal--mobile,
+    .modal--mobile .modal__inner {
+        position: static;
+    }
+
+    .modal--mobile .modal__inner {
+        max-width: none;
+        transform: none;
+    }
+
+    .modal--mobile .modal__close {
+        display: none;
+    }
+}
