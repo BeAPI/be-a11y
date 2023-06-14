@@ -21,12 +21,44 @@ Then import the component in your JavaScript.
 import { Modal } from '@beapi/be-a11y';
 ```
 
-### Add Modal HTML Layout
+### Manual id
+
+#### Add manual ID modal HTML markup
+
+You can manually set an id on your modal element and specify it in the button's aria-controls value.
 
 Copy the following markup on your HTML file :
 
 ```html
-<button type="button" aria-controls="dialog-1" data-modal="dialog-1">Open modal dialog</button>
+<button type="button" aria-controls="dialog-1">Open modal dialog</button>
+
+<div id="dialog-1" class="modal" tabindex="-1" role="dialog" aria-modal="true" style="display: none;">
+    <div class="modal__inner">
+        <!-- Your content here -->
+
+        <button type="button" class="modal__close">Close</button>
+    </div>
+</div>
+```
+
+#### Initialize the component
+
+Finally, we need to initialize this component in JavaScript.
+
+```js
+import { Modal } from '@beapi/be-a11y';
+
+Modal.init('.modal');
+```
+
+### Automatic id
+
+#### Add automatic ID modal HTML markup
+
+In this case, the id is automatically set on the modal element in JavaScript.
+
+```html
+<button type="button" class="trigger">Open modal dialog</button>
 
 <div class="modal" tabindex="-1" role="dialog" aria-modal="true" style="display: none;">
     <div class="modal__inner">
@@ -37,15 +69,15 @@ Copy the following markup on your HTML file :
 </div>
 ```
 
-### Initialize the component
+#### Initialize the component with automatic ID
 
-Finally, we need to initialize this component in JavaScript.
+You have to specifiy the triggerSelector option to define the trigger button.
 
 ```js
 import { Modal } from '@beapi/be-a11y';
 
 Modal.init('.modal', {
-  closeButtonSelector: '.modal__close'
+  triggerSelector: '.trigger',
 });
 ```
 
@@ -56,10 +88,10 @@ import { Modal } from '@beapi/be-a11y';
 
 Modal.preset = {
   '#modal-1': {
-    closeButtonSelector: '.close-btn',
+    triggerSelector: '.modal-btn--demo-1',
   },
   '#modal-2': {
-    closeButtonSelector: '.modal-close-button',
+    mediaQuery: window.matchMedia('(max-width: 1024px)'),
   },
 };
 
@@ -71,9 +103,12 @@ Modal.initFromPreset();
 
 ### Options
 
-| name                  | type            | default  | description                                                             |
-|-----------------------|-----------------|----------|-------------------------------------------------------------------------|
-| `prefixId`            | string          | `dialog` | The prefix id of the component.                                         |
-| `labelSelector`       | boolean\|string | `false`  | The selector of the modal label (for the attribute `aria-labelledby`).  |
-| `descriptionSelector` | boolean\|string | `false`  | The selector of the modal label (for the attribute `aria-describedby`). |
-| `closeButtonSelector` | boolean\|string | `false`  | The selector of the modal's close button.                               |
+| name                | type            | default         | description                                                                 |
+|---------------------|-----------------|-----------------|-----------------------------------------------------------------------------|
+| closeButtonSelector | boolean\|string | `.modal__close` | The selector of the modal close button.                                     |
+| descriptionSelector | boolean\|string | `false`         | The selector of the modal label (for the attribute  ` aria-describedby ` ). |
+| labelSelector       | boolean\|string | `false`         | The selector of the modal label (for the attribute  ` aria-labelledby ` ).  |
+| mediaQuery          | object          | `null`          | Apply modal to a window match.                                              |
+| onOpen              | function        | `null`          | Callback when modal is opened.                                              |
+| onClose             | function        | `null`          | Callback when modal is closed.                                              |
+| triggerSelector     | boolean\|string | `false`         | The selector of the modal trigger button.                                   |

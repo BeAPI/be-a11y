@@ -238,10 +238,9 @@ function onResize() {
 }
 
 Modal.defaults = {
-  prefixId: 'dialog',
-  labelSelector: false,
-  descriptionSelector: false,
   closeButtonSelector: '.modal__close',
+  descriptionSelector: false,
+  labelSelector: false,
   mediaQuery: null,
   onOpen: null,
   onClose: null,
