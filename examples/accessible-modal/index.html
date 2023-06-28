@@ -66,7 +66,7 @@
             </div>
         </div>
 
-        <h3>Toggle button but only for &lt; 1024px devices</h3>
+        <h3>Modal button but only for &lt; 1024px devices</h3>
 
         <button class="modal-btn--demo-2" type="button" aria-controls="demo-2">Add billing address</button>
 
@@ -142,6 +142,11 @@
                     mediaQuery: window.matchMedia('(max-width: 1024px)'),
                     triggerSelector: '.modal-btn--demo-2'
                 },
+                '#demo-2': {
+                    labelSelector: '.modal__title',
+                    closeButtonSelector: '.modal__close',
+                    mediaQuery: window.matchMedia('(max-width: 1024px)'),
+                }
             }
 
             Modal.initFromPreset()
