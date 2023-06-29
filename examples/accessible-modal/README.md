@@ -21,7 +21,7 @@ Then import the component in your JavaScript.
 import { Modal } from '@beapi/be-a11y';
 ```
 
-### Manual id
+### Manual ID
 
 #### Add manual ID modal HTML markup
 
@@ -51,7 +51,7 @@ import { Modal } from '@beapi/be-a11y';
 Modal.init('.modal');
 ```
 
-### Automatic id
+### Automatic ID
 
 #### Add automatic ID modal HTML markup
 
