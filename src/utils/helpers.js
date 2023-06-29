@@ -17,6 +17,8 @@ export const each = function (array, callback) {
 /**
  * Get a random id
  *
+ * @example https://www.codemzy.com/blog/random-unique-id-javascript
+ *
  * @param {number} length length of id
  *
  * @returns {string}
