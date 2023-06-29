@@ -1,5 +1,6 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
+import license from 'rollup-plugin-license'
 
 export default defineConfig({
   optimizeDeps: {
@@ -11,5 +12,12 @@ export default defineConfig({
       name: '@beapi/be-a11y',
       fileName: 'be-a11y',
     },
+      plugins: [
+        license({
+          thirdParty: {
+            output: resolve(__dirname, './dist/vendor.LICENSE.txt'),
+          },
+        }),
+      ],
   },
 })
