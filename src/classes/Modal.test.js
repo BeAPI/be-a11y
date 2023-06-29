@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test'
 
 test.describe('Modal', () => {
   test.beforeEach(async({page}) => {
-    await page.goto('http://127.0.0.1:5173/examples/accessible-modal/index.html')
+    await page.goto('http://localhost:5173/examples/accessible-modal/index.html')
   })
 
   test('Click on a dialog trigger button, expect the modal dialog is visible.', async ({page}) => {

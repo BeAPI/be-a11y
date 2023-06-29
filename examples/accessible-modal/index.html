@@ -68,9 +68,9 @@
 
         <h3>Modal button but only for &lt; 1024px devices</h3>
 
-        <button class="modal-btn--demo-2" type="button" aria-controls="demo-2">Add billing address</button>
+        <button class="modal-btn--demo-2" type="button">Add billing address</button>
 
-        <div class="modal modal--mobile" tabindex="-1" role="dialog" aria-modal="true" style="display: none;">
+        <div class="modal modal--mobile modal--demo-2" tabindex="-1" role="dialog" aria-modal="true" style="display: none;">
             <div class="modal__inner">
                 <h2 class="modal__title">Add billing address</h2>
 
@@ -126,7 +126,7 @@
         </div>
 
         <script type="module">
-            import { Modal } from '../../index.js'
+            import { Modal } from '../../be-a11y.js'
             import '../../src/css/index.css'
             import './style.css'
 
