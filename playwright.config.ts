@@ -1,5 +1,4 @@
 import {PlaywrightTestConfig, devices} from '@playwright/test'
-const viteConfig = require('./vite.config.ts')
 
 const config: PlaywrightTestConfig = {
   projects: [
@@ -9,14 +8,10 @@ const config: PlaywrightTestConfig = {
     },
   ],
   webServer: {
-    command: 'npx vite',
-    url: 'http://127.0.0.1:5173/',
-    reuseExistingServer: true,
+    command: process.env.CI ? 'npx vite preview --port 5173' : 'npx vite dev',
+    url: 'http://localhost:5173/',
+    reuseExistingServer: !process.env.CI,
     timeout: 2000,
-  },
-  use: {
-    ctPort: 8081,
-    ctViteConfig: viteConfig,
   },
 }
 
