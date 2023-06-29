@@ -1,6 +1,6 @@
 import AbstractDomElement from './AbstractDomElement.js'
 import { ThrottledEvent } from 'oneloop.js'
-import uniqid from 'uniqid'
+import { randomId } from '../utils/helpers.js'
 
 /**
  * Modal Class
@@ -55,7 +55,7 @@ class Modal extends AbstractDomElement {
     if (el.id) {
       this.id = el.id
     } else {
-      this.id = `modal-${uniqid()}`
+      this.id = `modal-${randomId()}`
 
       el.id = this.id
     }

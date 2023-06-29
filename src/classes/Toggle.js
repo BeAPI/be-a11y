@@ -1,8 +1,9 @@
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-import uniqid from 'uniqid'
+
 import AbstractDomElement from './AbstractDomElement.js'
 import DOMAnimations from '../utils/DOMAnimations.js'
 import { ThrottledEvent } from 'oneloop.js'
+import { randomId } from '../utils/helpers.js'
 
 /**
  * Toggle Class
@@ -59,7 +60,7 @@ class Toggle extends AbstractDomElement {
     }
 
     if (!el.getAttribute('aria-controls')) {
-      const id = `${prefixId}-${uniqid()}`
+      const id = `${prefixId}-${randomId()}`
       el.setAttribute('aria-controls', id)
       this.target.id = id
     }
