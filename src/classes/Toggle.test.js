@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test'
 
 test.describe('Toggle', () => {
   test.beforeEach(async({page}) => {
-    await page.goto('http://127.0.0.1:5173/examples/accessible-toggle/index.html')
+    await page.goto('http://localhost:5173/examples/accessible-toggle/index.html')
   })
   
   test('Click on a toggle button, expect the content is visible.', async ({page}) => {

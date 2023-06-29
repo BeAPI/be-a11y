@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test'
 
 test.describe('Accordion', () => {
   test.beforeEach(async({page}) => {
-    await page.goto('http://127.0.0.1:5173/examples/accessible-accordion/index.html')
+    await page.goto('http://localhost:5173/examples/accessible-accordion/index.html')
   })
 
   test('Click the first tab accordion, expect the first focusable element in the panel is focused.', async ({page}) => {

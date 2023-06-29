@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test'
 
 test.describe('Modal', () => {
   test.beforeEach(async({page}) => {
-    await page.goto('http://127.0.0.1:5173/examples/accessible-modal/index.html')
+    await page.goto('http://localhost:5173/examples/accessible-modal/index.html')
   })
 
   test('Click on a dialog trigger button, expect the modal dialog is visible.', async ({page}) => {
@@ -60,9 +60,9 @@ test.describe('Modal', () => {
       width: 1025,
       height: 100,
     })
-    await page.click('button[aria-controls="demo-2"]')
+    await page.click('.modal-btn--demo-2')
     let display = await page.$eval(
-      '#demo-2',
+      '.modal--mobile',
       dialog => window.getComputedStyle(dialog).display
     )
 
