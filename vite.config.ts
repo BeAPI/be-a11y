@@ -1,6 +1,17 @@
-import { resolve } from 'path'
 import { defineConfig } from 'vite'
+import { dependencies } from './package.json';
 import license from 'rollup-plugin-license'
+import { resolve } from 'path'
+
+const externalPackages = [
+  ...Object.keys(dependencies || {}),
+];
+
+// Creating regexes of the packages to make sure subpaths of the
+// packages are also treated as external
+const regexesOfPackages = externalPackages.map(
+  (packageName) => new RegExp(`^${packageName}(/.*)?`),
+);
 
 export default defineConfig({
   optimizeDeps: {
@@ -8,10 +19,20 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: resolve(__dirname, 'index.js'),
+      entry: resolve(__dirname, 'be-a11y.js'),
       name: '@beapi/be-a11y',
       fileName: 'be-a11y',
     },
+    rollupOptions: {
+      output: [
+        {
+          dir: 'dist',
+          format: 'es',
+          preserveModules: true,
+          entryFileNames: '[name].js',
+        },
+      ],
+      external: regexesOfPackages,
       plugins: [
         license({
           thirdParty: {
@@ -19,5 +40,6 @@ export default defineConfig({
           },
         }),
       ],
+    },
   },
 })

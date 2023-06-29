@@ -12,14 +12,15 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/be-a11y.umd.js",
-  "module": "./dist/be-a11y.mjs",
+  "main": "./dist/be-a11y.js",
+  "module": "./dist/be-a11y.js",
   "exports": {
     ".": {
-      "import": "./dist/be-a11y.mjs",
-      "require": "./dist/be-a11y.umd.js"
+      "import": "./dist/be-a11y.js",
+      "require": "./dist/be-a11y.js"
     }
   },
+  "sideEffects": false,
   "keywords": [
     "accessible",
     "a11Y",
