@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update `vite` to version 4.*.*
 - Add `rollup-license-plugin`
 - Fix Modal tests
+- Fix Playwright webServer host
 - Typo Modal README
 
 ## 1.3.4 - 2023-06-14
