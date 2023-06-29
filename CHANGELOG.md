@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 1.4.0 - 2023-06-29
 
 - Add Tree Shaking to the build
-- Update `vite` to version 4.*.*
+- Update `vite` to version 4
 - Add `rollup-license-plugin`
 - Fix Modal tests
 - Fix Playwright webServer host
