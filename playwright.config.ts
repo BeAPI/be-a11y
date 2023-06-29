@@ -11,7 +11,7 @@ const config: PlaywrightTestConfig = {
     command: process.env.CI ? 'npx vite preview --port 5173' : 'npx vite dev',
     url: 'http://localhost:5173/',
     reuseExistingServer: !process.env.CI,
-    timeout: 2000,
+    timeout: 10000,
   },
 }
 
