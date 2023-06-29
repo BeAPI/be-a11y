@@ -1,6 +1,6 @@
-import uniqid from 'uniqid'
 import AbstractDomElement from './AbstractDomElement.js'
 import DOMAnimations from '../utils/DOMAnimations.js'
+import { randomId } from '../utils/helpers.js'
 
 /**
  * Accordion class
@@ -33,7 +33,7 @@ class Accordion extends AbstractDomElement {
     const { closedDefault, panelSelector, prefixId, triggerSelector } = this._settings
     const triggers = el.querySelectorAll(triggerSelector)
     const panels = el.querySelectorAll(panelSelector)
-    const id = uniqid()
+    const id = randomId()
 
     el.dataset.id = id
 

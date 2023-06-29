@@ -1,7 +1,7 @@
+import { each, getMaxHeight } from '../utils/helpers'
+
 import AbstractDomElement from './AbstractDomElement'
 import { ThrottledEvent } from 'oneloop.js'
-import each from '../utils/each'
-import getMaxHeight from '../utils/getMaxHeight'
 import imagesLoaded from '../utils/imagesLoaded'
 import noop from '../utils/noop'
 
