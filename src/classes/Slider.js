@@ -200,7 +200,7 @@ class Slider extends AbstractDomElement {
   goto(index, announceItem, dir) {
     const s = this._settings
     const l = this._item.length
-    const half = Math.floor(l / 2)
+    const half = Math.ceil(l / 2)
 
     index = (index + l) % l
 
