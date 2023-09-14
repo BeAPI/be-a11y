@@ -61,7 +61,7 @@ Dropdown.preset = {
     automaticSelection: true,
   },
   '#dropdown-2': {
-    matchMedia: window.matchMedia('(min-width: 1024px)'),
+    mediaQuery: window.matchMedia('(min-width: 1024px)'),
   },
 };
 
@@ -79,7 +79,7 @@ Dropdown.initFromPreset();
 | `buttonSelector`     | string                    | `button`           | Button selector.                                |
 | `labelSelector`      | string                    | `.dropdown__label` | Label selector.                                 |
 | `listSelector`       | string                    | `ul`               | Listbox selector.                               |
-| `matchMedia`         | null or matchMedia object | `null`             | Set dropdown for a specific media query.        |
+| `mediaQuery`         | null or matchMedia object | `null`             | Set dropdown for a specific media query.        |
 | `onChange`           | null or function          | `null`             | Event on dropdown change.                       |
 | `onClose`            | null or function          | `null`             | Event on dropdown close.                        |
 | `onListItemClick`    | null or function          | `null`             | Event on dropdown list item click.              |

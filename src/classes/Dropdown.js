@@ -14,7 +14,8 @@ class Dropdown extends AbstractDomElement {
       return instance
     }
 
-    const { matchMedia } = this._settings
+    const { mediaQuery } = this._settings
+
     this.opened = false
     this.active = false
     this.focusedElement = null
@@ -27,7 +28,7 @@ class Dropdown extends AbstractDomElement {
     this._resize.add('resize', this._onResize)
     this._defineId = defineId.bind(this)
 
-    if (Boolean(matchMedia && matchMedia.matches) || !matchMedia) {
+    if (Boolean(mediaQuery && mediaQuery.matches) || !mediaQuery) {
       this.init()
     } else {
       this.destroy()
@@ -119,6 +120,7 @@ class Dropdown extends AbstractDomElement {
 
     if (!this.active) {
       const el = this._element
+
       this.button = el.querySelector(buttonSelector)
       this.label = el.querySelector(labelSelector)
       this.list = el.querySelector(listSelector)
@@ -159,11 +161,11 @@ class Dropdown extends AbstractDomElement {
    * @author Milan Ricoul
    */
   refresh() {
-    const { matchMedia } = this._settings
+    const { mediaQuery } = this._settings
 
-    if (!this.active && ((matchMedia && matchMedia.matches) || !matchMedia)) {
+    if (!this.active && ((mediaQuery && mediaQuery.matches) || !mediaQuery)) {
       this.init()
-    } else if (this.active && matchMedia && !matchMedia.matches) {
+    } else if (this.active && mediaQuery && !mediaQuery.matches) {
       this.destroy()
     }
   }
@@ -375,6 +377,7 @@ class Dropdown extends AbstractDomElement {
 
 /**
  * On screen resize
+ *
  * @author Milan Ricoul
  */
 function onResize() {
@@ -383,7 +386,9 @@ function onResize() {
 
 /**
  * Set id to the modal dialog
+ *
  * @author Milan Ricoul
+ *
  * @returns {string}
  */
 function defineId() {
@@ -403,7 +408,7 @@ Dropdown.defaults = {
   labelSelector: '.dropdown__label',
   listClassName: 'dropdown__list',
   listSelector: 'ul',
-  matchMedia: null,
+  mediaQuery: null,
   onChange: null,
   onClose: null,
   onListItemClick: null,

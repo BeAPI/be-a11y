@@ -1,6 +1,7 @@
 import AbstractDomElement from './AbstractDomElement.js'
 import DOMAnimations from '../utils/DOMAnimations.js'
 import { randomId } from '../utils/helpers.js'
+import { ThrottledEvent } from 'oneloop.js'
 
 /**
  * Accordion class
@@ -15,20 +16,36 @@ class Accordion extends AbstractDomElement {
       return instance
     }
 
+    const { mediaQuery } = this._settings
+
+    this.active = false
     this.focus = false
+    this._onResizeHandler = onResize.bind(this)
     this.handleButtonBlur = this.handleButtonBlur.bind(this)
     this.handleButtonFocus = this.handleButtonFocus.bind(this)
     this.handleButtonClick = this.handleButtonClick.bind(this)
     this.handleKeydown = this.handleKeydown.bind(this)
-    this.init()
+
+    new ThrottledEvent(window, 'resize').add('resize', this._onResizeHandler)
+    this._onResizeHandler()
+
+    if (Boolean(mediaQuery && mediaQuery.matches) || !mediaQuery) {
+      this.init()
+    } else {
+      this.destroy()
+    }
   }
 
   /**
    * Initialization
+   *
    * @returns {void}
+   *
    * @author Milan Ricoul
    */
   init() {
+    this.active = true
+
     const el = this._element
     const { closedDefault, panelSelector, prefixId, triggerSelector } = this._settings
     const triggers = el.querySelectorAll(triggerSelector)
@@ -50,6 +67,7 @@ class Accordion extends AbstractDomElement {
 
       trigger.id = `${prefixId}-${id}-${i}`
       trigger.setAttribute('aria-controls', `${prefixId}-${id}-panel-${i}`)
+      trigger.setAttribute('aria-expanded', `${index === 0 ? 'true' : 'false'}`)
     })
 
     // Set id and ARIA attributes to the panel
@@ -61,14 +79,55 @@ class Accordion extends AbstractDomElement {
       panel.id = `${prefixId}-${id}-panel-${i}`
       panel.setAttribute('aria-labelledby', `${prefixId}-${id}-${i}`)
 
+      if (index !== 0) {
+        panel.style.display = 'none'
+      }
+
       if (closedDefault) {
         this.close(panel)
       }
     })
 
+    // Add events
     this.applyToSelectors(triggers, (trigger) => trigger.addEventListener('click', this.handleButtonClick))
     this.applyToSelectors(triggers, (trigger) => trigger.addEventListener('focus', this.handleButtonFocus))
     this.applyToSelectors(triggers, (trigger) => trigger.addEventListener('blur', this.handleButtonBlur))
+    document.addEventListener('keydown', this.handleKeydown)
+  }
+
+  /**
+   * Destroy component
+   *
+   * @returns {void}
+   *
+   * @author Milan Ricoul
+   */
+  destroy() {
+    this.active = false
+
+    const el = this._element
+    const { panelSelector, triggerSelector } = this._settings
+    const triggers = el.querySelectorAll(triggerSelector)
+    const panels = el.querySelectorAll(panelSelector)
+
+    // Remove id and ARIA attributes from the trigger
+    this.applyToSelectors(triggers, (trigger) => {
+      trigger.removeAttribute('id')
+      trigger.removeAttribute('aria-controls')
+      trigger.removeAttribute('aria-expanded')
+    })
+
+    // Remove id and ARIA attributes from the panel
+    this.applyToSelectors(panels, (panel) => {
+      panel.removeAttribute('id')
+      panel.removeAttribute('aria-labelledby')
+      panel.removeAttribute('style')
+    })
+
+    // Remove events
+    this.applyToSelectors(triggers, (trigger) => trigger.removeEventListener('click', this.handleButtonClick))
+    this.applyToSelectors(triggers, (trigger) => trigger.removeEventListener('focus', this.handleButtonFocus))
+    this.applyToSelectors(triggers, (trigger) => trigger.removeEventListener('blur', this.handleButtonBlur))
     document.addEventListener('keydown', this.handleKeydown)
   }
 
@@ -292,11 +351,29 @@ class Accordion extends AbstractDomElement {
   }
 }
 
+/**
+ * Events
+ *
+ * @returns {void}
+ *
+ * @author Milan Ricoul
+ */
+function onResize() {
+  const { mediaQuery } = this._settings
+
+  if (!this.active && ((mediaQuery && mediaQuery.matches) || !mediaQuery)) {
+    this.init()
+  } else if (this.active && mediaQuery && !mediaQuery.matches) {
+    this.destroy()
+  }
+}
+
 Accordion.defaults = {
   allowMultiple: false,
   closedDefault: false,
   forceExpand: true,
   hasAnimation: false,
+  mediaQuery: null,
   onOpen: null,
   onClose: null,
   panelSelector: '.accordion__panel',

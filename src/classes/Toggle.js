@@ -223,24 +223,26 @@ class Toggle extends AbstractDomElement {
 
 /**
  * Events
+ *
  * @returns {void}
+ *
  * @author Milan Ricoul
  */
 function onResize() {
-  const s = this._settings
+  const { mediaQuery } = this._settings
 
-  if (!s.mediaQuery && !this.initialized) {
+  if (!mediaQuery && !this.initialized) {
     this.init()
   }
 
-  if (s.mediaQuery && this.initialized && !s.mediaQuery.matches) {
+  if (mediaQuery && this.initialized && !mediaQuery.matches) {
     this.destroy()
-  } else if (s.mediaQuery && !this.initialized && s.mediaQuery.matches) {
+  } else if (mediaQuery && !this.initialized && mediaQuery.matches) {
     this.init()
   } else if (
-    s.mediaQuery &&
+    mediaQuery &&
     !this.initialized &&
-    !s.mediaQuery.matches &&
+    !mediaQuery.matches &&
     this.target.style.display === 'none' &&
     this.target.hasAttribute('style')
   ) {
