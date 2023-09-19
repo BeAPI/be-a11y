@@ -84,6 +84,7 @@ class Accordion extends AbstractDomElement {
       }
 
       if (closedDefault) {
+        triggers[index].setAttribute('aria-expanded', 'false')
         this.close(panel)
       }
     })
