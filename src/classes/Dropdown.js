@@ -1,3 +1,4 @@
+import { randomId } from '../utils/helpers.js'
 import AbstractDomElement from './AbstractDomElement.js'
 import { ThrottledEvent } from 'oneloop.js'
 
@@ -16,28 +17,35 @@ class Dropdown extends AbstractDomElement {
 
     const { mediaQuery } = this._settings
 
+    this.id = randomId('dropdown')
     this.opened = false
     this.active = false
     this.focusedElement = null
     this._onResize = onResize.bind(this)
-    this.handleKeydown = this.handleKeydown.bind(this)
-    this.handleButtonClick = this.handleButtonClick.bind(this)
-    this.handleListItemClick = this.handleListItemClick.bind(this)
-    this.detectClickOutsideElement = this.detectClickOutsideElement.bind(this)
+    this._handleKeydown = handleKeydown.bind(this)
+    this._handleButtonClick = handleButtonClick.bind(this)
+    this._handleListItemClick = handleListItemClick.bind(this)
+    this._handleOutsideElementClick = handleOutsideElementClick.bind(this)
+    this._focusPreviousElement = focusPreviousElement.bind(this)
+    this._focusNextElement = focusNextElement.bind(this)
+    this._focusFirstElement = focusFirstElement.bind(this)
+    this._focusLastElement = focusLastElement.bind(this)
     this._resize = new ThrottledEvent(window, 'resize')
     this._resize.add('resize', this._onResize)
-    this._defineId = defineId.bind(this)
 
     if (Boolean(mediaQuery && mediaQuery.matches) || !mediaQuery) {
       this.init()
-    } else {
-      this.destroy()
+      return
     }
+
+    this.destroy()
   }
 
   /**
    * Initialization
+   *
    * @author Milan Ricoul
+   *
    * @returns {Object}
    */
   init() {
@@ -45,8 +53,8 @@ class Dropdown extends AbstractDomElement {
 
     const el = this._element
     const { automaticSelection, buttonSelector, labelSelector, listClassName, listSelector } = this._settings
-    const buttonId = `${this._defineId()}-button`
-    const labelId = `${this._defineId()}-label`
+    const buttonId = `${this.id}-button`
+    const labelId = `${this.id}-label`
 
     // Button selector
     if (el.querySelector(buttonSelector)) {
@@ -87,8 +95,8 @@ class Dropdown extends AbstractDomElement {
 
     this.listItems.forEach((listItem, index) => {
       listItem.setAttribute('role', 'option')
-      listItem.id = `${this._defineId()}-item-${index + 1}`
-      listItem.addEventListener('click', this.handleListItemClick)
+      listItem.id = `${this.id}-item-${index + 1}`
+      listItem.addEventListener('click', this._handleListItemClick)
     })
 
     if (automaticSelection) {
@@ -103,16 +111,18 @@ class Dropdown extends AbstractDomElement {
       }
     }
 
-    this.button.addEventListener('click', this.handleButtonClick)
-    document.addEventListener('click', this.detectClickOutsideElement)
-    document.addEventListener('keydown', this.handleKeydown)
+    this.button.addEventListener('click', this._handleButtonClick)
+    document.addEventListener('click', this._handleOutsideElementClick)
+    document.addEventListener('keydown', this._handleKeydown)
 
     return this
   }
 
   /**
    * Destroy
+   *
    * @author Milan Ricoul
+   *
    * @returns {Object}
    */
   destroy() {
@@ -158,6 +168,7 @@ class Dropdown extends AbstractDomElement {
 
   /**
    * Check if media query matches
+   *
    * @author Milan Ricoul
    */
   refresh() {
@@ -171,33 +182,11 @@ class Dropdown extends AbstractDomElement {
   }
 
   /**
-   * Handle button click on dropdown button
-   * @author Milan Ricoul
-   */
-  handleButtonClick() {
-    this.opened ? this.close() : this.open()
-  }
-
-  /**
-   * Handle list items click
-   * @author Milan Ricoul
-   * @param {MouseEvent} e mouse event handler
-   */
-  handleListItemClick(e) {
-    const { onListItemClick } = this._settings
-
-    if (onListItemClick) {
-      onListItemClick.bind(this)()
-    }
-
-    this.updateFocusedListItem(e.currentTarget)
-    this.close()
-  }
-
-  /**
    * Open dropdown
+   *
    * @author Milan Ricoul
-   * @returns {Void}
+   *
+   * @returns {void}
    */
   open() {
     this.opened = true
@@ -221,8 +210,10 @@ class Dropdown extends AbstractDomElement {
 
   /**
    * Close dropdown
+   *
    * @author Milan Ricoul
-   * @returns {Void}
+   *
+   * @returns {void}
    */
   close() {
     this.opened = false
@@ -237,56 +228,10 @@ class Dropdown extends AbstractDomElement {
   }
 
   /**
-   * Close dropdown if click outside the dropdown
-   * @author Milan Ricoul
-   * @param {MouseEvent} e mouse event handler
-   * @returns {void}
-   */
-  detectClickOutsideElement(e) {
-    if (this.opened && !this._element.contains(e.target)) {
-      this.close(this.id)
-    }
-  }
-
-  /**
-   * Focus previous list item
-   * @author Milan Ricoul
-   */
-  focusPreviousElement() {
-    if (this.focusedElement && this.focusedElement.previousElementSibling) {
-      this.updateFocusedListItem(this.focusedElement.previousElementSibling)
-    }
-  }
-
-  /**
-   * Focus next list item
-   * @author Milan Ricoul
-   */
-  focusNextElement() {
-    if (this.focusedElement && this.focusedElement.nextElementSibling) {
-      this.updateFocusedListItem(this.focusedElement.nextElementSibling)
-    }
-  }
-
-  /**
-   * Focus first list item
-   * @author Milan Ricoul
-   */
-  focusFirstElement() {
-    this.updateFocusedListItem(this.listItems[0])
-  }
-
-  /**
-   * Focus last list item
-   * @author Milan Ricoul
-   */
-  focusLastElement() {
-    this.updateFocusedListItem(this.listItems[this.listItems.length - 1])
-  }
-
-  /**
    * Update dropdown value
+   *
    * @author Milan Ricoul
+   *
    * @param {HTMLElement} listItem new list item
    */
   updateFocusedListItem(listItem) {
@@ -316,62 +261,147 @@ class Dropdown extends AbstractDomElement {
       onChange.bind(this)()
     }
   }
+}
 
-  /**
-   * Handle keyboard keydown
-   * @author Milan Ricoul
-   * @param {KeyboardEvent} e Keyboard keydown event
-   * @returns {void}
-   */
-  handleKeydown(e) {
-    const activeElement = document.activeElement
+/**
+ * Handle button click on dropdown button
+ *
+ * @author Milan Ricoul
+ */
+function handleButtonClick() {
+  this.opened ? this.close() : this.open()
+}
 
-    if (activeElement !== this.button && !this.opened) {
-      return
-    }
+/**
+ * Handle list items click
+ *
+ * @author Milan Ricoul
+ *
+ * @param {MouseEvent} e mouse event handler
+ */
+function handleListItemClick(e) {
+  const { onListItemClick } = this._settings
 
-    switch (e.code) {
-      case 'Enter':
-        if (activeElement === this.button && !this.opened) {
-          e.preventDefault()
-          this.open()
-        }
-        break
-      case 'Escape':
-        if (this.opened) {
-          e.preventDefault()
-          this.close(this.id)
-        }
-        break
-      case 'ArrowDown':
+  if (onListItemClick) {
+    onListItemClick.bind(this)()
+  }
+
+  this.updateFocusedListItem(e.currentTarget)
+  this.close()
+}
+
+/**
+ * Handle keyboard keydown
+ *
+ * @author Milan Ricoul
+ *
+ * @param {KeyboardEvent} e Keyboard keydown event
+ *
+ * @returns {void}
+ */
+function handleKeydown(e) {
+  const activeElement = document.activeElement
+
+  if (activeElement !== this.button && !this.opened) {
+    return
+  }
+
+  switch (e.code) {
+    case 'Enter':
+      if (activeElement === this.button && !this.opened) {
         e.preventDefault()
-
-        if (activeElement === this.button && !this.opened) {
-          this.open()
-        } else {
-          this.focusNextElement()
-        }
-
-        break
-      case 'ArrowUp':
+        this.open()
+      }
+      break
+    case 'Escape':
+      if (this.opened) {
         e.preventDefault()
+        this.close(this.id)
+      }
+      break
+    case 'ArrowDown':
+      e.preventDefault()
 
-        if (activeElement === this.button && !this.opened) {
-          this.open()
-        } else {
-          this.focusPreviousElement()
-        }
+      if (activeElement === this.button && !this.opened) {
+        this.open()
+      } else {
+        this._focusNextElement()
+      }
 
-        break
-      case 'Home':
-        e.preventDefault()
-        this.focusFirstElement()
-        break
-      case 'End':
-        e.preventDefault()
-        this.focusLastElement()
-        break
-    }
+      break
+    case 'ArrowUp':
+      e.preventDefault()
+
+      if (activeElement === this.button && !this.opened) {
+        this.open()
+      } else {
+        this._focusPreviousElement()
+      }
+
+      break
+    case 'Home':
+      e.preventDefault()
+      this._focusFirstElement()
+      break
+    case 'End':
+      e.preventDefault()
+      this._focusLastElement()
+      break
+  }
+}
+
+/**
+ * Focus previous list item
+ *
+ * @author Milan Ricoul
+ */
+function focusPreviousElement() {
+  if (this.focusedElement && this.focusedElement.previousElementSibling) {
+    this.updateFocusedListItem(this.focusedElement.previousElementSibling)
+  }
+}
+
+/**
+ * Focus next list item
+ *
+ * @author Milan Ricoul
+ */
+function focusNextElement() {
+  if (this.focusedElement && this.focusedElement.nextElementSibling) {
+    this.updateFocusedListItem(this.focusedElement.nextElementSibling)
+  }
+}
+
+/**
+ * Focus first list item
+ *
+ * @author Milan Ricoul
+ */
+function focusFirstElement() {
+  this.updateFocusedListItem(this.listItems[0])
+}
+
+/**
+ * Focus last list item
+ *
+ * @author Milan Ricoul
+ */
+function focusLastElement() {
+  this.updateFocusedListItem(this.listItems[this.listItems.length - 1])
+}
+
+/**
+ * Close dropdown if click outside the dropdown
+ *
+ * @author Milan Ricoul
+ *
+ * @param {MouseEvent} e mouse event handler
+ *
+ * @returns {void}
+ */
+function handleOutsideElementClick(e) {
+  if (this.opened && !this._element.contains(e.target)) {
+    this.close(this.id)
   }
 }
 
@@ -382,24 +412,6 @@ class Dropdown extends AbstractDomElement {
  */
 function onResize() {
   this.refresh()
-}
-
-/**
- * Set id to the modal dialog
- *
- * @author Milan Ricoul
- *
- * @returns {string}
- */
-function defineId() {
-  const { prefixId } = this._settings
-  let i = 1
-
-  while (document.getElementById(`${prefixId}-${i}`)) {
-    i++
-  }
-
-  return `${prefixId}-${i}`
 }
 
 Dropdown.defaults = {

@@ -23,10 +23,14 @@ export const each = function (array, callback) {
  *
  * @returns {string}
  */
-export const randomId = function (length = 6) {
-  return Math.random()
-    .toString(36)
-    .substring(2, length + 2)
+export const randomId = function (prefix = '', length = 6) {
+  return String(
+    prefix +
+      '-' +
+      Math.random()
+        .toString(36)
+        .substring(2, length + 2)
+  )
 }
 
 /**
