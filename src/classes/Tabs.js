@@ -58,6 +58,8 @@ class Tabs extends AbstractDomElement {
     buttons.forEach((button) => button.removeEventListener('click', this.handleButtonClick))
 
     document.removeEventListener('keydown', this.handleKeydown)
+
+    super.destroy()
   }
 
   /**

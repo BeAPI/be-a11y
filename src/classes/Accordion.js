@@ -143,6 +143,8 @@ class Accordion extends AbstractDomElement {
       trigger.removeEventListener('blur', this._handleButtonBlur)
     })
 
+    super.destroy()
+
     document.addEventListener('keydown', this._handleKeydown)
   }
 

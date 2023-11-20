@@ -120,6 +120,8 @@ class Toggle extends AbstractDomElement {
       el.removeEventListener('click', this._handleClick)
       el.removeEventListener('blur', this._handleBlur)
     }
+
+    super.destroy()
   }
 
   /**

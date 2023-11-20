@@ -211,6 +211,8 @@ class Modal extends AbstractDomElement {
     document.querySelectorAll(`button[aria-controls="${this.id}"]`).forEach((btn) => {
       btn.removeEventListener('click', this.open)
     })
+
+    super.destroy()
   }
 }
 
