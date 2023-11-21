@@ -3,7 +3,11 @@
 Build an accessible slider arround your markup.
 
 * [See accessible specificies](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/)
-* [Demo](https://codepen.io/beapi/pen/GRYEzJo)
+* [Demo — Default](https://codepen.io/beapi/pen/gOZqwvL)
+* [Demo — Slides per view](https://codepen.io/beapi/pen/GRPzjbm)
+* [Demo — Slides per view](https://codepen.io/beapi/pen/GRPzjbm)
+* [Demo — Centered](https://codepen.io/beapi/pen/MWZLbjd)
+* [Demo — Opacity animation](https://codepen.io/beapi/pen/GRYEzJo)
 
 ## Getting started
 

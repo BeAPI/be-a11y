@@ -11,7 +11,7 @@ This repository contains a collection of useful accessible components such as ta
 Start by installing the package.
 
 ```bash
-yarn add @beapi/be-a11y # or npm install @beapi/be-a11y --save
+pnpm add @beapi/be-a11y # or npm install @beapi/be-a11y --save or yarn add @beapi/be-a11y
 ```
 
 Then, import in your JavaScript file the component you need.
@@ -40,9 +40,9 @@ Project works with [Vite ⚡](https://vitejs.dev/) and [Playwright 🎭](https:/
 ### Development
 
 ```bash
-yarn # Install dependencies
+pnpm # Install dependencies
 
-yarn dev # Start development server
+pnpm dev # Start development server
 ```
 
 ### Build
@@ -50,13 +50,13 @@ yarn dev # Start development server
 In `examples` directory you can find sample of components. First of all you have to build the JS with the following command.
 
 ```bash
-yarn build
+pnpm build
 ```
 
 Then, you can launch a local server.
 
 ```bash
-yarn preview
+pnpm preview
 ```
 
 ### Test your code
@@ -64,5 +64,5 @@ yarn preview
 You can run UI tests with the following command.
 
 ```bash
-yarn test
+pnpm test
 ```
