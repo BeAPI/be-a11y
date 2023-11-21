@@ -99,7 +99,7 @@ class Modal extends AbstractDomElement {
    *
    * @param {MouseEvent} e click event handler
    *
-   * @returns {Void}
+   * @returns {void}
    *
    * @author Milan Ricoul
    */
@@ -112,7 +112,7 @@ class Modal extends AbstractDomElement {
   /**
    * Open modal
    *
-   * @returns {Void}
+   * @returns {void}
    *
    * @author Milan Ricoul
    */
@@ -130,7 +130,7 @@ class Modal extends AbstractDomElement {
   /**
    * Close modal
    *
-   * @returns {Void}
+   * @returns {void}
    *
    * @author Milan Ricoul
    */
@@ -152,7 +152,7 @@ class Modal extends AbstractDomElement {
    *
    * @param {KeyboardEvent} e keydown event handler
    *
-   * @returns {Void}
+   * @returns {void}
    *
    * @author Milan Ricoul
    */
@@ -173,7 +173,7 @@ class Modal extends AbstractDomElement {
    *
    * @param {KeyboardEvent} e keyboard event handler
    *
-   * @returns {Void}
+   * @returns {void}
    *
    * @author Milan Ricoul
    */
@@ -211,6 +211,8 @@ class Modal extends AbstractDomElement {
     document.querySelectorAll(`button[aria-controls="${this.id}"]`).forEach((btn) => {
       btn.removeEventListener('click', this.open)
     })
+
+    super.destroy()
   }
 }
 

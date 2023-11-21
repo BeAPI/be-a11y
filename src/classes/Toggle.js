@@ -7,6 +7,7 @@ import { randomId } from '../utils/helpers.js'
 
 /**
  * Toggle Class
+ *
  * @author Milan Ricoul
  */
 class Toggle extends AbstractDomElement {
@@ -23,8 +24,8 @@ class Toggle extends AbstractDomElement {
       : document.getElementById(this._element.getAttribute('aria-controls'))
 
     this._onResizeHandler = onResize.bind(this)
-    this.handleClick = this.handleClick.bind(this)
-    this.handleBlur = this.handleBlur.bind(this)
+    this._handleClick = handleClick.bind(this)
+    this._handleBlur = handleBlur.bind(this)
     this.enableBodyScroll = this.enableBodyScroll.bind(this)
     this.disableBodyScroll = this.disableBodyScroll.bind(this)
 
@@ -36,7 +37,9 @@ class Toggle extends AbstractDomElement {
 
   /**
    * Initialize class
+   *
    * @returns {Boolean}
+   *
    * @author Milan Ricoul
    */
   init() {
@@ -46,7 +49,7 @@ class Toggle extends AbstractDomElement {
     this.initialized = true
 
     if (this.target) {
-      el.addEventListener('click', this.handleClick)
+      el.addEventListener('click', this._handleClick)
     } else if (!this.target && onClick) {
       el.addEventListener('click', onClick)
 
@@ -66,11 +69,24 @@ class Toggle extends AbstractDomElement {
     }
 
     if (closeOnBlur) {
-      el.addEventListener('blur', this.handleBlur)
+      el.addEventListener('blur', this._handleBlur)
     }
 
     if (closeOnEscPress) {
-      _closeOnEscPress(el)
+      window.addEventListener('keydown', function (e) {
+        if (e.defaultPrevented) {
+          return
+        }
+
+        const key = e.key || e.keyCode
+
+        if (
+          (key === 'Escape' || key === 'Esc' || key === 27) &&
+          document.getElementById(el.getAttribute('aria-controls')).getAttribute('aria-hidden') !== 'true'
+        ) {
+          el.click()
+        }
+      })
     }
 
     if (!this.target.hasAttribute('aria-hidden')) {
@@ -86,72 +102,61 @@ class Toggle extends AbstractDomElement {
 
   /**
    * Destroy events
+   *
    * @returns {void}
+   *
    * @author Milan Ricoul
    */
   destroy() {
     const el = this._element
+    const { onClick } = this._settings
     this.initialized = false
 
     this.reset()
 
-    if (this._settings.onClick) {
-      el.removeEventListener('click', this._settings.onClick)
+    if (onClick) {
+      el.removeEventListener('click', onClick)
     } else {
-      el.removeEventListener('click', this.handleClick)
-      el.removeEventListener('blur', this.handleBlur)
+      el.removeEventListener('click', this._handleClick)
+      el.removeEventListener('blur', this._handleBlur)
     }
-  }
 
-  /**
-   * Handle button MouseEvent
-   * @param {MouseEvent} e event handler
-   * @returns {void}
-   * @author Milan Ricoul
-   */
-  handleClick(e) {
-    const { isOpened } = this._settings
-
-    e.preventDefault()
-
-    if (this.target.getAttribute('aria-hidden')) {
-      this.target.getAttribute('aria-hidden') !== 'true' ? this.close() : this.open()
-
-      return
-    } else {
-      this.target.setAttribute('aria-hidden', isOpened ? 'true' : 'false')
-    }
+    super.destroy()
   }
 
   /**
    * Open target
+   *
    * @returns {void}
+   *
    * @author Milan Ricoul
    */
   open() {
     const el = this._element
-    const s = this._settings
+    const { bodyScrollLock, hasAnimation } = this._settings
 
     this.target.setAttribute('aria-hidden', 'false')
     el.setAttribute('aria-expanded', 'true')
 
-    if (s.hasAnimation) {
+    if (hasAnimation) {
       DOMAnimations.slideDown(this.target)
     }
 
-    if (s.bodyScrollLock) {
+    if (bodyScrollLock) {
       this.disableBodyScroll()
     }
   }
 
   /**
    * Close target
+   *
    * @returns {void}
+   *
    * @author Milan Ricoul
    */
   close() {
     const el = this._element
-    const s = this._settings
+    const { bodyScrollLock } = this._settings
 
     this.target.setAttribute('aria-hidden', 'true')
     el.setAttribute('aria-expanded', 'false')
@@ -160,14 +165,16 @@ class Toggle extends AbstractDomElement {
       DOMAnimations.slideUp(this.target)
     }
 
-    if (s.bodyScrollLock) {
+    if (bodyScrollLock) {
       enableBodyScroll(this.target)
     }
   }
 
   /**
    * Remove ARIA attributes
+   *
    * @returns {void}
+   *
    * @author Milan Ricoul
    */
   reset() {
@@ -185,40 +192,69 @@ class Toggle extends AbstractDomElement {
   }
 
   /**
-   * Handle button FocusEvent
-   * @returns {void}
-   * @author Milan Ricoul
-   */
-  handleBlur() {
-    window.setTimeout(() => {
-      this.target.setAttribute('aria-hidden', 'true')
-      this._element.setAttribute('aria-expanded', 'false')
-    }, 200)
-  }
-
-  /**
    * Disable body scroll
+   *
    * @returns {void}
+   *
    * @author Milan Ricoul
    */
   disableBodyScroll() {
-    const s = this._settings
+    const { bodyScrollLockMediaQuery } = this._settings
 
-    if (s.bodyScrollLockMediaQuery && window.matchMedia(s.bodyScrollLockMediaQuery).matches) {
+    if (bodyScrollLockMediaQuery && window.matchMedia(bodyScrollLockMediaQuery).matches) {
       disableBodyScroll(this.target)
-    } else if (!s.bodyScrollLockMediaQuery) {
+    } else if (!bodyScrollLockMediaQuery) {
       disableBodyScroll(this.target)
     }
   }
 
   /**
    * Enable body scroll
+   *
    * @returns {void}
+   *
    * @author Milan Ricoul
    */
   enableBodyScroll() {
     enableBodyScroll(this.target)
   }
+}
+
+/**
+ * Handle button MouseEvent
+ *
+ * @param {MouseEvent} e event handler
+ *
+ * @returns {void}
+ *
+ * @author Milan Ricoul
+ */
+function handleClick(e) {
+  const { isOpened } = this._settings
+
+  e.preventDefault()
+
+  if (this.target.getAttribute('aria-hidden')) {
+    this.target.getAttribute('aria-hidden') !== 'true' ? this.close() : this.open()
+
+    return
+  } else {
+    this.target.setAttribute('aria-hidden', isOpened ? 'true' : 'false')
+  }
+}
+
+/**
+ * Handle button FocusEvent
+ *
+ * @returns {void}
+ *
+ * @author Milan Ricoul
+ */
+function handleBlur() {
+  window.setTimeout(() => {
+    this.target.setAttribute('aria-hidden', 'true')
+    this._element.setAttribute('aria-expanded', 'false')
+  }, 200)
 }
 
 /**
@@ -248,27 +284,6 @@ function onResize() {
   ) {
     this.target.removeAttribute('style')
   }
-}
-
-/**
- * Close all targets on Esc keydown
- * @param {HTMLElement} el element from preset
- */
-function _closeOnEscPress(el) {
-  window.addEventListener('keydown', (e) => {
-    if (e.defaultPrevented) {
-      return
-    }
-
-    const key = e.key || e.keyCode
-
-    if (
-      (key === 'Escape' || key === 'Esc' || key === 27) &&
-      document.getElementById(el.getAttribute('aria-controls')).getAttribute('aria-hidden') !== 'true'
-    ) {
-      el.click()
-    }
-  })
 }
 
 Toggle.defaults = {
