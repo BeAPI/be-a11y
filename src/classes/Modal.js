@@ -1,7 +1,6 @@
 import AbstractDomElement from './AbstractDomElement.js'
 import { ThrottledEvent } from 'oneloop.js'
-import { randomId } from '../utils/helpers.js'
-import isSelectorValid from '../utils/isValidSelector.js'
+import { isSelectorValid, randomId } from '../utils/helpers.js'
 
 const FOCUSABLE_ELEMENTS = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
 
@@ -53,8 +52,7 @@ class Modal extends AbstractDomElement {
    */
   init() {
     const el = this._element
-    const { closeButtonSelector, closeOnFocusOutside, descriptionSelector, labelSelector, triggerSelector } =
-      this._settings
+    const { closeButtonSelector, closedClassName, descriptionSelector, labelSelector, triggerSelector } = this._settings
 
     // Set id
     if (el.id) {
@@ -64,6 +62,8 @@ class Modal extends AbstractDomElement {
 
       el.id = this.id
     }
+
+    el.classList.add(closedClassName)
 
     // Set aria-labelledby attribute
     if (labelSelector && el.querySelector(labelSelector)) {
@@ -110,6 +110,9 @@ class Modal extends AbstractDomElement {
     this.isOpened = true
 
     const el = this._element
+    const { closedClassName, openedClassName } = this._settings
+    el.classList.remove(closedClassName)
+    el.classList.add(openedClassName)
     el.removeAttribute('aria-hidden')
     el.querySelectorAll(FOCUSABLE_ELEMENTS)[0].focus()
 
@@ -133,8 +136,14 @@ class Modal extends AbstractDomElement {
    * @author Milan Ricoul
    */
   close() {
-    this._element.style.display = 'none'
+    const el = this._element
+    const { closedClassName, openedClassName } = this._settings
+
     this.isOpened = false
+
+    el.classList.add(closedClassName)
+    el.classList.remove(openedClassName)
+    el.setAttribute('aria-hidden', 'true')
 
     if (this.triggerButton) {
       this.triggerButton.focus()
@@ -181,8 +190,9 @@ class Modal extends AbstractDomElement {
    */
   destroy() {
     const el = this._element
-    const { closeButtonSelector } = this._settings
+    const { closeButtonSelector, closedClassName, openedClassName } = this._settings
 
+    el.classList.remove(closedClassName, openedClassName)
     el.removeAttribute('aria-hidden')
 
     if (closeButtonSelector) {
@@ -206,7 +216,7 @@ class Modal extends AbstractDomElement {
  */
 function onResize() {
   const el = this._element
-  const { mediaQuery } = this._settings
+  const { closedClassName, mediaQuery, openedClassName } = this._settings
 
   if (!mediaQuery && !this.initialized) {
     this.init()
@@ -223,6 +233,7 @@ function onResize() {
     el.hasAttribute('aria-hidden') &&
     el.getAttribute('aria-hidden') === 'true'
   ) {
+    el.classList.remove(closedClassName, openedClassName)
     el.removeAttribute('aria-hidden')
   }
 }
@@ -295,10 +306,12 @@ function handleOutsideClick(e) {
 
 Modal.defaults = {
   closeButtonSelector: '.modal__close',
+  closedClassName: 'modal--hidden',
   closeOnFocusOutside: false,
   descriptionSelector: false,
   labelSelector: false,
   mediaQuery: null,
+  openedClassName: 'modal--visible',
   onOpen: null,
   onClose: null,
   triggerSelector: false,

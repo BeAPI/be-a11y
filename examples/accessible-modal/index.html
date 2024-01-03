@@ -21,7 +21,7 @@
         <button class="modal-btn" type="button" aria-controls="demo-1">Add delivery address</button>
         <button class="modal-btn modal-btn--demo-1" type="button">Another button for delivery address</button>
 
-        <div id="demo-1" class="modal" tabindex="-1" role="dialog" aria-modal="true" style="display: none;">
+        <div id="demo-1" class="modal" tabindex="-1" role="dialog" aria-modal="true" aria-hidden="true">
             <div class="modal__inner">
                 <h2 class="modal__title">Add delivery address</h2>
 
@@ -117,9 +117,9 @@
 
         <h3>Modal button but only for &lt; 1024px devices</h3>
 
-        <button class="modal-btn--demo-2" type="button">Add billing address</button>
+        <button class="modal-btn--demo-3" type="button">Add billing address</button>
 
-        <div class="modal modal--mobile modal--demo-2" tabindex="-1" role="dialog" aria-modal="true" style="display: none;">
+        <div class="modal modal--mobile modal--demo-3" tabindex="-1" role="dialog" aria-modal="true" aria-hidden="true">
             <div class="modal__inner">
                 <h2 class="modal__title">Add billing address</h2>
 
@@ -189,7 +189,7 @@
                     labelSelector: '.modal__title',
                     closeButtonSelector: '.modal__close',
                     mediaQuery: window.matchMedia('(max-width: 1024px)'),
-                    triggerSelector: '.modal-btn--demo-2'
+                    triggerSelector: '.modal-btn--demo-3'
                 },
                 '#demo-2': {
                     labelSelector: '.modal__title',

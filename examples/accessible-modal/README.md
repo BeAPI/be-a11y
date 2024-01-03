@@ -32,7 +32,7 @@ Copy the following markup on your HTML file :
 ```html
 <button type="button" aria-controls="dialog-1">Open modal dialog</button>
 
-<div id="dialog-1" class="modal" tabindex="-1" role="dialog" aria-modal="true" style="display: none;">
+<div id="dialog-1" class="modal" tabindex="-1" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal__inner">
         <!-- Your content here -->
 
@@ -106,6 +106,7 @@ Modal.initFromPreset();
 | name                | type            | default         | description                                                                 |
 |---------------------|-----------------|-----------------|-----------------------------------------------------------------------------|
 | closeButtonSelector | boolean\|string | `.modal__close` | The selector of the modal close button.                                     |
+| closeOnFocusOutside | boolean\|string | `false`         | Specify the selector in which the modal should close on click. If false, the modal does not close on outside click. If true, the modal closes on outside click of the element. |
 | descriptionSelector | boolean\|string | `false`         | The selector of the modal label (for the attribute  ` aria-describedby ` ). |
 | labelSelector       | boolean\|string | `false`         | The selector of the modal label (for the attribute  ` aria-labelledby ` ).  |
 | mediaQuery          | object          | `null`          | Apply modal to a window match.                                              |
