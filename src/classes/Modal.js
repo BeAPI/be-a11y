@@ -1,6 +1,8 @@
 import AbstractDomElement from './AbstractDomElement.js'
 import { ThrottledEvent } from 'oneloop.js'
-import { randomId } from '../utils/helpers.js'
+import { isSelectorValid, randomId } from '../utils/helpers.js'
+
+const FOCUSABLE_ELEMENTS = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
 
 /**
  * Modal Class
@@ -23,8 +25,9 @@ class Modal extends AbstractDomElement {
     this._onResizeHandler = onResize.bind(this)
     this.close = this.close.bind(this)
     this.open = this.open.bind(this)
-    this.handleButtonClick = this.handleButtonClick.bind(this)
-    this.handleKeydown = this.handleKeydown.bind(this)
+    this._handleOutsideClick = handleOutsideClick.bind(this)
+    this._handleButtonClick = handleButtonClick.bind(this)
+    this._handleKeydown = handleKeydown.bind(this)
 
     if (onOpen) {
       this._onOpen = onOpen.bind(this)
@@ -49,7 +52,7 @@ class Modal extends AbstractDomElement {
    */
   init() {
     const el = this._element
-    const s = this._settings
+    const { closeButtonSelector, closedClassName, descriptionSelector, labelSelector, triggerSelector } = this._settings
 
     // Set id
     if (el.id) {
@@ -60,53 +63,40 @@ class Modal extends AbstractDomElement {
       el.id = this.id
     }
 
+    el.classList.add(closedClassName)
+
     // Set aria-labelledby attribute
-    if (s.labelSelector && el.querySelector(s.labelSelector)) {
+    if (labelSelector && el.querySelector(labelSelector)) {
       el.setAttribute('aria-labelledby', `${this.id}-label`)
-      el.querySelector(s.labelSelector).id = `${this.id}-label`
+      el.querySelector(labelSelector).id = `${this.id}-label`
     }
 
     // Set aria-describedby attribute
-    if (s.descriptionSelector && el.querySelector(s.descriptionSelector)) {
+    if (descriptionSelector && el.querySelector(descriptionSelector)) {
       el.setAttribute('aria-describedby', `${this.id}-description`)
-      el.querySelector(s.descriptionSelector).id = `${this.id}-description`
+      el.querySelector(descriptionSelector).id = `${this.id}-description`
     }
 
     // Set aria-controls attribute to close button
-    if (s.closeButtonSelector && el.querySelector(s.closeButtonSelector)) {
-      const closeButton = el.querySelector(s.closeButtonSelector)
+    if (closeButtonSelector && el.querySelector(closeButtonSelector)) {
+      const closeButton = el.querySelector(closeButtonSelector)
       closeButton.id = `${this.id}-close`
       closeButton.setAttribute('aria-controls', this.id)
       closeButton.addEventListener('click', this.close)
     }
 
     // if setting triggerButton is defined and exists, set aria-controls attribute to this button
-    if (s.triggerSelector && document.querySelectorAll(s.triggerSelector).length) {
-      document.querySelectorAll(s.triggerSelector).forEach((btn) => {
+    if (triggerSelector && document.querySelectorAll(triggerSelector).length) {
+      document.querySelectorAll(triggerSelector).forEach((btn) => {
         btn.setAttribute('aria-controls', this.id)
       })
     }
 
     document.querySelectorAll(`button[aria-controls="${this.id}"]:not(#${this.id}-close)`).forEach((btn) => {
-      btn.addEventListener('click', this.handleButtonClick)
+      btn.addEventListener('click', this._handleButtonClick)
     })
 
-    window.addEventListener('keydown', this.handleKeydown)
-  }
-
-  /**
-   * Handle button click
-   *
-   * @param {MouseEvent} e click event handler
-   *
-   * @returns {void}
-   *
-   * @author Milan Ricoul
-   */
-  handleButtonClick(e) {
-    this.triggerButton = e.currentTarget
-
-    this.open()
+    window.addEventListener('keydown', this._handleKeydown)
   }
 
   /**
@@ -117,13 +107,24 @@ class Modal extends AbstractDomElement {
    * @author Milan Ricoul
    */
   open() {
-    const el = this._element
-    el.style.display = 'block'
-    el.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')[0].focus()
     this.isOpened = true
+
+    const el = this._element
+    const { closedClassName, openedClassName } = this._settings
+    el.classList.remove(closedClassName)
+    el.classList.add(openedClassName)
+    el.removeAttribute('aria-hidden')
+    el.querySelectorAll(FOCUSABLE_ELEMENTS)[0].focus()
 
     if (this._onOpen) {
       this._onOpen()
+    }
+
+    if (this._settings.closeOnFocusOutside) {
+      // Use requestAnimationFrame to add the event after the initial rendering
+      requestAnimationFrame(() => {
+        window.addEventListener('click', this._handleOutsideClick)
+      })
     }
   }
 
@@ -135,8 +136,14 @@ class Modal extends AbstractDomElement {
    * @author Milan Ricoul
    */
   close() {
-    this._element.style.display = 'none'
+    const el = this._element
+    const { closedClassName, openedClassName } = this._settings
+
     this.isOpened = false
+
+    el.classList.add(closedClassName)
+    el.classList.remove(openedClassName)
+    el.setAttribute('aria-hidden', 'true')
 
     if (this.triggerButton) {
       this.triggerButton.focus()
@@ -145,26 +152,9 @@ class Modal extends AbstractDomElement {
     if (this._onClose) {
       this._onClose()
     }
-  }
 
-  /**
-   * Handle keydown event
-   *
-   * @param {KeyboardEvent} e keydown event handler
-   *
-   * @returns {void}
-   *
-   * @author Milan Ricoul
-   */
-  handleKeydown(e) {
-    switch (e.code) {
-      case 'Tab':
-        this.checkNextFocusableElement(e)
-        break
-      case 'Escape':
-        if (this.isOpened) {
-          this.close()
-        }
+    if (this._settings.closeOnFocusOutside) {
+      window.removeEventListener('click', this._handleOutsideClick)
     }
   }
 
@@ -179,9 +169,7 @@ class Modal extends AbstractDomElement {
    */
   checkNextFocusableElement(e) {
     const el = this._element
-    const focusableElements = el.querySelectorAll(
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-    )
+    const focusableElements = el.querySelectorAll(FOCUSABLE_ELEMENTS)
     const currentIndexOfActiveElement = Array.prototype.indexOf.call(focusableElements, document.activeElement)
 
     if (currentIndexOfActiveElement === 0 && e.shiftKey) {
@@ -202,10 +190,13 @@ class Modal extends AbstractDomElement {
    */
   destroy() {
     const el = this._element
-    const s = this._settings
+    const { closeButtonSelector, closedClassName, openedClassName } = this._settings
 
-    if (s.closeButtonSelector) {
-      el.querySelector(s.closeButtonSelector).removeEventListener('click', this.close)
+    el.classList.remove(closedClassName, openedClassName)
+    el.removeAttribute('aria-hidden')
+
+    if (closeButtonSelector) {
+      el.querySelector(closeButtonSelector).removeEventListener('click', this.close)
     }
 
     document.querySelectorAll(`button[aria-controls="${this.id}"]`).forEach((btn) => {
@@ -224,26 +215,103 @@ class Modal extends AbstractDomElement {
  * @author Milan Ricoul
  */
 function onResize() {
-  const s = this._settings
+  const el = this._element
+  const { closedClassName, mediaQuery, openedClassName } = this._settings
 
-  if (!s.mediaQuery && !this.initialized) {
+  if (!mediaQuery && !this.initialized) {
     this.init()
   }
 
-  if (s.mediaQuery && this.initialized && !s.mediaQuery.matches) {
+  if (mediaQuery && this.initialized && !mediaQuery.matches) {
     this.destroy()
-  } else if (!this.initialized && s.mediaQuery && s.mediaQuery.matches) {
+  } else if (!this.initialized && mediaQuery && mediaQuery.matches) {
     this.init()
-  } else if (!this.initialized && s.mediaQuery && !s.mediaQuery.matches && this._element.hasAttribute('style')) {
-    this._element.removeAttribute('style')
+  } else if (
+    !this.initialized &&
+    mediaQuery &&
+    !mediaQuery.matches &&
+    el.hasAttribute('aria-hidden') &&
+    el.getAttribute('aria-hidden') === 'true'
+  ) {
+    el.classList.remove(closedClassName, openedClassName)
+    el.removeAttribute('aria-hidden')
   }
+}
+
+/**
+ * Handle button click
+ *
+ * @param {MouseEvent} e click event handler
+ *
+ * @returns {void}
+ *
+ * @author Milan Ricoul
+ */
+function handleButtonClick(e) {
+  this.triggerButton = e.currentTarget
+
+  this.open()
+}
+
+/**
+ * Handle keydown event
+ *
+ * @param {KeyboardEvent} e keydown event handler
+ *
+ * @returns {void}
+ *
+ * @author Milan Ricoul
+ */
+function handleKeydown(e) {
+  switch (e.code) {
+    case 'Tab':
+      this.checkNextFocusableElement(e)
+      break
+    case 'Escape':
+      if (this.isOpened) {
+        this.close()
+      }
+  }
+}
+
+/**
+ * Handle document click
+ *
+ * @param {MouseEvent} e click event handler
+ *
+ * @returns {void}
+ *
+ * @author Milan Ricoul
+ */
+function handleOutsideClick(e) {
+  // If the modal is not open, do nothing
+  if (!this.isOpened) {
+    return
+  }
+
+  const { target } = e
+  const { closeOnFocusOutside } = this._settings
+
+  // If closeOnFocusOutside is a valid selector and it is an parent element of the clicked target
+  // Or, if the modal element is an parent of the clicked target.
+  if (
+    (isSelectorValid(closeOnFocusOutside) && target.closest(closeOnFocusOutside)) ||
+    (closeOnFocusOutside === true && target.closest(this._element))
+  ) {
+    return
+  }
+
+  this.close()
 }
 
 Modal.defaults = {
   closeButtonSelector: '.modal__close',
+  closedClassName: 'modal--hidden',
+  closeOnFocusOutside: false,
   descriptionSelector: false,
   labelSelector: false,
   mediaQuery: null,
+  openedClassName: 'modal--visible',
   onOpen: null,
   onClose: null,
   triggerSelector: false,
