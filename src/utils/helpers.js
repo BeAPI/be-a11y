@@ -49,3 +49,17 @@ export const getMaxHeight = function (elements) {
 
   return max
 }
+
+/**
+ * Check if an HTML element exists in DOM
+ */
+export const isSelectorValid = ((dummyElement) => (selector) => {
+  try {
+    dummyElement.querySelector(selector)
+  } catch {
+    return false
+  }
+  return true
+})(document.createDocumentFragment())
+
+export default isSelectorValid

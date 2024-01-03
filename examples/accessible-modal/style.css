@@ -8,6 +8,10 @@
     background-color: var(--modal-bg-color);
 }
 
+.modal[aria-hidden="true"] {
+    display: none;
+}
+
 .modal__inner {
     position: absolute;
     top: 50%;
