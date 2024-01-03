@@ -15,4 +15,4 @@ const config: PlaywrightTestConfig = {
   },
 }
 
-module.exports = config
+export default config
