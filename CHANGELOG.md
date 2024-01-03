@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.5.1 - 2024-01-03
+
+- Fix playwright tests config
+- Add option `closeOnFocusOutside` for Modal component.
+- Add visible and hidden classNames for Modal component.
+- Set aria-hidden attribute for Modal component.
+- Remove inline styles for Modal component.
+
 ## 1.5.0 - 2023-11-21
 
 - Update `vite` to version 5
