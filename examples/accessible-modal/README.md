@@ -3,7 +3,10 @@
 In user interface design for computer applications, a modal window is a graphical control element subordinate to an application's main window.
 
 * [See accessible specificies](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html)
-* [Demo](https://codepen.io/beapi/full/mdwOVBm)
+* [Demo — Default](https://codepen.io/beapi/full/mdwOVBm)
+* [Demo — Close on focus outside](https://codepen.io/beapi/full/oNVbxOy)
+* [Demo — Only for < 1024px devices](https://codepen.io/beapi/full/oNVbxVy)
+* [Demo — Animated](https://codepen.io/beapi/full/oNVbxVy)
 
 ## Getting started
 
@@ -103,13 +106,15 @@ Modal.initFromPreset();
 
 ### Options
 
-| name                | type            | default         | description                                                                 |
-|---------------------|-----------------|-----------------|-----------------------------------------------------------------------------|
-| closeButtonSelector | boolean\|string | `.modal__close` | The selector of the modal close button.                                     |
-| closeOnFocusOutside | boolean\|string | `false`         | Specify the selector in which the modal should close on click. If false, the modal does not close on outside click. If true, the modal closes on outside click of the element. |
-| descriptionSelector | boolean\|string | `false`         | The selector of the modal label (for the attribute  ` aria-describedby ` ). |
-| labelSelector       | boolean\|string | `false`         | The selector of the modal label (for the attribute  ` aria-labelledby ` ).  |
-| mediaQuery          | object          | `null`          | Apply modal to a window match.                                              |
-| onOpen              | function        | `null`          | Callback when modal is opened.                                              |
-| onClose             | function        | `null`          | Callback when modal is closed.                                              |
-| triggerSelector     | boolean\|string | `false`         | The selector of the modal trigger button.                                   |
+| name                | type            | default          | description                                                                 |
+|---------------------|-----------------|------------------|-----------------------------------------------------------------------------|
+| closeButtonSelector | boolean\|string | `.modal__close`  | The selector of the modal close button.                                     |
+| closedClassName     | string          | `modal--hidden`  | The class name when the modal is hidden.                                    |
+| closeOnFocusOutside | boolean\|string | `false`          | Specify the selector in which the modal should close on click. If false, the modal does not close on outside click. If true, the modal closes on outside click of the element. |
+| descriptionSelector | boolean\|string | `false`          | The selector of the modal label (for the attribute  ` aria-describedby ` ). |
+| labelSelector       | boolean\|string | `false`          | The selector of the modal label (for the attribute  ` aria-labelledby ` ).  |
+| mediaQuery          | object          | `null`           | Apply modal to a window match.                                              |
+| openedClassName     | string          | `modal--visible` | The class name when the modal is visible.                                   |
+| onOpen              | function        | `null`           | Callback when modal is opened.                                              |
+| onClose             | function        | `null`           | Callback when modal is closed.                                              |
+| triggerSelector     | boolean\|string | `false`          | The selector of the modal trigger button.                                   |
