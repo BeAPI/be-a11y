@@ -10,7 +10,7 @@
         "es6": true
     },
     "parserOptions": {
-        "ecmaVersion": 6,
+        "ecmaVersion": 2020,
         "sourceType": "module"
     },
     "rules": {
@@ -28,9 +28,5 @@
                 "semi": false
             }
         ]
-    },
-    "globals": {
-        "jQuery": true,
-        "wp": true
     }
   }
