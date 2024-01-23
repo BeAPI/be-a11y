@@ -28,6 +28,7 @@ class Modal extends AbstractDomElement {
     this._handleOutsideClick = handleOutsideClick.bind(this)
     this._handleButtonClick = handleButtonClick.bind(this)
     this._handleKeydown = handleKeydown.bind(this)
+    this._handleTransitionEnd = handleTransitionEnd.bind(this)
 
     if (onOpen) {
       this._onOpen = onOpen.bind(this)
@@ -51,6 +52,7 @@ class Modal extends AbstractDomElement {
    * @author Milan Ricoul
    */
   init() {
+    this.initialized = true
     const el = this._element
     const { closeButtonSelector, closedClassName, descriptionSelector, labelSelector, triggerSelector } = this._settings
 
@@ -114,7 +116,13 @@ class Modal extends AbstractDomElement {
     el.classList.remove(closedClassName)
     el.classList.add(openedClassName)
     el.removeAttribute('aria-hidden')
-    el.querySelectorAll(FOCUSABLE_ELEMENTS)[0].focus()
+    el.querySelectorAll(FOCUSABLE_ELEMENTS).forEach((element, index) => {
+      element.style.removeProperty('display')
+
+      if (index === 0) {
+        element.focus()
+      }
+    })
 
     if (this._onOpen) {
       this._onOpen()
@@ -144,6 +152,7 @@ class Modal extends AbstractDomElement {
     el.classList.add(closedClassName)
     el.classList.remove(openedClassName)
     el.setAttribute('aria-hidden', 'true')
+    el.addEventListener('transitionend', this._handleTransitionEnd)
 
     if (this.triggerButton) {
       this.triggerButton.focus()
@@ -189,6 +198,7 @@ class Modal extends AbstractDomElement {
    * @author Milan Ricoul
    */
   destroy() {
+    this.initialized = false
     const el = this._element
     const { closeButtonSelector, closedClassName, openedClassName } = this._settings
 
@@ -302,6 +312,19 @@ function handleOutsideClick(e) {
   }
 
   this.close()
+}
+
+/**
+ * Handle modal transition end
+ */
+function handleTransitionEnd() {
+  const el = this._element
+
+  el.querySelectorAll(FOCUSABLE_ELEMENTS).forEach((element) => {
+    element.style.display = 'none'
+  })
+
+  el.removeEventListener('transitionend', this._handleTransitionEnd)
 }
 
 Modal.defaults = {

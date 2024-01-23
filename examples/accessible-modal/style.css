@@ -5,6 +5,8 @@
     bottom: 0;
     left: 0;
     z-index: 9999;
+    display: grid;
+    place-content: center;
     background-color: var(--modal-bg-color);
 }
 
@@ -13,15 +15,11 @@
 }
 
 .modal__inner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
     width: 100%;
     max-width: 600px;
     padding: 30px;
     margin: 0 auto;
     background-color: var(--light-color);
-    transform: translate3d(-50%, -50%, 0);
 }
 
 .modal__title {
@@ -42,6 +40,30 @@
 
 .modal-btn {
     margin-bottom: 40px;
+}
+
+.modal--demo-4 {
+    transition: all 300ms;
+}
+
+.modal--demo-4[aria-hidden="true"] {
+    display: grid;
+}
+
+.modal--demo-4 .modal__inner {
+    transition: all 300ms;
+    transform: translate3d(0, 0, 0);
+}
+
+.modal--demo-4.modal--hidden {
+    pointer-events: none;
+    touch-action: none;
+    opacity: 0;
+}
+
+.modal--demo-4.modal--hidden .modal__inner {
+    opacity: 0;
+    transform: translate3d(0, 100px, 0);
 }
 
 @media screen and (min-width: 1024px) {
