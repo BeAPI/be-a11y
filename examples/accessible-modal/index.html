@@ -23,7 +23,7 @@
 
         <div id="demo-1" class="modal" tabindex="-1" role="dialog" aria-modal="true" aria-hidden="true">
             <div class="modal__inner">
-                <h2 class="modal__title">Add delivery address</h2>
+                <h4 class="modal__title">Add delivery address</h4>
 
                 <div>
                     <div class="mb-4">
@@ -72,7 +72,7 @@
 
         <div id="demo-2" class="modal modal--demo-2" tabindex="-1" role="dialog" aria-modal="true" aria-hidden="true">
             <div class="modal__inner">
-                <h2 class="modal__title">Add billing address</h2>
+                <h4 class="modal__title">Add delivery address</h4>
 
                 <div>
                     <div class="mb-4">
@@ -121,7 +121,56 @@
 
         <div class="modal modal--mobile modal--demo-3" tabindex="-1" role="dialog" aria-modal="true" aria-hidden="true">
             <div class="modal__inner">
-                <h2 class="modal__title">Add billing address</h2>
+                <h4 class="modal__title">Add delivery address</h4>
+
+                <div>
+                    <div class="mb-4">
+                        <label for="street">
+                            <span>Street:</span>
+                            <input id="street" type="text">
+                        </label>
+                    </div>
+                    <div class="mb-4">
+                        <label for="city">
+                            <span>City:</span>
+                            <input id="city" type="text">
+                        </label>
+                    </div>
+                    <div class="mb-4">
+                        <label for="state">
+                            <span>State:</span>
+                            <input id="state" type="text">
+                        </label>
+                    </div>
+                    <div class="mb-4">
+                        <label for="zip">
+                            <span>Zip:</span>
+                            <input id="zip" type="text">
+                        </label>
+                    </div>
+
+                    <div>
+                        <label for="special_instructions">
+                            <span>Special instructions:</span>
+                        </label>
+                        <input id="special_instructions" type="text" aria-describedby="special_instructions_desc" class="mb-2">
+                        <div id="special_instructions_desc">For example, gate code or other information to help the driver find you</div>
+                    </div>
+                </div>
+
+                <button id="demo-2-close" type="button" class="modal__close">
+                    <span class="sr-only">Close</span>
+                </button>
+            </div>
+        </div>
+
+        <h3 class="text-2xl mb-5">Animated Showing and Disappearing</h3>
+
+        <button class="modal-btn" type="button" aria-controls="demo-4">Add billing address</button>
+
+        <div id="demo-4" class="modal modal--demo-4" tabindex="-1" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="modal__inner">
+                <h4 class="modal__title">Add delivery address</h4>
 
                 <div>
                     <div class="mb-4">
@@ -195,6 +244,10 @@
                     labelSelector: '.modal__title',
                     closeButtonSelector: '.modal__close',
                     closeOnFocusOutside: '.modal__inner',
+                },
+                '#demo-4': {
+                    labelSelector: '.modal__title',
+                    closeButtonSelector: '.modal__close',
                 },
             }
 
