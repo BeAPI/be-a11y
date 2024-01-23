@@ -52,6 +52,7 @@ class Modal extends AbstractDomElement {
    * @author Milan Ricoul
    */
   init() {
+    this.initialized = true
     const el = this._element
     const { closeButtonSelector, closedClassName, descriptionSelector, labelSelector, triggerSelector } = this._settings
 
@@ -197,6 +198,7 @@ class Modal extends AbstractDomElement {
    * @author Milan Ricoul
    */
   destroy() {
+    this.initialized = false
     const el = this._element
     const { closeButtonSelector, closedClassName, openedClassName } = this._settings
 
