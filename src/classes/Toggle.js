@@ -48,6 +48,8 @@ class Toggle extends AbstractDomElement {
 
     this.initialized = true
 
+    el.setAttribute('aria-expanded', 'false')
+
     if (this.target) {
       el.addEventListener('click', this._handleClick)
     } else if (!this.target && onClick) {
@@ -113,6 +115,7 @@ class Toggle extends AbstractDomElement {
     this.initialized = false
 
     this.reset()
+    el.removeAttribute('aria-expanded')
 
     if (onClick) {
       el.removeEventListener('click', onClick)
