@@ -196,10 +196,18 @@ class Dropdown extends AbstractDomElement {
 
     this.button.setAttribute('aria-expanded', 'true')
 
-    if (el.querySelectorAll('li[aria-selected="true"]').length === 1) {
+    const nodeListItems = el.querySelectorAll('li')
+    const nodeListSelectedItems = el.querySelectorAll('li[aria-selected="true"]')
+
+    if (nodeListSelectedItems.length === 1) {
       this.updateFocusedListItem(el.querySelector('li[aria-selected="true"]'))
-    } else {
+    }
+
+    if (nodeListSelectedItems.length === 0 && nodeListItems.length >= 1) {
       this.focusedElement = el.querySelector('li:first-child')
+    }
+
+    if (this.focusedElement && nodeListSelectedItems.length === 0 && nodeListItems.length > 1) {
       this.focusedElement.setAttribute('aria-selected', 'true')
     }
 
@@ -358,6 +366,12 @@ function handleKeydown(e) {
 function focusPreviousElement() {
   if (this.focusedElement && this.focusedElement.previousElementSibling) {
     this.updateFocusedListItem(this.focusedElement.previousElementSibling)
+
+    return
+  }
+
+  if (this.focusedElement) {
+    this.updateFocusedListItem(this.focusedElement)
   }
 }
 
@@ -369,6 +383,12 @@ function focusPreviousElement() {
 function focusNextElement() {
   if (this.focusedElement && this.focusedElement.nextElementSibling) {
     this.updateFocusedListItem(this.focusedElement.nextElementSibling)
+
+    return
+  }
+
+  if (this.focusedElement) {
+    this.updateFocusedListItem(this.focusedElement)
   }
 }
 
