@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "allowImportingTsExtensions": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "strict": true,
+        "strictPropertyInitialization": false,
+        "target": "ES2017"
+    },
+    "files": [
+        "./be-a11y.ts"
+    ]
+}

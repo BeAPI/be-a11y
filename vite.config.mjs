@@ -19,7 +19,7 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: resolve(__dirname, 'be-a11y.js'),
+      entry: resolve(__dirname, 'be-a11y.ts'),
       name: '@beapi/be-a11y',
       fileName: 'be-a11y',
     },
@@ -29,7 +29,7 @@ export default defineConfig({
           dir: 'dist',
           format: 'es',
           preserveModules: true,
-          entryFileNames: '[name].js',
+          entryFileNames: '[name].ts',
         },
       ],
       external: regexesOfPackages,
