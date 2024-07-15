@@ -3,7 +3,8 @@
         "eslint:recommended",
         "prettier"
     ],
-    "plugins": ["prettier"],
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["prettier", "@typescript-eslint"],
     "env": {
         "browser": true,
         "node": true,
