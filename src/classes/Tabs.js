@@ -86,6 +86,7 @@ class Tabs extends AbstractDomElement {
    */
   open(button) {
     const buttons = this._element.querySelectorAll(this._settings.tabListSelector)
+    const { onTabChange } = this._settings
     const panel = document.getElementById(button.getAttribute('aria-controls'))
 
     buttons.forEach((button) => this.close(button))
@@ -94,6 +95,10 @@ class Tabs extends AbstractDomElement {
     button.setAttribute('aria-selected', 'true')
     button.removeAttribute('tabindex')
     panel.removeAttribute('hidden')
+
+    if (onTabChange) {
+      onTabChange.bind(this)()
+    }
   }
 
   /**
@@ -272,6 +277,7 @@ function handleKeydown(e) {
 
 Tabs.defaults = {
   auto: false,
+  onTabChange: () => {},
   tabListSelector: 'button[role="tab"]',
   tabPanelSelector: 'div[role="tabpanel"]',
 }
