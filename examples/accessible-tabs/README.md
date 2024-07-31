@@ -81,8 +81,9 @@ Tabs.initFromPreset();
 
 ### Options
 
-| name               | type    | default                | description                                                                |
-|--------------------|---------|------------------------|----------------------------------------------------------------------------|
-| `auto`             | boolean | `false`                | Determines if you have to press Enter button on a tab to reveal the panel. |
-| `tabListSelector`  | string  | `button[role="tab"]`   | The selector of the tab list.                                              |
-| `tabPanelSelector` | string  | `div[role="tabpanel"]` | The selector of the panel(s).                                              |
+| name               | type     | default                | description                                                                |
+|--------------------|----------|------------------------|----------------------------------------------------------------------------|
+| `auto`             | boolean  | `false`                | Determines if you have to press Enter button on a tab to reveal the panel. |
+| `onTabChange`      | Function | `() => {}`             | Callback on tab change.                                                    |
+| `tabListSelector`  | string   | `button[role="tab"]`   | The selector of the tab list.                                              |
+| `tabPanelSelector` | string   | `div[role="tabpanel"]` | The selector of the panel(s).                                              |
