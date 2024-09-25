@@ -65,7 +65,9 @@ class Modal extends AbstractDomElement {
       el.id = this.id
     }
 
-    el.classList.add(closedClassName)
+    if (el.hasAttribute('aria-hidden') && el.getAttribute('aria-hidden') === 'true') {
+      el.classList.add(closedClassName)
+    }
 
     // Set aria-labelledby attribute
     if (labelSelector && el.querySelector(labelSelector)) {
