@@ -27,7 +27,7 @@
     "a11Y",
     "accessibility",
     "w3c",
-    "componets",
+    "components",
     "modal",
     "tab",
     "accordion",
@@ -46,7 +46,7 @@
   "devDependencies": {
     "@babel/core": "^7.23.3",
     "@babel/preset-env": "^7.23.3",
-    "@playwright/test": "^1.40.0",
+    "@playwright/test": "^1.47.2",
     "@wordpress/stylelint-config": "^20.0.3",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.54.0",
