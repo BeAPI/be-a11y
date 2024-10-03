@@ -85,3 +85,45 @@ Dropdown.initFromPreset();
 | `onListItemClick`    | null or function          | `null`             | Event on dropdown list item click.              |
 | `onOpen`             | null or function          | `null`             | Event on dropdown open.                         |
 | `prefixId`           | string                    | `dropdown`         | Define the prefix id of the component.          |
+
+### Methods
+
+You can interract with the Dropdown component by adding or removing items. See example below.
+
+```html
+<button id="add-item" type="button">Add new item</button>
+
+<div class="dropdown">
+    <span class="dropdown__label">Choose an element</span>
+    <button aria-haspopup="listbox">Book</button>
+    <ul tabindex="-1" role="listbox">
+        <li role="option">Book</li>
+        <li role="option">Movies</li>
+        <li role="option">Music</li>
+        <li role="option">Video games</li>
+        <li role="option">Paint</li>
+    </ul>
+</div>
+```
+
+```js
+import { Dropdown } from '@beapi/be-a11y';
+
+Dropdown.init('.dropdown');
+
+const addButton = document.getElementById('add-item');
+const dropdownInstance = Dropdown.getInstance('.dropdown');
+
+addButton.addEventListener('click', function() {
+  const newListItem = document.createElement('li');
+  newListItem.innerText = 'Dummy';
+
+  dropdownInstance.addItem(newListItem);
+});
+```
+
+| Name             | Params                  | Description                                      |
+|------------------|-------------------------|--------------------------------------------------|
+| `addItem`        | `listItem: HTMLElement` | Adds a new list item to the dropdown.            |
+| `removeItem`     | `listItem: HTMLElement` | Removes a specified list item from the dropdown. |
+| `removeAllItems` | None                    | Removes all list items from the dropdown.        |

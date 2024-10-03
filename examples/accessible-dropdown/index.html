@@ -86,6 +86,24 @@
                 <li role="option">Paint</li>
             </ul>
         </div>
+
+        <h3>Action buttons</h3>
+        
+        <div id="dropdown-6" class="dropdown">
+            <span class="dropdown__label">Choose an element</span>
+            <button aria-haspopup="listbox">Choose an element</button>
+            <ul tabindex="-1" role="listbox">
+                <li role="option">Book</li>
+                <li role="option">Movies</li>
+                <li role="option">Music</li>
+                <li role="option">Video games</li>
+                <li role="option">Paint</li>
+            </ul>
+        </div>
+
+        <button id="add">Add a dummy item</button>
+        <button id="remove">Remove the first item</button>
+        <button id="remove-all">Remove all items</button>
         
         <h2>Code</h2>
         
@@ -126,10 +144,31 @@
                 },
                 '#dropdown-5': {
                     mediaQuery: window.matchMedia('(max-width: 1024px)')
-                }
+                },
+                '#dropdown-6': {},
             }
-            
+
             Dropdown.initFromPreset()
+
+            const addBtn = document.getElementById('add')
+            const removeBtn = document.getElementById('remove')
+            const removeAllBtn = document.getElementById('remove-all')
+            const dropdownInstance = Dropdown.getInstance('#dropdown-6')
+
+            addBtn.addEventListener('click', function() {
+                const listItem = document.createElement('li')
+                listItem.innerText = 'Dummy'
+                dropdownInstance.addItem(listItem)
+            })
+
+            removeBtn.addEventListener('click', function() {
+                dropdownInstance.removeItem(document.getElementById('dropdown-6').querySelectorAll('li')[0])
+            })
+
+            removeAllBtn.addEventListener('click', function() {
+                dropdownInstance.removeAllItems()
+            })
+
         </script>
     </body>
     </html>
