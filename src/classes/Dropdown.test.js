@@ -77,4 +77,27 @@ test.describe('Dropdown', () => {
 
     expect(display).toBe('none')
   })
+
+  test('Click on "Add item" button, expect there is a Dummy list item.', async ({ page }) => {
+    await page.click('#add')
+
+    const lastItemText = await page.locator('#dropdown-6 li').last().textContent()
+    expect(lastItemText).toBe('Dummy')
+  })
+
+  test('Click on "Remove first item" button, expect the new first item is "Movies".', async ({ page }) => {
+    await page.click('#remove')
+
+    const firstItemText = await page.locator('#dropdown-6 li').first().textContent()
+    expect(firstItemText).toBe('Movies')
+  })
+
+  test('Click on "Remove all items" button, expect there is not list items anymore.', async ({ page }) => {
+    await page.click('#remove-all')
+
+    const isListItemsEmpty = await page
+      .locator('#dropdown-6 ul')
+      .evaluate((element) => element.textContent.trim() === '')
+    expect(isListItemsEmpty).toBe(true)
+  })
 })

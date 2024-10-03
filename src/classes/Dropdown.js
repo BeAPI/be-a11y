@@ -167,6 +167,58 @@ class Dropdown extends AbstractDomElement {
   }
 
   /**
+   * Adds a new item to the list.
+   *
+   * @param {HTMLElement} listItem - The list item to be added.
+   * @returns {void}
+   */
+  addItem(listItem) {
+    const el = this._element
+    listItem.role = 'option'
+    listItem.id = `${this.id}-item-${this.listItems.length + 1}`
+    listItem.addEventListener('click', this._handleListItemClick)
+
+    if (this.listItems.length === 0) {
+      listItem.setAttribute('aria-selected', 'true')
+    }
+
+    this.list.appendChild(listItem)
+    this.listItems = el.querySelectorAll('li')
+    this.updateFocusedListItem(el.querySelector('li[aria-selected="true"]'))
+
+    if (this.button.hasAttribute('hidden')) {
+      this.button.removeAttribute('hidden')
+    }
+  }
+
+  /**
+   * Removes a specific item from the list.
+   *
+   * @param {HTMLElement} listItem - The list item to be removed.
+   * @returns {void}
+   */
+  removeItem(listItem) {
+    const el = this._element
+    listItem.remove()
+    this.listItems = el.querySelectorAll('li')
+    this.listItems[0].setAttribute('aria-selected', 'true')
+    this.updateFocusedListItem(el.querySelector('li[aria-selected="true"]'))
+  }
+
+  /**
+   * Removes all items from the list.
+   *
+   * @returns {void}
+   */
+  removeAllItems() {
+    this.listItems.forEach((listItem) => {
+      listItem.remove()
+    })
+    this.listItems = this._element.querySelectorAll('li')
+    this.button.setAttribute('hidden', 'hidden')
+  }
+
+  /**
    * Check if media query matches
    *
    * @author Milan Ricoul
