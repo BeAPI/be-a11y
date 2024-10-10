@@ -280,7 +280,7 @@ function handleKeydown(e) {
       this.checkNextFocusableElement(e)
       break
     case 'Escape':
-      if (this.isOpened) {
+      if (this.isOpened && this._settings.closeOnEscapeKey) {
         this.close()
       }
   }
@@ -332,6 +332,7 @@ function handleTransitionEnd() {
 Modal.defaults = {
   closeButtonSelector: '.modal__close',
   closedClassName: 'modal--hidden',
+  closeOnEscapeKey: true,
   closeOnFocusOutside: false,
   descriptionSelector: false,
   labelSelector: false,
