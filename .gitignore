@@ -4,5 +4,8 @@ node_modules/
 ## Build
 dist/
 
+## test
+test-results/
+
 ## Use yarn instead
 package-lock.json

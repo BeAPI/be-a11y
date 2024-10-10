@@ -248,19 +248,10 @@ class Dropdown extends AbstractDomElement {
 
     this.button.setAttribute('aria-expanded', 'true')
 
-    const nodeListItems = el.querySelectorAll('li')
     const nodeListSelectedItems = el.querySelectorAll('li[aria-selected="true"]')
 
     if (nodeListSelectedItems.length === 1) {
       this.updateFocusedListItem(el.querySelector('li[aria-selected="true"]'))
-    }
-
-    if (nodeListSelectedItems.length === 0 && nodeListItems.length >= 1) {
-      this.focusedElement = el.querySelector('li:first-child')
-    }
-
-    if (this.focusedElement && nodeListSelectedItems.length === 0 && nodeListItems.length > 1) {
-      this.focusedElement.setAttribute('aria-selected', 'true')
     }
 
     if (onOpen) {
@@ -433,6 +424,19 @@ function focusPreviousElement() {
  * @author Milan Ricoul
  */
 function focusNextElement() {
+  const el = this._element
+
+  if (!this.focusedElement) {
+    const nodeListItems = el.querySelectorAll('li')
+    const nodeListSelectedItems = el.querySelectorAll('li[aria-selected="true"]')
+
+    if (nodeListSelectedItems.length === 0 && nodeListItems.length >= 1) {
+      this.updateFocusedListItem(el.querySelector('li:first-child'))
+    }
+
+    return
+  }
+
   if (this.focusedElement && this.focusedElement.nextElementSibling) {
     this.updateFocusedListItem(this.focusedElement.nextElementSibling)
 
