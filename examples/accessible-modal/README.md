@@ -110,6 +110,7 @@ Modal.initFromPreset();
 |---------------------|-----------------|------------------|-----------------------------------------------------------------------------|
 | closeButtonSelector | boolean\|string | `.modal__close`  | The selector of the modal close button.                                     |
 | closedClassName     | string          | `modal--hidden`  | The class name when the modal is hidden.                                    |
+| closeOnEscapeKey    | boolean         | `true`           | Should the 'Escape' key close the modal?                                    |
 | closeOnFocusOutside | boolean\|string | `false`          | Specify the selector in which the modal should close on click. If false, the modal does not close on outside click. If true, the modal closes on outside click of the element. |
 | descriptionSelector | boolean\|string | `false`          | The selector of the modal label (for the attribute  ` aria-describedby ` ). |
 | labelSelector       | boolean\|string | `false`          | The selector of the modal label (for the attribute  ` aria-labelledby ` ).  |
