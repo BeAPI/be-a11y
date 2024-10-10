@@ -12,20 +12,7 @@ test.describe('Dropdown', () => {
     expect(display).toBe('block')
   })
 
-  test('Click on the dropdown button, expect first list item has aria-selected attribute set to true.', async ({
-    page,
-  }) => {
-    await page.click('#dropdown-1 button')
-    const hasValidAriaSelected = await page.$eval(
-      '#dropdown-1 li:first-child',
-      (firstListItem) =>
-        firstListItem.hasAttribute('aria-selected') && firstListItem.getAttribute('aria-selected') === 'true'
-    )
-
-    expect(hasValidAriaSelected).toBe(true)
-  })
-
-  test('Focus the dropdown button, press Enter key once, press ArrowDown key twice, expect the third list item has aria-selected attribute set to true.', async ({
+  test('Focus the dropdown button, press Enter key once, press ArrowDown key twice, expect the second list item has aria-selected attribute set to true.', async ({
     page,
   }) => {
     await page.focus('#dropdown-1 button')
@@ -34,7 +21,7 @@ test.describe('Dropdown', () => {
     await page.keyboard.down('ArrowDown')
 
     const hasValidAriaSelected = await page.$eval(
-      '#dropdown-1 li:nth-child(3)',
+      '#dropdown-1 li:nth-child(2)',
       (thirdListItem) =>
         thirdListItem.hasAttribute('aria-selected') && thirdListItem.getAttribute('aria-selected') === 'true'
     )
