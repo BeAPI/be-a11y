@@ -1,6 +1,6 @@
 {
   "name": "@beapi/be-a11y",
-  "version": "1.5.7",
+  "version": "1.5.8",
   "type": "module",
   "description": "Collection of usefull accessible components",
   "repository": {
