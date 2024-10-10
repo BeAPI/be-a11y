@@ -178,13 +178,8 @@ class Dropdown extends AbstractDomElement {
     listItem.id = `${this.id}-item-${this.listItems.length + 1}`
     listItem.addEventListener('click', this._handleListItemClick)
 
-    if (this.listItems.length === 0) {
-      listItem.setAttribute('aria-selected', 'true')
-    }
-
     this.list.appendChild(listItem)
     this.listItems = el.querySelectorAll('li')
-    this.updateFocusedListItem(el.querySelector('li[aria-selected="true"]'))
 
     if (this.button.hasAttribute('hidden')) {
       this.button.removeAttribute('hidden')
@@ -199,10 +194,14 @@ class Dropdown extends AbstractDomElement {
    */
   removeItem(listItem) {
     const el = this._element
+
+    if (listItem === this.focusedElement) {
+      this.button.innerText = this._settings.nonSelectedItemLabel
+      this.focusedElement = null
+    }
+
     listItem.remove()
     this.listItems = el.querySelectorAll('li')
-    this.listItems[0].setAttribute('aria-selected', 'true')
-    this.updateFocusedListItem(el.querySelector('li[aria-selected="true"]'))
   }
 
   /**
@@ -501,6 +500,7 @@ Dropdown.defaults = {
   onClose: null,
   onListItemClick: null,
   onOpen: null,
+  nonSelectedItemLabel: 'No item selected',
   prefixId: 'dropdown',
 }
 
