@@ -20,6 +20,7 @@ class Accordion extends AbstractDomElement {
 
     this.active = false
     this.focus = false
+    this.breakpointLevel = 'below' // below or above breakpoint
     this.activePanel = null
     this._onResizeHandler = onResize.bind(this)
     this._handleButtonBlur = handleButtonBlur.bind(this)
@@ -54,12 +55,23 @@ class Accordion extends AbstractDomElement {
     this.active = true
 
     const el = this._element
-    const { closedDefault, panelSelector, prefixId, triggerSelector } = this._settings
+    const { closedDefault, mediaQuery, onReachBreakpoint, panelSelector, prefixId, triggerSelector } = this._settings
+    const pattern = /\d+/g
     const triggers = el.querySelectorAll(triggerSelector)
     const panels = el.querySelectorAll(panelSelector)
     const id = randomId()
 
     el.dataset.id = id
+
+    if (mediaQuery && onReachBreakpoint && pattern.test(mediaQuery.media)) {
+      if (mediaQuery.media.includes('min')) {
+        this.hasReachBreakpoint = window.innerWidth > parseInt(mediaQuery.media.match(pattern)[0]) ? 'above' : 'below'
+      }
+
+      if (mediaQuery.media.includes('max')) {
+        this.hasReachBreakpoint = window.innerWidth >= parseInt(mediaQuery.media.match(pattern)[0]) ? 'above' : 'below'
+      }
+    }
 
     if (closedDefault) {
       this._settings.forceExpand = false
@@ -394,7 +406,13 @@ function focusLastTab() {
  * @author Milan Ricoul
  */
 function onResize() {
-  const { mediaQuery } = this._settings
+  const { mediaQuery, onReachBreakpoint } = this._settings
+  const pattern = /\d+/g
+
+  if (onReachBreakpoint && pattern.test(mediaQuery.media) && (this.hasReachBreakpoint === 'above' && window.innerWidth <= parseInt(mediaQuery.media.match(pattern)[0])) || (this.hasReachBreakpoint === 'below' && window.innerWidth > parseInt(mediaQuery.media.match(pattern)[0]))) {
+    this.hasReachBreakpoint = this.hasReachBreakpoint === 'above' ? 'below' : 'above'
+    onReachBreakpoint.bind(this)(mediaQuery.matches)
+  }
 
   if (!this.active && ((mediaQuery && mediaQuery.matches) || !mediaQuery)) {
     this.init()
@@ -409,6 +427,7 @@ Accordion.defaults = {
   forceExpand: true,
   hasAnimation: false,
   mediaQuery: null,
+  onReachBreakpoint: null,
   onOpen: null,
   onClose: null,
   panelSelector: '.accordion__panel',
