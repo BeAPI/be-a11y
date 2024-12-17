@@ -103,8 +103,9 @@ Accordion.initFromPreset();
 | `forceExpand`       | boolean                   | `true`                | If true, the accordion has at least one panel opened.   |
 | `hasAnimation`      | boolean                   | `false`               | If true, the panel has a slideDown / slideUp animation. |
 | `mediaQuery`        | null or matchMedia object | `null`                | Set dropdown for a specific media query.                |
-| `onClose`           | null or function          | `null`                | Opened panel callback.                                  |
-| `onOpen`            | null or function          | `null`                | Closed panel callback.                                  |
+| `onInit`            | null or function          | `null`                | Event when component is initialized.                    |
+| `onClose`           | null or function          | `null`                | Event when a panel is opened.                           |
+| `onOpen`            | null or function          | `null`                | Event when a panel is closed.                           |
 | `onReachBreakpoint` | null or function          | `null`                | Event when the media query is reached if `mediaQuery` option is filled. |
 | `panelSelector`     | string                    | `.accordion__panel`   | The selector of the panels.                             |
 | `prefixId`          | string                    | `accordion`           | The prefix id of the component.                         |
