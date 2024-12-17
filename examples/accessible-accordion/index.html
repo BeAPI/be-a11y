@@ -753,6 +753,9 @@
                 '#accordion-demo-5': { closedDefault: true },
                 '#accordion-demo-6': {
                     forceExpand: false,
+                    onInit: function(el) {
+                        console.log(`${el.id} initialized`)
+                    },
                     onClose: function(panel) {
                         alert(`${panel.id} closed`)
                     },

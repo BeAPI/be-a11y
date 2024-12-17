@@ -52,16 +52,21 @@ class Accordion extends AbstractDomElement {
    * @author Milan Ricoul
    */
   init() {
-    this.active = true
-
     const el = this._element
-    const { closedDefault, mediaQuery, onReachBreakpoint, panelSelector, prefixId, triggerSelector } = this._settings
+    const { closedDefault, mediaQuery, onInit, onReachBreakpoint, panelSelector, prefixId, triggerSelector } = this._settings
     const pattern = /\d+/g
     const triggers = el.querySelectorAll(triggerSelector)
     const panels = el.querySelectorAll(panelSelector)
     const id = randomId()
 
     el.dataset.id = id
+
+    if (onInit && !this.active) {
+      this.active = true
+      onInit.bind(this)(el)
+    }
+
+    this.active = true
 
     if (mediaQuery && onReachBreakpoint && pattern.test(mediaQuery.media)) {
       if (mediaQuery.media.includes('min')) {
@@ -427,6 +432,7 @@ Accordion.defaults = {
   forceExpand: true,
   hasAnimation: false,
   mediaQuery: null,
+  onInit: null,
   onReachBreakpoint: null,
   onOpen: null,
   onClose: null,
