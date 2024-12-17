@@ -762,6 +762,9 @@
                 },
                 '#accordion-demo-7': {
                     mediaQuery: window.matchMedia('(max-width: 599px)'),
+                    onReachBreakpoint: function (isMatchMedia) {
+                        alert(`Media query match: ${isMatchMedia}`)
+                    }
                 },
             }
 

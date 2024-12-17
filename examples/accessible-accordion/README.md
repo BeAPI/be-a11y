@@ -96,15 +96,16 @@ Accordion.initFromPreset();
 
 ### Options
 
-| name              | type                      | default               | description                                             |
-|-------------------|---------------------------|-----------------------|---------------------------------------------------------|
-| `allowMultiple`   | boolean                   | `false`               | Allow accordion to open panels at the same time.        |
-| `closedDefault`   | boolean                   | `false`               | If true, all panels are closed by default.              |
-| `forceExpand`     | boolean                   | `true`                | If true, the accordion has at least one panel opened.   |
-| `hasAnimation`    | boolean                   | `false`               | If true, the panel has a slideDown / slideUp animation. |
-| `mediaQuery`      | null or matchMedia object | `null`                | Set dropdown for a specific media query.                |
-| `onClose`         | function                  | `null`                | Opened panel callback.                                  |
-| `onOpen`          | function                  | `null`                | Closed panel callback.                                  |
-| `panelSelector`   | string                    | `.accordion__panel`   | The selector of the panels.                             |
-| `prefixId`        | string                    | `accordion`           | The prefix id of the component.                         |
-| `triggerSelector` | string                    | `.accordion__trigger` | The selector of the trigger buttons.                    |
+| name                | type                      | default               | description                                             |
+|---------------------|---------------------------|-----------------------|---------------------------------------------------------|
+| `allowMultiple`     | boolean                   | `false`               | Allow accordion to open panels at the same time.        |
+| `closedDefault`     | boolean                   | `false`               | If true, all panels are closed by default.              |
+| `forceExpand`       | boolean                   | `true`                | If true, the accordion has at least one panel opened.   |
+| `hasAnimation`      | boolean                   | `false`               | If true, the panel has a slideDown / slideUp animation. |
+| `mediaQuery`        | null or matchMedia object | `null`                | Set dropdown for a specific media query.                |
+| `onClose`           | null or function          | `null`                | Opened panel callback.                                  |
+| `onOpen`            | null or function          | `null`                | Closed panel callback.                                  |
+| `onReachBreakpoint` | null or function          | `null`                | Event when the media query is reached if `mediaQuery` option is filled. |
+| `panelSelector`     | string                    | `.accordion__panel`   | The selector of the panels.                             |
+| `prefixId`          | string                    | `accordion`           | The prefix id of the component.                         |
+| `triggerSelector`   | string                    | `.accordion__trigger` | The selector of the trigger buttons.                    |
