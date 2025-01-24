@@ -3,20 +3,20 @@
 @tailwind utilities;
 
 body {
-    @apply font-sans bg-white dark:bg-dark-bg text-dark dark:text-white border-t border-t-slate-200 dark:border-t-dark-border;
+    @apply font-sans bg-white dark:bg-dark-bg text-dark dark:text-white sm:border-t sm:border-t-slate-200 sm:dark:border-t-dark-border;
 }
 
 @layer base {
     h1 {
-        @apply text-5xl mb-8 font-bold;
+        @apply text-3xl sm:text-5xl mb-8 font-bold;
     }
 
     h2 {
-        @apply text-3xl mb-6 pb-2 font-bold border-b border-b-slate-200 dark:border-b-dark-border;
+        @apply text-2xl sm:text-3xl mb-6 pb-2 font-bold border-b border-b-slate-200 dark:border-b-dark-border;
     }
 
     h3 {
-        @apply text-xl mb-4 font-medium;
+        @apply text-xl sm:text-xl mb-4 font-medium;
     }
 
     h4 {

@@ -1,5 +1,5 @@
 .wrapper {
-    @apply container max-w-screen-xl mx-auto grid grid-cols-4 gap-x-4;
+    @apply container max-w-screen-xl mx-auto sm:grid sm:grid-cols-4 sm:gap-x-4;
 }
 
 .wrapper > h1 {

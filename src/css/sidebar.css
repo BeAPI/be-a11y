@@ -1,5 +1,5 @@
 .sidebar {
-    @apply py-10 pr-4 min-h-dvh border-r border-r-slate-200 dark:border-r-dark-border;
+    @apply py-4 px-4 sm:py-10 sm:min-h-dvh sm:border-r sm:border-r-slate-200 sm:dark:border-r-dark-border;
 }
 
 .sidebar > p {
@@ -11,7 +11,7 @@
 }
 
 .sidebar ul {
-    @apply sticky top-4;
+    @apply sticky top-4 flex gap-2 flex-wrap sm:block;
 }
 
 .sidebar .current,

@@ -3,7 +3,11 @@
 }
 
 .tabs__tablist {
-    @apply flex border-b border-b-slate-200 dark:border-b-dark-border;
+    @apply flex border-b border-b-slate-200 dark:border-b-dark-border whitespace-nowrap overflow-x-auto text-sm;
+}
+
+.tabs__tablist::-webkit-scrollbar {
+    @apply hidden;
 }
 
 .tabs__tab {

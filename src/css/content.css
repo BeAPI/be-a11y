@@ -1,5 +1,5 @@
 .content {
-    @apply col-span-3 py-8;
+    @apply col-span-3 p-4 sm:px-0 sm:py-8;
 }
 
 .content > p {
