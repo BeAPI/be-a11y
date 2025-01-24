@@ -1,215 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accessible Modal</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Accessible Modal</title>
+    </head>
+    <body>
     <div class="wrapper">
-        <h1>Accessible Modal</h1>
+        <aside class="sidebar">
+            <p><a href="../../index.html">Be a11y</a></p>
+            <ul>
+                <li><a href="../accessible-accordion/">Accordion</a></li>
+                <li><a href="../accessible-dropdown/">Dropdown</a></li>
+                <li><a href="../accessible-link/">Link</a></li>
+                <li class="current">Modal</li>
+                <li><a href="../accessible-slider/index.html">Slider</a></li>
+                <li><a href="../accessible-tabs/index.html">Tabs</a></li>
+                <li><a href="../accessible-toggle/index.html">Toggle</a></li>
+            </ul>
+        </aside>
+        <div class="content">
+            <h1>Accessible Modal</h1>
 
-        <p class="back">
-            <a href="../../index.html">Back to components list</a>
-        </p>
-
-        <h2>Demo</h2>
-
-        <h3>Default</h3>
-
-        <button class="modal-btn" type="button" aria-controls="demo-1">Add delivery address</button>
-        <button class="modal-btn modal-btn--demo-1" type="button">Another button for delivery address</button>
-
-        <div id="demo-1" class="modal" tabindex="-1" role="dialog" aria-modal="true" aria-hidden="true">
-            <div class="modal__inner">
-                <h4 class="modal__title">Add delivery address</h4>
-
-                <div>
-                    <div class="mb-4">
-                        <label for="street">
-                            <span>Street:</span>
-                            <input id="street" type="text">
-                        </label>
-                    </div>
-                    <div class="mb-4">
-                        <label for="city">
-                            <span>City:</span>
-                            <input id="city" type="text">
-                        </label>
-                    </div>
-                    <div class="mb-4">
-                        <label for="state">
-                            <span>State:</span>
-                            <input id="state" type="text">
-                        </label>
-                    </div>
-                    <div class="mb-4">
-                        <label for="zip">
-                            <span>Zip:</span>
-                            <input id="zip" type="text">
-                        </label>
-                    </div>
-
-                    <div>
-                        <label for="special_instructions">
-                            <span>Special instructions:</span>
-                        </label>
-                        <input id="special_instructions" type="text" aria-describedby="special_instructions_desc" class="mb-2">
-                        <div id="special_instructions_desc">For example, gate code or other information to help the driver find you</div>
-                    </div>
+            <div id="tab" class="tabs">
+                <div class="tabs__tablist" role="tablist" aria-label="Tabs component">
+                    <button class="tabs__tab core-tab" role="tab" aria-selected="true" aria-controls="core-tab-panel-1" id="core-tab-1">Default</button>
+                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="core-tab-panel-2" id="core-tab-2">Close modal on outside click</button>
+                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="core-tab-panel-3" id="core-tab-3">Only for &lt; 1024px devices</button>
+                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="core-tab-panel-4" id="core-tab-4">Animated</button>
+                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="core-tab-panel-5" id="core-tab-5">Not closable with Escape key</button>
                 </div>
 
-                <button id="demo-1-close" type="button" class="modal__close">
-                    <span class="sr-only">Close</span>
-                </button>
-            </div>
-        </div>
+                <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-1" aria-labelledby="core-tab-1">
+                    <h2>Default</h2>
 
-        <h3>Close modal on outside click</h3>
+                    <p>In user interface design for computer applications, a modal window is a graphical control element subordinate to an application's main window.</p>
 
-        <button class="modal-btn modal-btn--demo-2" type="button" aria-controls="demo-2">Add billing address</button>
+                    <button class="button modal-btn" type="button" aria-controls="demo-1">Add delivery address</button>
+                    <button class="button modal-btn button modal-btn--demo-1" type="button">Another button for delivery address</button>
 
-        <div id="demo-2" class="modal modal--demo-2" tabindex="-1" role="dialog" aria-modal="true" aria-hidden="true">
-            <div class="modal__inner">
-                <h4 class="modal__title">Add delivery address</h4>
+                    <div id="demo-1" class="modal" tabindex="-1" role="dialog" aria-modal="true" aria-hidden="true">
+                        <div class="modal__inner">
+                            <h4 class="modal__title">Add delivery address</h4>
 
-                <div>
-                    <div class="mb-4">
-                        <label for="street">
-                            <span>Street:</span>
-                            <input id="street" type="text">
-                        </label>
-                    </div>
-                    <div class="mb-4">
-                        <label for="city">
-                            <span>City:</span>
-                            <input id="city" type="text">
-                        </label>
-                    </div>
-                    <div class="mb-4">
-                        <label for="state">
-                            <span>State:</span>
-                            <input id="state" type="text">
-                        </label>
-                    </div>
-                    <div class="mb-4">
-                        <label for="zip">
-                            <span>Zip:</span>
-                            <input id="zip" type="text">
-                        </label>
-                    </div>
+                            <div class="form">
+                                <div>
+                                    <label for="street">
+                                        <span>Street</span>
+                                        <input id="street" type="text">
+                                    </label>
+                                </div>
+                                <div>
+                                    <label for="city">
+                                        <span>City</span>
+                                        <input id="city" type="text">
+                                    </label>
+                                </div>
+                                <div>
+                                    <label for="state">
+                                        <span>State</span>
+                                        <input id="state" type="text">
+                                    </label>
+                                </div>
+                                <div>
+                                    <label for="zip">
+                                        <span>Zip</span>
+                                        <input id="zip" type="text">
+                                    </label>
+                                </div>
 
-                    <div>
-                        <label for="special_instructions">
-                            <span>Special instructions:</span>
-                        </label>
-                        <input id="special_instructions" type="text" aria-describedby="special_instructions_desc" class="mb-2">
-                        <div id="special_instructions_desc">For example, gate code or other information to help the driver find you</div>
-                    </div>
-                </div>
+                                <div class="form__w-full">
+                                    <label for="special_instructions">
+                                        <span>Special instructions</span>
+                                    </label>
+                                    <textarea id="special_instructions" type="text" aria-describedby="special_instructions_desc" class="mb-2"></textarea>
+                                    <p id="special_instructions_desc">For example, gate code or other information to help the driver find you</p>
+                                </div>
+                            </div>
 
-                <button id="demo-2-close" type="button" class="modal__close">
-                    <span class="sr-only">Close</span>
-                </button>
-            </div>
-        </div>
-
-        <h3>Modal button but only for &lt; 1024px devices</h3>
-
-        <button class="modal-btn--demo-3" type="button">Add billing address</button>
-
-        <div class="modal modal--mobile modal--demo-3" tabindex="-1" role="dialog" aria-modal="true" aria-hidden="true">
-            <div class="modal__inner">
-                <h4 class="modal__title">Add delivery address</h4>
-
-                <div>
-                    <div class="mb-4">
-                        <label for="street">
-                            <span>Street:</span>
-                            <input id="street" type="text">
-                        </label>
-                    </div>
-                    <div class="mb-4">
-                        <label for="city">
-                            <span>City:</span>
-                            <input id="city" type="text">
-                        </label>
-                    </div>
-                    <div class="mb-4">
-                        <label for="state">
-                            <span>State:</span>
-                            <input id="state" type="text">
-                        </label>
-                    </div>
-                    <div class="mb-4">
-                        <label for="zip">
-                            <span>Zip:</span>
-                            <input id="zip" type="text">
-                        </label>
-                    </div>
-
-                    <div>
-                        <label for="special_instructions">
-                            <span>Special instructions:</span>
-                        </label>
-                        <input id="special_instructions" type="text" aria-describedby="special_instructions_desc" class="mb-2">
-                        <div id="special_instructions_desc">For example, gate code or other information to help the driver find you</div>
+                            <button id="demo-1-close" type="button" class="modal__close">
+                                <span class="sr-only">Close</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
+                <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-2" aria-labelledby="core-tab-2" hidden>
+                    <h2>Close modal on outside click</h2>
+                    <button class="button modal-btn button modal-btn--demo-2" type="button" aria-controls="demo-2">Add billing address</button>
 
-                <button id="demo-2-close" type="button" class="modal__close">
-                    <span class="sr-only">Close</span>
-                </button>
-            </div>
-        </div>
+                    <div id="demo-2" class="modal modal--demo-2" tabindex="-1" role="dialog" aria-modal="true" aria-hidden="true">
+                        <div class="modal__inner">
+                            <h4 class="modal__title">Add delivery address</h4>
 
-        <h3 class="text-2xl mb-5">Animated Showing and Disappearing</h3>
+                            <div class="form">
+                                <div>
+                                    <label for="street">
+                                        <span>Street</span>
+                                        <input id="street" type="text">
+                                    </label>
+                                </div>
+                                <div>
+                                    <label for="city">
+                                        <span>City</span>
+                                        <input id="city" type="text">
+                                    </label>
+                                </div>
+                                <div>
+                                    <label for="state">
+                                        <span>State</span>
+                                        <input id="state" type="text">
+                                    </label>
+                                </div>
+                                <div>
+                                    <label for="zip">
+                                        <span>Zip</span>
+                                        <input id="zip" type="text">
+                                    </label>
+                                </div>
 
-        <button class="modal-btn" type="button" aria-controls="demo-4">Add billing address</button>
+                                <div class="form__w-full">
+                                    <label for="special_instructions">
+                                        <span>Special instructions</span>
+                                    </label>
+                                    <textarea id="special_instructions" type="text" aria-describedby="special_instructions_desc" class="mb-2"></textarea>
+                                    <p id="special_instructions_desc">For example, gate code or other information to help the driver find you</p>
+                                </div>
+                            </div>
 
-        <div id="demo-4" class="modal modal--demo-4" tabindex="-1" role="dialog" aria-modal="true" aria-hidden="true">
-            <div class="modal__inner">
-                <h4 class="modal__title">Add delivery address</h4>
-
-                <div>
-                    <div class="mb-4">
-                        <label for="street">
-                            <span>Street:</span>
-                            <input id="street" type="text">
-                        </label>
-                    </div>
-                    <div class="mb-4">
-                        <label for="city">
-                            <span>City:</span>
-                            <input id="city" type="text">
-                        </label>
-                    </div>
-                    <div class="mb-4">
-                        <label for="state">
-                            <span>State:</span>
-                            <input id="state" type="text">
-                        </label>
-                    </div>
-                    <div class="mb-4">
-                        <label for="zip">
-                            <span>Zip:</span>
-                            <input id="zip" type="text">
-                        </label>
-                    </div>
-
-                    <div>
-                        <label for="special_instructions">
-                            <span>Special instructions:</span>
-                        </label>
-                        <input id="special_instructions" type="text" aria-describedby="special_instructions_desc" class="mb-2">
-                        <div id="special_instructions_desc">For example, gate code or other information to help the driver find you</div>
+                            <button id="demo-2-close" type="button" class="modal__close">
+                                <span class="sr-only">Close</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
+                <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-3" aria-labelledby="core-tab-3" hidden>
+                    <h2>Modal button but only for &lt; 1024px devices</h2>
 
-                <button id="demo-2-close" type="button" class="modal__close">
-                    <span class="sr-only">Close</span>
-                </button>
+                    <button class="button modal-btn--demo-3" type="button">Add billing address</button>
+
+                    <div class="modal modal--mobile modal--demo-3" tabindex="-1" role="dialog" aria-modal="true" aria-hidden="true">
+                        <div class="modal__inner">
+                            <h4 class="modal__title">Add delivery address</h4>
+
+                            <div class="form">
+                                <div>
+                                    <label for="street">
+                                        <span>Street</span>
+                                        <input id="street" type="text">
+                                    </label>
+                                </div>
+                                <div>
+                                    <label for="city">
+                                        <span>City</span>
+                                        <input id="city" type="text">
+                                    </label>
+                                </div>
+                                <div>
+                                    <label for="state">
+                                        <span>State</span>
+                                        <input id="state" type="text">
+                                    </label>
+                                </div>
+                                <div>
+                                    <label for="zip">
+                                        <span>Zip</span>
+                                        <input id="zip" type="text">
+                                    </label>
+                                </div>
+
+                                <div class="form__w-full">
+                                    <label for="special_instructions">
+                                        <span>Special instructions</span>
+                                    </label>
+                                    <textarea id="special_instructions" type="text" aria-describedby="special_instructions_desc" class="mb-2"></textarea>
+                                    <p id="special_instructions_desc">For example, gate code or other information to help the driver find you</p>
+                                </div>
+                            </div>
+
+                            <button id="demo-2-close" type="button" class="modal__close">
+                                <span class="sr-only">Close</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-4" aria-labelledby="core-tab-4" hidden>
+                    <h2>Animated Showing and Disappearing</h2>
+
+                    <button class="button modal-btn" type="button" aria-controls="demo-4">Add billing address</button>
+
+                    <div id="demo-4" class="modal modal--demo-4" tabindex="-1" role="dialog" aria-modal="true" aria-hidden="true">
+                        <div class="modal__inner">
+                            <h4 class="modal__title">Add delivery address</h4>
+
+                            <div class="form">
+                                <div>
+                                    <label for="street">
+                                        <span>Street</span>
+                                        <input id="street" type="text">
+                                    </label>
+                                </div>
+                                <div>
+                                    <label for="city">
+                                        <span>City</span>
+                                        <input id="city" type="text">
+                                    </label>
+                                </div>
+                                <div>
+                                    <label for="state">
+                                        <span>State</span>
+                                        <input id="state" type="text">
+                                    </label>
+                                </div>
+                                <div>
+                                    <label for="zip">
+                                        <span>Zip</span>
+                                        <input id="zip" type="text">
+                                    </label>
+                                </div>
+
+                                <div class="form__w-full">
+                                    <label for="special_instructions">
+                                        <span>Special instructions</span>
+                                    </label>
+                                    <textarea id="special_instructions" type="text" aria-describedby="special_instructions_desc" class="mb-2"></textarea>
+                                    <p id="special_instructions_desc">For example, gate code or other information to help the driver find you</p>
+                                </div>
+                            </div>
+
+                            <button id="demo-2-close" type="button" class="modal__close">
+                                <span class="sr-only">Close</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-5" aria-labelledby="core-tab-5" hidden>
+                    <h2>Not closable with Escape key</h2>
+
+                    <button class="button modal-btn" type="button" aria-controls="demo-6">Add billing address</button>
+
+                    <div id="demo-6" class="modal modal--demo-6" tabindex="-1" role="dialog" aria-modal="true" aria-hidden="true">
+                        <div class="modal__inner">
+                            <h4 class="modal__title">Add delivery address</h4>
+
+                            <div class="form">
+                                <div>
+                                    <label for="street">
+                                        <span>Street</span>
+                                        <input id="street" type="text">
+                                    </label>
+                                </div>
+                                <div>
+                                    <label for="city">
+                                        <span>City</span>
+                                        <input id="city" type="text">
+                                    </label>
+                                </div>
+                                <div>
+                                    <label for="state">
+                                        <span>State</span>
+                                        <input id="state" type="text">
+                                    </label>
+                                </div>
+                                <div>
+                                    <label for="zip">
+                                        <span>Zip</span>
+                                        <input id="zip" type="text">
+                                    </label>
+                                </div>
+
+                                <div class="form__w-full">
+                                    <label for="special_instructions">
+                                        <span>Special instructions</span>
+                                    </label>
+                                    <textarea id="special_instructions" type="text" aria-describedby="special_instructions_desc" class="mb-2"></textarea>
+                                    <p id="special_instructions_desc">For example, gate code or other information to help the driver find you</p>
+                                </div>
+                            </div>
+
+                            <button id="demo-2-close" type="button" class="modal__close">
+                                <span class="sr-only">Close</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -273,9 +347,13 @@
         </div>
 
         <script type="module">
-            import { Modal } from '../../be-a11y.js'
+            import { Modal, Tabs } from '../../be-a11y.ts'
             import '../../src/css/index.css'
             import './style.css'
+
+            Tabs.init('#tab', {
+                tabListSelector: '.core-tab'
+            })
 
             Modal.preset = {
                 '#demo-1': {
@@ -298,9 +376,7 @@
                     labelSelector: '.modal__title',
                     closeButtonSelector: '.modal__close',
                 },
-                '#demo-5': {
-                    labelSelector: '.modal__title',
-                    closeButtonSelector: '.modal__close',
+                '#demo-6': {
                     closeOnEscapeKey: false,
                 },
             }
@@ -308,4 +384,4 @@
             Modal.initFromPreset()
         </script>
     </body>
-    </html>
+</html>

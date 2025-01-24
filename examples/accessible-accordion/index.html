@@ -1,749 +1,770 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accessible Accordion</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Accessible Accordion</title>
+    </head>
+    <body>
     <div class="wrapper">
-        <h1>Accessible Accordion</h1>
-        
-        <p class="back">
-            <a href="../../index.html">Back to components list</a>
-        </p>
-        
-        <h2>Demo</h2>
-        
-        <h3>Sample accordion</h3>
-        
-        <div id="accordion-demo-1" class="accordion">
-            <h4>
-                <button aria-expanded="true" class="accordion__trigger">
-                    <span class="accordion__title">
-                        Personal Information
-                    </span>
-                </button>
-            </h4>
-            <div class="accordion__panel" role="region">
-                <fieldset>
-                    <p>
-                        <label for="cufc1-1">Name<span aria-hidden="true">*</span>:</label>
-                        <input type="text" value="" name="Name" id="cufc1-1" class="required" aria-required="true">
-                    </p>
-                    <p>
-                        <label for="cufc2-1">Email<span aria-hidden="true">*</span>:</label>
-                        <input type="text" value="" name="Email" id="cufc2-1" aria-required="true">
-                    </p>
-                    <p>
-                        <label for="cufc3-1">Phone:</label>
-                        <input type="text" value="" name="Phone" id="cufc3-1">
-                    </p>
-                    <p>
-                        <label for="cufc4-1">Extension:</label>
-                        <input type="text" value="" name="Ext" id="cufc4-1">
-                    </p>
-                    <p>
-                        <label for="cufc5-1">Country:</label>
-                        <input type="text" value="" name="Country" id="cufc5-1">
-                    </p>
-                    <p>
-                        <label for="cufc6-1">City/Province:</label>
-                        <input type="text" value="" name="City_Province" id="cufc6-1">
-                    </p>
-                </fieldset>
-            </div>
-            <h4>
-                <button aria-expanded="false" class="accordion__trigger">
-                    <span class="accordion__title">
-                        Billing Address
-                    </span>
-                </button>
-            </h4>
-            <div class="accordion__panel" role="region" style="display: none;">
-                <fieldset>
-                    <p>
-                        <label for="b-add1-1">Address 1:</label>
-                        <input type="text" name="b-add1-1" id="b-add1-1">
-                    </p>
-                    <p>
-                        <label for="b-add2-1-1">Address 2:</label>
-                        <input type="text" name="b-add2-1" id="b-add2-1">
-                    </p>
-                    <p>
-                        <label for="b-city-1">City:</label>
-                        <input type="text" name="b-city-1" id="b-city-1">
-                    </p>
-                    <p>
-                        <label for="b-state-1">State:</label>
-                        <input type="text" name="b-state-1" id="b-state-1">
-                    </p>
-                    <p>
-                        <label for="b-zip-1">Zip Code:</label>
-                        <input type="text" name="b-zip-1" id="b-zip-1">
-                    </p>
-                </fieldset>
-            </div>
-            <h4>
-                <button aria-expanded="false" class="accordion__trigger">
-                    <span class="accordion__title">
-                        Shipping Address
-                    </span>
-                </button>
-            </h4>
-            <div class="accordion__panel" role="region" style="display: none;">
-                <fieldset>
-                    <p>
-                        <label for="m-add1-1">Address 1:</label>
-                        <input type="text" name="m-add1-1" id="m-add1-1">
-                    </p>
-                    <p>
-                        <label for="m-add2-1">Address 2:</label>
-                        <input type="text" name="m-add2-1" id="m-add2-1">
-                    </p>
-                    <p>
-                        <label for="m-city-1">City:</label>
-                        <input type="text" name="m-city-1" id="m-city-1">
-                    </p>
-                    <p>
-                        <label for="m-state-1">State:</label>
-                        <input type="text" name="m-state-1" id="m-state-1">
-                    </p>
-                    <p>
-                        <label for="m-zip-1">Zip Code:</label>
-                        <input type="text" name="m-zip-1" id="m-zip-1">
-                    </p>
-                </fieldset>
-            </div>
-        </div>
-        
-        <h3>Accordion with open and close animation</h3>
-        
-        <div id="accordion-demo-2" class="accordion">
-            <h4>
-                <button aria-expanded="true" class="accordion__trigger">
-                    <span class="accordion__title">
-                        Personal Information
-                    </span>
-                </button>
-            </h4>
-            <div class="accordion__panel" role="region">
-                <fieldset>
-                    <p>
-                        <label for="cufc1-2">Name<span aria-hidden="true">*</span>:</label>
-                        <input type="text" value="" name="Name" id="cufc1-2" class="required" aria-required="true">
-                    </p>
-                    <p>
-                        <label for="cufc2-2">Email<span aria-hidden="true">*</span>:</label>
-                        <input type="text" value="" name="Email" id="cufc2-2" aria-required="true">
-                    </p>
-                    <p>
-                        <label for="cufc3-2">Phone:</label>
-                        <input type="text" value="" name="Phone" id="cufc3-2">
-                    </p>
-                    <p>
-                        <label for="cufc4-2">Extension:</label>
-                        <input type="text" value="" name="Ext" id="cufc4-2">
-                    </p>
-                    <p>
-                        <label for="cufc5-2">Country:</label>
-                        <input type="text" value="" name="Country" id="cufc5-2">
-                    </p>
-                    <p>
-                        <label for="cufc6-2">City/Province:</label>
-                        <input type="text" value="" name="City_Province" id="cufc6-2">
-                    </p>
-                </fieldset>
-            </div>
-            <h4>
-                <button aria-expanded="false" class="accordion__trigger">
-                    <span class="accordion__title">
-                        Billing Address
-                    </span>
-                </button>
-            </h4>
-            <div class="accordion__panel" role="region" style="display: none;">
-                <fieldset>
-                    <p>
-                        <label for="b-add1-2">Address 1:</label>
-                        <input type="text" name="b-add1-2" id="b-add1-2">
-                    </p>
-                    <p>
-                        <label for="b-add2-2">Address 2:</label>
-                        <input type="text" name="b-add2-2" id="b-add2-2">
-                    </p>
-                    <p>
-                        <label for="b-city-2">City:</label>
-                        <input type="text" name="b-city-2" id="b-city-2">
-                    </p>
-                    <p>
-                        <label for="b-state-2">State:</label>
-                        <input type="text" name="b-state-2" id="b-state-2">
-                    </p>
-                    <p>
-                        <label for="b-zip-2">Zip Code:</label>
-                        <input type="text" name="b-zip-2" id="b-zip-2">
-                    </p>
-                </fieldset>
-            </div>
-            <h4>
-                <button aria-expanded="false" class="accordion__trigger">
-                    <span class="accordion__title">
-                        Shipping Address
-                    </span>
-                </button>
-            </h4>
-            <div class="accordion__panel" role="region" style="display: none;">
-                <fieldset>
-                    <p>
-                        <label for="m-add1-2">Address 1:</label>
-                        <input type="text" name="m-add1-2" id="m-add1-2">
-                    </p>
-                    <p>
-                        <label for="m-add2-2">Address 2:</label>
-                        <input type="text" name="m-add2-2" id="m-add2-2">
-                    </p>
-                    <p>
-                        <label for="m-city-2">City:</label>
-                        <input type="text" name="m-city-2" id="m-city-2">
-                    </p>
-                    <p>
-                        <label for="m-state-2">State:</label>
-                        <input type="text" name="m-state-2" id="m-state-2">
-                    </p>
-                    <p>
-                        <label for="m-zip-2">Zip Code:</label>
-                        <input type="text" name="m-zip-2" id="m-zip-2">
-                    </p>
-                </fieldset>
-            </div>
-        </div>
-        
-        <h3>Accordion with multiple opened panels</h3>
-        
-        <div id="accordion-demo-3" class="accordion">
-            <h4>
-                <button aria-expanded="true" class="accordion__trigger">
-                    <span class="accordion__title">
-                        Personal Information
-                    </span>
-                </button>
-            </h4>
-            <div class="accordion__panel" role="region">
-                <fieldset>
-                    <p>
-                        <label for="cufc1-3">Name<span aria-hidden="true">*</span>:</label>
-                        <input type="text" value="" name="Name" id="cufc1-3" class="required" aria-required="true">
-                    </p>
-                    <p>
-                        <label for="cufc2-3">Email<span aria-hidden="true">*</span>:</label>
-                        <input type="text" value="" name="Email" id="cufc2-3" aria-required="true">
-                    </p>
-                    <p>
-                        <label for="cufc3-3">Phone:</label>
-                        <input type="text" value="" name="Phone" id="cufc3-3">
-                    </p>
-                    <p>
-                        <label for="cufc4-3">Extension:</label>
-                        <input type="text" value="" name="Ext" id="cufc4-3">
-                    </p>
-                    <p>
-                        <label for="cufc5-3">Country:</label>
-                        <input type="text" value="" name="Country" id="cufc5-3">
-                    </p>
-                    <p>
-                        <label for="cufc6-3">City/Province:</label>
-                        <input type="text" value="" name="City_Province" id="cufc6-3">
-                    </p>
-                </fieldset>
-            </div>
-            <h4>
-                <button aria-expanded="false" class="accordion__trigger">
-                    <span class="accordion__title">
-                        Billing Address
-                    </span>
-                </button>
-            </h4>
-            <div class="accordion__panel" role="region" style="display: none;">
-                <fieldset>
-                    <p>
-                        <label for="b-add1-3">Address 1:</label>
-                        <input type="text" name="b-add1-3" id="b-add1-3">
-                    </p>
-                    <p>
-                        <label for="b-add2-3">Address 2:</label>
-                        <input type="text" name="b-add2-3" id="b-add2-3">
-                    </p>
-                    <p>
-                        <label for="b-city-3">City:</label>
-                        <input type="text" name="b-city-3" id="b-city-3">
-                    </p>
-                    <p>
-                        <label for="b-state-3">State:</label>
-                        <input type="text" name="b-state-3" id="b-state-3">
-                    </p>
-                    <p>
-                        <label for="b-zip-3">Zip Code:</label>
-                        <input type="text" name="b-zip-3" id="b-zip-3">
-                    </p>
-                </fieldset>
-            </div>
-            <h4>
-                <button aria-expanded="false" class="accordion__trigger">
-                    <span class="accordion__title">
-                        Shipping Address
-                    </span>
-                </button>
-            </h4>
-            <div class="accordion__panel" role="region" style="display: none;">
-                <fieldset>
-                    <p>
-                        <label for="m-add1-3">Address 1:</label>
-                        <input type="text" name="m-add1-3" id="m-add1-3">
-                    </p>
-                    <p>
-                        <label for="m-add2-3">Address 2:</label>
-                        <input type="text" name="m-add2-3" id="m-add2-3">
-                    </p>
-                    <p>
-                        <label for="m-city-3">City:</label>
-                        <input type="text" name="m-city-3" id="m-city-3">
-                    </p>
-                    <p>
-                        <label for="m-state-3">State:</label>
-                        <input type="text" name="m-state-3" id="m-state-3">
-                    </p>
-                    <p>
-                        <label for="m-zip-3">Zip Code:</label>
-                        <input type="text" name="m-zip-3" id="m-zip-3">
-                    </p>
-                </fieldset>
-            </div>
-        </div>
+        <aside class="sidebar">
+            <p><a href="../../index.html">Be a11y</a></p>
+            <ul>
+                <li class="current">Accordion</li>
+                <li><a href="../accessible-dropdown/">Dropdown</a></li>
+                <li><a href="../accessible-link/">Link</a></li>
+                <li><a href="../accessible-modal/index.html">Modal</a></li>
+                <li><a href="../accessible-slider/index.html">Slider</a></li>
+                <li><a href="../accessible-tabs/index.html">Tabs</a></li>
+                <li><a href="../accessible-toggle/index.html">Toggle</a></li>
+            </ul>
+        </aside>
+        <div class="content">
+            <h1>Accessible Accordion</h1>
 
-        <h3>Accordion with all closable panels</h3>
+            <div id="tab" class="tabs">
+                <div class="tabs__tablist" role="tablist" aria-label="Tabs component">
+                    <button class="tabs__tab core-tab" role="tab" aria-selected="true" aria-controls="core-tab-panel-1" id="core-tab-1">Sample</button>
+                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="core-tab-panel-2" id="core-tab-2">With animation</button>
+                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="core-tab-panel-3" id="core-tab-3">Multiple opened panels</button>
+                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="core-tab-panel-4" id="core-tab-4">All closable panels</button>
+                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="core-tab-panel-5" id="core-tab-5">Closed panels by default</button>
+                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="core-tab-panel-6" id="core-tab-6">With events</button>
+                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="core-tab-panel-7" id="core-tab-7">Only for &lt; 600px devices</button>
+                </div>
 
-        <div id="accordion-demo-4" class="accordion">
-            <h4>
-                <button aria-expanded="true" class="accordion__trigger">
-                    <span class="accordion__title">
-                        Personal Information
-                    </span>
-                </button>
-            </h4>
-            <div class="accordion__panel" role="region">
-                <fieldset>
-                    <p>
-                        <label for="cufc1-4">Name<span aria-hidden="true">*</span>:</label>
-                        <input type="text" value="" name="Name" id="cufc1-4" class="required" aria-required="true">
-                    </p>
-                    <p>
-                        <label for="cufc2-4">Email<span aria-hidden="true">*</span>:</label>
-                        <input type="text" value="" name="Email" id="cufc2-4" aria-required="true">
-                    </p>
-                    <p>
-                        <label for="cufc3-4">Phone:</label>
-                        <input type="text" value="" name="Phone" id="cufc3-4">
-                    </p>
-                    <p>
-                        <label for="cufc4-4">Extension:</label>
-                        <input type="text" value="" name="Ext" id="cufc4-4">
-                    </p>
-                    <p>
-                        <label for="cufc5-4">Country:</label>
-                        <input type="text" value="" name="Country" id="cufc5-4">
-                    </p>
-                    <p>
-                        <label for="cufc6-4">City/Province:</label>
-                        <input type="text" value="" name="City_Province" id="cufc6-4">
-                    </p>
-                </fieldset>
-            </div>
-            <h4>
-                <button aria-expanded="false" class="accordion__trigger">
-                    <span class="accordion__title">
-                        Billing Address
-                    </span>
-                </button>
-            </h4>
-            <div class="accordion__panel" role="region" style="display: none;">
-                <fieldset>
-                    <p>
-                        <label for="b-add1-4">Address 1:</label>
-                        <input type="text" name="b-add1-4" id="b-add1-4">
-                    </p>
-                    <p>
-                        <label for="b-add2-4">Address 2:</label>
-                        <input type="text" name="b-add2-4" id="b-add2-4">
-                    </p>
-                    <p>
-                        <label for="b-city-4">City:</label>
-                        <input type="text" name="b-city-4" id="b-city-4">
-                    </p>
-                    <p>
-                        <label for="b-state-4">State:</label>
-                        <input type="text" name="b-state-4" id="b-state-4">
-                    </p>
-                    <p>
-                        <label for="b-zip-4">Zip Code:</label>
-                        <input type="text" name="b-zip-4" id="b-zip-4">
-                    </p>
-                </fieldset>
-            </div>
-            <h4>
-                <button aria-expanded="false" class="accordion__trigger">
-                    <span class="accordion__title">
-                        Shipping Address
-                    </span>
-                </button>
-            </h4>
-            <div class="accordion__panel" role="region" style="display: none;">
-                <fieldset>
-                    <p>
-                        <label for="m-add1-4">Address 1:</label>
-                        <input type="text" name="m-add1-4" id="m-add1-4">
-                    </p>
-                    <p>
-                        <label for="m-add2-4">Address 2:</label>
-                        <input type="text" name="m-add2-4" id="m-add2-4">
-                    </p>
-                    <p>
-                        <label for="m-city-4">City:</label>
-                        <input type="text" name="m-city-4" id="m-city-4">
-                    </p>
-                    <p>
-                        <label for="m-state-4">State:</label>
-                        <input type="text" name="m-state-4" id="m-state-4">
-                    </p>
-                    <p>
-                        <label for="m-zip-4">Zip Code:</label>
-                        <input type="text" name="m-zip-4" id="m-zip-4">
-                    </p>
-                </fieldset>
-            </div>
-        </div>
+                <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-1" aria-labelledby="core-tab-1">
+                    <h2>Sample accordion</h2>
 
-        <h3>Accordion with closed panels by default</h3>
+                    <div id="accordion-demo-1" class="accordion">
+                        <h4>
+                            <button aria-expanded="true" class="accordion__trigger">
+                                <span class="accordion__title">
+                                    Personal Information
+                                </span>
+                            </button>
+                        </h4>
+                        <div class="accordion__panel" role="region">
+                            <fieldset>
+                                <p>
+                                    <label for="cufc1-1">Name<span aria-hidden="true">*</span>:</label>
+                                    <input type="text" value="" name="Name" id="cufc1-1" class="required" aria-required="true">
+                                </p>
+                                <p>
+                                    <label for="cufc2-1">Email<span aria-hidden="true">*</span>:</label>
+                                    <input type="text" value="" name="Email" id="cufc2-1" aria-required="true">
+                                </p>
+                                <p>
+                                    <label for="cufc3-1">Phone:</label>
+                                    <input type="text" value="" name="Phone" id="cufc3-1">
+                                </p>
+                                <p>
+                                    <label for="cufc4-1">Extension:</label>
+                                    <input type="text" value="" name="Ext" id="cufc4-1">
+                                </p>
+                                <p>
+                                    <label for="cufc5-1">Country:</label>
+                                    <input type="text" value="" name="Country" id="cufc5-1">
+                                </p>
+                                <p>
+                                    <label for="cufc6-1">City/Province:</label>
+                                    <input type="text" value="" name="City_Province" id="cufc6-1">
+                                </p>
+                            </fieldset>
+                        </div>
+                        <h4>
+                            <button aria-expanded="false" class="accordion__trigger">
+                                <span class="accordion__title">
+                                    Billing Address
+                                </span>
+                            </button>
+                        </h4>
+                        <div class="accordion__panel" role="region" style="display: none;">
+                            <fieldset>
+                                <p>
+                                    <label for="b-add1-1">Address 1:</label>
+                                    <input type="text" name="b-add1-1" id="b-add1-1">
+                                </p>
+                                <p>
+                                    <label for="b-add2-1-1">Address 2:</label>
+                                    <input type="text" name="b-add2-1" id="b-add2-1">
+                                </p>
+                                <p>
+                                    <label for="b-city-1">City</label>
+                                    <input type="text" name="b-city-1" id="b-city-1">
+                                </p>
+                                <p>
+                                    <label for="b-state-1">State</label>
+                                    <input type="text" name="b-state-1" id="b-state-1">
+                                </p>
+                                <p>
+                                    <label for="b-zip-1">Zip Code:</label>
+                                    <input type="text" name="b-zip-1" id="b-zip-1">
+                                </p>
+                            </fieldset>
+                        </div>
+                        <h4>
+                            <button aria-expanded="false" class="accordion__trigger">
+                                <span class="accordion__title">
+                                    Shipping Address
+                                </span>
+                            </button>
+                        </h4>
+                        <div class="accordion__panel" role="region" style="display: none;">
+                            <fieldset>
+                                <p>
+                                    <label for="m-add1-1">Address 1:</label>
+                                    <input type="text" name="m-add1-1" id="m-add1-1">
+                                </p>
+                                <p>
+                                    <label for="m-add2-1">Address 2:</label>
+                                    <input type="text" name="m-add2-1" id="m-add2-1">
+                                </p>
+                                <p>
+                                    <label for="m-city-1">City</label>
+                                    <input type="text" name="m-city-1" id="m-city-1">
+                                </p>
+                                <p>
+                                    <label for="m-state-1">State</label>
+                                    <input type="text" name="m-state-1" id="m-state-1">
+                                </p>
+                                <p>
+                                    <label for="m-zip-1">Zip Code:</label>
+                                    <input type="text" name="m-zip-1" id="m-zip-1">
+                                </p>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-2" aria-labelledby="core-tab-2" hidden>
+                    <h2>Accordion with open and close animation</h2>
+                    <div id="accordion-demo-2" class="accordion">
+                        <h4>
+                            <button aria-expanded="true" class="accordion__trigger">
+                                <span class="accordion__title">
+                                    Personal Information
+                                </span>
+                            </button>
+                        </h4>
+                        <div class="accordion__panel" role="region">
+                            <fieldset>
+                                <p>
+                                    <label for="cufc1-2">Name<span aria-hidden="true">*</span>:</label>
+                                    <input type="text" value="" name="Name" id="cufc1-2" class="required" aria-required="true">
+                                </p>
+                                <p>
+                                    <label for="cufc2-2">Email<span aria-hidden="true">*</span>:</label>
+                                    <input type="text" value="" name="Email" id="cufc2-2" aria-required="true">
+                                </p>
+                                <p>
+                                    <label for="cufc3-2">Phone:</label>
+                                    <input type="text" value="" name="Phone" id="cufc3-2">
+                                </p>
+                                <p>
+                                    <label for="cufc4-2">Extension:</label>
+                                    <input type="text" value="" name="Ext" id="cufc4-2">
+                                </p>
+                                <p>
+                                    <label for="cufc5-2">Country:</label>
+                                    <input type="text" value="" name="Country" id="cufc5-2">
+                                </p>
+                                <p>
+                                    <label for="cufc6-2">City/Province:</label>
+                                    <input type="text" value="" name="City_Province" id="cufc6-2">
+                                </p>
+                            </fieldset>
+                        </div>
+                        <h4>
+                            <button aria-expanded="false" class="accordion__trigger">
+                                <span class="accordion__title">
+                                    Billing Address
+                                </span>
+                            </button>
+                        </h4>
+                        <div class="accordion__panel" role="region" style="display: none;">
+                            <fieldset>
+                                <p>
+                                    <label for="b-add1-2">Address 1:</label>
+                                    <input type="text" name="b-add1-2" id="b-add1-2">
+                                </p>
+                                <p>
+                                    <label for="b-add2-2">Address 2:</label>
+                                    <input type="text" name="b-add2-2" id="b-add2-2">
+                                </p>
+                                <p>
+                                    <label for="b-city-2">City</label>
+                                    <input type="text" name="b-city-2" id="b-city-2">
+                                </p>
+                                <p>
+                                    <label for="b-state-2">State</label>
+                                    <input type="text" name="b-state-2" id="b-state-2">
+                                </p>
+                                <p>
+                                    <label for="b-zip-2">Zip Code:</label>
+                                    <input type="text" name="b-zip-2" id="b-zip-2">
+                                </p>
+                            </fieldset>
+                        </div>
+                        <h4>
+                            <button aria-expanded="false" class="accordion__trigger">
+                                <span class="accordion__title">
+                                    Shipping Address
+                                </span>
+                            </button>
+                        </h4>
+                        <div class="accordion__panel" role="region" style="display: none;">
+                            <fieldset>
+                                <p>
+                                    <label for="m-add1-2">Address 1:</label>
+                                    <input type="text" name="m-add1-2" id="m-add1-2">
+                                </p>
+                                <p>
+                                    <label for="m-add2-2">Address 2:</label>
+                                    <input type="text" name="m-add2-2" id="m-add2-2">
+                                </p>
+                                <p>
+                                    <label for="m-city-2">City</label>
+                                    <input type="text" name="m-city-2" id="m-city-2">
+                                </p>
+                                <p>
+                                    <label for="m-state-2">State</label>
+                                    <input type="text" name="m-state-2" id="m-state-2">
+                                </p>
+                                <p>
+                                    <label for="m-zip-2">Zip Code:</label>
+                                    <input type="text" name="m-zip-2" id="m-zip-2">
+                                </p>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-3" aria-labelledby="core-tab-3" hidden>
+                    <h2>Accordion with multiple opened panels</h2>
 
-        <div id="accordion-demo-5" class="accordion">
-            <h4>
-                <button class="accordion__trigger">
-                    <span class="accordion__title">
-                        Personal Information
-                    </span>
-                </button>
-            </h4>
-            <div class="accordion__panel" role="region">
-                <fieldset>
-                    <p>
-                        <label for="cufc1-5">Name<span aria-hidden="true">*</span>:</label>
-                        <input type="text" value="" name="Name" id="cufc1-5" class="required" aria-required="true">
-                    </p>
-                    <p>
-                        <label for="cufc2-5">Email<span aria-hidden="true">*</span>:</label>
-                        <input type="text" value="" name="Email" id="cufc2-5" aria-required="true">
-                    </p>
-                    <p>
-                        <label for="cufc3-5">Phone:</label>
-                        <input type="text" value="" name="Phone" id="cufc3-5">
-                    </p>
-                    <p>
-                        <label for="cufc4-5">Extension:</label>
-                        <input type="text" value="" name="Ext" id="cufc4-5">
-                    </p>
-                    <p>
-                        <label for="cufc5-5">Country:</label>
-                        <input type="text" value="" name="Country" id="cufc5-5">
-                    </p>
-                    <p>
-                        <label for="cufc6-5">City/Province:</label>
-                        <input type="text" value="" name="City_Province" id="cufc6-5">
-                    </p>
-                </fieldset>
-            </div>
-            <h4>
-                <button aria-expanded="false" class="accordion__trigger">
-                    <span class="accordion__title">
-                        Billing Address
-                    </span>
-                </button>
-            </h4>
-            <div class="accordion__panel" role="region" style="display: none;">
-                <fieldset>
-                    <p>
-                        <label for="b-add1-5">Address 1:</label>
-                        <input type="text" name="b-add1-5" id="b-add1-4">
-                    </p>
-                    <p>
-                        <label for="b-add2-5">Address 2:</label>
-                        <input type="text" name="b-add2-5" id="b-add2-5">
-                    </p>
-                    <p>
-                        <label for="b-city-5">City:</label>
-                        <input type="text" name="b-city-5" id="b-city-5">
-                    </p>
-                    <p>
-                        <label for="b-state-4">State:</label>
-                        <input type="text" name="b-state-5" id="b-state-5">
-                    </p>
-                    <p>
-                        <label for="b-zip-5">Zip Code:</label>
-                        <input type="text" name="b-zip-5" id="b-zip-5">
-                    </p>
-                </fieldset>
-            </div>
-            <h4>
-                <button aria-expanded="false" class="accordion__trigger">
-                    <span class="accordion__title">
-                        Shipping Address
-                    </span>
-                </button>
-            </h4>
-            <div class="accordion__panel" role="region" style="display: none;">
-                <fieldset>
-                    <p>
-                        <label for="m-add1-5">Address 1:</label>
-                        <input type="text" name="m-add1-5" id="m-add1-5">
-                    </p>
-                    <p>
-                        <label for="m-add2-5">Address 2:</label>
-                        <input type="text" name="m-add2-5" id="m-add2-5">
-                    </p>
-                    <p>
-                        <label for="m-city-5">City:</label>
-                        <input type="text" name="m-city-5" id="m-city-5">
-                    </p>
-                    <p>
-                        <label for="m-state-5">State:</label>
-                        <input type="text" name="m-state-5" id="m-state-5">
-                    </p>
-                    <p>
-                        <label for="m-zip-5">Zip Code:</label>
-                        <input type="text" name="m-zip-5" id="m-zip-5">
-                    </p>
-                </fieldset>
-            </div>
-        </div>
+                    <div id="accordion-demo-3" class="accordion">
+                        <h4>
+                            <button aria-expanded="true" class="accordion__trigger">
+                                <span class="accordion__title">
+                                    Personal Information
+                                </span>
+                            </button>
+                        </h4>
+                        <div class="accordion__panel" role="region">
+                            <fieldset>
+                                <p>
+                                    <label for="cufc1-3">Name<span aria-hidden="true">*</span>:</label>
+                                    <input type="text" value="" name="Name" id="cufc1-3" class="required" aria-required="true">
+                                </p>
+                                <p>
+                                    <label for="cufc2-3">Email<span aria-hidden="true">*</span>:</label>
+                                    <input type="text" value="" name="Email" id="cufc2-3" aria-required="true">
+                                </p>
+                                <p>
+                                    <label for="cufc3-3">Phone:</label>
+                                    <input type="text" value="" name="Phone" id="cufc3-3">
+                                </p>
+                                <p>
+                                    <label for="cufc4-3">Extension:</label>
+                                    <input type="text" value="" name="Ext" id="cufc4-3">
+                                </p>
+                                <p>
+                                    <label for="cufc5-3">Country:</label>
+                                    <input type="text" value="" name="Country" id="cufc5-3">
+                                </p>
+                                <p>
+                                    <label for="cufc6-3">City/Province:</label>
+                                    <input type="text" value="" name="City_Province" id="cufc6-3">
+                                </p>
+                            </fieldset>
+                        </div>
+                        <h4>
+                            <button aria-expanded="false" class="accordion__trigger">
+                                <span class="accordion__title">
+                                    Billing Address
+                                </span>
+                            </button>
+                        </h4>
+                        <div class="accordion__panel" role="region" style="display: none;">
+                            <fieldset>
+                                <p>
+                                    <label for="b-add1-3">Address 1:</label>
+                                    <input type="text" name="b-add1-3" id="b-add1-3">
+                                </p>
+                                <p>
+                                    <label for="b-add2-3">Address 2:</label>
+                                    <input type="text" name="b-add2-3" id="b-add2-3">
+                                </p>
+                                <p>
+                                    <label for="b-city-3">City</label>
+                                    <input type="text" name="b-city-3" id="b-city-3">
+                                </p>
+                                <p>
+                                    <label for="b-state-3">State</label>
+                                    <input type="text" name="b-state-3" id="b-state-3">
+                                </p>
+                                <p>
+                                    <label for="b-zip-3">Zip Code:</label>
+                                    <input type="text" name="b-zip-3" id="b-zip-3">
+                                </p>
+                            </fieldset>
+                        </div>
+                        <h4>
+                            <button aria-expanded="false" class="accordion__trigger">
+                                <span class="accordion__title">
+                                    Shipping Address
+                                </span>
+                            </button>
+                        </h4>
+                        <div class="accordion__panel" role="region" style="display: none;">
+                            <fieldset>
+                                <p>
+                                    <label for="m-add1-3">Address 1:</label>
+                                    <input type="text" name="m-add1-3" id="m-add1-3">
+                                </p>
+                                <p>
+                                    <label for="m-add2-3">Address 2:</label>
+                                    <input type="text" name="m-add2-3" id="m-add2-3">
+                                </p>
+                                <p>
+                                    <label for="m-city-3">City</label>
+                                    <input type="text" name="m-city-3" id="m-city-3">
+                                </p>
+                                <p>
+                                    <label for="m-state-3">State</label>
+                                    <input type="text" name="m-state-3" id="m-state-3">
+                                </p>
+                                <p>
+                                    <label for="m-zip-3">Zip Code:</label>
+                                    <input type="text" name="m-zip-3" id="m-zip-3">
+                                </p>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-4" aria-labelledby="core-tab-4" hidden>
+                    <h2>Accordion with all closable panels</h2>
 
-        <h3>Accordion with events</h3>
+                    <div id="accordion-demo-4" class="accordion">
+                        <h4>
+                            <button aria-expanded="true" class="accordion__trigger">
+                                <span class="accordion__title">
+                                    Personal Information
+                                </span>
+                            </button>
+                        </h4>
+                        <div class="accordion__panel" role="region">
+                            <fieldset>
+                                <p>
+                                    <label for="cufc1-4">Name<span aria-hidden="true">*</span>:</label>
+                                    <input type="text" value="" name="Name" id="cufc1-4" class="required" aria-required="true">
+                                </p>
+                                <p>
+                                    <label for="cufc2-4">Email<span aria-hidden="true">*</span>:</label>
+                                    <input type="text" value="" name="Email" id="cufc2-4" aria-required="true">
+                                </p>
+                                <p>
+                                    <label for="cufc3-4">Phone:</label>
+                                    <input type="text" value="" name="Phone" id="cufc3-4">
+                                </p>
+                                <p>
+                                    <label for="cufc4-4">Extension:</label>
+                                    <input type="text" value="" name="Ext" id="cufc4-4">
+                                </p>
+                                <p>
+                                    <label for="cufc5-4">Country:</label>
+                                    <input type="text" value="" name="Country" id="cufc5-4">
+                                </p>
+                                <p>
+                                    <label for="cufc6-4">City/Province:</label>
+                                    <input type="text" value="" name="City_Province" id="cufc6-4">
+                                </p>
+                            </fieldset>
+                        </div>
+                        <h4>
+                            <button aria-expanded="false" class="accordion__trigger">
+                                <span class="accordion__title">
+                                    Billing Address
+                                </span>
+                            </button>
+                        </h4>
+                        <div class="accordion__panel" role="region" style="display: none;">
+                            <fieldset>
+                                <p>
+                                    <label for="b-add1-4">Address 1:</label>
+                                    <input type="text" name="b-add1-4" id="b-add1-4">
+                                </p>
+                                <p>
+                                    <label for="b-add2-4">Address 2:</label>
+                                    <input type="text" name="b-add2-4" id="b-add2-4">
+                                </p>
+                                <p>
+                                    <label for="b-city-4">City</label>
+                                    <input type="text" name="b-city-4" id="b-city-4">
+                                </p>
+                                <p>
+                                    <label for="b-state-4">State</label>
+                                    <input type="text" name="b-state-4" id="b-state-4">
+                                </p>
+                                <p>
+                                    <label for="b-zip-4">Zip Code:</label>
+                                    <input type="text" name="b-zip-4" id="b-zip-4">
+                                </p>
+                            </fieldset>
+                        </div>
+                        <h4>
+                            <button aria-expanded="false" class="accordion__trigger">
+                                <span class="accordion__title">
+                                    Shipping Address
+                                </span>
+                            </button>
+                        </h4>
+                        <div class="accordion__panel" role="region" style="display: none;">
+                            <fieldset>
+                                <p>
+                                    <label for="m-add1-4">Address 1:</label>
+                                    <input type="text" name="m-add1-4" id="m-add1-4">
+                                </p>
+                                <p>
+                                    <label for="m-add2-4">Address 2:</label>
+                                    <input type="text" name="m-add2-4" id="m-add2-4">
+                                </p>
+                                <p>
+                                    <label for="m-city-4">City</label>
+                                    <input type="text" name="m-city-4" id="m-city-4">
+                                </p>
+                                <p>
+                                    <label for="m-state-4">State</label>
+                                    <input type="text" name="m-state-4" id="m-state-4">
+                                </p>
+                                <p>
+                                    <label for="m-zip-4">Zip Code:</label>
+                                    <input type="text" name="m-zip-4" id="m-zip-4">
+                                </p>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-5" aria-labelledby="core-tab-5" hidden>
+                    <h2>Accordion with closed panels by default</h2>
 
-        <div id="accordion-demo-6" class="accordion">
-            <h4>
-                <button class="accordion__trigger" aria-expanded="true">
-                    <span class="accordion__title">
-                        Personal Information
-                    </span>
-                </button>
-            </h4>
-            <div class="accordion__panel" role="region">
-                <fieldset>
-                    <p>
-                        <label for="cufc1-6">Name<span aria-hidden="true">*</span>:</label>
-                        <input type="text" value="" name="Name" id="cufc1-6" class="required" aria-required="true">
-                    </p>
-                    <p>
-                        <label for="cufc2-6">Email<span aria-hidden="true">*</span>:</label>
-                        <input type="text" value="" name="Email" id="cufc2-6" aria-required="true">
-                    </p>
-                    <p>
-                        <label for="cufc3-6">Phone:</label>
-                        <input type="text" value="" name="Phone" id="cufc3-6">
-                    </p>
-                    <p>
-                        <label for="cufc4-6">Extension:</label>
-                        <input type="text" value="" name="Ext" id="cufc4-6">
-                    </p>
-                    <p>
-                        <label for="cufc5-6">Country:</label>
-                        <input type="text" value="" name="Country" id="cufc5-6">
-                    </p>
-                    <p>
-                        <label for="cufc6-6">City/Province:</label>
-                        <input type="text" value="" name="City_Province" id="cufc6-6">
-                    </p>
-                </fieldset>
-            </div>
-            <h4>
-                <button aria-expanded="false" class="accordion__trigger">
-                    <span class="accordion__title">
-                        Billing Address
-                    </span>
-                </button>
-            </h4>
-            <div class="accordion__panel" role="region" style="display: none;">
-                <fieldset>
-                    <p>
-                        <label for="b-add1-6">Address 1:</label>
-                        <input type="text" name="b-add1-6" id="b-add1-4">
-                    </p>
-                    <p>
-                        <label for="b-add2-6">Address 2:</label>
-                        <input type="text" name="b-add2-6" id="b-add2-6">
-                    </p>
-                    <p>
-                        <label for="b-city-6">City:</label>
-                        <input type="text" name="b-city-6" id="b-city-6">
-                    </p>
-                    <p>
-                        <label for="b-state-4">State:</label>
-                        <input type="text" name="b-state-6" id="b-state-6">
-                    </p>
-                    <p>
-                        <label for="b-zip-6">Zip Code:</label>
-                        <input type="text" name="b-zip-6" id="b-zip-6">
-                    </p>
-                </fieldset>
-            </div>
-            <h4>
-                <button aria-expanded="false" class="accordion__trigger">
-                    <span class="accordion__title">
-                        Shipping Address
-                    </span>
-                </button>
-            </h4>
-            <div class="accordion__panel" role="region" style="display: none;">
-                <fieldset>
-                    <p>
-                        <label for="m-add1-6">Address 1:</label>
-                        <input type="text" name="m-add1-6" id="m-add1-6">
-                    </p>
-                    <p>
-                        <label for="m-add2-6">Address 2:</label>
-                        <input type="text" name="m-add2-6" id="m-add2-6">
-                    </p>
-                    <p>
-                        <label for="m-city-6">City:</label>
-                        <input type="text" name="m-city-6" id="m-city-6">
-                    </p>
-                    <p>
-                        <label for="m-state-6">State:</label>
-                        <input type="text" name="m-state-6" id="m-state-6">
-                    </p>
-                    <p>
-                        <label for="m-zip-6">Zip Code:</label>
-                        <input type="text" name="m-zip-6" id="m-zip-6">
-                    </p>
-                </fieldset>
-            </div>
-        </div>
+                    <div id="accordion-demo-5" class="accordion">
+                        <h4>
+                            <button class="accordion__trigger">
+                                <span class="accordion__title">
+                                    Personal Information
+                                </span>
+                            </button>
+                        </h4>
+                        <div class="accordion__panel" role="region">
+                            <fieldset>
+                                <p>
+                                    <label for="cufc1-5">Name<span aria-hidden="true">*</span>:</label>
+                                    <input type="text" value="" name="Name" id="cufc1-5" class="required" aria-required="true">
+                                </p>
+                                <p>
+                                    <label for="cufc2-5">Email<span aria-hidden="true">*</span>:</label>
+                                    <input type="text" value="" name="Email" id="cufc2-5" aria-required="true">
+                                </p>
+                                <p>
+                                    <label for="cufc3-5">Phone:</label>
+                                    <input type="text" value="" name="Phone" id="cufc3-5">
+                                </p>
+                                <p>
+                                    <label for="cufc4-5">Extension:</label>
+                                    <input type="text" value="" name="Ext" id="cufc4-5">
+                                </p>
+                                <p>
+                                    <label for="cufc5-5">Country:</label>
+                                    <input type="text" value="" name="Country" id="cufc5-5">
+                                </p>
+                                <p>
+                                    <label for="cufc6-5">City/Province:</label>
+                                    <input type="text" value="" name="City_Province" id="cufc6-5">
+                                </p>
+                            </fieldset>
+                        </div>
+                        <h4>
+                            <button aria-expanded="false" class="accordion__trigger">
+                                <span class="accordion__title">
+                                    Billing Address
+                                </span>
+                            </button>
+                        </h4>
+                        <div class="accordion__panel" role="region" style="display: none;">
+                            <fieldset>
+                                <p>
+                                    <label for="b-add1-5">Address 1:</label>
+                                    <input type="text" name="b-add1-5" id="b-add1-4">
+                                </p>
+                                <p>
+                                    <label for="b-add2-5">Address 2:</label>
+                                    <input type="text" name="b-add2-5" id="b-add2-5">
+                                </p>
+                                <p>
+                                    <label for="b-city-5">City</label>
+                                    <input type="text" name="b-city-5" id="b-city-5">
+                                </p>
+                                <p>
+                                    <label for="b-state-4">State</label>
+                                    <input type="text" name="b-state-5" id="b-state-5">
+                                </p>
+                                <p>
+                                    <label for="b-zip-5">Zip Code:</label>
+                                    <input type="text" name="b-zip-5" id="b-zip-5">
+                                </p>
+                            </fieldset>
+                        </div>
+                        <h4>
+                            <button aria-expanded="false" class="accordion__trigger">
+                                <span class="accordion__title">
+                                    Shipping Address
+                                </span>
+                            </button>
+                        </h4>
+                        <div class="accordion__panel" role="region" style="display: none;">
+                            <fieldset>
+                                <p>
+                                    <label for="m-add1-5">Address 1:</label>
+                                    <input type="text" name="m-add1-5" id="m-add1-5">
+                                </p>
+                                <p>
+                                    <label for="m-add2-5">Address 2:</label>
+                                    <input type="text" name="m-add2-5" id="m-add2-5">
+                                </p>
+                                <p>
+                                    <label for="m-city-5">City</label>
+                                    <input type="text" name="m-city-5" id="m-city-5">
+                                </p>
+                                <p>
+                                    <label for="m-state-5">State</label>
+                                    <input type="text" name="m-state-5" id="m-state-5">
+                                </p>
+                                <p>
+                                    <label for="m-zip-5">Zip Code:</label>
+                                    <input type="text" name="m-zip-5" id="m-zip-5">
+                                </p>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-6" aria-labelledby="core-tab-6" hidden>
+                    <h2>Accordion with events</h2>
 
-        <h3>Accordion but only for &lt; 600px devices</h3>
+                    <div id="accordion-demo-6" class="accordion">
+                        <h4>
+                            <button class="accordion__trigger" aria-expanded="true">
+                                <span class="accordion__title">
+                                    Personal Information
+                                </span>
+                            </button>
+                        </h4>
+                        <div class="accordion__panel" role="region">
+                            <fieldset>
+                                <p>
+                                    <label for="cufc1-6">Name<span aria-hidden="true">*</span>:</label>
+                                    <input type="text" value="" name="Name" id="cufc1-6" class="required" aria-required="true">
+                                </p>
+                                <p>
+                                    <label for="cufc2-6">Email<span aria-hidden="true">*</span>:</label>
+                                    <input type="text" value="" name="Email" id="cufc2-6" aria-required="true">
+                                </p>
+                                <p>
+                                    <label for="cufc3-6">Phone:</label>
+                                    <input type="text" value="" name="Phone" id="cufc3-6">
+                                </p>
+                                <p>
+                                    <label for="cufc4-6">Extension:</label>
+                                    <input type="text" value="" name="Ext" id="cufc4-6">
+                                </p>
+                                <p>
+                                    <label for="cufc5-6">Country:</label>
+                                    <input type="text" value="" name="Country" id="cufc5-6">
+                                </p>
+                                <p>
+                                    <label for="cufc6-6">City/Province:</label>
+                                    <input type="text" value="" name="City_Province" id="cufc6-6">
+                                </p>
+                            </fieldset>
+                        </div>
+                        <h4>
+                            <button aria-expanded="false" class="accordion__trigger">
+                                <span class="accordion__title">
+                                    Billing Address
+                                </span>
+                            </button>
+                        </h4>
+                        <div class="accordion__panel" role="region" style="display: none;">
+                            <fieldset>
+                                <p>
+                                    <label for="b-add1-6">Address 1:</label>
+                                    <input type="text" name="b-add1-6" id="b-add1-4">
+                                </p>
+                                <p>
+                                    <label for="b-add2-6">Address 2:</label>
+                                    <input type="text" name="b-add2-6" id="b-add2-6">
+                                </p>
+                                <p>
+                                    <label for="b-city-6">City</label>
+                                    <input type="text" name="b-city-6" id="b-city-6">
+                                </p>
+                                <p>
+                                    <label for="b-state-4">State</label>
+                                    <input type="text" name="b-state-6" id="b-state-6">
+                                </p>
+                                <p>
+                                    <label for="b-zip-6">Zip Code:</label>
+                                    <input type="text" name="b-zip-6" id="b-zip-6">
+                                </p>
+                            </fieldset>
+                        </div>
+                        <h4>
+                            <button aria-expanded="false" class="accordion__trigger">
+                                <span class="accordion__title">
+                                    Shipping Address
+                                </span>
+                            </button>
+                        </h4>
+                        <div class="accordion__panel" role="region" style="display: none;">
+                            <fieldset>
+                                <p>
+                                    <label for="m-add1-6">Address 1:</label>
+                                    <input type="text" name="m-add1-6" id="m-add1-6">
+                                </p>
+                                <p>
+                                    <label for="m-add2-6">Address 2:</label>
+                                    <input type="text" name="m-add2-6" id="m-add2-6">
+                                </p>
+                                <p>
+                                    <label for="m-city-6">City</label>
+                                    <input type="text" name="m-city-6" id="m-city-6">
+                                </p>
+                                <p>
+                                    <label for="m-state-6">State</label>
+                                    <input type="text" name="m-state-6" id="m-state-6">
+                                </p>
+                                <p>
+                                    <label for="m-zip-6">Zip Code:</label>
+                                    <input type="text" name="m-zip-6" id="m-zip-6">
+                                </p>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-7" aria-labelledby="core-tab-7" hidden>
+                    <h2>Accordion but only for &lt; 600px devices</h2>
 
-        <div id="accordion-demo-7" class="accordion">
-            <h4>
-                <button class="accordion__trigger" aria-expanded="true">
-                    <span class="accordion__title">
-                        Personal Information
-                    </span>
-                </button>
-            </h4>
-            <div class="accordion__panel" role="region">
-                <fieldset>
-                    <p>
-                        <label for="cufc1-6">Name<span aria-hidden="true">*</span>:</label>
-                        <input type="text" value="" name="Name" id="cufc1-6" class="required" aria-required="true">
-                    </p>
-                    <p>
-                        <label for="cufc2-6">Email<span aria-hidden="true">*</span>:</label>
-                        <input type="text" value="" name="Email" id="cufc2-6" aria-required="true">
-                    </p>
-                    <p>
-                        <label for="cufc3-6">Phone:</label>
-                        <input type="text" value="" name="Phone" id="cufc3-6">
-                    </p>
-                    <p>
-                        <label for="cufc4-6">Extension:</label>
-                        <input type="text" value="" name="Ext" id="cufc4-6">
-                    </p>
-                    <p>
-                        <label for="cufc5-6">Country:</label>
-                        <input type="text" value="" name="Country" id="cufc5-6">
-                    </p>
-                    <p>
-                        <label for="cufc6-6">City/Province:</label>
-                        <input type="text" value="" name="City_Province" id="cufc6-6">
-                    </p>
-                </fieldset>
+                    <div id="accordion-demo-7" class="accordion">
+                        <h4>
+                            <button class="accordion__trigger" aria-expanded="true">
+                                <span class="accordion__title">
+                                    Personal Information
+                                </span>
+                            </button>
+                        </h4>
+                        <div class="accordion__panel" role="region">
+                            <fieldset>
+                                <p>
+                                    <label for="cufc1-6">Name<span aria-hidden="true">*</span>:</label>
+                                    <input type="text" value="" name="Name" id="cufc1-6" class="required" aria-required="true">
+                                </p>
+                                <p>
+                                    <label for="cufc2-6">Email<span aria-hidden="true">*</span>:</label>
+                                    <input type="text" value="" name="Email" id="cufc2-6" aria-required="true">
+                                </p>
+                                <p>
+                                    <label for="cufc3-6">Phone:</label>
+                                    <input type="text" value="" name="Phone" id="cufc3-6">
+                                </p>
+                                <p>
+                                    <label for="cufc4-6">Extension:</label>
+                                    <input type="text" value="" name="Ext" id="cufc4-6">
+                                </p>
+                                <p>
+                                    <label for="cufc5-6">Country:</label>
+                                    <input type="text" value="" name="Country" id="cufc5-6">
+                                </p>
+                                <p>
+                                    <label for="cufc6-6">City/Province:</label>
+                                    <input type="text" value="" name="City_Province" id="cufc6-6">
+                                </p>
+                            </fieldset>
+                        </div>
+                        <h4>
+                            <button aria-expanded="false" class="accordion__trigger">
+                                <span class="accordion__title">
+                                    Billing Address
+                                </span>
+                            </button>
+                        </h4>
+                        <div class="accordion__panel" role="region" style="display: none;">
+                            <fieldset>
+                                <p>
+                                    <label for="b-add1-6">Address 1:</label>
+                                    <input type="text" name="b-add1-6" id="b-add1-4">
+                                </p>
+                                <p>
+                                    <label for="b-add2-6">Address 2:</label>
+                                    <input type="text" name="b-add2-6" id="b-add2-6">
+                                </p>
+                                <p>
+                                    <label for="b-city-6">City</label>
+                                    <input type="text" name="b-city-6" id="b-city-6">
+                                </p>
+                                <p>
+                                    <label for="b-state-4">State</label>
+                                    <input type="text" name="b-state-6" id="b-state-6">
+                                </p>
+                                <p>
+                                    <label for="b-zip-6">Zip Code:</label>
+                                    <input type="text" name="b-zip-6" id="b-zip-6">
+                                </p>
+                            </fieldset>
+                        </div>
+                        <h4>
+                            <button aria-expanded="false" class="accordion__trigger">
+                                <span class="accordion__title">
+                                    Shipping Address
+                                </span>
+                            </button>
+                        </h4>
+                        <div class="accordion__panel" role="region" style="display: none;">
+                            <fieldset>
+                                <p>
+                                    <label for="m-add1-6">Address 1:</label>
+                                    <input type="text" name="m-add1-6" id="m-add1-6">
+                                </p>
+                                <p>
+                                    <label for="m-add2-6">Address 2:</label>
+                                    <input type="text" name="m-add2-6" id="m-add2-6">
+                                </p>
+                                <p>
+                                    <label for="m-city-6">City</label>
+                                    <input type="text" name="m-city-6" id="m-city-6">
+                                </p>
+                                <p>
+                                    <label for="m-state-6">State</label>
+                                    <input type="text" name="m-state-6" id="m-state-6">
+                                </p>
+                                <p>
+                                    <label for="m-zip-6">Zip Code:</label>
+                                    <input type="text" name="m-zip-6" id="m-zip-6">
+                                </p>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h4>
-                <button aria-expanded="false" class="accordion__trigger">
-                    <span class="accordion__title">
-                        Billing Address
-                    </span>
-                </button>
-            </h4>
-            <div class="accordion__panel" role="region" style="display: none;">
-                <fieldset>
-                    <p>
-                        <label for="b-add1-6">Address 1:</label>
-                        <input type="text" name="b-add1-6" id="b-add1-4">
-                    </p>
-                    <p>
-                        <label for="b-add2-6">Address 2:</label>
-                        <input type="text" name="b-add2-6" id="b-add2-6">
-                    </p>
-                    <p>
-                        <label for="b-city-6">City:</label>
-                        <input type="text" name="b-city-6" id="b-city-6">
-                    </p>
-                    <p>
-                        <label for="b-state-4">State:</label>
-                        <input type="text" name="b-state-6" id="b-state-6">
-                    </p>
-                    <p>
-                        <label for="b-zip-6">Zip Code:</label>
-                        <input type="text" name="b-zip-6" id="b-zip-6">
-                    </p>
-                </fieldset>
-            </div>
-            <h4>
-                <button aria-expanded="false" class="accordion__trigger">
-                    <span class="accordion__title">
-                        Shipping Address
-                    </span>
-                </button>
-            </h4>
-            <div class="accordion__panel" role="region" style="display: none;">
-                <fieldset>
-                    <p>
-                        <label for="m-add1-6">Address 1:</label>
-                        <input type="text" name="m-add1-6" id="m-add1-6">
-                    </p>
-                    <p>
-                        <label for="m-add2-6">Address 2:</label>
-                        <input type="text" name="m-add2-6" id="m-add2-6">
-                    </p>
-                    <p>
-                        <label for="m-city-6">City:</label>
-                        <input type="text" name="m-city-6" id="m-city-6">
-                    </p>
-                    <p>
-                        <label for="m-state-6">State:</label>
-                        <input type="text" name="m-state-6" id="m-state-6">
-                    </p>
-                    <p>
-                        <label for="m-zip-6">Zip Code:</label>
-                        <input type="text" name="m-zip-6" id="m-zip-6">
-                    </p>
-                </fieldset>
-            </div>
-        </div>
-        
-        <h2>Code</h2>
-        
-        <p class="codepen" data-height="600" data-theme-id="light" data-default-tab="html,result" data-slug-hash="eYRBJJb" data-user="beapi" style="height: 600px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-            <span>See the Pen <a href="https://codepen.io/beapi/pen/eYRBJJb">
-                Accessible Accordion</a> by Be API (<a href="https://codepen.io/beapi">@beapi</a>)
-                on <a href="https://codepen.io">CodePen</a>.</span>
-            </p>
-            <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
         </div>
 
         <script type="module">
-            import { Accordion } from '../../be-a11y.js'
+            import { Accordion, Tabs } from '../../be-a11y.ts'
             import '../../src/css/index.css'
             import './style.css'
+
+            Tabs.init('#tab', {
+                tabListSelector: '.core-tab'
+            })
 
             Accordion.preset = {
                 '#accordion-demo-1': {},
@@ -756,10 +777,10 @@
                     onInit: function(el) {
                         console.log(`${el.id} initialized`)
                     },
-                    onClose: function(panel) {
+                    onClose: function(e, panel) {
                         alert(`${panel.id} closed`)
                     },
-                    onOpen: function(panel) {
+                    onOpen: function(e, panel) {
                         alert(`${panel.id} opened`)
                     }
                 },
@@ -774,4 +795,4 @@
             Accordion.initFromPreset()
         </script>
     </body>
-    </html>
+</html>

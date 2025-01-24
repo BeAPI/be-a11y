@@ -1,0 +1,19 @@
+.tabs {
+    @apply mb-4;
+}
+
+.tabs__tablist {
+    @apply flex border-b border-b-slate-200 dark:border-b-dark-border;
+}
+
+.tabs__tab {
+    @apply rounded-t rounded-b-none border-b border-transparent shadow-none px-4 py-1 dark:text-white dark:bg-transparent;
+}
+
+.tabs__tab[aria-selected="true"] {
+    @apply border-t-slate-200 dark:border-t-dark-border border-r-slate-200 dark:border-r-dark-border border-l-slate-200 dark:border-l-dark-border bg-white dark:bg-transparent mb-[-1px];
+}
+
+.tabs__panel {
+    @apply overflow-hidden px-4 py-4 border border-t-transparent border-r-slate-200 dark:border-r-dark-border border-b-slate-200 dark:border-b-dark-border border-l-slate-200 dark:border-l-dark-border;
+}

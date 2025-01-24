@@ -1,93 +1,30 @@
-body > div {
-    overflow: hidden;
-}
-
-/* ----
- * css slider
- * ---- */
 .slider {
-    position: relative;
-    z-index: 0;
+    @apply relative z-0;
 }
 
 .slider__items {
-    transition: height .25s;
+    @apply transition-all;
+
+    height: 300px !important;
 }
 
 .slider__item {
-    position: absolute;
-    left: 50%;
-    width: 200px;
-    height: 300px;
-    margin-left: -100px;
-    overflow: hidden;
-    user-select: none;
-    border-radius: 10px;
-    transition-timing-function: cubic-bezier(.19, 1, .22, 1);
-    transition-duration: 1s;
-    transition-property: opacity, transform;
+    @apply h-[300px] overflow-hidden select-none rounded-xl ease-[cubic-bezier(.19,1,.22,1)] duration-1000 transition-all cursor-grab will-change-transform;
 }
 
 img {
-    width: 400px;
-    max-width: none;
-    height: 100%;
-    margin-left: -100px;
-    transition: transform 1s cubic-bezier(.19, 1, .22, 1);
-}
-
-/* ----
- * define position for each item
- * ---- */
-.slider__item[data-pos="-2"] {
-    opacity: 0;
-    transform: translateX(-220%);
-}
-
-.slider__item[data-pos="-2"] img {
-    transform: translateX(100px);
-}
-
-.slider__item[data-pos="-1"] {
-    transform: translateX(-110%);
-}
-
-.slider__item[data-pos="-1"] img {
-    transform: translateX(50px);
-}
-
-.slider__item[data-pos="1"] {
-    transform: translateX(110%);
-}
-
-.slider__item[data-pos="1"] img {
-    transform: translateX(-50px);
-}
-
-.slider__item[data-pos="2"] {
-    opacity: 0;
-    transform: translateX(220%);
-}
-
-.slider__item[data-pos="2"] img {
-    transform: translateX(-100px);
+    @apply w-full h-full object-cover pointer-events-none touch-none;
 }
 
 /* ----
  * nav
  * ---- */
 .slider__nav {
-    margin-top: 20px;
-    text-align: center;
+    @apply flex justify-center gap-3 mt-3;
 }
 
 .slider__nav button {
     min-width: 120px;
-}
-
-.slider__nav button[disabled] {
-    color: #ccc;
-    background: #fff;
 }
 
 .slider__dots {
@@ -101,22 +38,163 @@ img {
 }
 
 .slider__dots button {
-    width: 50px;
-    height: 30px;
-    padding: 0;
+    @apply relative border-0 rounded-none px-4 py-2 z-[1] bg-beapi hover:bg-beapi before:content-[""] before:block before:absolute before:z-[-1] before:transition-all before:top-0 before:left-0 before:bottom-0 before:w-0 dark:before:bg-white before:bg-dark hover:text-white dark:hover:text-dark hover:before:w-full;
 }
 
 .slider__active {
-    background:rgb(243, 244, 246);
+    background: rgb(243, 244, 246);
 }
 
-/* ----
- * counter
- * ---- */
-.slider__counter {
-    position: absolute;
-    top: calc(61vw - 50px);
-    right: 10px;
-    padding: 0 10px;
-    border-radius: 4px;
+/**
+ * Styles for demo 1
+ */
+.slider--demo-1 {
+    @apply overflow-hidden;
+}
+
+.slider--demo-1 .slider__item {
+    @apply absolute w-full;
+}
+
+.slider--demo-1 .slider__item[data-pos="-2"] {
+    @apply opacity-0 translate-x-[-200%];
+}
+
+.slider--demo-1 .slider__item[data-pos="-1"] {
+    @apply opacity-0 translate-x-[-100%];
+}
+
+.slider--demo-1 .slider__item[data-pos="0"] {
+    @apply z-[1];
+}
+
+.slider--demo-1 .slider__item[data-pos="1"] {
+    @apply translate-x-[100%];
+}
+
+.slider--demo-1 .slider__item[data-pos="2"] {
+    @apply translate-x-[200%];
+}
+
+/**
+ * Styles for demo 2
+ */
+.slider--demo-2 {
+    --slider--gap: 20px;
+    --slider--per-view: 3;
+
+    @apply relative z-0;
+}
+
+.slider--demo-2 .slider__items {
+    @apply flex gap-[var(--slider--gap)];
+}
+
+.slider--demo-2 .slider__item {
+    @apply w-auto;
+
+    min-width: calc(100% / var(--slider--per-view) - var(--slider--gap) * .5 * (var(--slider--per-view) - 1));
+}
+
+.slider--demo-2[data-current="0"] .slider__item {
+    transform: translate3d(0, 0, 0);
+}
+
+.slider--demo-2[data-current="1"] .slider__item {
+    transform: translate3d(calc(-100% - var(--slider--gap)), 0, 0);
+}
+
+.slider--demo-2[data-current="2"] .slider__item {
+    transform: translate3d(calc(-200% - var(--slider--gap) * 2), 0, 0);
+}
+
+.slider--demo-2[data-current="3"] .slider__item {
+    transform: translate3d(calc(-300% - var(--slider--gap) * 3), 0, 0);
+}
+
+.slider--demo-2[data-current="4"] .slider__item {
+    transform: translate3d(calc(-400% - var(--slider--gap) * 4), 0, 0);
+}
+
+/**
+ * Styles for demo 3
+ */
+.slider--demo-3 {
+    --slider--gap: 20px;
+    --slider--per-view: 3;
+
+    @apply relative z-0 overflow-hidden;
+}
+
+.slider--demo-3 .slider__items {
+    @apply flex gap-x-[var(--slider--gap)] transition-transform duration-1000;
+}
+
+.slider--demo-3 .slider__item {
+    min-width: calc(100% / var(--slider--per-view) - var(--slider--gap) * .5 * (var(--slider--per-view) - 1));
+}
+
+.slider--demo-3[data-current="0"] .slider__items {
+    transform: translate3d(calc((100% / var(--slider--per-view)) + var(--slider--gap) * .5), 0, 0);
+}
+
+.slider--demo-3[data-current="1"] .slider__items {
+    transform: translate3d(calc(var(--slider--gap) * .5), 0, 0);
+}
+
+.slider--demo-3[data-current="2"] .slider__items {
+    transform: translate3d(calc((-100% / var(--slider--per-view)) + var(--slider--gap) * .5), 0, 0);
+}
+
+.slider--demo-3[data-current="3"] .slider__items {
+    transform: translate3d(calc((-200% / var(--slider--per-view)) + var(--slider--gap) * .5), 0, 0);
+}
+
+.slider--demo-3[data-current="4"] .slider__items {
+    transform: translate3d(calc((-300% / var(--slider--per-view)) + var(--slider--gap) * .5), 0, 0);
+}
+
+
+/**
+ * Styles for demo 4
+ */
+
+.slider--demo-4 .slider__item {
+    @apply absolute left-[50%] w-[200px] ml-[-100px];
+}
+
+.slider--demo-4 img {
+    @apply w-[400px] max-w-none ml-[-100px] duration-500 transition-transform;
+}
+
+.slider--demo-4 .slider__item[data-pos="-2"] {
+    @apply opacity-0 translate-x-[-220%];
+}
+
+.slider--demo-4 .slider__item[data-pos="-2"] img {
+    @apply translate-x-[100px];
+}
+
+.slider--demo-4 .slider__item[data-pos="-1"] {
+    @apply translate-x-[-110%];
+}
+
+.slider--demo-4 .slider__item[data-pos="-1"] img {
+    @apply translate-x-[50px];
+}
+
+.slider--demo-4 .slider__item[data-pos="1"] {
+    @apply translate-x-[110%];
+}
+
+.slider--demo-4 .slider__item[data-pos="1"] img {
+    @apply translate-x-[-50px];
+}
+
+.slider--demo-4 .slider__item[data-pos="2"] {
+    @apply opacity-0 translate-x-[220%];
+}
+
+.slider--demo-4 .slider__item[data-pos="2"] img {
+    @apply translate-x-[-100px];
 }

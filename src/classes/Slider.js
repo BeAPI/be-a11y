@@ -29,6 +29,7 @@ class Slider extends AbstractDomElement {
     this._pointerPositions = {
       start: 0,
       end: 0,
+      move: 0,
     }
     this._resize = null
     this._isPrevEnabled = true

@@ -5,7 +5,8 @@
         "noEmit": true,
         "strict": true,
         "strictPropertyInitialization": false,
-        "target": "ES2017"
+        "target": "ES2017",
+        "moduleResolution": "node"
     },
     "files": [
         "./be-a11y.ts"

@@ -27,12 +27,10 @@ export default class Tabs extends AbstractDomElement {
    * Bound event handlers
    */
 
-  // eslint-disable-next-line no-unused-vars
-  private handleButtonClick: (e: MouseEvent) => void
+  private handleButtonClick: (e: MouseEvent) => void // eslint-disable-line no-unused-vars
   private handleButtonFocus: () => void
   private handleButtonBlur: () => void
-  // eslint-disable-next-line no-unused-vars
-  private handleKeydown: (e: KeyboardEvent) => void
+  private handleKeydown: (e: KeyboardEvent) => void // eslint-disable-line no-unused-vars
 
   /**
    * Default options for the Tabs component.
@@ -55,18 +53,18 @@ export default class Tabs extends AbstractDomElement {
    * @param {Partial<TabsOptions>} options - Options for configuring the Tabs component.
    */
   constructor(element: HTMLElement, options: Partial<TabsOptions> = {}) {
-    const mergesOptions = {
+    const mergedOptions = {
       ...Tabs.defaults,
       ...options,
     }
 
-    super(element, mergesOptions)
-
-    this.options = mergesOptions
+    super(element, mergedOptions)
 
     if (!this.isNewInstance()) {
       return this
     }
+
+    this.options = mergedOptions
 
     this.handleButtonClick = this._handleButtonClick.bind(this)
     this.handleButtonFocus = this._handleButtonFocus.bind(this)
@@ -81,7 +79,7 @@ export default class Tabs extends AbstractDomElement {
    */
   private init(): void {
     const element = this.element as HTMLElement
-    const buttons = element.querySelectorAll(this.options.tabListSelector)
+    const buttons = element.querySelectorAll<HTMLButtonElement>(this.options.tabListSelector)
 
     for (const button of buttons) {
       // eslint-disable-next-line no-undef

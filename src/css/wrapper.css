@@ -1,7 +1,7 @@
 .wrapper {
-    @apply max-w-4xl m-auto pt-5 pb-5;
+    @apply container max-w-screen-xl mx-auto grid grid-cols-4 gap-x-4;
 }
 
 .wrapper > h1 {
-    @apply text-center;
+    @apply mt-10 text-center col-span-5;
 }

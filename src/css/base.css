@@ -2,36 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    /* Colors */
-    --light-color: #fff;
-    --focus-color: #bde4ff;
-    --primary-grey-color: #ddd;
-    --modal-bg-color: rgba(0, 0, 0, .5);
-
-    /* Borders */
-    --primary-border: 1px solid var(--primary-grey-color);
-}
-
-* {
-    font-family: Poppins, Arial, sans-serif;
+body {
+    @apply font-sans bg-white dark:bg-dark-bg text-dark dark:text-white border-t border-t-slate-200 dark:border-t-dark-border;
 }
 
 @layer base {
     h1 {
-        @apply text-3xl mb-5 font-bold;
+        @apply text-5xl mb-8 font-bold;
     }
 
     h2 {
-        @apply text-2xl mb-5 mt-5 font-bold border-b-2;
+        @apply text-3xl mb-6 pb-2 font-bold border-b border-b-slate-200 dark:border-b-dark-border;
     }
 
     h3 {
         @apply text-xl mb-4 font-medium;
     }
 
+    h4 {
+        @apply text-lg mb-4 font-medium;
+    }
+
     p {
-        @apply mb-2;
+        @apply mb-4;
     }
 
     a {
@@ -43,10 +36,11 @@
     }
 
     button {
-        @apply bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow;
+        @apply bg-white dark:bg-dark hover:bg-gray-100 dark:hover:bg-dark-border text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow;
     }
 
-    input {
-        @apply px-4 py-3 leading-5 border rounded-md;
+    input,
+    textarea {
+        @apply px-2 py-3 w-full leading-5 border-b border-t-0 border-r-0 border-l-0 border-b-slate-200 dark:border-b-dark-border bg-transparent;
     }
 }
