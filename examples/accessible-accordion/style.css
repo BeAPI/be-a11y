@@ -12,7 +12,7 @@
 }
 
 .accordion__trigger {
-    @apply block relative w-full border-t-0 border-l-0 border-r-0 border-b border-b-slate-200 dark:border-b-dark-border text-left shadow-none rounded-none dark:text-white after:absolute after:top-3 after:right-3 after:w-5 after:h-5 after:bg-[currentColor];
+    @apply block relative w-full border-t-0 border-l-0 border-r-0 border-b border-b-slate-200 dark:border-b-dark-border text-left shadow-none rounded-none dark:text-white after:absolute after:top-3 after:right-3 after:w-5 after:h-5 after:bg-[currentColor] text-sm;
 }
 
 .accordion__trigger::after {
