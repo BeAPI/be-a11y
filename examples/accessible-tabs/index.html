@@ -7,18 +7,20 @@
     <title>Accessible Tabs</title>
 </head>
 <body>
-    <div class="wrapper">
+    <main class="wrapper">
         <aside class="sidebar">
             <p><a href="../../index.html">Be a11y</a></p>
-            <ul>
-                <li><a href="../accessible-accordion/index.html">Accordion</a></li>
-                <li><a href="../accessible-dropdown/">Dropdown</a></li>
-                <li><a href="../accessible-link/">Link</a></li>
-                <li><a href="../accessible-modal/index.html">Modal</a></li>
-                <li><a href="../accessible-slider/index.html">Slider</a></li>
-                <li class="current">Tabs</li>
-                <li><a href="../accessible-toggle/index.html">Toggle</a></li>
-            </ul>
+            <nav>
+                <ul>
+                    <li><a href="../accessible-accordion/index.html">Accordion</a></li>
+                    <li><a href="../accessible-dropdown/">Dropdown</a></li>
+                    <li><a href="../accessible-link/">Link</a></li>
+                    <li><a href="../accessible-modal/index.html">Modal</a></li>
+                    <li><a href="../accessible-slider/index.html">Slider</a></li>
+                    <li class="current">Tabs</li>
+                    <li><a href="../accessible-toggle/index.html">Toggle</a></li>
+                </ul>
+            </nav>
         </aside>
         <div class="content">
             <h1>Accessible Tabs</h1>
@@ -26,8 +28,8 @@
             <div id="tab" class="tabs">
                 <div class="tabs__tablist" role="tablist" aria-label="Tabs component">
                     <button class="tabs__tab core-tab" role="tab" aria-selected="true" aria-controls="core-tab-panel-1" id="core-tab-1">Default</button>
-                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="core-tab-panel-2" id="core-tab-2">Automatic</button>
-                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="core-tab-panel-3" id="core-tab-3">With events</button>
+                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" aria-controls="core-tab-panel-2" id="core-tab-2">Automatic</button>
+                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" aria-controls="core-tab-panel-3" id="core-tab-3">With events</button>
                 </div>
 
                 <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-1" aria-labelledby="core-tab-1">
@@ -37,9 +39,9 @@
                     <div id="tab-demo-1" class="tabs">
                         <div class="tabs__tablist" role="tablist" aria-label="Trim a pineapple">
                             <button class="tabs__tab" role="tab" aria-selected="true" aria-controls="tab-panel-1" id="tab-1">Steps</button>
-                            <button class="tabs__tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-panel-2" id="tab-2">Variant</button>
-                            <button class="tabs__tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-panel-3" id="tab-3" data-deletable>Practice</button>
-                            <button class="tabs__tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-panel-4" id="tab-4">Suggestion</button>
+                            <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="tab-panel-2" id="tab-2">Variant</button>
+                            <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="tab-panel-3" id="tab-3" data-deletable>Practice</button>
+                            <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="tab-panel-4" id="tab-4">Suggestion</button>
                         </div>
 
                         <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-1" aria-labelledby="tab-1">
@@ -72,9 +74,9 @@
                     <div id="tab-demo-2" class="tabs tabs--auto">
                         <div class="tabs__tablist" role="tablist" aria-label="Trim a pineapple">
                             <button class="tabs__tab" role="tab" aria-selected="true" aria-controls="tab-panel-5" id="tab-5">Steps</button>
-                            <button class="tabs__tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-panel-6" id="tab-6">Variant</button>
-                            <button class="tabs__tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-panel-7" id="tab-7" data-deletable>Practice</button>
-                            <button class="tabs__tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-panel-8" id="tab-8">Suggestion</button>
+                            <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="tab-panel-6" id="tab-6">Variant</button>
+                            <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="tab-panel-7" id="tab-7" data-deletable>Practice</button>
+                            <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="tab-panel-8" id="tab-8">Suggestion</button>
                         </div>
 
                         <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-5" aria-labelledby="tab-5">
@@ -107,9 +109,9 @@
                     <div id="tab-demo-3" class="tabs tabs--auto">
                         <div class="tabs__tablist" role="tablist" aria-label="Trim a pineapple">
                             <button class="tabs__tab" role="tab" aria-selected="true" aria-controls="tab-panel-9" id="tab-9">Tab 1</button>
-                            <button class="tabs__tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-panel-10" id="tab-10">Tab 2</button>
-                            <button class="tabs__tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-panel-11" id="tab-11" data-deletable>Tab 3</button>
-                            <button class="tabs__tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-panel-12" id="tab-12">Tab 4</button>
+                            <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="tab-panel-10" id="tab-10">Tab 2</button>
+                            <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="tab-panel-11" id="tab-11" data-deletable>Tab 3</button>
+                            <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="tab-panel-12" id="tab-12">Tab 4</button>
                         </div>
 
                         <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-9" aria-labelledby="tab-9">

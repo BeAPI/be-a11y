@@ -7,18 +7,20 @@
         <title>Accessible Dropdown</title>
     </head>
     <body>
-    <div class="wrapper">
+    <main class="wrapper">
         <aside class="sidebar">
             <p><a href="../../index.html">Be a11y</a></p>
-            <ul>
-                <li><a href="../accessible-accordion/">Accordion</a></li>
-                <li class="current">Dropdown</li>
-                <li><a href="../accessible-link/">Link</a></li>
-                <li><a href="../accessible-modal/index.html">Modal</a></li>
-                <li><a href="../accessible-slider/index.html">Slider</a></li>
-                <li><a href="../accessible-tabs/index.html">Tabs</a></li>
-                <li><a href="../accessible-toggle/index.html">Toggle</a></li>
-            </ul>
+            <nav>
+                <ul>
+                    <li><a href="../accessible-accordion/">Accordion</a></li>
+                    <li class="current">Dropdown</li>
+                    <li><a href="../accessible-link/">Link</a></li>
+                    <li><a href="../accessible-modal/index.html">Modal</a></li>
+                    <li><a href="../accessible-slider/index.html">Slider</a></li>
+                    <li><a href="../accessible-tabs/index.html">Tabs</a></li>
+                    <li><a href="../accessible-toggle/index.html">Toggle</a></li>
+                </ul>
+            </nav>
         </aside>
         <div class="content">
             <h1>Accessible Dropdown</h1>
@@ -26,11 +28,11 @@
             <div id="tab" class="tabs">
                 <div class="tabs__tablist" role="tablist" aria-label="Tabs component">
                     <button class="tabs__tab core-tab" role="tab" aria-selected="true" aria-controls="core-tab-panel-1" id="core-tab-1">Non automatic selection</button>
-                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="core-tab-panel-2" id="core-tab-2">Automatic first item selected</button>
-                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="core-tab-panel-3" id="core-tab-3">Automatic specific item selected</button>
-                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="core-tab-panel-4" id="core-tab-4">With events</button>
-                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="core-tab-panel-5" id="core-tab-5">Only for &lt; 1024px devices</button>
-                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="core-tab-panel-6" id="core-tab-6">With action buttons</button>
+                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" aria-controls="core-tab-panel-2" id="core-tab-2">Automatic first item selected</button>
+                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" aria-controls="core-tab-panel-3" id="core-tab-3">Automatic specific item selected</button>
+                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" aria-controls="core-tab-panel-4" id="core-tab-4">With events</button>
+                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" aria-controls="core-tab-panel-5" id="core-tab-5">Only for &lt; 1024px devices</button>
+                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" aria-controls="core-tab-panel-6" id="core-tab-6">With action buttons</button>
                 </div>
 
                 <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-1" aria-labelledby="core-tab-1">
