@@ -253,7 +253,7 @@ export default class Accordion extends AbstractDomElement {
       this.options.forceExpand = false
     }
 
-    document.addEventListener('keydown', this._handleKeydown)
+    document.addEventListener('keydown', this.handleKeydown)
 
     // Set id and ARIA attributes to the trigger
     for (const trigger of triggers) {

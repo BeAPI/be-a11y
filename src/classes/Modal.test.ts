@@ -15,7 +15,7 @@ test.describe('Modal', () => {
     page,
   }) => {
     await page.click('button[aria-controls="demo-1"]')
-    const firstFocusableElement = await page.$(`#street`)
+    const firstFocusableElement = await page.$(`#street-1`)
 
     expect(await page.evaluate((elem) => window.document.activeElement === elem, firstFocusableElement)).toEqual(true)
   })
@@ -56,9 +56,10 @@ test.describe('Modal', () => {
       width: 1025,
       height: 100,
     })
-    await page.click('.modal-btn--demo-2')
+    await page.click('button[aria-controls="core-tab-panel-3"]')
+    await page.click('.modal-btn--demo-3')
     let display = await page.$eval('.modal--mobile', (dialog) => window.getComputedStyle(dialog).display)
 
-    expect(display).toBe('grid')
+    expect(display).toBe('block')
   })
 })

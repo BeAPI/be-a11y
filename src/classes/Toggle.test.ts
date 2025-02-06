@@ -19,6 +19,7 @@ test.describe('Toggle', () => {
       width: 1025,
       height: 100,
     })
+    await page.click('button[aria-controls="core-tab-panel-4"]')
     await page.click('button[aria-controls="toggle-4"]')
     let display = await page.$eval('#toggle-4', (content) => window.getComputedStyle(content).display)
 
@@ -32,6 +33,7 @@ test.describe('Toggle', () => {
       width: 1024,
       height: 100,
     })
+    await page.click('button[aria-controls="core-tab-panel-4"]')
     await page.click('button[aria-controls="toggle-4"]')
     let display = await page.$eval('#toggle-4', (content) => window.getComputedStyle(content).display)
 
@@ -39,6 +41,7 @@ test.describe('Toggle', () => {
   })
 
   test('Click on a toggle button of a visible content, expect the content is hidden.', async ({ page }) => {
+    await page.click('button[aria-controls="core-tab-panel-5"]')
     await page.click('button[aria-controls="toggle-5"]')
     let display = await page.$eval('#toggle-5', (content) => window.getComputedStyle(content).display)
 
