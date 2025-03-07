@@ -1,6 +1,6 @@
 # Accessible Modal
 
-In user interface design for computer applications, a modal window is a graphical control element subordinate to an application's main window.
+An accessible modal component that creates a focused overlay window on top of the main content. It implements proper focus management, keyboard navigation, and ARIA attributes to ensure all users can interact with modal content. When activated, it traps focus within the modal and provides clear mechanisms for dismissal, making it fully accessible to screen reader users and keyboard-only navigation.
 
 * [See accessible specificies](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html)
 * [Demo — Default](https://codepen.io/beapi/full/mdwOVBm)

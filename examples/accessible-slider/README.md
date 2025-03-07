@@ -1,6 +1,6 @@
 # Accessible Slider
 
-Build an accessible slider arround your markup.
+An accessible slider component that allows users to select a value or range of values by moving a handle along a track, providing an intuitive and interactive way to adjust settings or make selections. Users can navigate between slides using keyboard controls, and screen readers receive announcements about the current slide position. The component maintains proper focus management and includes ARIA attributes for enhanced accessibility
 
 * [See accessible specificies](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/)
 * [Demo — Default](https://codepen.io/beapi/pen/gOZqwvL)

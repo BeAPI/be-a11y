@@ -25,6 +25,8 @@
         <div class="content">
             <h1>Accessible Dropdown</h1>
 
+            <p>An accessible dropdown component that provides keyboard navigation, proper ARIA attributes, and screen reader support. Users can select from a list of options that appears when triggered, with customizable behavior for selection, events, and responsive design.</p>
+
             <div id="tab" class="tabs">
                 <div class="tabs__tablist" role="tablist" aria-label="Tabs component">
                     <button class="tabs__tab core-tab" role="tab" aria-selected="true" aria-controls="core-tab-panel-1" id="core-tab-1">Non automatic selection</button>
@@ -37,6 +39,8 @@
 
                 <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-1" aria-labelledby="core-tab-1">
                     <h2>Non automatic selection</h2>
+
+                    <p>The dropdown will not automatically select an item.</p>
 
                     <div id="dropdown-1" class="dropdown">
                         <span class="dropdown__label">Choose an element</span>
@@ -53,6 +57,8 @@
                 <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-2" aria-labelledby="core-tab-2" hidden>
                     <h2>Automatic first item selected</h2>
 
+                    <p>The dropdown will automatically select the first item.</p>
+
                     <div id="dropdown-2" class="dropdown">
                         <span class="dropdown__label">Choose an element</span>
                         <button aria-haspopup="listbox">Choose an element</button>
@@ -67,6 +73,8 @@
                 </div>
                 <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-3" aria-labelledby="core-tab-3" hidden>
                     <h2>Automatic specific item selected</h2>
+
+                    <p>The dropdown will automatically select a specific item.</p>
 
                     <div id="dropdown-3" class="dropdown">
                         <span class="dropdown__label">Choose an element</span>
@@ -83,6 +91,8 @@
                 <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-4" aria-labelledby="core-tab-4" hidden>
                     <h2>With events</h2>
 
+                    <p>The dropdown will trigger events when it is opened, closed, or when an item is selected.</p>
+
                     <div id="dropdown-4" class="dropdown">
                         <span class="dropdown__label">Choose an element</span>
                         <button aria-haspopup="listbox">Choose an element</button>
@@ -98,6 +108,8 @@
                 <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-5" aria-labelledby="core-tab-5" hidden>
                     <h2>Dropdown only for &lt; 1024px devices</h2>
 
+                    <p>The dropdown will only be visible on devices with a width of less than 1024px.</p>
+
                     <div id="dropdown-5" class="dropdown">
                         <span class="dropdown__label">Choose an element</span>
                         <button aria-haspopup="listbox">Choose an element</button>
@@ -112,6 +124,8 @@
                 </div>
                 <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-6" aria-labelledby="core-tab-6" hidden>
                     <h2>With action buttons</h2>
+
+                    <p>The dropdown will have action buttons to add and remove items.</p>
 
                     <div id="dropdown-6" class="dropdown">
                         <span class="dropdown__label">Choose an element</span>

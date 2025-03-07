@@ -1,6 +1,6 @@
 # Accessible Accordion
 
-Component of accordion that reveal content when you click it.
+An accessible accordion component that reveals and hides content when triggered, providing keyboard navigation, proper ARIA attributes, and screen reader support. Each section can be expanded or collapsed independently, allowing users to focus on specific content while reducing visual clutter.
 
 * [See accessible specificies](https://www.w3.org/TR/wai-aria-practices-1.1/examples/accordion/accordion.html)
 * [Demo](https://codepen.io/beapi/full/eYRBJJb)

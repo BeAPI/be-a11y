@@ -3,5 +3,5 @@
 }
 
 .content > p {
-    @apply max-w-[600px] ml-auto mr-auto;
+    @apply max-w-[600px] mr-auto;
 }
