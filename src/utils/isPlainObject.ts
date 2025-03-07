@@ -5,11 +5,23 @@
  * Released under the MIT License.
  */
 
-function isObject(o) {
+/**
+ * Returns true if the value is an object created by the Object constructor.
+ *
+ * @param o {any}
+ * @returns {boolean}
+ */
+function isObject(o: any): boolean {
   return Object.prototype.toString.call(o) === '[object Object]'
 }
 
-export default function isPlainObject(o) {
+/**
+ * Returns true if the value is an object created by the Object constructor.
+ *
+ * @param o {any}
+ * @returns {boolean}
+ */
+export default function isPlainObject(o: any): boolean {
   let ctor, prot
 
   if (isObject(o) === false) {

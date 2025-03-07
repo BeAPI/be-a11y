@@ -40,14 +40,8 @@ export const randomId = function (prefix = '', length = 6) {
  *
  * @returns {number}
  */
-export const getMaxHeight = function (elements) {
-  let max = 0
-
-  each(elements, function (element) {
-    max = Math.max(element.offsetHeight, max)
-  })
-
-  return max
+export const getMaxHeight = (elements: NodeListOf<Element>): number => {
+  return Math.max(...Array.from(elements).map(el => el.scrollHeight))
 }
 
 /**

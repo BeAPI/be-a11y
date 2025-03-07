@@ -12,7 +12,20 @@ test.describe('Dropdown', () => {
     expect(display).toBe('block')
   })
 
-  test('Focus the dropdown button, press Enter key once, press ArrowDown key twice, expect the second list item has aria-selected attribute set to true.', async ({
+  test('Click on the dropdown button, expect first list item has aria-selected attribute set to true.', async ({
+    page,
+  }) => {
+    await page.click('#dropdown-1 button')
+    const hasValidAriaSelected = await page.$eval(
+      '#dropdown-1 li:first-child',
+      (firstListItem) =>
+        firstListItem.hasAttribute('aria-selected') && firstListItem.getAttribute('aria-selected') === 'true'
+    )
+
+    expect(hasValidAriaSelected).toBe(true)
+  })
+
+  test('Focus the dropdown button, press Enter key once, press ArrowDown key twice, expect the third list item has aria-selected attribute set to true.', async ({
     page,
   }) => {
     await page.focus('#dropdown-1 button')
@@ -21,7 +34,7 @@ test.describe('Dropdown', () => {
     await page.keyboard.down('ArrowDown')
 
     const hasValidAriaSelected = await page.$eval(
-      '#dropdown-1 li:nth-child(2)',
+      '#dropdown-1 li:nth-child(3)',
       (thirdListItem) =>
         thirdListItem.hasAttribute('aria-selected') && thirdListItem.getAttribute('aria-selected') === 'true'
     )
@@ -66,6 +79,7 @@ test.describe('Dropdown', () => {
   })
 
   test('Click on "Add item" button, expect there is a Dummy list item.', async ({ page }) => {
+    await page.click('button[aria-controls="core-tab-panel-6"]')
     await page.click('#add')
 
     const lastItemText = await page.locator('#dropdown-6 li').last().textContent()
@@ -73,6 +87,7 @@ test.describe('Dropdown', () => {
   })
 
   test('Click on "Remove first item" button, expect the new first item is "Movies".', async ({ page }) => {
+    await page.click('button[aria-controls="core-tab-panel-6"]')
     await page.click('#remove')
 
     const firstItemText = await page.locator('#dropdown-6 li').first().textContent()
@@ -80,11 +95,12 @@ test.describe('Dropdown', () => {
   })
 
   test('Click on "Remove all items" button, expect there is not list items anymore.', async ({ page }) => {
+    await page.click('button[aria-controls="core-tab-panel-6"]')
     await page.click('#remove-all')
 
     const isListItemsEmpty = await page
       .locator('#dropdown-6 ul')
-      .evaluate((element) => element.textContent.trim() === '')
+      .evaluate((element) => element.textContent?.trim() === '')
     expect(isListItemsEmpty).toBe(true)
   })
 })

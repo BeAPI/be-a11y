@@ -7,129 +7,150 @@
     <title>Accessible Tabs</title>
 </head>
 <body>
-    <div class="wrapper">
-        <h1>Accessible Tabs</h1>
-        
-        <p class="back">
-            <a href="../../index.html">Back to components list</a>
-        </p>
-        
-        <h2>Demo</h2>
+    <main class="wrapper">
+        <aside class="sidebar">
+            <p><a href="../../index.html">Be a11y</a></p>
+            <nav>
+                <ul>
+                    <li><a href="../accessible-accordion/index.html">Accordion</a></li>
+                    <li><a href="../accessible-dropdown/">Dropdown</a></li>
+                    <li><a href="../accessible-link/">Link</a></li>
+                    <li><a href="../accessible-modal/index.html">Modal</a></li>
+                    <li><a href="../accessible-slider/index.html">Slider</a></li>
+                    <li class="current">Tabs</li>
+                    <li><a href="../accessible-toggle/index.html">Toggle</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <div class="content">
+            <h1>Accessible Tabs</h1>
 
-        <h3>Manual</h3>
-        
-        <div id="tab-demo-1" class="tabs">
-            <div class="tabs__tablist" role="tablist" aria-label="Trim a pineapple">
-                <button class="tabs__tab" role="tab" aria-selected="true" aria-controls="tab-panel-1" id="tab-1">Tab 1</button>
-                <button class="tabs__tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-panel-2" id="tab-2">Tab 2</button>
-                <button class="tabs__tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-panel-3" id="tab-3" data-deletable>Tab 3</button>
-                <button class="tabs__tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-panel-4" id="tab-4">Tab 4</button>
-            </div>
-            
-            <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-1" aria-labelledby="tab-1">
-                <h3>Steps</h3>
-                <ol>
-                    <li>Cut the two ends of the fruit so that it can be placed vertically on the worktop.</li>
-                    <li>Slice the skin from top to bottom going around the fruit.</li>
-                    <li>Remove the “eyes” with the tip of the paring knife.</li>
-                    <li>Slice the pineapple into quarters then, if necessary, remove the hard central part.</li>
-                </ol>
-            </div>
-            <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-2" aria-labelledby="tab-2" hidden>
-                <h3>Variant</h3>
-                <p>To remove pineapple eyes, you can use an effective but more difficult technique. The eyes form parallel and continuous spirals between them around the fruit. You can dig regular trenches with a knife, following these spirals. Remove the parts containing the eyes: the pineapple is sculpted with pretty parallel grooves.</p>
-            </div>
-            <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-3" aria-labelledby="tab-3" hidden>
-                <h3>Practice</h3>
-                <p>You can eat the whole pineapple (eyes removed), “to the bite” as is often done on the islands. Just cut the fruit into quarters. The quarter plumes then serve as an improvised “handle” to bite into the pineapple. According to taste, sprinkle it with grated coconut.</p>
-            </div>
-            <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-4" aria-labelledby="tab-4" hidden>
-                <h3>Suggestion</h3>
-                <p>Lay the pineapple flat and slice it. Remove the core from the slices. Reconstitute the pineapple by stacking the slices on top of each other. Then style the pineapple with its plume of sheets. Squeeze a lime and sprinkle the pineapple with the lemon juice to prevent the flesh from oxidizing.</p>
-            </div>
-        </div>
-        
-        <h3>Automatic</h3>
-        
-        <div id="tab-demo-2" class="tabs tabs--auto">
-            <div class="tabs__tablist" role="tablist" aria-label="Trim a pineapple">
-                <button class="tabs__tab" role="tab" aria-selected="true" aria-controls="tab-panel-5" id="tab-5">Tab 1</button>
-                <button class="tabs__tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-panel-6" id="tab-6">Tab 2</button>
-                <button class="tabs__tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-panel-7" id="tab-7" data-deletable>Tab 3</button>
-                <button class="tabs__tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-panel-8" id="tab-8">Tab 4</button>
-            </div>
-            
-            <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-5" aria-labelledby="tab-5">
-                <h3>Steps</h3>
-                <ol>
-                    <li>Cut the two ends of the fruit so that it can be placed vertically on the worktop.</li>
-                    <li>Slice the skin from top to bottom going around the fruit.</li>
-                    <li>Retirez les “yeux” avec la pointe du couteau d’office.</li>
-                    <li>Tranchez l’ananas en quartier puis, au besoin, ôtez la partie centrale dure.</li>
-                </ol>
-            </div>
-            <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-6" aria-labelledby="tab-6" hidden>
-                <h3>Variant</h3>
-                <p>To remove pineapple eyes, you can use an effective but more difficult technique. The eyes form parallel and continuous spirals between them around the fruit. You can dig regular trenches with a knife, following these spirals. Remove the parts containing the eyes: the pineapple is sculpted with pretty parallel grooves.</p>
-            </div>
-            <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-7" aria-labelledby="tab-7" hidden>
-                <h3>Practice</h3>
-                <p>You can eat the whole pineapple (eyes removed), “to the bite” as is often done on the islands. Just cut the fruit into quarters. The quarter plumes then serve as an improvised “handle” to bite into the pineapple. According to taste, sprinkle it with grated coconut.</p>
-            </div>
-            <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-8" aria-labelledby="tab-8" hidden>
-                <h3>Suggestion</h3>
-                <p>Lay the pineapple flat and slice it. Remove the core from the slices. Reconstitute the pineapple by stacking the slices on top of each other. Then style the pineapple with its plume of sheets. Squeeze a lime and sprinkle the pineapple with the lemon juice to prevent the flesh from oxidizing.</p>
+            <p>An accessible tabs component that provides keyboard navigation, proper ARIA attributes, and screen reader support. Users can navigate between tabs using keyboard controls, and screen readers receive announcements about the current tab position. The component maintains proper focus management and includes ARIA attributes for enhanced accessibility.</p>
+
+            <div id="tab" class="tabs">
+                <div class="tabs__tablist" role="tablist" aria-label="Tabs component">
+                    <button class="tabs__tab core-tab" role="tab" aria-selected="true" aria-controls="core-tab-panel-1" id="core-tab-1">Default</button>
+                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" aria-controls="core-tab-panel-2" id="core-tab-2">Automatic</button>
+                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" aria-controls="core-tab-panel-3" id="core-tab-3">With events</button>
+                </div>
+
+                <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-1" aria-labelledby="core-tab-1">
+                    <h2>Default</h2>
+                    <p>This mode allows you to open a panel by pressing the <kbd>Enter</kbd> or <kbd>Spacebar</kbd> key during keyboard navigation.</p>
+
+                    <div id="tab-demo-1" class="tabs">
+                        <div class="tabs__tablist" role="tablist" aria-label="Trim a pineapple">
+                            <button class="tabs__tab" role="tab" aria-selected="true" aria-controls="tab-panel-1" id="tab-1">Steps</button>
+                            <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="tab-panel-2" id="tab-2">Variant</button>
+                            <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="tab-panel-3" id="tab-3" data-deletable>Practice</button>
+                            <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="tab-panel-4" id="tab-4">Suggestion</button>
+                        </div>
+
+                        <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-1" aria-labelledby="tab-1">
+                            <h3>Steps</h3>
+                            <ol>
+                                <li>Cut the two ends of the fruit so that it can be placed vertically on the worktop.</li>
+                                <li>Slice the skin from top to bottom going around the fruit.</li>
+                                <li>Remove the “eyes” with the tip of the paring knife.</li>
+                                <li>Slice the pineapple into quarters then, if necessary, remove the hard central part.</li>
+                            </ol>
+                        </div>
+                        <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-2" aria-labelledby="tab-2" hidden>
+                            <h3>Variant</h3>
+                            <p>To remove pineapple eyes, you can use an effective but more difficult technique. The eyes form parallel and continuous spirals between them around the fruit. You can dig regular trenches with a knife, following these spirals. Remove the parts containing the eyes: the pineapple is sculpted with pretty parallel grooves.</p>
+                        </div>
+                        <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-3" aria-labelledby="tab-3" hidden>
+                            <h3>Practice</h3>
+                            <p>You can eat the whole pineapple (eyes removed), “to the bite” as is often done on the islands. Just cut the fruit into quarters. The quarter plumes then serve as an improvised “handle” to bite into the pineapple. According to taste, sprinkle it with grated coconut.</p>
+                        </div>
+                        <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-4" aria-labelledby="tab-4" hidden>
+                            <h3>Suggestion</h3>
+                            <p>Lay the pineapple flat and slice it. Remove the core from the slices. Reconstitute the pineapple by stacking the slices on top of each other. Then style the pineapple with its plume of sheets. Squeeze a lime and sprinkle the pineapple with the lemon juice to prevent the flesh from oxidizing.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-2" aria-labelledby="core-tab-2" hidden>
+                    <h2>Automatic</h2>
+                    <p>Automatic mode allows you to open a panel without pressing the <kbd>Enter</kbd> or <kbd>Spacebar</kbd> key during keyboard navigation.</p>
+
+                    <div id="tab-demo-2" class="tabs tabs--auto">
+                        <div class="tabs__tablist" role="tablist" aria-label="Trim a pineapple">
+                            <button class="tabs__tab" role="tab" aria-selected="true" aria-controls="tab-panel-5" id="tab-5">Steps</button>
+                            <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="tab-panel-6" id="tab-6">Variant</button>
+                            <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="tab-panel-7" id="tab-7" data-deletable>Practice</button>
+                            <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="tab-panel-8" id="tab-8">Suggestion</button>
+                        </div>
+
+                        <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-5" aria-labelledby="tab-5">
+                            <h3>Steps</h3>
+                            <ol>
+                                <li>Cut the two ends of the fruit so that it can be placed vertically on the worktop.</li>
+                                <li>Slice the skin from top to bottom going around the fruit.</li>
+                                <li>Remove the “eyes” with the tip of the paring knife.</li>
+                                <li>Slice the pineapple into quarters then, if necessary, remove the hard central part.</li>
+                            </ol>
+                        </div>
+                        <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-6" aria-labelledby="tab-6" hidden>
+                            <h3>Variant</h3>
+                            <p>To remove pineapple eyes, you can use an effective but more difficult technique. The eyes form parallel and continuous spirals between them around the fruit. You can dig regular trenches with a knife, following these spirals. Remove the parts containing the eyes: the pineapple is sculpted with pretty parallel grooves.</p>
+                        </div>
+                        <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-7" aria-labelledby="tab-7" hidden>
+                            <h3>Practice</h3>
+                            <p>You can eat the whole pineapple (eyes removed), “to the bite” as is often done on the islands. Just cut the fruit into quarters. The quarter plumes then serve as an improvised “handle” to bite into the pineapple. According to taste, sprinkle it with grated coconut.</p>
+                        </div>
+                        <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-8" aria-labelledby="tab-8" hidden>
+                            <h3>Suggestion</h3>
+                            <p>Lay the pineapple flat and slice it. Remove the core from the slices. Reconstitute the pineapple by stacking the slices on top of each other. Then style the pineapple with its plume of sheets. Squeeze a lime and sprinkle the pineapple with the lemon juice to prevent the flesh from oxidizing.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-3" aria-labelledby="core-tab-3" hidden>
+                    <h2>With events</h2>
+                    <p>An event is triggered when a tab is changed.</p>
+
+                    <div id="tab-demo-3" class="tabs tabs--auto">
+                        <div class="tabs__tablist" role="tablist" aria-label="Trim a pineapple">
+                            <button class="tabs__tab" role="tab" aria-selected="true" aria-controls="tab-panel-9" id="tab-9">Tab 1</button>
+                            <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="tab-panel-10" id="tab-10">Tab 2</button>
+                            <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="tab-panel-11" id="tab-11" data-deletable>Tab 3</button>
+                            <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="tab-panel-12" id="tab-12">Tab 4</button>
+                        </div>
+
+                        <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-9" aria-labelledby="tab-9">
+                            <h3>Steps</h3>
+                            <ol>
+                                <li>Cut the two ends of the fruit so that it can be placed vertically on the worktop.</li>
+                                <li>Slice the skin from top to bottom going around the fruit.</li>
+                                <li>Retirez les “yeux” avec la pointe du couteau d’office.</li>
+                                <li>Tranchez l’ananas en quartier puis, au besoin, ôtez la partie centrale dure.</li>
+                            </ol>
+                        </div>
+                        <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-10" aria-labelledby="tab-10" hidden>
+                            <h3>Variant</h3>
+                            <p>To remove pineapple eyes, you can use an effective but more difficult technique. The eyes form parallel and continuous spirals between them around the fruit. You can dig regular trenches with a knife, following these spirals. Remove the parts containing the eyes: the pineapple is sculpted with pretty parallel grooves.</p>
+                        </div>
+                        <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-11" aria-labelledby="tab-11" hidden>
+                            <h3>Practice</h3>
+                            <p>You can eat the whole pineapple (eyes removed), “to the bite” as is often done on the islands. Just cut the fruit into quarters. The quarter plumes then serve as an improvised “handle” to bite into the pineapple. According to taste, sprinkle it with grated coconut.</p>
+                        </div>
+                        <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-12" aria-labelledby="tab-12" hidden>
+                            <h3>Suggestion</h3>
+                            <p>Lay the pineapple flat and slice it. Remove the core from the slices. Reconstitute the pineapple by stacking the slices on top of each other. Then style the pineapple with its plume of sheets. Squeeze a lime and sprinkle the pineapple with the lemon juice to prevent the flesh from oxidizing.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <h3>With events</h3>
-        
-        <div id="tab-demo-3" class="tabs tabs--auto">
-            <div class="tabs__tablist" role="tablist" aria-label="Trim a pineapple">
-                <button class="tabs__tab" role="tab" aria-selected="true" aria-controls="tab-panel-9" id="tab-9">Tab 1</button>
-                <button class="tabs__tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-panel-10" id="tab-10">Tab 2</button>
-                <button class="tabs__tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-panel-11" id="tab-11" data-deletable>Tab 3</button>
-                <button class="tabs__tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-panel-12" id="tab-12">Tab 4</button>
-            </div>
-            
-            <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-9" aria-labelledby="tab-9">
-                <h3>Steps</h3>
-                <ol>
-                    <li>Cut the two ends of the fruit so that it can be placed vertically on the worktop.</li>
-                    <li>Slice the skin from top to bottom going around the fruit.</li>
-                    <li>Retirez les “yeux” avec la pointe du couteau d’office.</li>
-                    <li>Tranchez l’ananas en quartier puis, au besoin, ôtez la partie centrale dure.</li>
-                </ol>
-            </div>
-            <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-10" aria-labelledby="tab-10" hidden>
-                <h3>Variant</h3>
-                <p>To remove pineapple eyes, you can use an effective but more difficult technique. The eyes form parallel and continuous spirals between them around the fruit. You can dig regular trenches with a knife, following these spirals. Remove the parts containing the eyes: the pineapple is sculpted with pretty parallel grooves.</p>
-            </div>
-            <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-11" aria-labelledby="tab-11" hidden>
-                <h3>Practice</h3>
-                <p>You can eat the whole pineapple (eyes removed), “to the bite” as is often done on the islands. Just cut the fruit into quarters. The quarter plumes then serve as an improvised “handle” to bite into the pineapple. According to taste, sprinkle it with grated coconut.</p>
-            </div>
-            <div class="tabs__panel" tabindex="0" role="tabpanel" id="tab-panel-12" aria-labelledby="tab-12" hidden>
-                <h3>Suggestion</h3>
-                <p>Lay the pineapple flat and slice it. Remove the core from the slices. Reconstitute the pineapple by stacking the slices on top of each other. Then style the pineapple with its plume of sheets. Squeeze a lime and sprinkle the pineapple with the lemon juice to prevent the flesh from oxidizing.</p>
-            </div>
-        </div>
-        
-        <h2>Code</h2>
-        
-        <p class="codepen" data-height="600" data-theme-id="light" data-default-tab="html,result" data-slug-hash="eYRBpQj" data-user="beapi" style="height: 600px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-            <span>See the Pen <a href="https://codepen.io/beapi/pen/eYRBpQj">
-                Accessible Tabs</a> by Be API (<a href="https://codepen.io/beapi">@beapi</a>)
-                on <a href="https://codepen.io">CodePen</a>.</span>
-            </p>
-            <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-        </div>
-        
         <script type="module">
-            import { Tabs } from '../../be-a11y.js'
+            import { Tabs } from '../../be-a11y.ts'
             import '../../src/css/index.css'
             import './style.css'
-            
+
+            Tabs.init('#tab', {
+                tabListSelector: '.core-tab'
+            })
+
             Tabs.preset = {
                 '#tab-demo-1': {},
                 '#tab-demo-2': {
@@ -141,7 +162,7 @@
                     }
                 }
             }
-            
+
             Tabs.initFromPreset()
         </script>
     </body>

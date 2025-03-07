@@ -1,0 +1,7 @@
+.content {
+    @apply col-span-3 p-4 sm:px-0 sm:py-8;
+}
+
+.content > p {
+    @apply max-w-[600px] mr-auto;
+}

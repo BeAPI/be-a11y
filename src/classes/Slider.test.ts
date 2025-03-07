@@ -29,7 +29,7 @@ test.describe('Slider', () => {
   })
 
   test('Click on last item button, then click on previous button, expect "data-dir" attribute is set to -1.', async ({page}) => {
-    await page.click('button[value="4"]')
+    await page.click('button[data-value="4"]')
     await page.click('.slider__prev')
 
     const slider = await page.$eval(

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Accessible Link</title>
+    </head>
+    <body>
+    <main class="wrapper">
+        <aside class="sidebar">
+            <p><a href="../../index.html">Be a11y</a></p>
+            <nav>
+                <ul>
+                    <li><a href="../accessible-accordion/">Accordion</a></li>
+                    <li><a href="../accessible-dropdown/">Dropdown</a></li>
+                    <li class="current">Link</li>
+                    <li><a href="../accessible-modal/index.html">Modal</a></li>
+                    <li><a href="../accessible-slider/index.html">Slider</a></li>
+                    <li><a href="../accessible-tabs/index.html">Tabs</a></li>
+                    <li><a href="../accessible-toggle/index.html">Toggle</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <div class="content">
+            <h1>Accessible new tab link</h1>
+
+            <p>The Link component is designed to enhance the accessibility of links that open in new tabs. It allows you to add specific text and icons to indicate to users that the link will open in a new tab. This is particularly useful for screen reader users, as it provides them with additional information about the link's behavior.</p>
+
+            <div id="tab" class="tabs">
+                <div class="tabs__tablist" role="tablist" aria-label="Tabs component">
+                    <button class="tabs__tab core-tab" role="tab" aria-selected="true" aria-controls="core-tab-panel-1" id="core-tab-1">Default</button>
+                    <button class="tabs__tab core-tab" role="tab" aria-controls="core-tab-panel-2" id="core-tab-2">With an icon</button>
+                    <button class="tabs__tab core-tab" role="tab" aria-controls="core-tab-panel-3" id="core-tab-3">With a custom icon</button>
+                </div>
+
+                <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-1" aria-labelledby="core-tab-1">
+                    <h2>Default</h2>
+
+                    <p>Link with text for screen readers indicating that the link opens in a new browser tab.</p>
+
+                    <div id="link-1">
+                        <a href="https://beapi.fr" target="_blank">Go to beapi.fr</a>
+                    </div>
+                </div>
+                <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-2" aria-labelledby="core-tab-2" hidden>
+                    <h2>With an icon</h2>
+
+                    <p>Link with text for screen readers indicating that the link opens in a new browser tab and a visual icon.</p>
+
+                    <div id="link-2">
+                        <a href="https://beapi.fr" target="_blank">Go to beapi.fr</a>
+                    </div>
+                </div>
+                <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-3" aria-labelledby="core-tab-3" hidden>
+                    <h2>With a custom icon</h2>
+
+                    <p>Link with text for screen readers indicating that the link opens in a new browser tab and a custom visual icon.</p>
+
+                    <div id="link-3">
+                        <a href="https://beapi.fr" target="_blank">Go to beapi.fr</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="module">
+            import { Link, Tabs } from '../../be-a11y.ts'
+            import '../../src/css/index.css'
+            import './style.css'
+
+            Tabs.init('#tab', {
+                tabListSelector: '.core-tab'
+            })
+
+            Link.preset = {
+                '#link-1': {},
+                '#link-2': {
+                    hasIcon: true,
+                    iconSize: 16,
+                },
+                '#link-3': {
+                    hasIcon: true,
+                    replaceIcon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" color="#000"><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M14 11.998C14 9.506 11.683 7 8.857 7H7.143C4.303 7 2 9.238 2 11.998c0 2.378 1.71 4.368 4 4.873a5.3 5.3 0 0 0 1.143.124"/><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M10 11.998c0 2.491 2.317 4.997 5.143 4.997h1.714c2.84 0 5.143-2.237 5.143-4.997 0-2.379-1.71-4.37-4-4.874A5.304 5.304 0 0 0 16.857 7"/></svg>'
+                },
+            }
+
+            Link.initFromPreset()
+        </script>
+    </body>
+</html>
