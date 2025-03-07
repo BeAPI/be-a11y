@@ -6,8 +6,16 @@
         "strict": true,
         "strictPropertyInitialization": false,
         "target": "ES2017",
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "typeRoots": ["./node_modules/@types", "./src/@types"],
+        "baseUrl": "./src",
+        "paths": {
+            "@utils/*": ["./src/utils/*"],
+        },
     },
+    "include": [
+        "./src/utils/*"
+    ],
     "files": [
         "./be-a11y.ts"
     ]

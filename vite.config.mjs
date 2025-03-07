@@ -14,6 +14,11 @@ const regexesOfPackages = externalPackages.map(
 );
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      '@utils': resolve(__dirname, './src/utils'),
+    },
+  },
   optimizeDeps: {
     include: ['body-scroll-lock'],
   },
