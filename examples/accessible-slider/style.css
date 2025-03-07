@@ -93,7 +93,7 @@ img {
 .slider--demo-2 .slider__item {
     @apply w-auto;
 
-    min-width: calc(100% / var(--slider--per-view) - var(--slider--gap) * .5 * (var(--slider--per-view) - 1));
+    min-width: calc(100% / var(--slider--per-view) - var(--slider--gap) * .33 * (var(--slider--per-view) - 1));
 }
 
 .slider--demo-2[data-current="0"] .slider__item {
