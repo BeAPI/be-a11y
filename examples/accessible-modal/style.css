@@ -15,12 +15,11 @@
 }
 
 .modal__close {
-    @apply absolute top-2 right-2 w-8 h-8 bg-dark dark:bg-white hover:bg-slate-500 dark:hover:bg-beapi;
+    @apply absolute top-2 right-2 p-0 border-none shadow-none hover:text-beapi hover:bg-dark dark:hover:bg-beapi dark:hover:text-dark focus:text-beapi focus:bg-dark dark:focus:bg-beapi dark:focus:text-dark;
+}
 
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M6.4 19.191 4.809 17.6l5.6-5.6-5.6-5.6 1.59-1.591 5.6 5.6 5.6-5.6 1.592 1.59-5.6 5.6 5.6 5.6-1.591 1.592-5.6-5.6-5.6 5.6Z'/%3E%3C/svg%3E"); /* stylelint-disable-line function-url-quotes */
-    mask-repeat: no-repeat;
-    mask-position: 50% 50%;
-    mask-size: 100%;
+.modal__close svg {
+    @apply fill-current;
 }
 
 .modal--mobile,
