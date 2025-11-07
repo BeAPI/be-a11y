@@ -65,17 +65,26 @@ test.describe('Dropdown', () => {
     expect(display).toBe('none')
   })
 
+  test('Focus the dropdown button, click on the body, expect the listbox is not visible.', async ({ page }) => {
+    await page.focus('#dropdown-6 button')
+    await page.keyboard.down('Enter')
+    await page.click('body')
+    const display = await page.$eval('#dropdown-6 ul', (listbox) => window.getComputedStyle(listbox).display)
+
+    expect(display).toBe('none')
+  })
+
   test('Click on "Add item" button, expect there is a Dummy list item.', async ({ page }) => {
     await page.click('#add')
 
-    const lastItemText = await page.locator('#dropdown-6 li').last().textContent()
+    const lastItemText = await page.locator('#dropdown-7 li').last().textContent()
     expect(lastItemText).toBe('Dummy')
   })
 
   test('Click on "Remove first item" button, expect the new first item is "Movies".', async ({ page }) => {
     await page.click('#remove')
 
-    const firstItemText = await page.locator('#dropdown-6 li').first().textContent()
+    const firstItemText = await page.locator('#dropdown-7 li').first().textContent()
     expect(firstItemText).toBe('Movies')
   })
 
@@ -83,7 +92,7 @@ test.describe('Dropdown', () => {
     await page.click('#remove-all')
 
     const isListItemsEmpty = await page
-      .locator('#dropdown-6 ul')
+      .locator('#dropdown-7 ul')
       .evaluate((element) => element.textContent.trim() === '')
     expect(isListItemsEmpty).toBe(true)
   })

@@ -10,15 +10,15 @@
 <body>
     <div class="wrapper">
         <h1>Accessible Dropdown</h1>
-        
+
         <p class="back">
             <a href="../../index.html">Back to components list</a>
         </p>
-        
+
         <h2>Demo</h2>
 
         <h3>Non automatic selection</h3>
-        
+
         <div id="dropdown-1" class="dropdown">
             <span class="dropdown__label">Choose an element</span>
             <button aria-haspopup="listbox">Choose an element</button>
@@ -88,8 +88,22 @@
         </div>
 
         <h3>Action buttons</h3>
-        
+
         <div id="dropdown-6" class="dropdown">
+            <span class="dropdown__label">Choose an element</span>
+            <button aria-haspopup="listbox">Choose an element</button>
+            <ul tabindex="-1" role="listbox">
+                <li role="option">Book</li>
+                <li role="option">Movies</li>
+                <li role="option">Music</li>
+                <li role="option">Video games</li>
+                <li role="option">Paint</li>
+            </ul>
+        </div>
+
+        <h3>Action buttons</h3>
+
+        <div id="dropdown-7" class="dropdown">
             <span class="dropdown__label">Choose an element</span>
             <button aria-haspopup="listbox">Choose an element</button>
             <ul tabindex="-1" role="listbox">
@@ -104,9 +118,9 @@
         <button id="add">Add a dummy item</button>
         <button id="remove">Remove the first item</button>
         <button id="remove-all">Remove all items</button>
-        
+
         <h2>Code</h2>
-        
+
         <p class="codepen" data-height="600" data-theme-id="light" data-default-tab="html,result" data-slug-hash="VwQbYqN" data-user="beapi" style="height: 600px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
             <span>See the Pen <a href="https://codepen.io/beapi/pen/VwQbYqN">
                 Accessible Collapsible Dropdown Listbox</a> by Be API (<a href="https://codepen.io/beapi">@beapi</a>)
@@ -114,12 +128,12 @@
             </p>
             <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
         </div>
-        
+
         <script type="module">
             import { Dropdown } from '../../be-a11y.js'
             import '../../src/css/index.css'
             import './style.css'
-            
+
             Dropdown.preset = {
                 '#dropdown-1': {},
                 '#dropdown-2': {
@@ -145,7 +159,10 @@
                 '#dropdown-5': {
                     mediaQuery: window.matchMedia('(max-width: 1024px)')
                 },
-                '#dropdown-6': {},
+                '#dropdown-6': {
+                    closeOnBlur: true,
+                },
+                '#dropdown-7': {}
             }
 
             Dropdown.initFromPreset()
@@ -153,7 +170,7 @@
             const addBtn = document.getElementById('add')
             const removeBtn = document.getElementById('remove')
             const removeAllBtn = document.getElementById('remove-all')
-            const dropdownInstance = Dropdown.getInstance('#dropdown-6')
+            const dropdownInstance = Dropdown.getInstance('#dropdown-7')
 
             addBtn.addEventListener('click', function() {
                 const listItem = document.createElement('li')
@@ -162,13 +179,12 @@
             })
 
             removeBtn.addEventListener('click', function() {
-                dropdownInstance.removeItem(document.getElementById('dropdown-6').querySelectorAll('li')[0])
+                dropdownInstance.removeItem(document.getElementById('dropdown-7').querySelectorAll('li')[0])
             })
 
             removeAllBtn.addEventListener('click', function() {
                 dropdownInstance.removeAllItems()
             })
-
         </script>
     </body>
-    </html>
+</html>
