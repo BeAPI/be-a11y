@@ -73,19 +73,20 @@ Dropdown.initFromPreset();
 
 ### Options
 
-| name                   | type                      | default            | description                                     |
-|------------------------|---------------------------|--------------------|-------------------------------------------------|
+| name                   | type                      | default            | description                                                                                                    |
+|------------------------|---------------------------|--------------------|----------------------------------------------------------------------------------------------------------------|
 | `automaticSelection`   | boolean \|\| string       | `false`            | if `true`, first item is automatically selected, if `string`, check if element exists and it will be selected. |
-| `buttonSelector`       | string                    | `button`           | Button selector.                                |
-| `labelSelector`        | string                    | `.dropdown__label` | Label selector.                                 |
-| `listSelector`         | string                    | `ul`               | Listbox selector.                               |
-| `mediaQuery`           | null or matchMedia object | `null`             | Set dropdown for a specific media query.        |
-| `nonSelectedItemLabel` | string                    | `No item selected` | Default button text if no items are selected.   |
-| `onChange`             | null or function          | `null`             | Event on dropdown change.                       |
-| `onClose`              | null or function          | `null`             | Event on dropdown close.                        |
-| `onListItemClick`      | null or function          | `null`             | Event on dropdown list item click.              |
-| `onOpen`               | null or function          | `null`             | Event on dropdown open.                         |
-| `prefixId`             | string                    | `dropdown`         | Define the prefix id of the component.          |
+| `buttonSelector`       | string                    | `button`           | Button selector.                                                                                               |
+| `closeOnBlur`          | boolean                   | `false`            | if `true`, the dropdown closes automatically when the button loses focus.                                      |
+| `labelSelector`        | string                    | `.dropdown__label` | Label selector.                                                                                                |
+| `listSelector`         | string                    | `ul`               | Listbox selector.                                                                                              |
+| `mediaQuery`           | null or matchMedia object | `null`             | Set dropdown for a specific media query.                                                                       |
+| `nonSelectedItemLabel` | string                    | `No item selected` | Default button text if no items are selected.                                                                  |
+| `onChange`             | null or function          | `null`             | Event on dropdown change.                                                                                      |
+| `onClose`              | null or function          | `null`             | Event on dropdown close.                                                                                       |
+| `onListItemClick`      | null or function          | `null`             | Event on dropdown list item click.                                                                             |
+| `onOpen`               | null or function          | `null`             | Event on dropdown open.                                                                                        |
+| `prefixId`             | string                    | `dropdown`         | Define the prefix id of the component.                                                                         |
 
 ### Methods
 
