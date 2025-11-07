@@ -26,11 +26,6 @@ class Accordion extends AbstractDomElement {
     this._handleButtonBlur = handleButtonBlur.bind(this)
     this._handleButtonFocus = handleButtonFocus.bind(this)
     this._handleButtonClick = handleButtonClick.bind(this)
-    this._handleKeydown = handleKeydown.bind(this)
-    this._focusPreviousTab = focusPreviousTab.bind(this)
-    this._focusNextTab = focusNextTab.bind(this)
-    this._focusFirstTab = focusFirstTab.bind(this)
-    this._focusLastTab = focusLastTab.bind(this)
 
     new ThrottledEvent(window, 'resize').add('resize', this._onResizeHandler)
     this._onResizeHandler()
@@ -119,8 +114,6 @@ class Accordion extends AbstractDomElement {
       trigger.addEventListener('focus', this._handleButtonFocus)
       trigger.addEventListener('blur', this._handleButtonBlur)
     })
-
-    document.addEventListener('keydown', this._handleKeydown)
   }
 
   /**
@@ -161,8 +154,6 @@ class Accordion extends AbstractDomElement {
     })
 
     super.destroy()
-
-    document.addEventListener('keydown', this._handleKeydown)
   }
 
   /**
@@ -181,21 +172,10 @@ class Accordion extends AbstractDomElement {
 
     this.activePanel = panel
 
-    const firstFocusableElement = panel.querySelectorAll(
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-    )[0]
-
     if (this._settings.hasAnimation && window.getComputedStyle(panel).display === 'none') {
-      DOMAnimations.slideDown(panel, 500, () => {
-        if (firstFocusableElement) {
-          firstFocusableElement.focus()
-        }
-      })
+      DOMAnimations.slideDown(panel, 500)
     } else {
       panel.style.display = 'block'
-      if (firstFocusableElement) {
-        firstFocusableElement.focus()
-      }
     }
 
     return
@@ -301,106 +281,6 @@ function handleButtonClick(e) {
       onOpen.bind(this)(panel)
     }
   }
-}
-
-/**
- * Handle keyboard keydown
- *
- * @param {KeyboardEvent} e Keyboard keydown event
- *
- * @returns {void}
- *
- * @author Milan Ricoul
- */
-function handleKeydown(e) {
-  if (!this.focus) {
-    return
-  }
-
-  switch (e.code) {
-    case 'ArrowUp':
-      e.preventDefault()
-      this._focusPreviousTab()
-      break
-    case 'ArrowDown':
-      e.preventDefault()
-      this._focusNextTab()
-      break
-    case 'Home':
-      e.preventDefault()
-      this._focusFirstTab()
-      break
-    case 'End':
-      e.preventDefault()
-      this._focusLastTab()
-      break
-  }
-}
-
-/**
- * Focus the previous trigger. If not previous trigger, focus the last trigger.
- *
- * @returns {void}
- *
- * @author Milan Ricoul
- */
-function focusPreviousTab() {
-  const s = this._settings
-  const activeElement = document.activeElement
-  const triggers = this._element.querySelectorAll(s.triggerSelector)
-  const triggersCount = triggers.length
-
-  if (activeElement.classList.contains(s.triggerSelector.substring(1))) {
-    const currentIndexOfActiveElement = Array.prototype.indexOf.call(triggers, activeElement)
-
-    triggers[currentIndexOfActiveElement === 0 ? triggersCount - 1 : currentIndexOfActiveElement - 1].focus()
-  }
-}
-
-/**
- * Focus the next trigger. If not next trigger, focus the first trigger.
- *
- * @returns {void}
- *
- * @author Milan Ricoul
- */
-function focusNextTab() {
-  const s = this._settings
-  const activeElement = document.activeElement
-  const triggers = this._element.querySelectorAll(s.triggerSelector)
-  const triggersCount = triggers.length
-
-  if (activeElement.classList.contains(s.triggerSelector.substring(1))) {
-    const currentIndexOfActiveElement = Array.prototype.indexOf.call(triggers, activeElement)
-
-    triggers[currentIndexOfActiveElement === triggersCount - 1 ? 0 : currentIndexOfActiveElement + 1].focus()
-  }
-}
-
-/**
- * Focus the first trigger.
- *
- * @returns {void}
- *
- * @author Milan Ricoul
- */
-function focusFirstTab() {
-  this._element.querySelectorAll(this._settings.triggerSelector)[0].focus()
-}
-
-/**
- * Focus the last trigger.
- *
- * @returns {void}
- *
- * @author Milan Ricoul
- */
-function focusLastTab() {
-  const s = this._settings
-  const triggers = this._element.querySelectorAll(s.triggerSelector)
-  const triggersCount = triggers.length
-
-  triggers[triggersCount - 1].focus()
 }
 
 /**

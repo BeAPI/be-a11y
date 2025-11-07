@@ -24,6 +24,7 @@ class Dropdown extends AbstractDomElement {
     this._onResize = onResize.bind(this)
     this._handleKeydown = handleKeydown.bind(this)
     this._handleButtonClick = handleButtonClick.bind(this)
+    this._handleButtonBlur = handleButtonBlur.bind(this)
     this._handleListItemClick = handleListItemClick.bind(this)
     this._handleOutsideElementClick = handleOutsideElementClick.bind(this)
     this._focusPreviousElement = focusPreviousElement.bind(this)
@@ -52,7 +53,7 @@ class Dropdown extends AbstractDomElement {
     this.active = true
 
     const el = this._element
-    const { automaticSelection, buttonSelector, labelSelector, listClassName, listSelector } = this._settings
+    const { automaticSelection, buttonSelector, closeOnBlur, labelSelector, listClassName, listSelector } = this._settings
     const buttonId = `${this.id}-button`
     const labelId = `${this.id}-label`
 
@@ -109,6 +110,10 @@ class Dropdown extends AbstractDomElement {
       if (typeof automaticSelection === 'string' && el.querySelector(automaticSelection)) {
         this.updateFocusedListItem(el.querySelector(automaticSelection))
       }
+    }
+
+    if (closeOnBlur) {
+      this.button.addEventListener('blur', this._handleButtonBlur)
     }
 
     this.button.addEventListener('click', this._handleButtonClick)
@@ -323,6 +328,19 @@ function handleButtonClick() {
 }
 
 /**
+ * Handle button blur on dropdown button
+ *
+ * @author Milan Ricoul
+ */
+function handleButtonBlur() {
+  if (!this.opened) {
+    return
+  }
+
+  this.close()
+}
+
+/**
  * Handle list items click
  *
  * @author Milan Ricoul
@@ -475,7 +493,7 @@ function focusLastElement() {
  * @returns {void}
  */
 function handleOutsideElementClick(e) {
-  if (this.opened && !this._element.contains(e.target)) {
+  if (this.opened && !this._element.contains(e.target) && !this._settings.closeOnBlur) {
     this.close(this.id)
   }
 }
@@ -492,6 +510,7 @@ function onResize() {
 Dropdown.defaults = {
   automaticSelection: false,
   buttonSelector: 'button',
+  closeOnBlur: false,
   labelSelector: '.dropdown__label',
   listClassName: 'dropdown__list',
   listSelector: 'ul',
