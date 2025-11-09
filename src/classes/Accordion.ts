@@ -81,46 +81,6 @@ export default class Accordion extends AbstractDomElement {
   protected options: AccordionOptions
 
   /**
-   * Focuses the previous trigger. If not previous trigger, focus the last trigger.
-   *
-   * @private
-   * @type {() => void}
-   */
-  private focusPreviousTab: () => void
-
-  /**
-   * Focuses the next trigger. If not next trigger, focus the first trigger.
-   *
-   * @private
-   * @type {() => void}
-   */
-  private focusNextTab: () => void
-
-  /**
-   * Focuses the first trigger.
-   *
-   * @private
-   * @type {() => void}
-   */
-  private focusFirstTab: () => void
-
-  /**
-   * Focuses the last trigger.
-   *
-   * @private
-   * @type {() => void}
-   */
-  private focusLastTab: () => void
-
-  /**
-   * Event handler for keydown events.
-   *
-   * @private
-   * @type {(e: KeyboardEvent) => void}
-   */
-  private handleKeydown: (e: KeyboardEvent) => void // eslint-disable-line no-unused-vars
-
-  /**
    * Event handler for resize events.
    *
    * @private
@@ -166,6 +126,7 @@ export default class Accordion extends AbstractDomElement {
     forceExpand: true,
     hasAnimation: false,
     mediaQuery: null,
+    onInit: () => {},
     onOpen: () => {},
     onClose: () => {},
     onReachBreakpoint: () => {},
@@ -196,14 +157,9 @@ export default class Accordion extends AbstractDomElement {
     this.activePanel = null
     this.focus = false
 
-    this.focusPreviousTab = this._focusPreviousTab.bind(this)
-    this.focusNextTab = this._focusNextTab.bind(this)
-    this.focusFirstTab = this._focusFirstTab.bind(this)
-    this.focusLastTab = this._focusLastTab.bind(this)
     this.handleButtonClick = this._handleButtonClick.bind(this)
     this.handleButtonBlur = this._handleButtonBlur.bind(this)
     this.handleButtonFocus = this._handleButtonFocus.bind(this)
-    this.handleKeydown = this._handleKeydown.bind(this)
     this.handleResize = this._handleResize.bind(this)
     new ThrottledEvent(window, 'resize').add('resize', this.handleResize)
     this.handleResize()
@@ -252,8 +208,6 @@ export default class Accordion extends AbstractDomElement {
     if (closedDefault) {
       this.options.forceExpand = false
     }
-
-    document.addEventListener('keydown', this.handleKeydown)
 
     // Set id and ARIA attributes to the trigger
     for (const trigger of triggers) {
@@ -333,8 +287,6 @@ export default class Accordion extends AbstractDomElement {
         panel.removeAttribute('aria-labelledby')
         panel.removeAttribute('style')
       }
-
-      document.addEventListener('keydown', instance.handleKeydown)
     }
 
     AbstractDomElement.destroy(element)
@@ -389,85 +341,6 @@ export default class Accordion extends AbstractDomElement {
    */
   private isClosed(panel: HTMLElement): boolean {
     return window.getComputedStyle(panel).display === 'none'
-  }
-
-  /**
-   * Focuses the previous trigger. If not previous trigger, focus the last trigger.
-   *
-   * @private
-   * @returns {void}
-   */
-  _focusPreviousTab(): void {
-    const { triggerSelector } = this.options
-    const activeElement = document.activeElement
-    const triggers = this.element.querySelectorAll(triggerSelector)
-    const triggersCount = triggers.length
-
-    if (activeElement && activeElement.classList.contains(triggerSelector.substring(1))) {
-      const currentIndexOfActiveElement = Array.prototype.indexOf.call(triggers, activeElement)
-      const newActiveElement = triggers[
-        currentIndexOfActiveElement === 0 ? triggersCount - 1 : currentIndexOfActiveElement - 1
-      ] as HTMLElement
-
-      if (newActiveElement) {
-        newActiveElement.focus()
-      }
-    }
-  }
-
-  /**
-   * Focuses the next trigger. If not next trigger, focus the first trigger.
-   *
-   * @private
-   * @returns {void}
-   */
-  _focusNextTab(): void {
-    const { triggerSelector } = this.options
-    const activeElement = document.activeElement
-    const triggers = this.element.querySelectorAll(triggerSelector)
-    const triggersCount = triggers.length
-
-    if (activeElement && activeElement.classList.contains(triggerSelector.substring(1))) {
-      const currentIndexOfActiveElement = Array.prototype.indexOf.call(triggers, activeElement)
-      const newActiveElement = triggers[
-        currentIndexOfActiveElement === triggersCount - 1 ? 0 : currentIndexOfActiveElement + 1
-      ] as HTMLElement
-
-      if (newActiveElement) {
-        newActiveElement.focus()
-      }
-    }
-  }
-
-  /**
-   * Focuses the first trigger.
-   *
-   * @private
-   * @returns {void}
-   */
-  _focusFirstTab(): void {
-    const firstTab = this.element.querySelectorAll(this.options.triggerSelector)[0] as HTMLElement
-
-    if (firstTab) {
-      firstTab.focus()
-    }
-  }
-
-  /**
-   * Focuses the last trigger.
-   *
-   * @private
-   * @returns {void}
-   */
-  _focusLastTab(): void {
-    const { triggerSelector } = this.options
-    const triggers = this.element.querySelectorAll(triggerSelector)
-    const triggersCount = triggers.length
-    const lastTab = triggers[triggersCount - 1] as HTMLElement
-
-    if (lastTab) {
-      lastTab.focus()
-    }
   }
 
   /**
@@ -554,38 +427,6 @@ export default class Accordion extends AbstractDomElement {
   }
 
   /**
-   * Handles the keydown event.
-   *
-   * @private
-   * @param {KeyboardEvent} e - The keyboard event.
-   * @returns {void}
-   */
-  private _handleKeydown(e: KeyboardEvent): void {
-    if (!this.focus) {
-      return
-    }
-
-    switch (e.code) {
-      case 'ArrowUp':
-        e.preventDefault()
-        this.focusPreviousTab()
-        break
-      case 'ArrowDown':
-        e.preventDefault()
-        this.focusNextTab()
-        break
-      case 'Home':
-        e.preventDefault()
-        this.focusFirstTab()
-        break
-      case 'End':
-        e.preventDefault()
-        this.focusLastTab()
-        break
-    }
-  }
-
-  /**
    * Handles the resize event.
    *
    * @private
@@ -596,9 +437,21 @@ export default class Accordion extends AbstractDomElement {
     const { mediaQuery, onReachBreakpoint } = this.options
     const pattern = /\d+/g
 
-    if (mediaQuery && onReachBreakpoint && pattern.test(mediaQuery.media) && (this.hasReachBreakpoint === 'above' && window.innerWidth <= parseInt(mediaQuery.media.match(pattern)[0])) || (this.hasReachBreakpoint === 'below' && window.innerWidth > parseInt(mediaQuery.media.match(pattern)[0]))) {
-      this.hasReachBreakpoint = this.hasReachBreakpoint === 'above' ? 'below' : 'above'
-      onReachBreakpoint?.bind(this)(mediaQuery?.matches)
+    if (mediaQuery && onReachBreakpoint && pattern.test(mediaQuery.media)) {
+      const matchResult = mediaQuery.media.match(pattern)
+      const breakpointValue = matchResult?.[0]
+
+      if (breakpointValue) {
+        const breakpointWidth = parseInt(breakpointValue, 10)
+        const shouldToggle =
+          (this.hasReachBreakpoint === 'above' && window.innerWidth <= breakpointWidth) ||
+          (this.hasReachBreakpoint === 'below' && window.innerWidth > breakpointWidth)
+
+        if (shouldToggle) {
+          this.hasReachBreakpoint = this.hasReachBreakpoint === 'above' ? 'below' : 'above'
+          onReachBreakpoint.bind(this)(mediaQuery.matches)
+        }
+      }
     }
 
     if (!this.active && ((mediaQuery && mediaQuery.matches) || !mediaQuery)) {

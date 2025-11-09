@@ -103,4 +103,14 @@ test.describe('Dropdown', () => {
       .evaluate((element) => element.textContent?.trim() === '')
     expect(isListItemsEmpty).toBe(true)
   })
+
+  test('Focus the dropdown button, click on the body, expect the listbox is not visible.', async ({ page }) => {
+    await page.click('button[aria-controls="core-tab-panel-7"]')
+    await page.focus('#dropdown-7 button')
+    await page.keyboard.down('Enter')
+    await page.click('body')
+    const display = await page.$eval('#dropdown-7 ul', (listbox) => window.getComputedStyle(listbox).display)
+
+    expect(display).toBe('none')
+  })
 })

@@ -15,6 +15,7 @@ interface DropdownOptions {
   onOpen: () => any // eslint-disable-line no-unused-vars
   nonSelectedItemLabel: string
   prefixId: string
+  closeOnBlur: boolean
 }
 
 /**
@@ -152,6 +153,14 @@ export default class Dropdown extends AbstractDomElement {
   private handleOutsideElementClick: (e: MouseEvent) => void // eslint-disable-line no-unused-vars
 
   /**
+   * Event handler for button blur events.
+   *
+   * @private
+   * @type {(e: FocusEvent) => void}
+   */
+  private handleButtonBlur: (e: FocusEvent) => void // eslint-disable-line no-unused-vars
+
+  /**
    * Event handler for resize events.
    *
    * @private
@@ -180,6 +189,7 @@ export default class Dropdown extends AbstractDomElement {
     onOpen: () => {},
     nonSelectedItemLabel: 'No item selected',
     prefixId: 'dropdown',
+    closeOnBlur: false,
   }
 
   /**
@@ -214,6 +224,7 @@ export default class Dropdown extends AbstractDomElement {
     this.handleKeydown = this._handleKeydown.bind(this)
     this.handleButtonClick = this._handleButtonClick.bind(this)
     this.handleListItemClick = this._handleListItemClick.bind(this)
+    this.handleButtonBlur = this._handleButtonBlur.bind(this)
     this.handleOutsideElementClick = this._handleOutsideElementClick.bind(this)
     this.handleResize = this._handleResize.bind(this)
     new ThrottledEvent(window, 'resize').add('resize', this.handleResize)
@@ -230,7 +241,7 @@ export default class Dropdown extends AbstractDomElement {
     this.active = true
 
     const el = this.element
-    const { defaultSelection, buttonSelector, labelSelector, listClassName, listSelector } = this.options
+    const { closeOnBlur, defaultSelection, buttonSelector, labelSelector, listClassName, listSelector } = this.options
     const buttonId = `${this.id}-button`
     const labelId = `${this.id}-label`
 
@@ -300,6 +311,10 @@ export default class Dropdown extends AbstractDomElement {
           this.updateFocusedListItem(automaticElement)
         }
       }
+    }
+
+    if (closeOnBlur) {
+      this.button.addEventListener('blur', this.handleButtonBlur)
     }
 
     this.button.addEventListener('click', this.handleButtonClick)
@@ -704,5 +719,20 @@ export default class Dropdown extends AbstractDomElement {
     if (this.active && mediaQuery && !mediaQuery.matches) {
       Dropdown.destroy(this.element)
     }
+  }
+
+  /**
+   * Handles the button blur event.
+   *
+   * @private
+   * @param e - The focus event.
+   * @returns {void}
+   */
+  private _handleButtonBlur(e: FocusEvent): void {
+    if (!this.opened) {
+      return
+    }
+
+    this.close()
   }
 }

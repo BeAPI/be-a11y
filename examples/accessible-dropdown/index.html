@@ -35,6 +35,7 @@
                     <button class="tabs__tab core-tab" role="tab" aria-selected="false" aria-controls="core-tab-panel-4" id="core-tab-4">With events</button>
                     <button class="tabs__tab core-tab" role="tab" aria-selected="false" aria-controls="core-tab-panel-5" id="core-tab-5">Only for &lt; 1024px devices</button>
                     <button class="tabs__tab core-tab" role="tab" aria-selected="false" aria-controls="core-tab-panel-6" id="core-tab-6">With action buttons</button>
+                    <button class="tabs__tab core-tab" role="tab" aria-selected="false" aria-controls="core-tab-panel-7" id="core-tab-7">Closed on focus out</button>
                 </div>
 
                 <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-1" aria-labelledby="core-tab-1">
@@ -143,6 +144,23 @@
                     <button type="button" class="button" id="remove">Remove the first item</button>
                     <button type="button" class="button" id="remove-all">Remove all items</button>
                 </div>
+                <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-7" aria-labelledby="core-tab-7" hidden>
+                    <h2>Dropdown closed on focus out</h2>
+
+                    <p>The dropdown will be closed when the button is focused out.</p>
+
+                    <div id="dropdown-7" class="dropdown">
+                        <span class="dropdown__label">Choose an element</span>
+                        <button aria-haspopup="listbox">Choose an element</button>
+                        <ul tabindex="-1" role="listbox">
+                            <li role="option">Book</li>
+                            <li role="option">Movies</li>
+                            <li role="option">Music</li>
+                            <li role="option">Video games</li>
+                            <li role="option">Paint</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -181,6 +199,9 @@
                     mediaQuery: window.matchMedia('(max-width: 1024px)')
                 },
                 '#dropdown-6': {},
+                '#dropdown-7': {
+                    closeOnBlur: true,
+                },
             }
 
             Dropdown.initFromPreset()
