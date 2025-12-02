@@ -2,7 +2,7 @@ import AbstractDomElement from './AbstractDomElement.js'
 import { ThrottledEvent } from 'oneloop.js'
 import { isSelectorValid, randomId } from '../utils/helpers.js'
 
-const FOCUSABLE_ELEMENTS = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+const FOCUSABLE_ELEMENTS = 'a[href]:not([tabindex="-1"]),area[href]:not([tabindex="-1"]),input:not([disabled]):not([tabindex="-1"]),select:not([disabled]):not([tabindex="-1"]),textarea:not([disabled]):not([tabindex="-1"]),button:not([disabled]):not([tabindex="-1"]),iframe:not([tabindex="-1"]),[tabindex]:not([tabindex="-1"]),[contentEditable=true]:not([tabindex="-1"])'
 
 /**
  * Modal Class
