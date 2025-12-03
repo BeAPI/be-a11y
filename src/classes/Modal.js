@@ -229,8 +229,8 @@ class Modal extends AbstractDomElement {
   enableAllFocusedElements() {
     const el = this._element
 
-    for (const el of Array.from(el.querySelectorAll(FOCUSABLE_ELEMENTS))) {
-      el.removeAttribute('tabindex')
+    for (const focusableElement of Array.from(el.querySelectorAll(FOCUSABLE_ELEMENTS))) {
+      focusableElement.removeAttribute('tabindex')
     }
   }
 
@@ -240,8 +240,8 @@ class Modal extends AbstractDomElement {
   disableAllFocusedElements() {
     const el = this._element
 
-    for (const el of Array.from(el.querySelectorAll(FOCUSABLE_ELEMENTS))) {
-      el.setAttribute('tabindex', '-1')
+    for (const focusableElement of Array.from(el.querySelectorAll(FOCUSABLE_ELEMENTS))) {
+      focusableElement.setAttribute('tabindex', '-1')
     }
   }
 }
