@@ -42,6 +42,7 @@ class Modal extends AbstractDomElement {
 
     new ThrottledEvent(window, 'resize').add('resize', this._onResizeHandler)
     this._onResizeHandler()
+    this.disableAllFocusedElements()
   }
 
   /**
@@ -136,6 +137,8 @@ class Modal extends AbstractDomElement {
         window.addEventListener('click', this._handleOutsideClick)
       })
     }
+
+    this.enableAllFocusedElements()
   }
 
   /**
@@ -167,6 +170,8 @@ class Modal extends AbstractDomElement {
     if (this._settings.closeOnFocusOutside) {
       window.removeEventListener('click', this._handleOutsideClick)
     }
+
+    this.disableAllFocusedElements()
   }
 
   /**
@@ -216,6 +221,28 @@ class Modal extends AbstractDomElement {
     })
 
     super.destroy()
+  }
+
+  /**
+   * Remove attribute tabindex to focusable elements
+   */
+  enableAllFocusedElements() {
+    const el = this._element
+
+    for (const el of Array.from(el.querySelectorAll(FOCUSABLE_ELEMENTS))) {
+      el.removeAttribute('tabindex')
+    }
+  }
+
+  /**
+   * Set attribute tabindex="-1" to focusable elements
+   */
+  disableAllFocusedElements() {
+    const el = this._element
+
+    for (const el of Array.from(el.querySelectorAll(FOCUSABLE_ELEMENTS))) {
+      el.setAttribute('tabindex', '-1')
+    }
   }
 }
 
