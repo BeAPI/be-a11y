@@ -42,7 +42,6 @@ class Modal extends AbstractDomElement {
 
     new ThrottledEvent(window, 'resize').add('resize', this._onResizeHandler)
     this._onResizeHandler()
-    this.disableAllFocusedElements()
   }
 
   /**
@@ -54,6 +53,7 @@ class Modal extends AbstractDomElement {
    */
   init() {
     this.initialized = true
+    this.disableAllFocusedElements()
     const el = this._element
     const { closeButtonSelector, closedClassName, descriptionSelector, labelSelector, triggerSelector } = this._settings
 
@@ -113,6 +113,7 @@ class Modal extends AbstractDomElement {
    */
   open() {
     this.isOpened = true
+    this.enableAllFocusedElements()
 
     const el = this._element
     const { closedClassName, openedClassName } = this._settings
@@ -137,8 +138,6 @@ class Modal extends AbstractDomElement {
         window.addEventListener('click', this._handleOutsideClick)
       })
     }
-
-    this.enableAllFocusedElements()
   }
 
   /**
@@ -153,6 +152,7 @@ class Modal extends AbstractDomElement {
     const { closedClassName, openedClassName } = this._settings
 
     this.isOpened = false
+    this.disableAllFocusedElements()
 
     el.classList.add(closedClassName)
     el.classList.remove(openedClassName)
@@ -170,8 +170,6 @@ class Modal extends AbstractDomElement {
     if (this._settings.closeOnFocusOutside) {
       window.removeEventListener('click', this._handleOutsideClick)
     }
-
-    this.disableAllFocusedElements()
   }
 
   /**
@@ -184,6 +182,10 @@ class Modal extends AbstractDomElement {
    * @author Milan Ricoul
    */
   checkNextFocusableElement(e) {
+    if (!this.isOpened && this.initialized) {
+      return
+    }
+
     const el = this._element
     const focusableElements = el.querySelectorAll(FOCUSABLE_ELEMENTS)
     const currentIndexOfActiveElement = Array.prototype.indexOf.call(focusableElements, document.activeElement)
@@ -220,6 +222,8 @@ class Modal extends AbstractDomElement {
       btn.removeEventListener('click', this.open)
     })
 
+    this.enableAllFocusedElements()
+
     super.destroy()
   }
 
@@ -229,7 +233,7 @@ class Modal extends AbstractDomElement {
   enableAllFocusedElements() {
     const el = this._element
 
-    for (const focusableElement of Array.from(el.querySelectorAll(FOCUSABLE_ELEMENTS))) {
+    for (const focusableElement of Array.from(el.querySelectorAll('[tabindex="-1"]'))) {
       focusableElement.removeAttribute('tabindex')
     }
   }
