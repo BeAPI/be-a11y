@@ -472,8 +472,8 @@ export default class Modal extends AbstractDomElement {
   _handleTransitionEnd() {
     const el = this.element
 
-    for (const element of el.querySelectorAll(this.FOCUSABLE_ELEMENTS)) {
-      ;(element as HTMLElement).style.display = 'none'
+    for (const focusableElement of el.querySelectorAll(this.FOCUSABLE_ELEMENTS)) {
+      ;(focusableElement as HTMLElement).style.display = 'none'
     }
 
     el.removeEventListener('transitionend', this.handleTransitionEnd)
