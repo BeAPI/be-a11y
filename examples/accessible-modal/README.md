@@ -6,7 +6,7 @@ An accessible modal component that creates a focused overlay window on top of th
 * [Demo — Default](https://codepen.io/beapi/full/mdwOVBm)
 * [Demo — Close on focus outside](https://codepen.io/beapi/full/oNVbxOy)
 * [Demo — Only for < 1024px devices](https://codepen.io/beapi/full/oNVbxVy)
-* [Demo — Animated](https://codepen.io/beapi/full/oNVbxVy)
+* [Demo — Animated](https://codepen.io/beapi/full/LYaGNor)
 
 ## Getting started
 
