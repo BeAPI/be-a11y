@@ -50,8 +50,7 @@ export default class Modal extends AbstractDomElement {
    * @readonly
    * @type {string}
    */
-  private readonly FOCUSABLE_ELEMENTS: string =
-    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+  private readonly FOCUSABLE_ELEMENTS: string = 'a[href]:not([tabindex="-1"]),area[href]:not([tabindex="-1"]),input:not([disabled]):not([tabindex="-1"]),select:not([disabled]):not([tabindex="-1"]),textarea:not([disabled]):not([tabindex="-1"]),button:not([disabled]):not([tabindex="-1"]),iframe:not([tabindex="-1"]),[tabindex]:not([tabindex="-1"]),[contentEditable=true]:not([tabindex="-1"])'
 
   /**
    * The id of the modal.
