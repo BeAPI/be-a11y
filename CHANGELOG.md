@@ -5,6 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 2.0.0-beta.4 - 2025-12-13
+
+### Added
+
+- Add new Dialog component based on native HTML `<dialog>` element
+  - Leverages native browser capabilities (`show()`, `showModal()`, `close()` methods)
+  - Support for `closedby` attribute for native modal behavior
+  - Lightweight alternative to Modal component
+  - Full accessibility support (ARIA attributes, focus management, keyboard navigation)
+- Add comprehensive test suite for Dialog component (Dialog.test.ts)
+  - 17 tests covering ARIA attributes, open/close functionality, modal behavior, and edge cases
+- Add complete Dialog documentation with usage examples
+- Add comparison between Dialog and Modal components in documentation
+
+### Fixed
+
+- Fix TypeScript/ESLint errors in Accordion component
+  - Add null safety checks for media query pattern matching
+  - Add radix parameter to parseInt calls
+  - Improve code readability with better variable naming
+
 ## 2.0.0-beta.3 - 2025-11-09
 
 - Apply features from 1.7.0
