@@ -13,6 +13,7 @@
             <nav>
                 <ul>
                     <li><a href="../accessible-accordion/">Accordion</a></li>
+                    <li><a href="../accessible-dialog/">Dialog</a></li>
                     <li><a href="../accessible-dropdown/">Dropdown</a></li>
                     <li><a href="../accessible-link/">Link</a></li>
                     <li class="current">Modal</li>
@@ -42,9 +43,9 @@
                     <p>In user interface design for computer applications, a modal window is a graphical control element subordinate to an application's main window.</p>
 
                     <button class="button modal-btn" type="button" aria-controls="demo-1">Add delivery address</button>
-                    <button class="button modal-btn button modal-btn--demo-1" type="button">Another button for delivery address</button>
+                    <button class="button modal-btn modal-btn--demo-1" type="button">Another button for delivery address</button>
 
-                    <div id="demo-1" class="modal" tabindex="-1" role="dialog" aria-modal="true" aria-hidden="true">
+                    <dialog id="demo-1" class="modal" tabindex="-1" aria-modal="true" aria-hidden="true">
                         <div class="modal__inner">
                             <h4 class="modal__title">Add delivery address</h4>
 
@@ -88,7 +89,7 @@
                                 <span class="sr-only">Close</span>
                             </button>
                         </div>
-                    </div>
+                    </dialog>
                 </div>
                 <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-2" aria-labelledby="core-tab-2" hidden>
                     <h2>Close modal on outside click</h2>

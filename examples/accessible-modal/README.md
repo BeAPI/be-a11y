@@ -2,11 +2,18 @@
 
 An accessible modal component that creates a focused overlay window on top of the main content. It implements proper focus management, keyboard navigation, and ARIA attributes to ensure all users can interact with modal content. When activated, it traps focus within the modal and provides clear mechanisms for dismissal, making it fully accessible to screen reader users and keyboard-only navigation.
 
-* [See accessible specificies](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html)
-* [Demo — Default](https://codepen.io/beapi/full/mdwOVBm)
-* [Demo — Close on focus outside](https://codepen.io/beapi/full/oNVbxOy)
-* [Demo — Only for < 1024px devices](https://codepen.io/beapi/full/oNVbxVy)
-* [Demo — Animated](https://codepen.io/beapi/full/oNVbxVy)
+**When to use Dialog vs Modal:**
+
+- **Use Modal** when you need advanced features like CSS animations, responsive behavior with media queries, or close-on-outside-click functionality
+- **Use [Dialog](../accessible-dialog/README.md)** when you want a modern, native implementation with minimal JavaScript and leverage browser features like the `closedby` attribute
+
+This component implements proper focus management, keyboard navigation, and ARIA attributes to ensure all users can interact with dialog content, making it fully accessible to screen reader users and keyboard-only navigation.
+
+- [See accessible specificies](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html)
+- [Demo — Default](https://codepen.io/beapi/full/mdwOVBm)
+- [Demo — Close on focus outside](https://codepen.io/beapi/full/oNVbxOy)
+- [Demo — Only for < 1024px devices](https://codepen.io/beapi/full/oNVbxVy)
+- [Demo — Animated](https://codepen.io/beapi/full/LYaGNor)
 
 ## Getting started
 
