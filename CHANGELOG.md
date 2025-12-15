@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 2.0.0-beta.5 - 2025-12-15
+
+### Changed
+
+- Improve TypeScript build configuration for NPM package compatibility
+  - Add `tsconfig.build.json` for generating type declarations (`.d.ts`)
+  - Update Vite config to output `.js` files instead of `.ts`
+  - Add `types` field and update `exports` in `package.json`
+  - Add `prepublishOnly` script to ensure build before publish
+
 ## 2.0.0-beta.4 - 2025-12-13
 
 ### Added
