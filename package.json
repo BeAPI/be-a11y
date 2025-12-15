@@ -11,12 +11,15 @@
   "license": "MIT",
   "private": false,
   "files": [
-    "dist"
+    "dist",
+    "!dist/**/*.test.*"
   ],
   "main": "./dist/be-a11y.js",
   "module": "./dist/be-a11y.js",
+  "types": "./dist/types/be-a11y.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/types/be-a11y.d.ts",
       "import": "./dist/be-a11y.js",
       "require": "./dist/be-a11y.js"
     }
@@ -35,9 +38,11 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && tsc -p tsconfig.build.json",
+    "build:types": "tsc -p tsconfig.build.json",
     "preview": "vite preview",
-    "test": "playwright test"
+    "test": "playwright test",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "body-scroll-lock": "4.0.0-beta.0",

@@ -1,0 +1,31 @@
+{
+    "compilerOptions": {
+        "target": "ES2017",
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "allowImportingTsExtensions": true,
+        "declaration": true,
+        "declarationDir": "./dist/types",
+        "emitDeclarationOnly": true,
+        "strict": false,
+        "strictPropertyInitialization": false,
+        "skipLibCheck": true,
+        "typeRoots": ["./node_modules/@types", "./src/@types"],
+        "baseUrl": ".",
+        "paths": {
+            "@utils/*": ["./src/utils/*"]
+        },
+        "outDir": "./dist"
+    },
+    "include": [
+        "./src/**/*.ts",
+        "./be-a11y.ts"
+    ],
+    "exclude": [
+        "./src/**/*.test.ts",
+        "./src/utils/extend.ts",
+        "./src/utils/isPlainObject.ts",
+        "./src/utils/noop.ts",
+        "node_modules"
+    ]
+}

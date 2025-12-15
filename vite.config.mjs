@@ -34,7 +34,7 @@ export default defineConfig({
           dir: 'dist',
           format: 'es',
           preserveModules: true,
-          entryFileNames: '[name].ts',
+          entryFileNames: '[name].js',
         },
       ],
       external: regexesOfPackages,
