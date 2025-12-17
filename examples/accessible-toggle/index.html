@@ -35,6 +35,7 @@
                         <button class="tabs__tab core-tab" role="tab" aria-selected="false" aria-controls="core-tab-panel-3" id="core-tab-3">With event</button>
                         <button class="tabs__tab core-tab" role="tab" aria-selected="false" aria-controls="core-tab-panel-4" id="core-tab-4">Only for &lt; 1024px devices</button>
                         <button class="tabs__tab core-tab" role="tab" aria-selected="false" aria-controls="core-tab-panel-5" id="core-tab-5">Opened by default</button>
+                        <button class="tabs__tab core-tab" role="tab" aria-selected="false" aria-controls="core-tab-panel-6" id="core-tab-6">Closed on blur</button>
                     </div>
 
                     <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-1" aria-labelledby="core-tab-1">
@@ -92,6 +93,24 @@
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deserunt veniam perferendis recusandae sunt quasi, dolor laboriosam quibusdam saepe numquam officia, incidunt fugiat amet velit quas doloribus earum nostrum ut?</p>
                         </div>
                     </div>
+                    <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-6" aria-labelledby="core-tab-6" hidden>
+                        <h2>Closed on blur</h2>
+
+                        <p>The toggle button will be closed when it loses focus.</p>
+
+                        <button type="button" class="button" aria-controls="toggle-6">Reveal text</button>
+
+                        <div id="toggle-6" aria-hidden="true">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deserunt veniam perferendis recusandae sunt quasi, dolor laboriosam quibusdam saepe numquam officia, incidunt fugiat amet velit quas doloribus earum nostrum ut?</p>
+
+                            <ul>
+                                <li><a href="#">Lorem ipsum</a></li>
+                                <li><a href="#">Dolor sit</a></li>
+                                <li><a href="#">Amet consectetur</a></li>
+                                <li><a href="#">Adipisicing elit</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -120,6 +139,9 @@
                 },
                 'button[aria-controls="toggle-5"]': {
                     isOpened: true,
+                },
+                'button[aria-controls="toggle-6"]': {
+                    closeOnBlur: true,
                 },
             }
 

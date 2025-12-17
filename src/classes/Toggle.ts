@@ -73,6 +73,14 @@ export default class Toggle extends AbstractDomElement {
   private handleBlur: (e: FocusEvent) => void // eslint-disable-line no-unused-vars
 
   /**
+   * Event handler for focusout events on target element.
+   *
+   * @private
+   * @type {(e: FocusEvent) => void}
+   */
+  private handleTargetFocusOut: (e: FocusEvent) => void // eslint-disable-line no-unused-vars
+
+  /**
    * Event handler for click events.
    *
    * @private
@@ -144,6 +152,7 @@ export default class Toggle extends AbstractDomElement {
     this.handleResize = this._handleResize.bind(this)
     this.handleBlur = this._handleBlur.bind(this)
     this.handleClick = this._handleClick.bind(this)
+    this.handleTargetFocusOut = this._handleTargetFocusOut.bind(this)
 
     new ThrottledEvent(window, 'resize').add('resize', this.handleResize)
     this.handleResize()
@@ -188,6 +197,7 @@ export default class Toggle extends AbstractDomElement {
 
     if (closeOnBlur) {
       el.addEventListener('blur', this.handleBlur)
+      this.target.addEventListener('focusout', this.handleTargetFocusOut)
     }
 
     if (closeOnEscPress) {
@@ -230,6 +240,7 @@ export default class Toggle extends AbstractDomElement {
     if (instance) {
       const {
         element,
+        target,
         options: { onClick },
       } = instance
 
@@ -239,6 +250,10 @@ export default class Toggle extends AbstractDomElement {
       element.removeAttribute('aria-expanded')
       element.removeEventListener('click', instance.handleClick)
       element.removeEventListener('blur', instance.handleBlur)
+
+      if (target) {
+        target.removeEventListener('focusout', instance.handleTargetFocusOut)
+      }
 
       if (onClick) {
         element.removeEventListener('click', onClick)
@@ -330,6 +345,10 @@ export default class Toggle extends AbstractDomElement {
   private disableBodyScroll() {
     const { bodyScrollLockMediaQuery } = this.options
 
+    if (!this.target) {
+      return
+    }
+
     if (bodyScrollLockMediaQuery && bodyScrollLockMediaQuery.matches) {
       disableBodyScroll(this.target)
     } else if (!bodyScrollLockMediaQuery) {
@@ -362,13 +381,46 @@ export default class Toggle extends AbstractDomElement {
    * Handles blur events on the toggle element.
    *
    * @private
+   * @param {FocusEvent} e - The focus event.
    * @returns {void}
    */
-  _handleBlur() {
-    window.setTimeout(() => {
-      this.target?.setAttribute('aria-hidden', 'true')
-      this.element.setAttribute('aria-expanded', 'false')
-    }, 200)
+  _handleBlur(e: FocusEvent) {
+    const relatedTarget = e.relatedTarget as HTMLElement | null
+
+    // Check if focus is moving to the button itself
+    if (relatedTarget === this.element) {
+      return
+    }
+
+    // Check if focus is moving to an element inside the toggled target
+    if (relatedTarget && this.target?.contains(relatedTarget)) {
+      return
+    }
+
+    this.close()
+  }
+
+  /**
+   * Handles focusout events on the target element.
+   *
+   * @private
+   * @param {FocusEvent} e - The focus event.
+   * @returns {void}
+   */
+  _handleTargetFocusOut(e: FocusEvent) {
+    const relatedTarget = e.relatedTarget as HTMLElement | null
+
+    // Check if focus is moving to the button
+    if (relatedTarget === this.element) {
+      return
+    }
+
+    // Check if focus is staying inside the toggled target
+    if (relatedTarget && this.target?.contains(relatedTarget)) {
+      return
+    }
+
+    this.close()
   }
 
   /**
