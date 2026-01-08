@@ -380,17 +380,23 @@ export default class Accordion extends AbstractDomElement {
         onClose.bind(this)(e, panel)
       }
     } else {
-      if (!allowMultiple && panelAriaLabelledByAttr) {
-        const trigger = document.getElementById(panelAriaLabelledByAttr)
-        el.querySelectorAll(panelSelector).forEach((panel) => {
-          if (trigger && panel.id !== trigger.getAttribute('aria-controls') && panelAriaLabelledByAttr) {
-            trigger.setAttribute('aria-expanded', 'false')
+      if (!allowMultiple) {
+        el.querySelectorAll(panelSelector).forEach((otherPanel) => {
+          // Skip the panel we're about to open
+          if (otherPanel.id === panel.id) {
+            return
+          }
 
-            if (!this.isClosed(panel as HTMLElement)) {
-              this.close(panel as HTMLElement)
+          const otherPanelAriaLabelledBy = otherPanel.getAttribute('aria-labelledby')
+          if (otherPanelAriaLabelledBy) {
+            const otherTrigger = document.getElementById(otherPanelAriaLabelledBy)
+
+            if (otherTrigger && !this.isClosed(otherPanel as HTMLElement)) {
+              otherTrigger.setAttribute('aria-expanded', 'false')
+              this.close(otherPanel as HTMLElement)
 
               if (onClose) {
-                onClose.bind(this)(e, panel as HTMLElement)
+                onClose.bind(this)(e, otherPanel as HTMLElement)
               }
             }
           }
