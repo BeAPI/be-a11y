@@ -9,7 +9,7 @@ class DOMAnimations {
   static slideUp(element, duration = 500, callback = () => false) {
     return new Promise((resolve) => {
       element.style.height = `${element.offsetHeight}px`
-      element.style.transitionProperty = `height, margin, padding`
+      element.style.transitionProperty = `height, margin, padding, gap`
       element.style.transitionDuration = `${duration}ms`
       element.offsetHeight // eslint-disable-line no-unused-expressions
       element.style.overflow = 'hidden'
@@ -18,6 +18,7 @@ class DOMAnimations {
       element.style.paddingBottom = 0
       element.style.marginTop = 0
       element.style.marginBottom = 0
+      element.style.gap = 0
       window.setTimeout(() => {
         element.style.display = 'none'
         element.style.removeProperty('height')
@@ -25,6 +26,7 @@ class DOMAnimations {
         element.style.removeProperty('padding-bottom')
         element.style.removeProperty('margin-top')
         element.style.removeProperty('margin-bottom')
+        element.style.removeProperty('gap')
         element.style.removeProperty('overflow')
         element.style.removeProperty('transition-duration')
         element.style.removeProperty('transition-property')
@@ -59,14 +61,16 @@ class DOMAnimations {
       element.style.paddingBottom = 0
       element.style.marginTop = 0
       element.style.marginBottom = 0
+      element.style.gap = 0
       element.offsetHeight // eslint-disable-line no-unused-expressions
-      element.style.transitionProperty = `height, margin, padding`
+      element.style.transitionProperty = `height, margin, padding, gap`
       element.style.transitionDuration = `${duration}ms`
       element.style.height = `${height}px`
       element.style.removeProperty('padding-top')
       element.style.removeProperty('padding-bottom')
       element.style.removeProperty('margin-top')
       element.style.removeProperty('margin-bottom')
+      element.style.removeProperty('gap')
       window.setTimeout(() => {
         element.style.removeProperty('height')
         element.style.removeProperty('overflow')
