@@ -1,9 +1,7 @@
 name: Tests
 on:
-  push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches: [ develop, main ]
 jobs:
   tests_e2e:
     name: Run end-to-end tests
@@ -15,14 +13,23 @@ jobs:
         version: 10
     - uses: actions/setup-node@v4
       with:
-        node-version: 22
+        node-version-file: package.json
         cache: pnpm
+    - name: Cache Playwright browsers
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/ms-playwright
+        key: ${{ runner.os }}-playwright-${{ hashFiles('pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-playwright-
     - name: Install dependencies
       env:
         PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
       run: pnpm install --frozen-lockfile
-    - name: Install Playwright browsers
-      run: pnpm exec playwright install --with-deps
+    - name: Install Playwright Chromium
+      run: pnpm exec playwright install chromium --with-deps
+    - name: Build demo site for Playwright
+      run: pnpm build:demo
     - name: Run tests
       run: pnpm exec playwright test
       env:
