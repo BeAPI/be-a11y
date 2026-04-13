@@ -10,10 +10,7 @@ An accessible modal component that creates a focused overlay window on top of th
 This component implements proper focus management, keyboard navigation, and ARIA attributes to ensure all users can interact with dialog content, making it fully accessible to screen reader users and keyboard-only navigation.
 
 - [See accessible specificies](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html)
-- [Demo — Default](https://codepen.io/beapi/full/mdwOVBm)
-- [Demo — Close on focus outside](https://codepen.io/beapi/full/oNVbxOy)
-- [Demo — Only for < 1024px devices](https://codepen.io/beapi/full/oNVbxVy)
-- [Demo — Animated](https://codepen.io/beapi/full/LYaGNor)
+- [Demo](https://beapi.github.io/be-a11y/examples/accessible-modal)
 
 ## Getting started
 

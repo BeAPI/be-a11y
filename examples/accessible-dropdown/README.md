@@ -2,8 +2,8 @@
 
 An accessible dropdown component that provides keyboard navigation, proper ARIA attributes, and screen reader support. Users can select from a list of options that appears when triggered, with customizable behavior for selection, events, and responsive design.
 
-* [See accessible specificies](https://www.w3.org/TR/wai-aria-practices-1.1/examples/listbox/listbox-collapsible.html)
-* [Demo](https://codepen.io/beapi/full/VwQbYqN)
+- [See accessible specificies](https://www.w3.org/TR/wai-aria-practices-1.1/examples/listbox/listbox-collapsible.html)
+- [Demo](https://beapi.github.io/be-a11y/examples/accessible-dropdown)
 
 ## Getting started
 

@@ -1,6 +1,6 @@
-import {PlaywrightTestConfig, devices} from '@playwright/test'
+import { defineConfig, devices } from '@playwright/test'
 
-const config: PlaywrightTestConfig = {
+export default defineConfig({
   projects: [
     {
       name: 'chromium',
@@ -8,11 +8,13 @@ const config: PlaywrightTestConfig = {
     },
   ],
   webServer: {
-    command: process.env.CI ? 'npx vite preview --port 5173' : 'npx vite dev',
+    // CI: serve the multi-page demo build (examples/*) from demo-dist — same as `pnpm build:demo` / GitHub Pages.
+    // Local: dev server with root vite config so tests hit /examples/... without a prior build.
+    command: process.env.CI
+      ? 'npx vite preview --config vite.demo.config.mjs --port 5173'
+      : 'npx vite dev --port 5173',
     url: 'http://localhost:5173/',
     reuseExistingServer: !process.env.CI,
-    timeout: 10000,
+    timeout: 30000,
   },
-}
-
-export default config
+})

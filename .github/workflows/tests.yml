@@ -1,19 +1,36 @@
 name: Tests
 on:
-  push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches: [ develop, main ]
 jobs:
   tests_e2e:
     name: Run end-to-end tests
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
+    - uses: actions/checkout@v4
+    - uses: pnpm/action-setup@v4
+      with:
+        version: 10
+    - uses: actions/setup-node@v4
+      with:
+        node-version-file: package.json
+        cache: pnpm
+    - name: Cache Playwright browsers
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/ms-playwright
+        key: ${{ runner.os }}-playwright-${{ hashFiles('pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-playwright-
     - name: Install dependencies
-      run: yarn install --frozen-lockfile
-    - name: Install playwright browsers
-      run: npx playwright install --with-deps
+      env:
+        PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+      run: pnpm install --frozen-lockfile
+    - name: Install Playwright Chromium
+      run: pnpm exec playwright install chromium --with-deps
+    - name: Build demo site for Playwright
+      run: pnpm build:demo
     - name: Run tests
-      run: ENV=CI npx playwright test
+      run: pnpm exec playwright test
+      env:
+        CI: true
