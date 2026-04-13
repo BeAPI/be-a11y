@@ -9,11 +9,21 @@ jobs:
     name: Run end-to-end tests
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
+    - uses: actions/checkout@v4
+    - uses: pnpm/action-setup@v4
+      with:
+        version: 10
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 22
+        cache: pnpm
     - name: Install dependencies
-      run: yarn install --frozen-lockfile
-    - name: Install playwright browsers
-      run: npx playwright install --with-deps
+      env:
+        PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+      run: pnpm install --frozen-lockfile
+    - name: Install Playwright browsers
+      run: pnpm exec playwright install --with-deps
     - name: Run tests
-      run: ENV=CI npx playwright test
+      run: CI=true pnpm exec playwright test
+      env:
+        CI: true
