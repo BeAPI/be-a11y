@@ -1,0 +1,41 @@
+.sidebar {
+    @apply py-4 px-4 sm:py-10 sm:min-h-dvh sm:border-r sm:border-r-slate-200 sm:dark:border-r-dark-border;
+}
+
+.sidebar > p {
+    @apply text-4xl font-thin tracking-widest;
+}
+
+.sidebar > p a {
+    @apply no-underline hover:underline;
+}
+
+.sidebar ul {
+    @apply sticky top-4 flex gap-2 flex-wrap sm:block;
+}
+
+.sidebar .current,
+.sidebar li a:active,
+.sidebar li a:focus,
+.sidebar li a:hover {
+    @apply rounded-md;
+}
+
+.sidebar li a:active,
+.sidebar li a:focus,
+.sidebar li a:hover {
+    @apply bg-dark dark:bg-beapi text-white dark:text-dark;
+}
+
+.sidebar .current,
+.sidebar li a {
+    @apply px-2 py-1;
+}
+
+.sidebar .current {
+    @apply bg-beapi dark:bg-dark-border;
+}
+
+.sidebar li a {
+    @apply block;
+}

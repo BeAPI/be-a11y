@@ -27,7 +27,9 @@ Accordion.init('#my-accordion', {
 For more details about components, check the documentations:
 
 * [Accordion](examples/accessible-accordion/)
+* [Dialog](examples/accessible-dialog/)
 * [Dropdown](examples/accessible-dropdown/)
+* [Link](examples/accessible-link/)
 * [Modal](examples/accessible-modal/)
 * [Slider](examples/accessible-slider/)
 * [Tabs](examples/accessible-tabs/)

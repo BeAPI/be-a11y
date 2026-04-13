@@ -5,6 +5,67 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 2.0.0-beta.7 - 2026-01-08
+
+### Fixed
+
+- Fix `aria-expanded` attribute not updating correctly when closing panels in Accordion component
+  - When opening a new panel with `allowMultiple: false`, previously opened panels now correctly have their trigger's `aria-expanded` set to `false`
+  - Added test to verify this behavior
+
+## 2.0.0-beta.6 - 2025-12-17
+
+### Fixed
+
+- Fix `closeOnBlur` behavior in Toggle component
+  - Toggle no longer closes when focus moves to an element inside the toggled target
+  - Added `focusout` listener on target to properly close when focus leaves the entire toggle area
+
+## 2.0.0-beta.5 - 2025-12-15
+
+### Changed
+
+- Improve TypeScript build configuration for NPM package compatibility
+  - Add `tsconfig.build.json` for generating type declarations (`.d.ts`)
+  - Update Vite config to output `.js` files instead of `.ts`
+  - Add `types` field and update `exports` in `package.json`
+  - Add `prepublishOnly` script to ensure build before publish
+
+## 2.0.0-beta.4 - 2025-12-13
+
+### Added
+
+- Add new Dialog component based on native HTML `<dialog>` element
+  - Leverages native browser capabilities (`show()`, `showModal()`, `close()` methods)
+  - Support for `closedby` attribute for native modal behavior
+  - Lightweight alternative to Modal component
+  - Full accessibility support (ARIA attributes, focus management, keyboard navigation)
+- Add comprehensive test suite for Dialog component (Dialog.test.ts)
+  - 17 tests covering ARIA attributes, open/close functionality, modal behavior, and edge cases
+- Add complete Dialog documentation with usage examples
+- Add comparison between Dialog and Modal components in documentation
+
+### Fixed
+
+- Fix TypeScript/ESLint errors in Accordion component
+  - Add null safety checks for media query pattern matching
+  - Add radix parameter to parseInt calls
+  - Improve code readability with better variable naming
+
+## 2.0.0-beta.3 - 2025-11-09
+
+- Apply features from 1.7.0
+  - Remove non accessible keyboard shortcuts for Accordion component
+  - Add new boolean setting `closeOnBlur` for Dropdown component. If `true`, the expanded list will be closed on button blur.
+
+## 2.0.0-beta.1 - 2025-03-07
+
+- Convert project to TypeScript.
+- Add new component Link.
+- Update all dependencies to their latest version.
+- Update documentation.
+- Update examples.
+
 ## 1.7.3 - 2026-02-02
 
 - Fix DOMAnimations class to keep gap spacing property.

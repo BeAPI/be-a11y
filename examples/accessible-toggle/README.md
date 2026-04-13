@@ -1,6 +1,6 @@
 # Accessible Toggle
 
-The Toggle component is a button that triggers changes on a specified item when you click it.
+An accessible toggle component that reveals or hides content when a button is clicked. It provides keyboard navigation, proper ARIA attributes, and screen reader support. The toggle maintains the correct expanded/collapsed state, announces changes to screen readers, and can be customized with animations and responsive behavior. This simple show/hide pattern ensures content is accessible to all users regardless of how they interact with the page.
 
 * [Demo](https://codepen.io/beapi/full/BaZQjWm)
 

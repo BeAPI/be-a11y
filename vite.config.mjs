@@ -14,12 +14,17 @@ const regexesOfPackages = externalPackages.map(
 );
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      '@utils': resolve(__dirname, './src/utils'),
+    },
+  },
   optimizeDeps: {
     include: ['body-scroll-lock'],
   },
   build: {
     lib: {
-      entry: resolve(__dirname, 'be-a11y.js'),
+      entry: resolve(__dirname, 'be-a11y.ts'),
       name: '@beapi/be-a11y',
       fileName: 'be-a11y',
     },

@@ -1,0 +1,19 @@
+.dialog {
+    @apply relative w-full p-8 bg-white dark:bg-dark-bg;
+}
+
+.dialog[aria-modal="true"] {
+    @apply max-w-screen-sm;
+}
+
+.dialog::backdrop {
+    @apply bg-dark/50 backdrop-blur-sm;
+}
+
+.dialog__close {
+    @apply absolute top-2 right-2 p-0 border-none shadow-none hover:text-beapi hover:bg-dark dark:hover:bg-beapi dark:hover:text-dark focus:text-beapi focus:bg-dark dark:focus:bg-beapi dark:focus:text-dark;
+}
+
+.dialog__close svg {
+    @apply fill-current;
+}

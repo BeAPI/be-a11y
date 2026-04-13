@@ -1,0 +1,7 @@
+.button {
+    @apply relative border-0 rounded-none px-[30px] py-[17px] z-[1] bg-beapi hover:bg-beapi before:content-[""] before:block before:absolute before:z-[-1] before:transition-all before:top-0 before:left-0 before:bottom-0 before:w-0 dark:before:bg-white before:bg-dark hover:text-white dark:hover:text-dark hover:before:w-full;
+}
+
+.button[disabled] {
+    @apply cursor-not-allowed bg-slate-400 dark:bg-dark-border before:hidden text-dark dark:text-white opacity-30;
+}

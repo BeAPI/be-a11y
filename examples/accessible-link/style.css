@@ -1,0 +1,4 @@
+#link-2 a,
+#link-3 a {
+    @apply flex items-center gap-1;
+}
