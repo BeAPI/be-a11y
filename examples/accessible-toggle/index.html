@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Accessible Toggle</title>
     </head>
+
     <body>
         <main class="wrapper">
             <aside class="sidebar">
@@ -26,30 +28,45 @@
             <div class="content">
                 <h1>Accessible Toggle</h1>
 
-                <p>An accessible toggle component that reveals or hides content when a button is clicked. It provides keyboard navigation, proper ARIA attributes, and screen reader support. The toggle maintains the correct expanded/collapsed state, announces changes to screen readers, and can be customized with animations and responsive behavior. This simple show/hide pattern ensures content is accessible to all users regardless of how they interact with the page.</p>
+                <p>An accessible toggle component that reveals or hides content when a button is clicked. It provides
+                    keyboard navigation, proper ARIA attributes, and screen reader support. The toggle maintains the
+                    correct expanded/collapsed state, announces changes to screen readers, and can be customized with
+                    animations and responsive behavior. This simple show/hide pattern ensures content is accessible to
+                    all users regardless of how they interact with the page.</p>
 
                 <div id="tab" class="tabs">
                     <div class="tabs__tablist" role="tablist" aria-label="Tabs component">
-                        <button class="tabs__tab core-tab" role="tab" aria-selected="true" aria-controls="core-tab-panel-1" id="core-tab-1">Default</button>
-                        <button class="tabs__tab core-tab" role="tab" aria-selected="false" aria-controls="core-tab-panel-2" id="core-tab-2">Animated</button>
-                        <button class="tabs__tab core-tab" role="tab" aria-selected="false" aria-controls="core-tab-panel-3" id="core-tab-3">With event</button>
-                        <button class="tabs__tab core-tab" role="tab" aria-selected="false" aria-controls="core-tab-panel-4" id="core-tab-4">Only for &lt; 1024px devices</button>
-                        <button class="tabs__tab core-tab" role="tab" aria-selected="false" aria-controls="core-tab-panel-5" id="core-tab-5">Opened by default</button>
-                        <button class="tabs__tab core-tab" role="tab" aria-selected="false" aria-controls="core-tab-panel-6" id="core-tab-6">Closed on blur</button>
+                        <button class="tabs__tab core-tab" role="tab" aria-selected="true"
+                            aria-controls="core-tab-panel-1" id="core-tab-1">Default</button>
+                        <button class="tabs__tab core-tab" role="tab" aria-selected="false"
+                            aria-controls="core-tab-panel-2" id="core-tab-2">Animated</button>
+                        <button class="tabs__tab core-tab" role="tab" aria-selected="false"
+                            aria-controls="core-tab-panel-3" id="core-tab-3">With event</button>
+                        <button class="tabs__tab core-tab" role="tab" aria-selected="false"
+                            aria-controls="core-tab-panel-4" id="core-tab-4">Only for &lt; 1024px devices</button>
+                        <button class="tabs__tab core-tab" role="tab" aria-selected="false"
+                            aria-controls="core-tab-panel-5" id="core-tab-5">Opened by default</button>
+                        <button class="tabs__tab core-tab" role="tab" aria-selected="false"
+                            aria-controls="core-tab-panel-6" id="core-tab-6">Closed on blur</button>
                     </div>
 
-                    <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-1" aria-labelledby="core-tab-1">
+                    <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-1"
+                        aria-labelledby="core-tab-1">
                         <h2>Default</h2>
 
-                        <p>The Toggle component is a button that triggers changes on a specified item when you click it.</p>
+                        <p>The Toggle component is a button that triggers changes on a specified item when you click it.
+                        </p>
 
                         <button type="button" class="button" aria-controls="toggle-1">Reveal text</button>
 
                         <div id="toggle-1" aria-hidden="true">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deserunt veniam perferendis recusandae sunt quasi, dolor laboriosam quibusdam saepe numquam officia, incidunt fugiat amet velit quas doloribus earum nostrum ut?</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deserunt veniam
+                                perferendis recusandae sunt quasi, dolor laboriosam quibusdam saepe numquam officia,
+                                incidunt fugiat amet velit quas doloribus earum nostrum ut?</p>
                         </div>
                     </div>
-                    <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-2" aria-labelledby="core-tab-2" hidden>
+                    <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-2"
+                        aria-labelledby="core-tab-2" hidden>
                         <h2>Toggle button with jQuery like slide animation</h2>
 
                         <p>A smooth slide animation that reveals or hides content when a button is clicked.</p>
@@ -57,10 +74,13 @@
                         <button type="button" class="button" aria-controls="toggle-2">Reveal text</button>
 
                         <div id="toggle-2" aria-hidden="true">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deserunt veniam perferendis recusandae sunt quasi, dolor laboriosam quibusdam saepe numquam officia, incidunt fugiat amet velit quas doloribus earum nostrum ut?</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deserunt veniam
+                                perferendis recusandae sunt quasi, dolor laboriosam quibusdam saepe numquam officia,
+                                incidunt fugiat amet velit quas doloribus earum nostrum ut?</p>
                         </div>
                     </div>
-                    <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-3" aria-labelledby="core-tab-3" hidden>
+                    <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-3"
+                        aria-labelledby="core-tab-3" hidden>
                         <h2>Toggle button with an alert box</h2>
 
                         <p>A button that triggers an alert box when clicked.</p>
@@ -68,10 +88,13 @@
                         <button type="button" class="button" aria-controls="toggle-3">Reveal text</button>
 
                         <div id="toggle-3" aria-hidden="true">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deserunt veniam perferendis recusandae sunt quasi, dolor laboriosam quibusdam saepe numquam officia, incidunt fugiat amet velit quas doloribus earum nostrum ut?</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deserunt veniam
+                                perferendis recusandae sunt quasi, dolor laboriosam quibusdam saepe numquam officia,
+                                incidunt fugiat amet velit quas doloribus earum nostrum ut?</p>
                         </div>
                     </div>
-                    <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-4" aria-labelledby="core-tab-4" hidden>
+                    <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-4"
+                        aria-labelledby="core-tab-4" hidden>
                         <h2>Toggle button but only for &lt; 1024px devices</h2>
 
                         <p>The toggle button will only be visible on devices with a width of less than 1024px.</p>
@@ -79,10 +102,13 @@
                         <button type="button" class="button" aria-controls="toggle-4">Reveal text</button>
 
                         <div id="toggle-4" aria-hidden="true">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deserunt veniam perferendis recusandae sunt quasi, dolor laboriosam quibusdam saepe numquam officia, incidunt fugiat amet velit quas doloribus earum nostrum ut?</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deserunt veniam
+                                perferendis recusandae sunt quasi, dolor laboriosam quibusdam saepe numquam officia,
+                                incidunt fugiat amet velit quas doloribus earum nostrum ut?</p>
                         </div>
                     </div>
-                    <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-5" aria-labelledby="core-tab-5" hidden>
+                    <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-5"
+                        aria-labelledby="core-tab-5" hidden>
                         <h2>Toggle button but it's already opened</h2>
 
                         <p>The toggle button will be opened by default.</p>
@@ -90,10 +116,13 @@
                         <button type="button" class="button" aria-controls="toggle-5">Reveal text</button>
 
                         <div id="toggle-5" aria-hidden="true">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deserunt veniam perferendis recusandae sunt quasi, dolor laboriosam quibusdam saepe numquam officia, incidunt fugiat amet velit quas doloribus earum nostrum ut?</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deserunt veniam
+                                perferendis recusandae sunt quasi, dolor laboriosam quibusdam saepe numquam officia,
+                                incidunt fugiat amet velit quas doloribus earum nostrum ut?</p>
                         </div>
                     </div>
-                    <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-6" aria-labelledby="core-tab-6" hidden>
+                    <div class="tabs__panel" tabindex="0" role="tabpanel" id="core-tab-panel-6"
+                        aria-labelledby="core-tab-6" hidden>
                         <h2>Closed on blur</h2>
 
                         <p>The toggle button will be closed when it loses focus.</p>
@@ -101,7 +130,9 @@
                         <button type="button" class="button" aria-controls="toggle-6">Reveal text</button>
 
                         <div id="toggle-6" aria-hidden="true">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deserunt veniam perferendis recusandae sunt quasi, dolor laboriosam quibusdam saepe numquam officia, incidunt fugiat amet velit quas doloribus earum nostrum ut?</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deserunt veniam
+                                perferendis recusandae sunt quasi, dolor laboriosam quibusdam saepe numquam officia,
+                                incidunt fugiat amet velit quas doloribus earum nostrum ut?</p>
 
                             <ul>
                                 <li><a href="#">Lorem ipsum</a></li>
@@ -148,4 +179,5 @@
             Toggle.initFromPreset()
         </script>
     </body>
+
 </html>
