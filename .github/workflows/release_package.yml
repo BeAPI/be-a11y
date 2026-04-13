@@ -5,6 +5,12 @@ on:
     branches:
       - main
 
+# Trusted Publishing (OIDC): npm CLI exchanges a short-lived token; no NODE_AUTH_TOKEN on publish.
+# Requires matching this filename on npmjs.com package settings (e.g. release_package.yml).
+permissions:
+  contents: write
+  id-token: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -75,11 +81,14 @@ jobs:
         if: steps.check-version.outputs.exists == 'false'
         run: pnpm build
 
+      # Trusted publishing requires npm CLI >= 11.5.1 (Node >= 22.14.0 is set via Volta in package.json).
+      - name: Ensure npm CLI for trusted publishing
+        if: steps.check-version.outputs.exists == 'false'
+        run: npm install -g npm@^11.5.1
+
       - name: Publish to NPM
         if: steps.check-version.outputs.exists == 'false'
         run: npm publish --access public --tag ${{ steps.release-tag.outputs.tag }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPMJS_ACCESS_TOKEN }}
 
       - name: Create Git tag
         if: steps.check-version.outputs.exists == 'false'
