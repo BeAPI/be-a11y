@@ -1,6 +1,6 @@
-import {PlaywrightTestConfig, devices} from '@playwright/test'
+import { defineConfig, devices } from '@playwright/test'
 
-const config: PlaywrightTestConfig = {
+export default defineConfig({
   projects: [
     {
       name: 'chromium',
@@ -13,6 +13,4 @@ const config: PlaywrightTestConfig = {
     reuseExistingServer: !process.env.CI,
     timeout: 10000,
   },
-}
-
-export default config
+})

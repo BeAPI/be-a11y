@@ -91,7 +91,7 @@ test.describe('Dropdown', () => {
     await page.click('button[aria-controls="core-tab-panel-6"]')
     await page.click('#add')
 
-    const lastItemText = await page.locator('#dropdown-7 li').last().textContent()
+    const lastItemText = await page.locator('#dropdown-6 li').last().textContent()
     expect(lastItemText).toBe('Dummy')
   })
 
@@ -99,7 +99,7 @@ test.describe('Dropdown', () => {
     await page.click('button[aria-controls="core-tab-panel-6"]')
     await page.click('#remove')
 
-    const firstItemText = await page.locator('#dropdown-7 li').first().textContent()
+    const firstItemText = await page.locator('#dropdown-6 li').first().textContent()
     expect(firstItemText).toBe('Movies')
   })
 
@@ -113,7 +113,7 @@ test.describe('Dropdown', () => {
     expect(isListItemsEmpty).toBe(true)
   })
 
-  test('Focus the dropdown button, click on the body, expect the listbox is not visible.', async ({ page }) => {
+  test('Focus the dropdown button in tab panel 7, click on the body, expect the listbox is not visible.', async ({ page }) => {
     await page.click('button[aria-controls="core-tab-panel-7"]')
     await page.focus('#dropdown-7 button')
     await page.keyboard.down('Enter')
