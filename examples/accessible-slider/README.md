@@ -2,12 +2,8 @@
 
 An accessible slider component that allows users to select a value or range of values by moving a handle along a track, providing an intuitive and interactive way to adjust settings or make selections. Users can navigate between slides using keyboard controls, and screen readers receive announcements about the current slide position. The component maintains proper focus management and includes ARIA attributes for enhanced accessibility
 
-* [See accessible specificies](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/)
-* [Demo — Default](https://codepen.io/beapi/pen/gOZqwvL)
-* [Demo — Slides per view](https://codepen.io/beapi/pen/GRPzjbm)
-* [Demo — Slides per view](https://codepen.io/beapi/pen/GRPzjbm)
-* [Demo — Centered](https://codepen.io/beapi/pen/MWZLbjd)
-* [Demo — Opacity animation](https://codepen.io/beapi/pen/GRYEzJo)
+- [See accessible specificies](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/)
+- [Demo](https://beapi.github.io/be-a11y/examples/accessible-slider)
 
 ## Getting started
 

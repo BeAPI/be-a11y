@@ -2,9 +2,7 @@
 
 The Link component is designed to enhance the accessibility of links that open in new tabs. It allows you to add specific text and icons to indicate to users that the link will open in a new tab. This is particularly useful for screen reader users, as it provides them with additional information about the link's behavior.
 
-* [Demo — Default](https://codepen.io/beapi/full/JoPeWgV)
-* [Demo — With icon](https://codepen.io/beapi/full/GgKwmgq)
-* [Demo — With custom icon](https://codepen.io/beapi/full/KwPrmpQ)
+- [Demo](https://beapi.github.io/be-a11y/examples/accessible-link)
 
 ## Getting started
 

@@ -10,8 +10,7 @@ A lightweight accessible dialog component built on the native HTML `<dialog>` el
 This component implements proper focus management, keyboard navigation, and ARIA attributes to ensure all users can interact with dialog content, making it fully accessible to screen reader users and keyboard-only navigation.
 
 - [See accessible specificies](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html)
-- [Demo — Default](https://codepen.io/beapi/full/NPNmWeo)
-- [Demo — Modal Behavior](https://codepen.io/beapi/full/ogxONmw)
+- [Demo](https://beapi.github.io/be-a11y/examples/accessible-dialog)
 
 ## Getting started
 
