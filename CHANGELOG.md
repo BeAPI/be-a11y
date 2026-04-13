@@ -5,9 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 2.0.0 - 2026-04-13
+
+First stable release of the 2.x line. All changes from `2.0.0-beta.1` through `2.0.0-beta.7` are included; see those sections for detailed component and API notes.
+
+### Changed (2026-04-13)
+
+- CI: Publish to npm from `main` via GitHub Actions using npm Trusted Publishing (OIDC)
+- Pin Node.js to 22.14.0 via Volta (required for npm Trusted Publishing CLI requirements)
+- Playwright: use `defineConfig` in `playwright.config.ts` for current `@playwright/test` exports
+
+### Fixed (2026-04-13)
+
+- Tests: resolve duplicate Playwright test title in `Dropdown.test.ts`
+
 ## 2.0.0-beta.7 - 2026-01-08
 
-### Fixed
+### Fixed (2026-01-08)
 
 - Fix `aria-expanded` attribute not updating correctly when closing panels in Accordion component
   - When opening a new panel with `allowMultiple: false`, previously opened panels now correctly have their trigger's `aria-expanded` set to `false`
@@ -15,7 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 2.0.0-beta.6 - 2025-12-17
 
-### Fixed
+### Fixed (2025-12-17)
 
 - Fix `closeOnBlur` behavior in Toggle component
   - Toggle no longer closes when focus moves to an element inside the toggled target
@@ -23,7 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 2.0.0-beta.5 - 2025-12-15
 
-### Changed
+### Changed (2025-12-15)
 
 - Improve TypeScript build configuration for NPM package compatibility
   - Add `tsconfig.build.json` for generating type declarations (`.d.ts`)
@@ -33,7 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 2.0.0-beta.4 - 2025-12-13
 
-### Added
+### Added (2025-12-13)
 
 - Add new Dialog component based on native HTML `<dialog>` element
   - Leverages native browser capabilities (`show()`, `showModal()`, `close()` methods)
@@ -45,7 +59,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add complete Dialog documentation with usage examples
 - Add comparison between Dialog and Modal components in documentation
 
-### Fixed
+### Fixed (2025-12-13)
 
 - Fix TypeScript/ESLint errors in Accordion component
   - Add null safety checks for media query pattern matching
