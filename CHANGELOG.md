@@ -14,6 +14,7 @@ First stable release of the 2.x line. All changes from `2.0.0-beta.1` through `2
 - CI: Publish to npm from `main` via GitHub Actions using npm Trusted Publishing (OIDC)
 - Pin Node.js to 22.14.0 via Volta (required for npm Trusted Publishing CLI requirements)
 - Playwright: use `defineConfig` in `playwright.config.ts` for current `@playwright/test` exports
+- Update Vite to 8.0.8
 
 ### Fixed (2026-04-13)
 
