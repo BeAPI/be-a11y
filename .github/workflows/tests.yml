@@ -1,9 +1,7 @@
 name: Tests
 on:
-  push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches: [ develop, main ]
 jobs:
   tests_e2e:
     name: Run end-to-end tests
@@ -30,6 +28,8 @@ jobs:
       run: pnpm install --frozen-lockfile
     - name: Install Playwright Chromium
       run: pnpm exec playwright install chromium --with-deps
+    - name: Build demo site for Playwright
+      run: pnpm build:demo
     - name: Run tests
       run: pnpm exec playwright test
       env:
