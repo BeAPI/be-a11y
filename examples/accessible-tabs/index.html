@@ -238,13 +238,15 @@
             </div>
 
             <script type="module">
-                import { Tabs } from '../../be-a11y.ts'
+                import { Link, Tabs } from '../../be-a11y.ts'
                 import '../../src/css/index.css'
                 import './style.css'
 
                 Tabs.init('#tab', {
                     tabListSelector: '.core-tab'
                 })
+
+                Link.init('a.github-button')
 
                 Tabs.preset = {
                     '#tab-demo-1': {},

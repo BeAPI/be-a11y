@@ -382,13 +382,15 @@
             </div>
 
             <script type="module">
-                import { Modal, Tabs } from '../../be-a11y.ts'
+                import { Link, Modal, Tabs } from '../../be-a11y.ts'
                 import '../../src/css/index.css'
                 import './style.css'
 
                 Tabs.init('#tab', {
                     tabListSelector: '.core-tab'
                 })
+
+                Link.init('a.github-button')
 
                 Modal.preset = {
                     '#demo-1': {

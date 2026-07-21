@@ -65,8 +65,14 @@ export default class Link extends AbstractDomElement {
    * @returns {void}
    */
   private init(): void {
-    const newTabLinks = this.element.querySelectorAll('a[target="_blank"]')
     const {hasIcon, iconSize, replaceIcon, screenReaderText, screenReaderClassName} = this.options
+    const newTabLinks: Element[] = []
+
+    if (this.element.matches('a[target="_blank"]')) {
+      newTabLinks.push(this.element)
+    }
+
+    newTabLinks.push(...this.element.querySelectorAll('a[target="_blank"]'))
 
     for (const newTabLink of newTabLinks) {
       const screenReaderSpan = document.createElement('span')
@@ -75,10 +81,10 @@ export default class Link extends AbstractDomElement {
       newTabLink.appendChild(screenReaderSpan)
 
       if (!hasIcon) {
-        return
+        continue
       }
 
-      if (hasIcon && !replaceIcon) {
+      if (!replaceIcon) {
         const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
         svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
         svg.setAttribute('viewBox', '0 0 24 24')
@@ -92,7 +98,7 @@ export default class Link extends AbstractDomElement {
         newTabLink.appendChild(svg)
       }
 
-      if (hasIcon && replaceIcon) {
+      if (replaceIcon) {
         newTabLink.insertAdjacentHTML('beforeend', replaceIcon)
       }
     }
