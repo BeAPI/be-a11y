@@ -39,3 +39,7 @@
 .sidebar li a {
     @apply block;
 }
+
+.sidebar li a.github-button {
+    @apply inline-flex mt-2 px-3 py-2;
+}
