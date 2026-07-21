@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 2.0.1 - 2026-07-21
+
+### Added
+
+- Toggle: add `onBlur` and `onEscPressed` callback options
+- Demo site: add GitHub and documentation links on the home page and every example page
+- Demo site: add favicon
+
+### Fixed
+
+- Link: support initializing on the `a[target="_blank"]` element itself (not only descendants), and process every matching link when `hasIcon` is `false` (early `return` stopped after the first link)
+- Toggle: prevent an unintended `onClick` call when closing with Escape
+- Demo site: scope toggle `[aria-hidden="true"]` styles to `#toggle-*` targets so unrelated hidden content is not affected
+
+### Changed
+
+- Move pnpm configuration (`overrides`, `peerDependencyRules`) from `package.json` to `pnpm-workspace.yaml`
+- Add `homepage` field to `package.json` (`https://beapi.github.io/be-a11y/`)
+- Bump development dependencies (`postcss`, Vite, `@babel/core`)
+
 ## 2.0.0 - 2026-04-13
 
 First stable release of the 2.x line. All changes from `2.0.0-beta.1` through `2.0.0-beta.7` are included; see those sections for detailed component and API notes.
