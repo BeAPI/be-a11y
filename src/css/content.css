@@ -5,3 +5,7 @@
 .content > p {
     @apply max-w-[600px] mr-auto;
 }
+
+.content > .github-button {
+    @apply mb-8;
+}

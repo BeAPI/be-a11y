@@ -1,4 +1,4 @@
-[aria-hidden="true"] {
+[id^="toggle-"][aria-hidden="true"] {
     display: none;
 }
 
