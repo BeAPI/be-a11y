@@ -15,7 +15,9 @@ import DOMAnimations from './DOMAnimations.ts'
  * @property {boolean} hasAnimation - Whether to use animations when opening or closing the toggle.
  * @property {boolean} isOpened - Initial state of the toggle, whether it is opened.
  * @property {MediaQueryList | null} mediaQuery - Media query condition for initializing the toggle.
+ * @property {(e: FocusEvent) => any} onBlur - Callback function for blur events.
  * @property {(e: MouseEvent) => any} onClick - Callback function for click events.
+ * @property {(e: KeyboardEvent) => any} onEscPressed - Callback function when the escape key is pressed.
  * @property {string} prefixId - Prefix for the toggle ID.
  * @property {string | null} target - Selector for the target element.
  */
@@ -28,7 +30,9 @@ interface ToggleOptions {
   hasAnimation: boolean
   isOpened: boolean
   mediaQuery: MediaQueryList | null
+  onBlur: (e: FocusEvent) => any // eslint-disable-line no-unused-vars
   onClick: (e: MouseEvent) => any // eslint-disable-line no-unused-vars
+  onEscPressed: (e: KeyboardEvent) => any // eslint-disable-line no-unused-vars
   prefixId: string
   target: null | string
 }
@@ -89,12 +93,28 @@ export default class Toggle extends AbstractDomElement {
   private handleClick: (e: MouseEvent) => void // eslint-disable-line no-unused-vars
 
   /**
+   * Event handler for escape keydown events.
+   *
+   * @private
+   * @type {(e: KeyboardEvent) => void}
+   */
+  private handleEscPress: (e: KeyboardEvent) => void // eslint-disable-line no-unused-vars
+
+  /**
    * Event handler for resize events.
    *
    * @private
    * @type {() => void}
    */
   private handleResize: () => void // eslint-disable-line no-unused-vars
+
+  /**
+   * Bound user callback for click events.
+   *
+   * @private
+   * @type {(e: MouseEvent) => any}
+   */
+  private boundOnClick: (e: MouseEvent) => any // eslint-disable-line no-unused-vars
 
   /**
    * Default options for the Toggle component.
@@ -112,7 +132,9 @@ export default class Toggle extends AbstractDomElement {
     hasAnimation: false,
     isOpened: false,
     mediaQuery: null,
+    onBlur: () => {},
     onClick: () => {},
+    onEscPressed: () => {},
     prefixId: 'toggle',
     target: null,
   }
@@ -152,7 +174,9 @@ export default class Toggle extends AbstractDomElement {
     this.handleResize = this._handleResize.bind(this)
     this.handleBlur = this._handleBlur.bind(this)
     this.handleClick = this._handleClick.bind(this)
+    this.handleEscPress = this._handleEscPress.bind(this)
     this.handleTargetFocusOut = this._handleTargetFocusOut.bind(this)
+    this.boundOnClick = this.options.onClick.bind(this)
 
     new ThrottledEvent(window, 'resize').add('resize', this.handleResize)
     this.handleResize()
@@ -167,11 +191,14 @@ export default class Toggle extends AbstractDomElement {
   private init(): void {
     const el = this.element
 
-    const { closeOnBlur, closeOnEscPress, isOpened, onClick, prefixId } = this.options
+    const { closeOnBlur, closeOnEscPress, isOpened, onBlur, onClick, onEscPressed, prefixId } = this.options
+    const hasCustomOnBlur = onBlur !== Toggle.defaults.onBlur
+    const hasCustomOnClick = onClick !== Toggle.defaults.onClick
+    const hasCustomOnEscPressed = onEscPressed !== Toggle.defaults.onEscPressed
 
     // In case there is an on click callback, add click event listener
-    if (onClick) {
-      el.addEventListener('click', onClick.bind(this))
+    if (hasCustomOnClick) {
+      el.addEventListener('click', this.boundOnClick)
     }
 
     // In case this.target is not defined, stop the initialization
@@ -184,10 +211,7 @@ export default class Toggle extends AbstractDomElement {
     el.setAttribute('aria-expanded', 'false')
 
     // In case this.target is defined, add on click event
-    if (this.target) {
-      el.addEventListener('click', this.handleClick)
-      el.addEventListener('click', this.handleClick)
-    }
+    el.addEventListener('click', this.handleClick)
 
     if (!el.hasAttribute('aria-controls')) {
       const id = `${prefixId}-${randomId()}`
@@ -195,28 +219,13 @@ export default class Toggle extends AbstractDomElement {
       this.target.id = id
     }
 
-    if (closeOnBlur) {
+    if (closeOnBlur || hasCustomOnBlur) {
       el.addEventListener('blur', this.handleBlur)
       this.target.addEventListener('focusout', this.handleTargetFocusOut)
     }
 
-    if (closeOnEscPress) {
-      window.addEventListener('keydown', function (e) {
-        if (e.defaultPrevented) {
-          return
-        }
-
-        const key = e.key
-        const id = el.getAttribute('aria-controls')
-
-        if (
-          ['Escape', 'Esc'].includes(key) &&
-          id &&
-          document.getElementById(id)?.getAttribute('aria-hidden') !== 'true'
-        ) {
-          el.click()
-        }
-      })
+    if (closeOnEscPress || hasCustomOnEscPressed) {
+      window.addEventListener('keydown', this.handleEscPress)
     }
 
     if (!this.target.hasAttribute('aria-hidden')) {
@@ -238,11 +247,8 @@ export default class Toggle extends AbstractDomElement {
     const instance = AbstractDomElement.getInstance(element) as Toggle | undefined
 
     if (instance) {
-      const {
-        element,
-        target,
-        options: { onClick },
-      } = instance
+      const { element, target, options } = instance
+      const hasCustomOnClick = options.onClick !== Toggle.defaults.onClick
 
       instance.initialized = false
 
@@ -250,13 +256,14 @@ export default class Toggle extends AbstractDomElement {
       element.removeAttribute('aria-expanded')
       element.removeEventListener('click', instance.handleClick)
       element.removeEventListener('blur', instance.handleBlur)
+      window.removeEventListener('keydown', instance.handleEscPress)
 
       if (target) {
         target.removeEventListener('focusout', instance.handleTargetFocusOut)
       }
 
-      if (onClick) {
-        element.removeEventListener('click', onClick)
+      if (hasCustomOnClick) {
+        element.removeEventListener('click', instance.boundOnClick)
       }
     }
 
@@ -386,6 +393,7 @@ export default class Toggle extends AbstractDomElement {
    */
   _handleBlur(e: FocusEvent) {
     const relatedTarget = e.relatedTarget as HTMLElement | null
+    const { closeOnBlur, onBlur } = this.options
 
     // Check if focus is moving to the button itself
     if (relatedTarget === this.element) {
@@ -397,7 +405,13 @@ export default class Toggle extends AbstractDomElement {
       return
     }
 
-    this.close()
+    if (closeOnBlur) {
+      this.close()
+    }
+
+    if (onBlur !== Toggle.defaults.onBlur) {
+      onBlur.call(this, e)
+    }
   }
 
   /**
@@ -409,6 +423,7 @@ export default class Toggle extends AbstractDomElement {
    */
   _handleTargetFocusOut(e: FocusEvent) {
     const relatedTarget = e.relatedTarget as HTMLElement | null
+    const { closeOnBlur, onBlur } = this.options
 
     // Check if focus is moving to the button
     if (relatedTarget === this.element) {
@@ -420,7 +435,47 @@ export default class Toggle extends AbstractDomElement {
       return
     }
 
-    this.close()
+    if (closeOnBlur) {
+      this.close()
+    }
+
+    if (onBlur !== Toggle.defaults.onBlur) {
+      onBlur.call(this, e)
+    }
+  }
+
+  /**
+   * Handles escape keydown events.
+   *
+   * @private
+   * @param {KeyboardEvent} e - The keyboard event.
+   * @returns {void}
+   */
+  _handleEscPress(e: KeyboardEvent) {
+    if (e.defaultPrevented) {
+      return
+    }
+
+    const el = this.element
+    const { closeOnEscPress, onEscPressed } = this.options
+    const key = e.key
+    const id = el.getAttribute('aria-controls')
+
+    if (
+      !['Escape', 'Esc'].includes(key) ||
+      !id ||
+      document.getElementById(id)?.getAttribute('aria-hidden') === 'true'
+    ) {
+      return
+    }
+
+    if (closeOnEscPress) {
+      this.close()
+    }
+
+    if (onEscPressed !== Toggle.defaults.onEscPressed) {
+      onEscPressed.call(this, e)
+    }
   }
 
   /**

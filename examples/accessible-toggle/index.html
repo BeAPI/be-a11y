@@ -83,7 +83,9 @@
                         aria-labelledby="core-tab-3" hidden>
                         <h2>Toggle button with an alert box</h2>
 
-                        <p>A button that triggers an alert box when clicked.</p>
+                        <p>A button that triggers an event on click, blur, and escape key press.</p>
+
+                        <p id="toggle-3-event" data-event="" data-click-count="0">Event: none</p>
 
                         <button type="button" class="button" aria-controls="toggle-3">Reveal text</button>
 
@@ -161,8 +163,34 @@
                     hasAnimation: true,
                 },
                 'button[aria-controls="toggle-3"]': {
+                    closeOnBlur: true,
+                    closeOnEscPress: true,
+                    onBlur: function () {
+                        const status = document.getElementById('toggle-3-event')
+
+                        if (status) {
+                            status.textContent = 'Event: blur'
+                            status.setAttribute('data-event', 'blur')
+                        }
+                    },
                     onClick: function () {
-                        window.alert('You have successfully clicked on the button.')
+                        const status = document.getElementById('toggle-3-event')
+
+                        if (status) {
+                            const clickCount = Number(status.getAttribute('data-click-count') || '0') + 1
+
+                            status.textContent = 'Event: click'
+                            status.setAttribute('data-event', 'click')
+                            status.setAttribute('data-click-count', String(clickCount))
+                        }
+                    },
+                    onEscPressed: function () {
+                        const status = document.getElementById('toggle-3-event')
+
+                        if (status) {
+                            status.textContent = 'Event: esc'
+                            status.setAttribute('data-event', 'esc')
+                        }
                     },
                 },
                 'button[aria-controls="toggle-4"]': {
