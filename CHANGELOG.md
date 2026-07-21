@@ -5,24 +5,44 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 2.0.1 - 2026-07-21
+
+### Added
+
+- Toggle: add `onBlur` and `onEscPressed` callback options
+- Demo site: add GitHub and documentation links on the home page and every example page
+- Demo site: add favicon
+
+### Fixed
+
+- Link: support initializing on the `a[target="_blank"]` element itself (not only descendants), and process every matching link when `hasIcon` is `false` (early `return` stopped after the first link)
+- Toggle: prevent an unintended `onClick` call when closing with Escape
+- Demo site: scope toggle `[aria-hidden="true"]` styles to `#toggle-*` targets so unrelated hidden content is not affected
+
+### Changed
+
+- Move pnpm configuration (`overrides`, `peerDependencyRules`) from `package.json` to `pnpm-workspace.yaml`
+- Add `homepage` field to `package.json` (`https://beapi.github.io/be-a11y/`)
+- Bump development dependencies (`postcss`, Vite, `@babel/core`)
+
 ## 2.0.0 - 2026-04-13
 
 First stable release of the 2.x line. All changes from `2.0.0-beta.1` through `2.0.0-beta.7` are included; see those sections for detailed component and API notes.
 
-### Changed (2026-04-13)
+### Changed
 
 - CI: Publish to npm from `main` via GitHub Actions using npm Trusted Publishing (OIDC)
 - Pin Node.js to 22.14.0 via Volta (required for npm Trusted Publishing CLI requirements)
 - Playwright: use `defineConfig` in `playwright.config.ts` for current `@playwright/test` exports
 - Align on Vite 7.3.x for library build, dev server, and demo site (single toolchain)
 
-### Fixed (2026-04-13)
+### Fixed
 
 - Tests: resolve duplicate Playwright test title in `Dropdown.test.ts`
 
 ## 2.0.0-beta.7 - 2026-01-08
 
-### Fixed (2026-01-08)
+### Fixed
 
 - Fix `aria-expanded` attribute not updating correctly when closing panels in Accordion component
   - When opening a new panel with `allowMultiple: false`, previously opened panels now correctly have their trigger's `aria-expanded` set to `false`
@@ -30,7 +50,7 @@ First stable release of the 2.x line. All changes from `2.0.0-beta.1` through `2
 
 ## 2.0.0-beta.6 - 2025-12-17
 
-### Fixed (2025-12-17)
+### Fixed
 
 - Fix `closeOnBlur` behavior in Toggle component
   - Toggle no longer closes when focus moves to an element inside the toggled target
@@ -38,7 +58,7 @@ First stable release of the 2.x line. All changes from `2.0.0-beta.1` through `2
 
 ## 2.0.0-beta.5 - 2025-12-15
 
-### Changed (2025-12-15)
+### Changed
 
 - Improve TypeScript build configuration for NPM package compatibility
   - Add `tsconfig.build.json` for generating type declarations (`.d.ts`)
@@ -48,7 +68,7 @@ First stable release of the 2.x line. All changes from `2.0.0-beta.1` through `2
 
 ## 2.0.0-beta.4 - 2025-12-13
 
-### Added (2025-12-13)
+### Added
 
 - Add new Dialog component based on native HTML `<dialog>` element
   - Leverages native browser capabilities (`show()`, `showModal()`, `close()` methods)
@@ -60,7 +80,7 @@ First stable release of the 2.x line. All changes from `2.0.0-beta.1` through `2
 - Add complete Dialog documentation with usage examples
 - Add comparison between Dialog and Modal components in documentation
 
-### Fixed (2025-12-13)
+### Fixed
 
 - Fix TypeScript/ESLint errors in Accordion component
   - Add null safety checks for media query pattern matching

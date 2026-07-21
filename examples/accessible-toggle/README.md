@@ -54,6 +54,12 @@ Toggle.preset = {
     onClick: function() {
         console.log('Clicked!');
     },
+    onBlur: function() {
+        console.log('Blurred!');
+    },
+    onEscPressed: function() {
+        console.log('Escape pressed!');
+    },
   },
   '#button-2': {
     target: '#my-div',
@@ -77,6 +83,8 @@ Toggle.initFromPreset();
 | `hasAnimation`             | boolean         | `false` | If true, the content has a slideDown / slideUp animation.                                                                               |
 | `isOpened`                 | boolean         | `false` | If true, the content is revealed by default.                                                                                            |
 | `mediaQuery`               | string          | `null`  | Apply toggle button to a window match media.                                                                                            |
+| `onBlur`                   | function        | `null`  | Callback function when the toggle button or its content loses focus.                                                                    |
 | `onClick`                  | function        | `null`  | Callback function when you click on the toggle button.                                                                                  |
+| `onEscPressed`             | function        | `null`  | Callback function when you press the Escape key while the content is revealed.                                                          |
 | `prefixId`                  | string        | `toggle`  | Define the prefix id of the component.                                                                                  |
 | `target`                   | string          | `null`  | Specify the content target with a selector. If null, the target is based on the `aria-controls` attribute value from the toggle button. |

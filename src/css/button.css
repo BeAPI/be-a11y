@@ -5,3 +5,11 @@
 .button[disabled] {
     @apply cursor-not-allowed bg-slate-400 dark:bg-dark-border before:hidden text-dark dark:text-white opacity-30;
 }
+
+.github-button {
+    @apply inline-flex items-center gap-2 px-3 py-2 rounded-md no-underline font-medium bg-dark text-white dark:bg-beapi dark:text-dark hover:bg-beapi hover:text-dark dark:hover:bg-white focus:bg-beapi focus:text-dark dark:focus:bg-white;
+}
+
+.github-button svg {
+    @apply shrink-0 inline-block;
+}
