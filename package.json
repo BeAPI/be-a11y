@@ -1,6 +1,6 @@
 {
   "name": "@beapi/be-a11y",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "type": "module",
   "description": "Collection of usefull accessible components",
   "homepage": "https://beapi.github.io/be-a11y/",
