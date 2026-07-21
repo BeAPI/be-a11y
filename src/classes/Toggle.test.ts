@@ -47,4 +47,58 @@ test.describe('Toggle', () => {
 
     expect(display).toBe('none')
   })
+
+  test('Click a toggle with onClick, expect the callback is called.', async ({ page }) => {
+    await page.click('button[aria-controls="core-tab-panel-3"]')
+    await page.click('button[aria-controls="toggle-3"]')
+
+    await expect(page.locator('#toggle-3-event')).toHaveAttribute('data-event', 'click')
+  })
+
+  test('Blur a toggle with closeOnBlur and onBlur, expect the content is hidden and onBlur is called.', async ({
+    page,
+  }) => {
+    await page.click('button[aria-controls="core-tab-panel-3"]')
+    await page.click('button[aria-controls="toggle-3"]')
+
+    let display = await page.$eval('#toggle-3', (content) => window.getComputedStyle(content).display)
+    expect(display).toBe('block')
+
+    await page.locator('button[aria-controls="toggle-3"]').blur()
+
+    display = await page.$eval('#toggle-3', (content) => window.getComputedStyle(content).display)
+    expect(display).toBe('none')
+
+    await expect(page.locator('#toggle-3-event')).toHaveAttribute('data-event', 'blur')
+  })
+
+  test('Press Escape on an opened toggle with closeOnEscPress and onEscPressed, expect the content is hidden and onEscPressed is called.', async ({
+    page,
+  }) => {
+    await page.click('button[aria-controls="core-tab-panel-3"]')
+    await page.click('button[aria-controls="toggle-3"]')
+
+    let display = await page.$eval('#toggle-3', (content) => window.getComputedStyle(content).display)
+    expect(display).toBe('block')
+
+    await page.keyboard.press('Escape')
+
+    display = await page.$eval('#toggle-3', (content) => window.getComputedStyle(content).display)
+    expect(display).toBe('none')
+
+    await expect(page.locator('#toggle-3-event')).toHaveAttribute('data-event', 'esc')
+  })
+
+  test('Blur a toggle with closeOnBlur, expect the content is hidden.', async ({ page }) => {
+    await page.click('button[aria-controls="core-tab-panel-6"]')
+    await page.click('button[aria-controls="toggle-6"]')
+
+    let display = await page.$eval('#toggle-6', (content) => window.getComputedStyle(content).display)
+    expect(display).toBe('block')
+
+    await page.locator('button[aria-controls="toggle-6"]').blur()
+
+    display = await page.$eval('#toggle-6', (content) => window.getComputedStyle(content).display)
+    expect(display).toBe('none')
+  })
 })
