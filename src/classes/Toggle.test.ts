@@ -72,7 +72,7 @@ test.describe('Toggle', () => {
     await expect(page.locator('#toggle-3-event')).toHaveAttribute('data-event', 'blur')
   })
 
-  test('Press Escape on an opened toggle with closeOnEscPress and onEscPressed, expect the content is hidden and onEscPressed is called.', async ({
+  test('Press Escape on an opened toggle with closeOnEscPress and onEscPressed, expect the content is hidden and onEscPressed is called without onClick.', async ({
     page,
   }) => {
     await page.click('button[aria-controls="core-tab-panel-3"]')
@@ -80,6 +80,7 @@ test.describe('Toggle', () => {
 
     let display = await page.$eval('#toggle-3', (content) => window.getComputedStyle(content).display)
     expect(display).toBe('block')
+    await expect(page.locator('#toggle-3-event')).toHaveAttribute('data-click-count', '1')
 
     await page.keyboard.press('Escape')
 
@@ -87,6 +88,7 @@ test.describe('Toggle', () => {
     expect(display).toBe('none')
 
     await expect(page.locator('#toggle-3-event')).toHaveAttribute('data-event', 'esc')
+    await expect(page.locator('#toggle-3-event')).toHaveAttribute('data-click-count', '1')
   })
 
   test('Blur a toggle with closeOnBlur, expect the content is hidden.', async ({ page }) => {

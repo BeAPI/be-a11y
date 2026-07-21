@@ -470,7 +470,7 @@ export default class Toggle extends AbstractDomElement {
     }
 
     if (closeOnEscPress) {
-      el.click()
+      this.close()
     }
 
     if (onEscPressed !== Toggle.defaults.onEscPressed) {
