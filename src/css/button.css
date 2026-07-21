@@ -11,5 +11,5 @@
 }
 
 .github-button svg {
-    @apply shrink-0;
+    @apply shrink-0 inline-block;
 }

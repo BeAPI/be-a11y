@@ -41,5 +41,11 @@
 }
 
 .sidebar li a.github-button {
-    @apply inline-flex mt-2 px-3 py-2;
+    @apply inline-flex mt-2 px-3 py-2 bg-dark text-white dark:bg-beapi dark:text-dark;
+}
+
+.sidebar li a.github-button:hover,
+.sidebar li a.github-button:focus,
+.sidebar li a.github-button:active {
+    @apply bg-beapi text-dark dark:bg-white dark:text-dark;
 }
